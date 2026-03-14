@@ -1,0 +1,18 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Signal x vt-design-system Package Forward</title>
+  <desc>A package-forward hybrid where vt-design-system dominates inside the Signal brand frame.</desc>
+  <circle cx="128" cy="128" r="104" fill="#111827"/>
+  <path d="M128 40C177 40 216 79 216 128" stroke="#60A5FA" stroke-width="12" stroke-linecap="round"/>
+  <path d="M128 64C164 64 192 92 192 128" stroke="#F472B6" stroke-width="10" stroke-linecap="round"/>
+  <path d="M40 128C40 79 79 40 128 40" stroke="#FFF2B2" stroke-width="10" stroke-linecap="round"/>
+  <path d="M50 184C76 206 100 216 128 216C156 216 180 206 206 184" stroke="#60A5FA" stroke-width="8" stroke-linecap="round"/>
+  <g>
+  <rect x="62" y="62" width="132" height="132" rx="28" stroke="#FFCF5A" stroke-width="10"/>
+  <rect x="82" y="82" width="92" height="16" rx="8" fill="#FFF8E5"/>
+  <rect x="82" y="106" width="16" height="76" rx="8" fill="#7AE0FF"/>
+  <rect x="114" y="114" width="60" height="26" rx="10" fill="#FFCF5A"/>
+  <rect x="114" y="150" width="60" height="16" rx="8" fill="#FFF8E5"/>
+  <rect x="114" y="176" width="60" height="12" rx="6" fill="#7AE0FF"/>
+  <path d="M128 98V188" stroke="#FFF8E5" stroke-width="10" stroke-linecap="round"/>
+  </g>
+</svg>

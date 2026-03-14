@@ -1,0 +1,17 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Cascade x vt-asset-studio</title>
+  <desc>A cascade-shaped VT mark combined with the vt-asset-studio crop-frame emblem.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#281324"/>
+  <rect x="46" y="52" width="164" height="18" rx="9" fill="#FFF1D8"/>
+  <path d="M58 78H86L74 206H46L58 78Z" fill="#FF4FA3"/>
+  <path d="M98 78H126L120 188H92L98 78Z" fill="#FF7AC3"/>
+  <path d="M130 78H158L164 188H136L130 78Z" fill="#FFB36B"/>
+  <path d="M170 78H198L210 206H182L170 78Z" fill="#FFD978"/>
+  <path d="M90 78H118L128 174L138 78H166L150 210H106L90 78Z" fill="#FFF1D8"/>
+  <rect x="168" y="76" width="42" height="42" rx="12" fill="#190912"/>
+  <path d="M178 90V86C178 83 180 81 183 81H187" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M200 90V86C200 83 198 81 195 81H191" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M178 104V108C178 111 180 113 183 113H187" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M200 104V108C200 111 198 113 195 113H191" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M189 83L191 88L196 90L191 92L189 97L187 92L182 90L187 88L189 83Z" fill="#FFB36B"/>
+</svg>

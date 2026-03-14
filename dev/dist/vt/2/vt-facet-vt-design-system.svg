@@ -1,0 +1,14 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Facet x vt-design-system</title>
+  <desc>A faceted VT crystal combined with the vt-design-system modular tile emblem.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="40" fill="#0D1630"/>
+  <path d="M128 40L206 94L174 214H82L50 94L128 40Z" fill="#1A2144"/>
+  <path d="M82 94L128 68L174 94L160 128H96L82 94Z" fill="#5B8CFF"/>
+  <path d="M96 128H160L128 214L96 128Z" fill="#8A5CFF"/>
+  <path d="M110 98H146V114H132V166H124V114H110V98Z" fill="#EFF6FF"/>
+  <path d="M78 130H96L128 176L160 130H178L132 214H124L78 130Z" fill="#A7C5FF" fill-opacity="0.72"/>
+  <rect x="166" y="50" width="44" height="44" rx="12" fill="#081225"/>
+  <rect x="176" y="60" width="10" height="10" rx="3" fill="#5B8CFF"/>
+  <rect x="192" y="60" width="12" height="24" rx="4" fill="#EFF6FF"/>
+  <rect x="176" y="76" width="28" height="12" rx="4" fill="#8A5CFF"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Facet x gemini-ai-lib</title>
+  <desc>A faceted VT crystal combined with the gemini-ai-lib node-core emblem.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="40" fill="#052E2B"/>
+  <path d="M128 40L206 94L174 214H82L50 94L128 40Z" fill="#064E3B"/>
+  <path d="M82 94L128 68L174 94L160 128H96L82 94Z" fill="#22D3EE"/>
+  <path d="M96 128H160L128 214L96 128Z" fill="#10B981"/>
+  <path d="M110 98H146V114H132V166H124V114H110V98Z" fill="#ECFDF5"/>
+  <path d="M78 130H96L128 176L160 130H178L132 214H124L78 130Z" fill="#34D399" fill-opacity="0.72"/>
+  <circle cx="188" cy="72" r="20" fill="#04312B"/>
+  <path d="M188 60L178 72L188 84L198 72L188 60Z" fill="#ECFDF5"/>
+  <path d="M188 72V56" stroke="#22D3EE" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L175 80" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L201 80" stroke="#34D399" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="188" cy="54" r="4" fill="#22D3EE"/>
+  <circle cx="173" cy="82" r="4" fill="#10B981"/>
+  <circle cx="203" cy="82" r="4" fill="#34D399"/>
+</svg>

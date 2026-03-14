@@ -1,0 +1,11 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Meridian</title>
+  <desc>A compass-axis badge with a bright vertical line and a faceted horizon ring.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="40" fill="#17152A"/>
+  <path d="M128 46L186 104L128 210L70 104L128 46Z" fill="#8B5CF6"/>
+  <circle cx="128" cy="128" r="54" fill="#17152A" fill-opacity="0.82"/>
+  <circle cx="128" cy="128" r="70" stroke="#F8FAFC" stroke-width="10"/>
+  <path d="M120 74H136V182H120V74Z" fill="#F8FAFC"/>
+  <path d="M86 146H104L128 182L152 146H170L136 210H120L86 146Z" fill="#22D3EE"/>
+
+</svg>

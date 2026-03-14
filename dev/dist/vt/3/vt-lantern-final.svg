@@ -1,0 +1,11 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Lantern Final</title>
+  <desc>The cleanest beacon direction, with a steadier lantern silhouette and a sharper inner glow.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="42" fill="#151A21"/>
+  <path d="M128 42L188 88V176L128 214L68 176V88L128 42Z" fill="#FFB44E"/>
+  <path d="M94 88H162L150 120H106L94 88Z" fill="#FFF6E2"/>
+  <path d="M118 74H138V156H118V74Z" fill="#FFF6E2"/>
+  <path d="M92 132H110L128 160L146 132H164L136 198H120L92 132Z" fill="#63D6F2"/>
+  <path d="M112 56H144V68H112V56Z" fill="#63D6F2"/>
+
+</svg>

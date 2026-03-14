@@ -131,6 +131,16 @@ const exampleItems: PreviewNavItem[] = [
     label: "Workflow / Docs Ops",
     icon: <IconLayoutCards size={20} />,
   },
+  {
+    tab: "example-playground-signal-theme",
+    label: "Theme / VT Playground",
+    icon: <IconSparkles size={20} />,
+  },
+  {
+    tab: "example-asset-studio-lantern-theme",
+    label: "Theme / VT Asset Studio",
+    icon: <IconPalette size={20} />,
+  },
 ];
 
 export function PreviewSidebar({

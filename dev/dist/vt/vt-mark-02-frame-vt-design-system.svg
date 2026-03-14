@@ -1,0 +1,8 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Design System Mark 02 Frame</title>
+  <desc>VT Design System package logo based on Frame with blue structure and a precise violet marker.</desc>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M48 28C36.9543 28 28 36.9543 28 48V208C28 219.046 36.9543 228 48 228H208C219.046 228 228 219.046 228 208V48C228 36.9543 219.046 28 208 28H48ZM80 60H176V90H142V186H112V90H80V60ZM64 98H95L128 168L161 98H192L144 196H112L64 98Z" fill="#172554"/>
+  <path d="M48 28H208C219.046 28 228 36.9543 228 48V72H28V48C28 36.9543 36.9543 28 48 28Z" fill="#2563EB"/>
+  <path d="M92 72H164V90H92V72Z" fill="#DBEAFE"/>
+  <rect x="182" y="182" width="28" height="28" rx="8" fill="#8B5CF6"/>
+</svg>

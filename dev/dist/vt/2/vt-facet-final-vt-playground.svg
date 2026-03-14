@@ -1,0 +1,15 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Facet Final x vt-playground</title>
+  <desc>Refined facet finalist applied to vt-playground with bright motion-led accents.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="40" fill="#101826"/>
+  <path d="M128 42L198 88L170 214H86L58 88L128 42Z" fill="#1A2538"/>
+  <path d="M92 92H164L150 128H106L92 92Z" fill="#FFD4A8"/>
+  <path d="M106 128H150L128 214L106 128Z" fill="#14D7C4"/>
+  <path d="M128 42L92 92L106 128L128 214L150 128L164 92L128 42Z" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="4"/>
+  <path d="M108 98H148V114H132V160H124V114H108V98Z" fill="#101826"/>
+  <path d="M84 132H104L128 170L152 132H172L136 210H120L84 132Z" fill="#FFE066" fill-opacity="0.78"/>
+  <circle cx="188" cy="72" r="14" fill="#0C1220"/>
+  <path d="M180 73C180 68 184 64 189 64C193 64 197 66 199 70" stroke="#FF7A18" stroke-width="5" stroke-linecap="round"/>
+  <path d="M176 79C176 85 182 90 188 90C194 90 199 86 201 81" stroke="#14D7C4" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="200" cy="68" r="3" fill="#FFE066"/>
+</svg>

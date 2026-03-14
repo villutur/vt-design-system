@@ -1,0 +1,19 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Lantern Final x gemini-ai-lib</title>
+  <desc>Lantern Final applied to gemini-ai-lib.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="42" fill="#151334"/>
+  <path d="M128 42L188 88V176L128 214L68 176V88L128 42Z" fill="#8B6CFF"/>
+  <path d="M94 88H162L150 120H106L94 88Z" fill="#EFF2FF"/>
+  <path d="M118 74H138V156H118V74Z" fill="#EFF2FF"/>
+  <path d="M92 132H110L128 160L146 132H164L136 198H120L92 132Z" fill="#27E3D8"/>
+  <path d="M112 56H144V68H112V56Z" fill="#27E3D8"/>
+
+  <circle cx="188" cy="72" r="20" fill="#0F0D25"/>
+  <path d="M188 61L179 72L188 83L197 72L188 61Z" fill="#EFF2FF"/>
+  <path d="M188 72V57" stroke="#8B6CFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L176 79" stroke="#27E3D8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L200 79" stroke="#8B6CFF" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="188" cy="55" r="3.5" fill="#8B6CFF"/>
+  <circle cx="174" cy="81" r="3.5" fill="#27E3D8"/>
+  <circle cx="202" cy="81" r="3.5" fill="#EFF2FF"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>vt-design-system</title>
+  <desc>A modular blueprint-style mark for vt-design-system built from grid cells and rails.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#0D1630"/>
+  <rect x="52" y="52" width="152" height="152" rx="30" stroke="#324B89" stroke-width="8"/>
+  <rect x="70" y="70" width="116" height="18" rx="9" fill="#EFF6FF"/>
+  <rect x="70" y="98" width="46" height="46" rx="12" fill="#5B8CFF"/>
+  <rect x="140" y="98" width="46" height="46" rx="12" fill="#A7C5FF"/>
+  <rect x="70" y="168" width="116" height="18" rx="9" fill="#8A5CFF"/>
+  <path d="M128 88V168" stroke="#EFF6FF" stroke-width="12" stroke-linecap="round"/>
+</svg>

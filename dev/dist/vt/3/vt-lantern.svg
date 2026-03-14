@@ -1,0 +1,11 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Lantern</title>
+  <desc>A lit chamber symbol with a roof beam, bright core, and suspended lower glow.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="42" fill="#161B22"/>
+  <path d="M128 44L184 86V174L128 212L72 174V86L128 44Z" fill="#FFB44E"/>
+  <path d="M92 86H164L154 114H102L92 86Z" fill="#FFF4D9"/>
+  <rect x="118" y="78" width="20" height="68" rx="10" fill="#FFF4D9"/>
+  <path d="M94 126H110L128 156L146 126H162L134 190H122L94 126Z" fill="#6EE7F9"/>
+  <path d="M112 58H144V70H112V58Z" fill="#6EE7F9"/>
+
+</svg>

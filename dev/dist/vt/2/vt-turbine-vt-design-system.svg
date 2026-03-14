@@ -1,0 +1,16 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Turbine x vt-design-system</title>
+  <desc>A turbine-shaped VT mark combined with the vt-design-system modular tile emblem.</desc>
+  <circle cx="128" cy="128" r="102" fill="#0D1630"/>
+  <circle cx="128" cy="128" r="78" fill="#081225"/>
+  <path d="M128 54C151 54 170 73 170 96V118L128 128V54Z" fill="#5B8CFF"/>
+  <path d="M202 128C202 151 183 170 160 170H138L128 128H202Z" fill="#8A5CFF"/>
+  <path d="M128 202C105 202 86 183 86 160V138L128 128V202Z" fill="#A7C5FF"/>
+  <path d="M54 128C54 105 73 86 96 86H118L128 128H54Z" fill="#EFF6FF"/>
+  <circle cx="128" cy="128" r="20" fill="#0D1630"/>
+  <rect x="120" y="60" width="16" height="136" rx="8" fill="#081225" fill-opacity="0.55"/>
+  <rect x="166" y="50" width="44" height="44" rx="12" fill="#081225"/>
+  <rect x="176" y="60" width="10" height="10" rx="3" fill="#5B8CFF"/>
+  <rect x="192" y="60" width="12" height="24" rx="4" fill="#EFF6FF"/>
+  <rect x="176" y="76" width="28" height="12" rx="4" fill="#8A5CFF"/>
+</svg>

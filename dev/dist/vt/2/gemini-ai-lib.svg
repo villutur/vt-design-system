@@ -1,0 +1,13 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>gemini-ai-lib</title>
+  <desc>An emerald node-core mark for gemini-ai-lib with connected runtime satellites.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#052E2B"/>
+  <path d="M128 46L196 84V172L128 210L60 172V84L128 46Z" fill="#064E3B"/>
+  <path d="M128 82L154 108L128 134L102 108L128 82Z" fill="#ECFDF5"/>
+  <path d="M128 108V64" stroke="#22D3EE" stroke-width="8" stroke-linecap="round"/>
+  <path d="M128 108L92 150" stroke="#10B981" stroke-width="8" stroke-linecap="round"/>
+  <path d="M128 108L164 150" stroke="#34D399" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="128" cy="60" r="10" fill="#22D3EE"/>
+  <circle cx="88" cy="154" r="10" fill="#10B981"/>
+  <circle cx="168" cy="154" r="10" fill="#34D399"/>
+</svg>

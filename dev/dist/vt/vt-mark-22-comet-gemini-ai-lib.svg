@@ -1,0 +1,16 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Gemini AI Lib Mark 22 Comet</title>
+  <desc>AI library comet with emerald flow and a cyan compute spark.</desc>
+  <defs>
+    <linearGradient id="vt-22-comet-tail-gemini" x1="44" y1="168" x2="196" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10B981"/>
+      <stop offset="1" stop-color="#D1FAE5"/>
+    </linearGradient>
+  </defs>
+  <circle cx="128" cy="128" r="96" fill="#064E3B"/>
+  <path d="M44 156C70 98 128 70 198 84C176 88 148 104 130 132C112 160 86 176 44 156Z" fill="url(#vt-22-comet-tail-gemini)"/>
+  <circle cx="162" cy="92" r="24" fill="#ECFDF5"/>
+  <path d="M106 86H182V104H154V154H134V104H106V86Z" fill="#022C22"/>
+  <path d="M76 138H100L128 184L156 138H180L138 210H118L76 138Z" fill="#34D399"/>
+  <circle cx="64" cy="164" r="8" fill="#22D3EE"/>
+</svg>

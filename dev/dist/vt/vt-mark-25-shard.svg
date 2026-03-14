@@ -1,0 +1,10 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Mark 25 Shard</title>
+  <desc>A crystal-like VT crest assembled from sharp geometric shards.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="36" fill="#0B1020"/>
+  <path d="M128 38L206 94L176 210H80L50 94L128 38Z" fill="#111827"/>
+  <path d="M128 56L182 96L160 188H96L74 96L128 56Z" fill="#1F2937"/>
+  <path d="M92 96H164V118H142V182H114V118H92V96Z" fill="#F8FAFC"/>
+  <path d="M78 122H102L128 174L154 122H178L140 206H116L78 122Z" fill="#22D3EE"/>
+  <path d="M50 94L128 132L206 94L176 78L128 110L80 78L50 94Z" fill="#F59E0B" fill-opacity="0.9"/>
+</svg>

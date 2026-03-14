@@ -1,0 +1,9 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Keystone</title>
+  <desc>A keystone-style VT mark with an arched gateway and grounded central support.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#161312"/>
+  <path d="M44 190C44 106 82 54 128 54C174 54 212 106 212 190H178C178 124 156 88 128 88C100 88 78 124 78 190H44Z" fill="#F4B740"/>
+  <rect x="118" y="74" width="20" height="114" rx="10" fill="#FFF7ED"/>
+  <path d="M78 156H102L128 196L154 156H178L140 214H116L78 156Z" fill="#34D399"/>
+  <circle cx="128" cy="88" r="12" fill="#161312"/>
+</svg>

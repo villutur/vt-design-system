@@ -16,6 +16,10 @@ import {
   ExampleLogViewerWorkspaceSection,
   ExampleReleaseControlWorkspaceSection,
 } from "./sections/ExampleSections";
+import {
+  ExampleAssetStudioLanternThemeSection,
+  ExamplePlaygroundSignalThemeSection,
+} from "./sections/ConsumerThemeSections";
 import { DataDisplaySection } from "./sections/DataDisplaySection";
 import { FeedbackSection } from "./sections/FeedbackSection";
 import { FormsSection } from "./sections/FormsSection";
@@ -128,6 +132,10 @@ function renderActiveSection(
       return <ExampleIncidentTriagePaletteWorkspaceSection />;
     case "example-documentation-ops-workspace":
       return <ExampleDocumentationOpsWorkspaceSection />;
+    case "example-playground-signal-theme":
+      return <ExamplePlaygroundSignalThemeSection />;
+    case "example-asset-studio-lantern-theme":
+      return <ExampleAssetStudioLanternThemeSection />;
     default:
       return <TypographySection />;
   }

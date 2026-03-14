@@ -1,0 +1,18 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Vault Final x gemini-ai-lib</title>
+  <desc>Vault Final applied to gemini-ai-lib.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="40" fill="#151334"/>
+  <path d="M40 198C40 112 78 52 128 52C178 52 216 112 216 198H184C184 132 160 86 128 86C96 86 72 132 72 198H40Z" fill="#8B6CFF"/>
+  <path d="M94 94H162V146H150V186H106V146H94V94Z" fill="#EFF2FF"/>
+  <rect x="120" y="94" width="16" height="62" rx="8" fill="#151334"/>
+  <path d="M82 154H104L128 190L152 154H174L138 214H118L82 154Z" fill="#27E3D8"/>
+
+  <circle cx="188" cy="72" r="20" fill="#0F0D25"/>
+  <path d="M188 61L179 72L188 83L197 72L188 61Z" fill="#EFF2FF"/>
+  <path d="M188 72V57" stroke="#8B6CFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L176 79" stroke="#27E3D8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L200 79" stroke="#8B6CFF" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="188" cy="55" r="3.5" fill="#8B6CFF"/>
+  <circle cx="174" cy="81" r="3.5" fill="#27E3D8"/>
+  <circle cx="202" cy="81" r="3.5" fill="#EFF2FF"/>
+</svg>

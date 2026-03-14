@@ -1,0 +1,9 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Playground Mark 03 Orbit</title>
+  <desc>VT Playground package logo based on Orbit with lively teal, slate, and amber accents.</desc>
+  <circle cx="128" cy="128" r="94" fill="#F8FAFC"/>
+  <path d="M128 34C179.915 34 222 76.0852 222 128C222 179.915 179.915 222 128 222C76.0852 222 34 179.915 34 128C34 76.0852 76.0852 34 128 34ZM128 56C88.2355 56 56 88.2355 56 128C56 167.764 88.2355 200 128 200C167.764 200 200 167.764 200 128C200 88.2355 167.764 56 128 56Z" fill="#0F172A"/>
+  <path d="M78 78H182V104H144V180H116V104H78V78Z" fill="#14B8A6"/>
+  <path d="M72 106H98L128 168L158 106H184L142 194H114L72 106Z" fill="#111827"/>
+  <circle cx="191" cy="79" r="13" fill="#F59E0B"/>
+</svg>

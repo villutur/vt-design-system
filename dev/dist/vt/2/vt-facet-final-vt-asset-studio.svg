@@ -1,0 +1,17 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Facet Final x vt-asset-studio</title>
+  <desc>Refined facet finalist applied to vt-asset-studio with a compact crop-frame studio accent.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="40" fill="#281324"/>
+  <path d="M128 42L198 88L170 214H86L58 88L128 42Z" fill="#3A1631"/>
+  <path d="M92 92H164L150 128H106L92 92Z" fill="#FFF1D8"/>
+  <path d="M106 128H150L128 214L106 128Z" fill="#FFB36B"/>
+  <path d="M128 42L92 92L106 128L128 214L150 128L164 92L128 42Z" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="4"/>
+  <path d="M108 98H148V114H132V160H124V114H108V98Z" fill="#281324"/>
+  <path d="M84 132H104L128 170L152 132H172L136 210H120L84 132Z" fill="#FFD978" fill-opacity="0.78"/>
+  <rect x="174" y="58" width="32" height="32" rx="10" fill="#190912"/>
+  <path d="M182 70V66C182 64 184 62 186 62H189" stroke="#FFF1D8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M198 70V66C198 64 196 62 194 62H191" stroke="#FFF1D8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M182 80V84C182 86 184 88 186 88H189" stroke="#FFF1D8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M198 80V84C198 86 196 88 194 88H191" stroke="#FFF1D8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M190 63L192 67L196 69L192 71L190 75L188 71L184 69L188 67L190 63Z" fill="#FFB36B"/>
+</svg>

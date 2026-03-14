@@ -1,0 +1,9 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Design System Mark 01 Fold</title>
+  <desc>VT Design System package logo based on Fold with crisp blue and violet accents.</desc>
+  <path d="M34 54H98L128 139L158 54H222L154 210H102L34 54Z" fill="#172554"/>
+  <path d="M86 42H226V78H174V204H136V78H86V42Z" fill="#2563EB"/>
+  <path d="M72 42H196V74H144V204H114V74H72V42Z" fill="#EFF6FF" fill-opacity="0.96"/>
+  <path d="M56 54H91L128 154L165 54H200L149 190H107L56 54Z" fill="#1E3A8A"/>
+  <rect x="186" y="46" width="24" height="24" rx="6" fill="#8B5CF6"/>
+</svg>

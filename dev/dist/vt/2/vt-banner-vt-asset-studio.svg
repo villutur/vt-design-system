@@ -1,0 +1,16 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Banner x vt-asset-studio</title>
+  <desc>A banner-shaped VT mark combined with the vt-asset-studio crop-frame emblem.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="36" fill="#281324"/>
+  <path d="M56 42H200V176L128 220L56 176V42Z" fill="#FF4FA3"/>
+  <path d="M56 42H200V72H56V42Z" fill="#FFF1D8"/>
+  <rect x="118" y="72" width="20" height="82" rx="10" fill="#FFE8CA"/>
+  <path d="M80 116H104L128 160L152 116H176L136 198H120L80 116Z" fill="#281324"/>
+  <path d="M96 176L128 194L160 176V42H96V176Z" fill="#FFB36B" fill-opacity="0.34"/>
+  <rect x="168" y="54" width="42" height="42" rx="12" fill="#190912"/>
+  <path d="M178 68V64C178 61 180 59 183 59H187" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M200 68V64C200 61 198 59 195 59H191" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M178 82V86C178 89 180 91 183 91H187" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M200 82V86C200 89 198 91 195 91H191" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M189 61L191 66L196 68L191 70L189 75L187 70L182 68L187 66L189 61Z" fill="#FFB36B"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Vault Final</title>
+  <desc>The strongest long-life umbrella mark, with a composed arch and a reliable base rhythm.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="40" fill="#13211E"/>
+  <path d="M40 198C40 112 78 52 128 52C178 52 216 112 216 198H184C184 132 160 86 128 86C96 86 72 132 72 198H40Z" fill="#34D399"/>
+  <path d="M94 94H162V146H150V186H106V146H94V94Z" fill="#F8FAFC"/>
+  <rect x="120" y="94" width="16" height="62" rx="8" fill="#13211E"/>
+  <path d="M82 154H104L128 190L152 154H174L138 214H118L82 154Z" fill="#FDE68A"/>
+
+</svg>

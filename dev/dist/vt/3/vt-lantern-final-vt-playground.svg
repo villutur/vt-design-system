@@ -1,0 +1,15 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Lantern Final x vt-playground</title>
+  <desc>Lantern Final applied to vt-playground.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="42" fill="#10151F"/>
+  <path d="M128 42L188 88V176L128 214L68 176V88L128 42Z" fill="#93F36B"/>
+  <path d="M94 88H162L150 120H106L94 88Z" fill="#FFF2D6"/>
+  <path d="M118 74H138V156H118V74Z" fill="#FFF2D6"/>
+  <path d="M92 132H110L128 160L146 132H164L136 198H120L92 132Z" fill="#FF6B57"/>
+  <path d="M112 56H144V68H112V56Z" fill="#FF6B57"/>
+
+  <circle cx="188" cy="72" r="20" fill="#0C1017"/>
+  <path d="M178 73C178 67 183 63 189 63C194 63 199 66 201 71" stroke="#93F36B" stroke-width="5" stroke-linecap="round"/>
+  <path d="M174 80C174 87 180 92 187 92C194 92 199 88 202 83" stroke="#FF6B57" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="201" cy="66" r="3.5" fill="#FFF2D6"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Keystone Final x vt-playground</title>
+  <desc>Refined keystone finalist applied to vt-playground with an energetic launch accent.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="44" fill="#101826"/>
+  <path d="M38 198C38 110 80 52 128 52C176 52 218 110 218 198H186C186 134 160 86 128 86C96 86 70 134 70 198H38Z" fill="#FF7A18"/>
+  <path d="M128 72L154 100L146 152H110L102 100L128 72Z" fill="#FFF4E7"/>
+  <rect x="120" y="92" width="16" height="74" rx="8" fill="#101826"/>
+  <path d="M80 152H104L128 190L152 152H176L138 214H118L80 152Z" fill="#14D7C4"/>
+  <circle cx="188" cy="72" r="14" fill="#0C1220"/>
+  <path d="M180 73C180 68 184 64 189 64C193 64 197 66 199 70" stroke="#FF7A18" stroke-width="5" stroke-linecap="round"/>
+  <path d="M176 79C176 85 182 90 188 90C194 90 199 86 201 81" stroke="#14D7C4" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="200" cy="68" r="3" fill="#FFE066"/>
+</svg>

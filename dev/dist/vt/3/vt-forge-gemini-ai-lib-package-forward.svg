@@ -1,0 +1,17 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Forge x gemini-ai-lib Package Forward</title>
+  <desc>A package-forward hybrid where gemini-ai-lib dominates inside the Forge brand frame.</desc>
+  <rect x="22" y="22" width="212" height="212" rx="38" fill="#1A1714"/>
+  <path d="M58 58L94 36H198V164L162 200H58V58Z" stroke="#F97316" stroke-width="8" fill="none"/>
+  <path d="M56 82H110L94 102H56V82Z" fill="#FDBA74"/>
+  <path d="M86 202H174" stroke="#F5F5F4" stroke-width="10" stroke-linecap="round"/>
+  <g>
+  <path d="M128 54L188 90V166L128 202L68 166V90L128 54Z" fill="#8B6CFF" fill-opacity="0.16"/>
+  <circle cx="98" cy="112" r="24" fill="#EFF2FF"/>
+  <circle cx="158" cy="144" r="24" fill="#27E3D8"/>
+  <path d="M98 112L128 86L158 144" stroke="#8B6CFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M98 112L128 174L158 144" stroke="#EFF2FF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="128" cy="86" r="10" fill="#8B6CFF"/>
+  <circle cx="128" cy="174" r="10" fill="#EFF2FF"/>
+  </g>
+</svg>

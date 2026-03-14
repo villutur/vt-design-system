@@ -1,0 +1,10 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Vault</title>
+  <desc>An arched vault mark with a shielded body and a calm but confident floor.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="40" fill="#12201E"/>
+  <path d="M48 196C48 110 84 52 128 52C172 52 208 110 208 196H176C176 130 156 88 128 88C100 88 80 130 80 196H48Z" fill="#34D399"/>
+  <path d="M92 96H164V144H152V184H104V144H92V96Z" fill="#F8FAFC"/>
+  <path d="M84 150H106L128 186L150 150H172L138 212H118L84 150Z" fill="#FDE68A"/>
+  <circle cx="128" cy="88" r="11" fill="#12201E"/>
+
+</svg>

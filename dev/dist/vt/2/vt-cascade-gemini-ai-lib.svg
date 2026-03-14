@@ -1,0 +1,19 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Cascade x gemini-ai-lib</title>
+  <desc>A cascade-shaped VT mark combined with the gemini-ai-lib node-core emblem.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#052E2B"/>
+  <rect x="46" y="52" width="164" height="18" rx="9" fill="#ECFDF5"/>
+  <path d="M58 78H86L74 206H46L58 78Z" fill="#10B981"/>
+  <path d="M98 78H126L120 188H92L98 78Z" fill="#22D3EE"/>
+  <path d="M130 78H158L164 188H136L130 78Z" fill="#34D399"/>
+  <path d="M170 78H198L210 206H182L170 78Z" fill="#6EE7B7"/>
+  <path d="M90 78H118L128 174L138 78H166L150 210H106L90 78Z" fill="#ECFDF5"/>
+  <circle cx="188" cy="96" r="20" fill="#04312B"/>
+  <path d="M188 84L178 96L188 108L198 96L188 84Z" fill="#ECFDF5"/>
+  <path d="M188 96V80" stroke="#22D3EE" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 96L175 104" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 96L201 104" stroke="#34D399" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="188" cy="78" r="4" fill="#22D3EE"/>
+  <circle cx="173" cy="106" r="4" fill="#10B981"/>
+  <circle cx="203" cy="106" r="4" fill="#34D399"/>
+</svg>

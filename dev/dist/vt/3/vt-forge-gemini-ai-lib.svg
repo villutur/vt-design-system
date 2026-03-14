@@ -1,0 +1,19 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Forge x gemini-ai-lib</title>
+  <desc>Forge combined with gemini-ai-lib.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="40" fill="#151334"/>
+  <path d="M58 72L94 44H198V176L162 212H58V72Z" fill="#8B6CFF"/>
+  <path d="M58 72H142L118 100H58V72Z" fill="#27E3D8"/>
+  <path d="M126 44H198V116L170 144H98V72L126 44Z" fill="#EFF2FF" fill-opacity="0.18"/>
+  <path d="M92 120H110L128 148L146 120H164L136 196H120L92 120Z" fill="#151334"/>
+  <rect x="98" y="92" width="60" height="16" rx="8" fill="#EFF2FF"/>
+
+  <circle cx="188" cy="72" r="20" fill="#0F0D25"/>
+  <path d="M188 61L179 72L188 83L197 72L188 61Z" fill="#EFF2FF"/>
+  <path d="M188 72V57" stroke="#8B6CFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L176 79" stroke="#27E3D8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L200 79" stroke="#8B6CFF" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="188" cy="55" r="3.5" fill="#8B6CFF"/>
+  <circle cx="174" cy="81" r="3.5" fill="#27E3D8"/>
+  <circle cx="202" cy="81" r="3.5" fill="#EFF2FF"/>
+</svg>

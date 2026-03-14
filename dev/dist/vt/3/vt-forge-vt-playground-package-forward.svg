@@ -1,0 +1,14 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Forge x vt-playground Package Forward</title>
+  <desc>A package-forward hybrid where vt-playground dominates inside the Forge brand frame.</desc>
+  <rect x="22" y="22" width="212" height="212" rx="38" fill="#1A1714"/>
+  <path d="M58 58L94 36H198V164L162 200H58V58Z" stroke="#F97316" stroke-width="8" fill="none"/>
+  <path d="M56 82H110L94 102H56V82Z" fill="#FDBA74"/>
+  <path d="M86 202H174" stroke="#F5F5F4" stroke-width="10" stroke-linecap="round"/>
+  <g>
+  <path d="M128 58C84 58 52 90 52 132C52 174 84 208 128 208C167 208 198 184 206 150H172C164 166 149 176 128 176C100 176 82 158 82 132C82 106 100 90 128 90C147 90 162 99 171 114L202 100C189 74 162 58 128 58Z" fill="#93F36B"/>
+  <path d="M112 96L182 122L132 190L74 164L112 96Z" fill="#FF6B57"/>
+  <path d="M98 190H182L162 212H78L98 190Z" fill="#FFF2D6"/>
+  <circle cx="190" cy="74" r="10" fill="#FFF2D6"/>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Turbine x gemini-ai-lib</title>
+  <desc>A turbine-shaped VT mark combined with the gemini-ai-lib node-core emblem.</desc>
+  <circle cx="128" cy="128" r="102" fill="#052E2B"/>
+  <circle cx="128" cy="128" r="78" fill="#04312B"/>
+  <path d="M128 54C151 54 170 73 170 96V118L128 128V54Z" fill="#22D3EE"/>
+  <path d="M202 128C202 151 183 170 160 170H138L128 128H202Z" fill="#10B981"/>
+  <path d="M128 202C105 202 86 183 86 160V138L128 128V202Z" fill="#34D399"/>
+  <path d="M54 128C54 105 73 86 96 86H118L128 128H54Z" fill="#ECFDF5"/>
+  <circle cx="128" cy="128" r="20" fill="#052E2B"/>
+  <rect x="120" y="60" width="16" height="136" rx="8" fill="#04312B" fill-opacity="0.55"/>
+  <circle cx="188" cy="72" r="20" fill="#04312B"/>
+  <path d="M188 60L178 72L188 84L198 72L188 60Z" fill="#ECFDF5"/>
+  <path d="M188 72V56" stroke="#22D3EE" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L175 80" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L201 80" stroke="#34D399" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="188" cy="54" r="4" fill="#22D3EE"/>
+  <circle cx="173" cy="82" r="4" fill="#10B981"/>
+  <circle cx="203" cy="82" r="4" fill="#34D399"/>
+</svg>

@@ -1,0 +1,21 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Turbine Final x vt-asset-studio</title>
+  <desc>Refined turbine finalist applied to vt-asset-studio with a compact crop-frame studio accent.</desc>
+  <circle cx="128" cy="128" r="104" fill="#281324"/>
+  <circle cx="128" cy="128" r="86" fill="#190912"/>
+  <circle cx="128" cy="128" r="102" stroke="#5A2348" stroke-width="4"/>
+  <g transform="translate(128 128)">
+    <path d="M0 -74C19 -74 36 -57 36 -38V-10L0 0V-74Z" fill="#FF4FA3"/>
+    <path d="M0 -74C19 -74 36 -57 36 -38V-10L0 0V-74Z" transform="rotate(120)" fill="#FFB36B"/>
+    <path d="M0 -74C19 -74 36 -57 36 -38V-10L0 0V-74Z" transform="rotate(240)" fill="#FFD978"/>
+  </g>
+  <circle cx="128" cy="128" r="28" fill="#FFF1D8"/>
+  <path d="M110 116H146V128H132V164H124V128H110V116Z" fill="#281324"/>
+  <path d="M100 144H114L128 168L142 144H156L134 192H122L100 144Z" fill="#FF7AC3" fill-opacity="0.88"/>
+  <rect x="174" y="58" width="32" height="32" rx="10" fill="#190912"/>
+  <path d="M182 70V66C182 64 184 62 186 62H189" stroke="#FFF1D8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M198 70V66C198 64 196 62 194 62H191" stroke="#FFF1D8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M182 80V84C182 86 184 88 186 88H189" stroke="#FFF1D8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M198 80V84C198 86 196 88 194 88H191" stroke="#FFF1D8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M190 63L192 67L196 69L192 71L190 75L188 71L184 69L188 67L190 63Z" fill="#FFB36B"/>
+</svg>

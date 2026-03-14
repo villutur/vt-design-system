@@ -1,0 +1,10 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Banner</title>
+  <desc>A hanging banner mark for VT with a ceremonial crossbar and pointed inner crest.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="36" fill="#0D2020"/>
+  <path d="M56 42H200V176L128 220L56 176V42Z" fill="#0F766E"/>
+  <path d="M56 42H200V72H56V42Z" fill="#FDE68A"/>
+  <rect x="118" y="72" width="20" height="82" rx="10" fill="#F8FAFC"/>
+  <path d="M80 116H104L128 160L152 116H176L136 198H120L80 116Z" fill="#0B1020"/>
+  <path d="M96 176L128 194L160 176V42H96V176Z" fill="#14B8A6" fill-opacity="0.35"/>
+</svg>

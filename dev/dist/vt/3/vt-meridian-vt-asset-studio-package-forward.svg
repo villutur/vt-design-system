@@ -1,0 +1,18 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Meridian x vt-asset-studio Package Forward</title>
+  <desc>A package-forward hybrid where vt-asset-studio dominates inside the Meridian brand frame.</desc>
+  <rect x="22" y="22" width="212" height="212" rx="40" fill="#17152A"/>
+  <path d="M128 34L194 100L128 222L62 100L128 34Z" stroke="#8B5CF6" stroke-width="8" fill="none"/>
+  <circle cx="128" cy="128" r="86" stroke="#F8FAFC" stroke-width="8"/>
+  <path d="M128 46V210" stroke="#22D3EE" stroke-width="8" stroke-linecap="round"/>
+  <g>
+  <path d="M76 98V74C76 64 84 56 94 56H118" stroke="#FFF1D8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M180 98V74C180 64 172 56 162 56H138" stroke="#FFF1D8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M76 158V182C76 192 84 200 94 200H118" stroke="#FFF1D8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M180 158V182C180 192 172 200 162 200H138" stroke="#FFF1D8" stroke-width="10" stroke-linecap="round"/>
+  <rect x="90" y="90" width="76" height="76" rx="24" fill="#FF4FA3"/>
+  <path d="M102 146L124 108H156V146L136 168H102V146Z" fill="#FFB36B"/>
+  <circle cx="114" cy="114" r="8" fill="#FFF1D8"/>
+  <path d="M188 58L192 67L201 71L192 75L188 84L184 75L175 71L184 67L188 58Z" fill="#FFB36B"/>
+  </g>
+</svg>

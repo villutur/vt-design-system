@@ -1,0 +1,13 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>vt-asset-studio</title>
+  <desc>A crop-frame studio mark for vt-asset-studio with a staged artboard and a creation spark.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#281324"/>
+  <path d="M78 94V76C78 67 85 60 94 60H112" stroke="#FFF1D8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M178 94V76C178 67 171 60 162 60H144" stroke="#FFF1D8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M78 162V180C78 189 85 196 94 196H112" stroke="#FFF1D8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M178 162V180C178 189 171 196 162 196H144" stroke="#FFF1D8" stroke-width="10" stroke-linecap="round"/>
+  <rect x="92" y="92" width="72" height="72" rx="22" fill="#FF4FA3"/>
+  <path d="M104 144L124 112H156V144L136 164H104V144Z" fill="#FFB36B"/>
+  <circle cx="114" cy="114" r="8" fill="#FFF1D8"/>
+  <path d="M188 58L192 67L201 71L192 75L188 84L184 75L175 71L184 67L188 58Z" fill="#FFD978"/>
+</svg>

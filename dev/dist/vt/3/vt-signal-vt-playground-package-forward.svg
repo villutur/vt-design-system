@@ -1,0 +1,15 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Signal x vt-playground Package Forward</title>
+  <desc>A package-forward hybrid where vt-playground dominates inside the Signal brand frame.</desc>
+  <circle cx="128" cy="128" r="104" fill="#111827"/>
+  <path d="M128 40C177 40 216 79 216 128" stroke="#60A5FA" stroke-width="12" stroke-linecap="round"/>
+  <path d="M128 64C164 64 192 92 192 128" stroke="#F472B6" stroke-width="10" stroke-linecap="round"/>
+  <path d="M40 128C40 79 79 40 128 40" stroke="#FFF2B2" stroke-width="10" stroke-linecap="round"/>
+  <path d="M50 184C76 206 100 216 128 216C156 216 180 206 206 184" stroke="#60A5FA" stroke-width="8" stroke-linecap="round"/>
+  <g>
+  <path d="M128 58C84 58 52 90 52 132C52 174 84 208 128 208C167 208 198 184 206 150H172C164 166 149 176 128 176C100 176 82 158 82 132C82 106 100 90 128 90C147 90 162 99 171 114L202 100C189 74 162 58 128 58Z" fill="#93F36B"/>
+  <path d="M112 96L182 122L132 190L74 164L112 96Z" fill="#FF6B57"/>
+  <path d="M98 190H182L162 212H78L98 190Z" fill="#FFF2D6"/>
+  <circle cx="190" cy="74" r="10" fill="#FFF2D6"/>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Mark 23 Glyph</title>
+  <desc>A block-rune VT glyph with layered bars and a perimeter frame.</desc>
+  <rect x="30" y="30" width="196" height="196" rx="24" fill="#0B1020"/>
+  <rect x="44" y="44" width="168" height="168" rx="20" stroke="#334155" stroke-width="8" stroke-dasharray="14 8"/>
+  <rect x="56" y="56" width="144" height="24" rx="8" fill="#A78BFA"/>
+  <rect x="116" y="80" width="24" height="120" rx="8" fill="#E2E8F0"/>
+  <path d="M58 106H88L128 188L168 106H198L142 212H114L58 106Z" fill="#38BDF8"/>
+</svg>

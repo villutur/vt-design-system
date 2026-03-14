@@ -1,0 +1,17 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Meridian x vt-design-system Package Forward</title>
+  <desc>A package-forward hybrid where vt-design-system dominates inside the Meridian brand frame.</desc>
+  <rect x="22" y="22" width="212" height="212" rx="40" fill="#17152A"/>
+  <path d="M128 34L194 100L128 222L62 100L128 34Z" stroke="#8B5CF6" stroke-width="8" fill="none"/>
+  <circle cx="128" cy="128" r="86" stroke="#F8FAFC" stroke-width="8"/>
+  <path d="M128 46V210" stroke="#22D3EE" stroke-width="8" stroke-linecap="round"/>
+  <g>
+  <rect x="62" y="62" width="132" height="132" rx="28" stroke="#FFCF5A" stroke-width="10"/>
+  <rect x="82" y="82" width="92" height="16" rx="8" fill="#FFF8E5"/>
+  <rect x="82" y="106" width="16" height="76" rx="8" fill="#7AE0FF"/>
+  <rect x="114" y="114" width="60" height="26" rx="10" fill="#FFCF5A"/>
+  <rect x="114" y="150" width="60" height="16" rx="8" fill="#FFF8E5"/>
+  <rect x="114" y="176" width="60" height="12" rx="6" fill="#7AE0FF"/>
+  <path d="M128 98V188" stroke="#FFF8E5" stroke-width="10" stroke-linecap="round"/>
+  </g>
+</svg>

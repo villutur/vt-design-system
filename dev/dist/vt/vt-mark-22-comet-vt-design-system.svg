@@ -1,0 +1,16 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Design System Mark 22 Comet</title>
+  <desc>Design-system comet with controlled blue velocity and a violet endpoint.</desc>
+  <defs>
+    <linearGradient id="vt-22-comet-tail-design" x1="44" y1="168" x2="196" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#DBEAFE"/>
+    </linearGradient>
+  </defs>
+  <circle cx="128" cy="128" r="96" fill="#172554"/>
+  <path d="M44 156C70 98 128 70 198 84C176 88 148 104 130 132C112 160 86 176 44 156Z" fill="url(#vt-22-comet-tail-design)"/>
+  <circle cx="162" cy="92" r="24" fill="#EFF6FF"/>
+  <path d="M106 86H182V104H154V154H134V104H106V86Z" fill="#1E3A8A"/>
+  <path d="M76 138H100L128 184L156 138H180L138 210H118L76 138Z" fill="#60A5FA"/>
+  <circle cx="64" cy="164" r="8" fill="#8B5CF6"/>
+</svg>

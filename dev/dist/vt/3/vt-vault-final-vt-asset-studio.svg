@@ -1,0 +1,16 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Vault Final x vt-asset-studio</title>
+  <desc>Vault Final applied to vt-asset-studio.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="40" fill="#281324"/>
+  <path d="M40 198C40 112 78 52 128 52C178 52 216 112 216 198H184C184 132 160 86 128 86C96 86 72 132 72 198H40Z" fill="#FF4FA3"/>
+  <path d="M94 94H162V146H150V186H106V146H94V94Z" fill="#FFF1D8"/>
+  <rect x="120" y="94" width="16" height="62" rx="8" fill="#281324"/>
+  <path d="M82 154H104L128 190L152 154H174L138 214H118L82 154Z" fill="#FFB36B"/>
+
+  <rect x="170" y="54" width="40" height="40" rx="12" fill="#190912"/>
+  <path d="M180 68V64C180 61 182 59 185 59H189" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M200 68V64C200 61 198 59 195 59H191" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M180 80V84C180 87 182 89 185 89H189" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M200 80V84C200 87 198 89 195 89H191" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M190 60L192 65L197 67L192 69L190 74L188 69L183 67L188 65L190 60Z" fill="#FFB36B"/>
+</svg>

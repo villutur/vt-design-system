@@ -1,0 +1,11 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Forge</title>
+  <desc>A forged plate identity with anvil-like heft, vents, and a hot central cut.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="40" fill="#1A1714"/>
+  <path d="M58 72L94 44H198V176L162 212H58V72Z" fill="#F97316"/>
+  <path d="M58 72H142L118 100H58V72Z" fill="#FDBA74"/>
+  <path d="M126 44H198V116L170 144H98V72L126 44Z" fill="#F5F5F4" fill-opacity="0.18"/>
+  <path d="M92 120H110L128 148L146 120H164L136 196H120L92 120Z" fill="#1A1714"/>
+  <rect x="98" y="92" width="60" height="16" rx="8" fill="#F5F5F4"/>
+
+</svg>

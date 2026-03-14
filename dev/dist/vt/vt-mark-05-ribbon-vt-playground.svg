@@ -1,0 +1,19 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Playground Mark 05 Ribbon</title>
+  <desc>VT Playground package logo based on Ribbon with motion-led teal and amber energy.</desc>
+  <defs>
+    <linearGradient id="vt-ribbon-a-playground" x1="46" y1="34" x2="202" y2="210" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="vt-ribbon-b-playground" x1="86" y1="34" x2="196" y2="146" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#CBD5E1"/>
+    </linearGradient>
+  </defs>
+  <path d="M42 48H88L128 132L168 48H214L150 210H106L42 48Z" fill="url(#vt-ribbon-a-playground)"/>
+  <path d="M82 34H214V68H162V198H126V68H82V34Z" fill="#111827"/>
+  <path d="M98 34H214V60H156V156H126V60H98V34Z" fill="url(#vt-ribbon-b-playground)"/>
+  <path d="M58 48H86L128 138L170 48H198L146 192H110L58 48Z" fill="#0F172A" fill-opacity="0.92"/>
+  <path d="M156 156L194 118V178L156 214V156Z" fill="#F59E0B"/>
+</svg>

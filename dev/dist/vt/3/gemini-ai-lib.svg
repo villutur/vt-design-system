@@ -1,0 +1,12 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>gemini-ai-lib</title>
+  <desc>A twin-core network mark with linked nodes and a slightly cosmic runtime feel.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#151334"/>
+  <path d="M128 46L194 84V172L128 210L62 172V84L128 46Z" fill="#8B6CFF" fill-opacity="0.18"/>
+  <circle cx="104" cy="116" r="22" fill="#EFF2FF"/>
+  <circle cx="152" cy="140" r="22" fill="#27E3D8"/>
+  <path d="M104 116L128 92L152 140" stroke="#8B6CFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M104 116L128 164L152 140" stroke="#EFF2FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="128" cy="92" r="9" fill="#8B6CFF"/>
+  <circle cx="128" cy="164" r="9" fill="#EFF2FF"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Gemini AI Lib Mark 05 Ribbon</title>
+  <desc>Gemini AI Lib package logo based on Ribbon with green gradients and a cyan tail marker.</desc>
+  <defs>
+    <linearGradient id="vt-ribbon-a-gemini" x1="46" y1="34" x2="202" y2="210" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10B981"/>
+      <stop offset="1" stop-color="#064E3B"/>
+    </linearGradient>
+    <linearGradient id="vt-ribbon-b-gemini" x1="86" y1="34" x2="196" y2="146" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECFDF5"/>
+      <stop offset="1" stop-color="#A7F3D0"/>
+    </linearGradient>
+  </defs>
+  <path d="M42 48H88L128 132L168 48H214L150 210H106L42 48Z" fill="url(#vt-ribbon-a-gemini)"/>
+  <path d="M82 34H214V68H162V198H126V68H82V34Z" fill="#022C22"/>
+  <path d="M98 34H214V60H156V156H126V60H98V34Z" fill="url(#vt-ribbon-b-gemini)"/>
+  <path d="M58 48H86L128 138L170 48H198L146 192H110L58 48Z" fill="#064E3B" fill-opacity="0.92"/>
+  <path d="M156 156L194 118V178L156 214V156Z" fill="#22D3EE"/>
+</svg>

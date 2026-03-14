@@ -1,0 +1,17 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Signal Final x vt-design-system</title>
+  <desc>Signal Final applied to vt-design-system.</desc>
+  <circle cx="128" cy="128" r="104" fill="#161A24"/>
+  <circle cx="128" cy="128" r="84" fill="#161A24" fill-opacity="0.72"/>
+  <path d="M128 60C166 60 196 90 196 128" stroke="#FFCF5A" stroke-width="15" stroke-linecap="round"/>
+  <path d="M128 84C153 84 172 103 172 128" stroke="#7AE0FF" stroke-width="13" stroke-linecap="round"/>
+  <path d="M60 128C60 90 90 60 128 60" stroke="#FFF8E5" stroke-width="13" stroke-linecap="round"/>
+  <circle cx="128" cy="128" r="30" fill="#FFF8E5"/>
+  <path d="M121 92H135V148H121V92Z" fill="#161A24"/>
+  <path d="M100 148H114L128 172L142 148H156L134 192H122L100 148Z" fill="#7AE0FF"/>
+
+  <rect x="170" y="54" width="40" height="40" rx="12" fill="#0F1219"/>
+  <rect x="179" y="63" width="7" height="7" rx="2.5" fill="#FFCF5A"/>
+  <rect x="191" y="63" width="9" height="20" rx="3.5" fill="#FFF8E5"/>
+  <rect x="179" y="77" width="21" height="7" rx="3" fill="#7AE0FF"/>
+</svg>

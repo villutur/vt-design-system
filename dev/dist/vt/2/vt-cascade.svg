@@ -1,0 +1,11 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Cascade</title>
+  <desc>A cascading VT organization mark built from a top beam and falling slats.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#111827"/>
+  <rect x="46" y="52" width="164" height="18" rx="9" fill="#F8FAFC"/>
+  <path d="M58 78H86L74 206H46L58 78Z" fill="#38BDF8"/>
+  <path d="M98 78H126L120 188H92L98 78Z" fill="#A78BFA"/>
+  <path d="M130 78H158L164 188H136L130 78Z" fill="#FB7185"/>
+  <path d="M170 78H198L210 206H182L170 78Z" fill="#F59E0B"/>
+  <path d="M90 78H118L128 174L138 78H166L150 210H106L90 78Z" fill="#22D3EE"/>
+</svg>

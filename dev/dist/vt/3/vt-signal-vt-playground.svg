@@ -1,0 +1,16 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Signal x vt-playground</title>
+  <desc>Signal combined with vt-playground.</desc>
+  <circle cx="128" cy="128" r="102" fill="#10151F"/>
+  <path d="M128 58C167 58 198 89 198 128" stroke="#93F36B" stroke-width="16" stroke-linecap="round"/>
+  <path d="M128 82C154 82 174 102 174 128" stroke="#FF6B57" stroke-width="14" stroke-linecap="round"/>
+  <path d="M58 128C58 89 89 58 128 58" stroke="#FFF2D6" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="128" cy="128" r="34" fill="#FFF2D6"/>
+  <rect x="121" y="86" width="14" height="60" rx="7" fill="#10151F"/>
+  <path d="M98 148H114L128 172L142 148H158L136 192H120L98 148Z" fill="#FF6B57"/>
+
+  <circle cx="188" cy="72" r="20" fill="#0C1017"/>
+  <path d="M178 73C178 67 183 63 189 63C194 63 199 66 201 71" stroke="#93F36B" stroke-width="5" stroke-linecap="round"/>
+  <path d="M174 80C174 87 180 92 187 92C194 92 199 88 202 83" stroke="#FF6B57" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="201" cy="66" r="3.5" fill="#FFF2D6"/>
+</svg>

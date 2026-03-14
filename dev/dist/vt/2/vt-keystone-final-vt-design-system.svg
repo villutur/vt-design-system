@@ -1,0 +1,13 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Keystone Final x vt-design-system</title>
+  <desc>Refined keystone finalist applied to vt-design-system with a modular blueprint accent.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="44" fill="#0D1630"/>
+  <path d="M38 198C38 110 80 52 128 52C176 52 218 110 218 198H186C186 134 160 86 128 86C96 86 70 134 70 198H38Z" fill="#5B8CFF"/>
+  <path d="M128 72L154 100L146 152H110L102 100L128 72Z" fill="#EFF6FF"/>
+  <rect x="120" y="92" width="16" height="74" rx="8" fill="#0D1630"/>
+  <path d="M80 152H104L128 190L152 152H176L138 214H118L80 152Z" fill="#8A5CFF"/>
+  <rect x="170" y="56" width="36" height="36" rx="10" fill="#081225"/>
+  <rect x="178" y="64" width="8" height="8" rx="3" fill="#5B8CFF"/>
+  <rect x="191" y="64" width="10" height="20" rx="4" fill="#EFF6FF"/>
+  <rect x="178" y="77" width="23" height="10" rx="4" fill="#8A5CFF"/>
+</svg>

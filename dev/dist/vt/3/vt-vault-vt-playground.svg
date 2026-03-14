@@ -1,0 +1,14 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Vault x vt-playground</title>
+  <desc>Vault combined with vt-playground.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="40" fill="#10151F"/>
+  <path d="M48 196C48 110 84 52 128 52C172 52 208 110 208 196H176C176 130 156 88 128 88C100 88 80 130 80 196H48Z" fill="#93F36B"/>
+  <path d="M92 96H164V144H152V184H104V144H92V96Z" fill="#FFF2D6"/>
+  <path d="M84 150H106L128 186L150 150H172L138 212H118L84 150Z" fill="#FF6B57"/>
+  <circle cx="128" cy="88" r="11" fill="#10151F"/>
+
+  <circle cx="188" cy="72" r="20" fill="#0C1017"/>
+  <path d="M178 73C178 67 183 63 189 63C194 63 199 66 201 71" stroke="#93F36B" stroke-width="5" stroke-linecap="round"/>
+  <path d="M174 80C174 87 180 92 187 92C194 92 199 88 202 83" stroke="#FF6B57" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="201" cy="66" r="3.5" fill="#FFF2D6"/>
+</svg>

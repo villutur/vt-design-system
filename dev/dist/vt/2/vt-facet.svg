@@ -1,0 +1,10 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Facet</title>
+  <desc>A faceted VT crystal with luminous planes and a sharp geometric center.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="40" fill="#131126"/>
+  <path d="M128 40L206 94L174 214H82L50 94L128 40Z" fill="#2A1F45"/>
+  <path d="M82 94L128 68L174 94L160 128H96L82 94Z" fill="#C084FC"/>
+  <path d="M96 128H160L128 214L96 128Z" fill="#67E8F9"/>
+  <path d="M110 98H146V114H132V166H124V114H110V98Z" fill="#F8FAFC"/>
+  <path d="M78 130H96L128 176L160 130H178L132 214H124L78 130Z" fill="#A3E635" fill-opacity="0.72"/>
+</svg>

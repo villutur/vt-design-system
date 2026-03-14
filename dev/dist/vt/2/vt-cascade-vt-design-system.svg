@@ -1,0 +1,15 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Cascade x vt-design-system</title>
+  <desc>A cascade-shaped VT mark combined with the vt-design-system modular tile emblem.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#0D1630"/>
+  <rect x="46" y="52" width="164" height="18" rx="9" fill="#EFF6FF"/>
+  <path d="M58 78H86L74 206H46L58 78Z" fill="#5B8CFF"/>
+  <path d="M98 78H126L120 188H92L98 78Z" fill="#8A5CFF"/>
+  <path d="M130 78H158L164 188H136L130 78Z" fill="#A7C5FF"/>
+  <path d="M170 78H198L210 206H182L170 78Z" fill="#7DD3FC"/>
+  <path d="M90 78H118L128 174L138 78H166L150 210H106L90 78Z" fill="#EFF6FF"/>
+  <rect x="166" y="74" width="44" height="44" rx="12" fill="#081225"/>
+  <rect x="176" y="84" width="10" height="10" rx="3" fill="#5B8CFF"/>
+  <rect x="192" y="84" width="12" height="24" rx="4" fill="#EFF6FF"/>
+  <rect x="176" y="100" width="28" height="12" rx="4" fill="#8A5CFF"/>
+</svg>

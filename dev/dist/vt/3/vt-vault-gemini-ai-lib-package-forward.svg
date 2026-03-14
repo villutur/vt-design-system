@@ -1,0 +1,17 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Vault x gemini-ai-lib Package Forward</title>
+  <desc>A package-forward hybrid where gemini-ai-lib dominates inside the Vault brand frame.</desc>
+  <rect x="22" y="22" width="212" height="212" rx="40" fill="#12201E"/>
+  <path d="M42 198C42 106 80 44 128 44C176 44 214 106 214 198" stroke="#34D399" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M78 198H178" stroke="#F8FAFC" stroke-width="10" stroke-linecap="round"/>
+  <path d="M88 168H108L128 198L148 168H168" stroke="#FDE68A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <g>
+  <path d="M128 54L188 90V166L128 202L68 166V90L128 54Z" fill="#8B6CFF" fill-opacity="0.16"/>
+  <circle cx="98" cy="112" r="24" fill="#EFF2FF"/>
+  <circle cx="158" cy="144" r="24" fill="#27E3D8"/>
+  <path d="M98 112L128 86L158 144" stroke="#8B6CFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M98 112L128 174L158 144" stroke="#EFF2FF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="128" cy="86" r="10" fill="#8B6CFF"/>
+  <circle cx="128" cy="174" r="10" fill="#EFF2FF"/>
+  </g>
+</svg>

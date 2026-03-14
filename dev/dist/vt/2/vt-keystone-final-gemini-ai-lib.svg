@@ -1,0 +1,17 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Keystone Final x gemini-ai-lib</title>
+  <desc>Refined keystone finalist applied to gemini-ai-lib with a compact node-core accent.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="44" fill="#052E2B"/>
+  <path d="M38 198C38 110 80 52 128 52C176 52 218 110 218 198H186C186 134 160 86 128 86C96 86 70 134 70 198H38Z" fill="#10B981"/>
+  <path d="M128 72L154 100L146 152H110L102 100L128 72Z" fill="#ECFDF5"/>
+  <rect x="120" y="92" width="16" height="74" rx="8" fill="#052E2B"/>
+  <path d="M80 152H104L128 190L152 152H176L138 214H118L80 152Z" fill="#22D3EE"/>
+  <circle cx="188" cy="72" r="14" fill="#04312B"/>
+  <path d="M188 62L180 72L188 82L196 72L188 62Z" fill="#ECFDF5"/>
+  <path d="M188 72V60" stroke="#22D3EE" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M188 72L178 78" stroke="#10B981" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M188 72L198 78" stroke="#34D399" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="188" cy="58" r="3" fill="#22D3EE"/>
+  <circle cx="176" cy="79" r="3" fill="#10B981"/>
+  <circle cx="200" cy="79" r="3" fill="#34D399"/>
+</svg>

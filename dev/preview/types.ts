@@ -18,6 +18,8 @@ export type PreviewTab =
   | "example-release-control-workspace"
   | "example-incident-triage-workspace"
   | "example-incident-triage-palette-workspace"
-  | "example-documentation-ops-workspace";
+  | "example-documentation-ops-workspace"
+  | "example-playground-signal-theme"
+  | "example-asset-studio-lantern-theme";
 
 export const DEFAULT_PREVIEW_TAB: PreviewTab = "typography";

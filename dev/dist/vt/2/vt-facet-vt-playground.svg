@@ -1,0 +1,14 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Facet x vt-playground</title>
+  <desc>A faceted VT crystal combined with the vt-playground launch-loop emblem.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="40" fill="#101826"/>
+  <path d="M128 40L206 94L174 214H82L50 94L128 40Z" fill="#1A2538"/>
+  <path d="M82 94L128 68L174 94L160 128H96L82 94Z" fill="#FF7A18"/>
+  <path d="M96 128H160L128 214L96 128Z" fill="#14D7C4"/>
+  <path d="M110 98H146V114H132V166H124V114H110V98Z" fill="#F8FAFC"/>
+  <path d="M78 130H96L128 176L160 130H178L132 214H124L78 130Z" fill="#FFE066" fill-opacity="0.72"/>
+  <circle cx="188" cy="72" r="20" fill="#0C1220"/>
+  <path d="M177 73C177 65 183 59 191 59C197 59 202 62 205 68" stroke="#FF7A18" stroke-width="7" stroke-linecap="round"/>
+  <path d="M171 80C171 89 179 95 188 95C197 95 204 90 207 83" stroke="#14D7C4" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="204" cy="65" r="4" fill="#FFE066"/>
+</svg>

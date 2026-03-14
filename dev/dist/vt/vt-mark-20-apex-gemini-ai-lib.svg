@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <path d="M50 20L20 80H80L50 20Z" stroke="currentColor" stroke-width="6"/>
+  <path d="M40 45H60M50 45V70" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+  <path d="M50 35L55 45H45L50 35Z" fill="#8b5cf6"/>
+  <path d="M50 70L55 80H45L50 70Z" fill="#8b5cf6"/>
+</svg>

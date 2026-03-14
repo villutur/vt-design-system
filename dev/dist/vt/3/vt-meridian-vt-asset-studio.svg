@@ -1,0 +1,17 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Meridian x vt-asset-studio</title>
+  <desc>Meridian combined with vt-asset-studio.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="40" fill="#281324"/>
+  <path d="M128 46L186 104L128 210L70 104L128 46Z" fill="#FF4FA3"/>
+  <circle cx="128" cy="128" r="54" fill="#281324" fill-opacity="0.82"/>
+  <circle cx="128" cy="128" r="70" stroke="#FFF1D8" stroke-width="10"/>
+  <path d="M120 74H136V182H120V74Z" fill="#FFF1D8"/>
+  <path d="M86 146H104L128 182L152 146H170L136 210H120L86 146Z" fill="#FFB36B"/>
+
+  <rect x="170" y="54" width="40" height="40" rx="12" fill="#190912"/>
+  <path d="M180 68V64C180 61 182 59 185 59H189" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M200 68V64C200 61 198 59 195 59H191" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M180 80V84C180 87 182 89 185 89H189" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M200 80V84C200 87 198 89 195 89H191" stroke="#FFF1D8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M190 60L192 65L197 67L192 69L190 74L188 69L183 67L188 65L190 60Z" fill="#FFB36B"/>
+</svg>

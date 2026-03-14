@@ -1,0 +1,17 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Keystone x gemini-ai-lib</title>
+  <desc>A keystone-shaped VT mark combined with the gemini-ai-lib node-core emblem.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#052E2B"/>
+  <path d="M44 190C44 106 82 54 128 54C174 54 212 106 212 190H178C178 124 156 88 128 88C100 88 78 124 78 190H44Z" fill="#10B981"/>
+  <rect x="118" y="74" width="20" height="114" rx="10" fill="#ECFDF5"/>
+  <path d="M78 156H102L128 196L154 156H178L140 214H116L78 156Z" fill="#22D3EE"/>
+  <circle cx="128" cy="88" r="12" fill="#052E2B"/>
+  <circle cx="188" cy="72" r="20" fill="#04312B"/>
+  <path d="M188 60L178 72L188 84L198 72L188 60Z" fill="#ECFDF5"/>
+  <path d="M188 72V56" stroke="#22D3EE" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L175 80" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+  <path d="M188 72L201 80" stroke="#34D399" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="188" cy="54" r="4" fill="#22D3EE"/>
+  <circle cx="173" cy="82" r="4" fill="#10B981"/>
+  <circle cx="203" cy="82" r="4" fill="#34D399"/>
+</svg>

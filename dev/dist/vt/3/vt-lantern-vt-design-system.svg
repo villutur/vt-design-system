@@ -1,0 +1,15 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Lantern x vt-design-system</title>
+  <desc>Lantern combined with vt-design-system.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="42" fill="#161A24"/>
+  <path d="M128 44L184 86V174L128 212L72 174V86L128 44Z" fill="#FFCF5A"/>
+  <path d="M92 86H164L154 114H102L92 86Z" fill="#FFF8E5"/>
+  <rect x="118" y="78" width="20" height="68" rx="10" fill="#FFF8E5"/>
+  <path d="M94 126H110L128 156L146 126H162L134 190H122L94 126Z" fill="#7AE0FF"/>
+  <path d="M112 58H144V70H112V58Z" fill="#7AE0FF"/>
+
+  <rect x="170" y="54" width="40" height="40" rx="12" fill="#0F1219"/>
+  <rect x="179" y="63" width="7" height="7" rx="2.5" fill="#FFCF5A"/>
+  <rect x="191" y="63" width="9" height="20" rx="3.5" fill="#FFF8E5"/>
+  <rect x="179" y="77" width="21" height="7" rx="3" fill="#7AE0FF"/>
+</svg>

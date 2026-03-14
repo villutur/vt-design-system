@@ -1,0 +1,9 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>vt-playground</title>
+  <desc>A playful launch-loop mark for vt-playground with a bright motion arc and platform core.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#101826"/>
+  <path d="M128 58C86 58 54 90 54 132C54 174 86 206 128 206C164 206 194 184 202 150H168C160 165 146 174 128 174C103 174 86 157 86 132C86 107 103 90 128 90C145 90 159 98 168 112L196 98C183 73 158 58 128 58Z" fill="#FF7A18"/>
+  <rect x="110" y="96" width="54" height="86" rx="18" fill="#14D7C4"/>
+  <path d="M100 184H174L156 206H82L100 184Z" fill="#EAF8FF"/>
+  <circle cx="182" cy="74" r="12" fill="#FFE066"/>
+</svg>

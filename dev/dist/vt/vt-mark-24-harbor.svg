@@ -1,0 +1,10 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Mark 24 Harbor</title>
+  <desc>A harbor-inspired VT badge with an arched horizon and wave basin.</desc>
+  <rect x="24" y="24" width="208" height="208" rx="44" fill="#0F172A"/>
+  <path d="M52 158C52 103 95 60 150 60C184 60 214 77 230 104" stroke="#22D3EE" stroke-width="16" stroke-linecap="round"/>
+  <rect x="118" y="70" width="20" height="112" rx="10" fill="#F8FAFC"/>
+  <rect x="84" y="70" width="88" height="18" rx="9" fill="#F59E0B"/>
+  <path d="M58 168C78 150 98 150 118 168C138 186 158 186 178 168C198 150 218 150 232 160V198H58V168Z" fill="#14B8A6"/>
+  <path d="M76 166H100L128 202L156 166H180L138 218H118L76 166Z" fill="#0B1020"/>
+</svg>

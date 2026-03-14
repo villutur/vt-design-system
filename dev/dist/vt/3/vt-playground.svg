@@ -1,0 +1,9 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>vt-playground</title>
+  <desc>A launch-ramp playground mark with a spring loop, angled stage, and bright signal dot.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#10151F"/>
+  <path d="M128 56C88 56 60 84 60 124C60 164 88 198 128 198C162 198 188 177 194 150H164C157 164 145 172 128 172C103 172 86 149 86 124C86 99 103 82 128 82C145 82 158 90 165 102L191 91C179 69 156 56 128 56Z" fill="#93F36B"/>
+  <path d="M116 96L172 116L130 170L86 150L116 96Z" fill="#FF6B57"/>
+  <path d="M104 182H176L158 206H86L104 182Z" fill="#FFF2D6"/>
+  <circle cx="184" cy="72" r="10" fill="#FFF2D6"/>
+</svg>

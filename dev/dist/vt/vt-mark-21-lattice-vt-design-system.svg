@@ -1,0 +1,11 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Design System Mark 21 Lattice</title>
+  <desc>Design-system variant of Lattice with ordered blue surfaces and a violet tag.</desc>
+  <rect x="30" y="30" width="196" height="196" rx="36" fill="#172554"/>
+  <path d="M128 46L210 128L128 210L46 128Z" fill="#1E3A8A"/>
+  <path d="M88 86H168V110H142V186H114V110H88V86Z" fill="#DBEAFE"/>
+  <path d="M70 104H102L128 162L154 104H186L140 198H116L70 104Z" fill="#2563EB"/>
+  <path d="M54 128H202" stroke="#93C5FD" stroke-width="6" stroke-dasharray="10 10"/>
+  <path d="M128 54V202" stroke="#93C5FD" stroke-width="6" stroke-dasharray="10 10"/>
+  <rect x="184" y="52" width="20" height="20" rx="6" fill="#8B5CF6"/>
+</svg>

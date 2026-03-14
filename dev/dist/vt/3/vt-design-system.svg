@@ -1,0 +1,12 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>vt-design-system</title>
+  <desc>A measured lattice mark that feels precise, modular, and built for a design language.</desc>
+  <rect x="26" y="26" width="204" height="204" rx="44" fill="#161A24"/>
+  <rect x="52" y="52" width="152" height="152" rx="30" stroke="#FFCF5A" stroke-width="8"/>
+  <rect x="74" y="74" width="108" height="14" rx="7" fill="#FFF8E5"/>
+  <rect x="74" y="96" width="14" height="86" rx="7" fill="#7AE0FF"/>
+  <rect x="102" y="104" width="72" height="24" rx="10" fill="#FFCF5A"/>
+  <rect x="102" y="140" width="72" height="16" rx="8" fill="#FFF8E5"/>
+  <rect x="102" y="168" width="72" height="14" rx="7" fill="#7AE0FF"/>
+  <path d="M128 88V182" stroke="#FFF8E5" stroke-width="10" stroke-linecap="round"/>
+</svg>

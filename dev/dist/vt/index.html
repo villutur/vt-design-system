@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VT Marks</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f3f5f7;
+        --surface: #ffffff;
+        --surface-strong: #e8eef2;
+        --text: #0f172a;
+        --muted: #5b6b7b;
+        --border: #d7e0e7;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f1115;
+          --surface: #1a1d23;
+          --surface-strong: #232933;
+          --text: #e5edf5;
+          --muted: #8ea1b5;
+          --border: #334155;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Inter, system-ui, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(20, 184, 166, 0.16), transparent 24rem),
+          radial-gradient(circle at top right, rgba(245, 158, 11, 0.14), transparent 20rem),
+          var(--bg);
+        color: var(--text);
+      }
+
+      main {
+        width: min(1240px, calc(100vw - 2rem));
+        margin: 0 auto;
+        padding: 3rem 0 4rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 3.25rem);
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      p.lead {
+        margin: 0.75rem 0 0;
+        max-width: 54rem;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .section {
+        margin-top: 2.75rem;
+      }
+
+      .section-head {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .section h2 {
+        margin: 0;
+        font-size: 1.35rem;
+        letter-spacing: -0.03em;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.35rem 0.7rem;
+        background: rgba(255, 255, 255, 0.5);
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 1.5rem;
+        padding: 1rem;
+        box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      }
+
+      .art {
+        display: grid;
+        place-items: center;
+        min-height: 220px;
+        border-radius: 1rem;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent),
+          var(--surface-strong);
+      }
+
+      .art img {
+        width: 160px;
+        height: 160px;
+      }
+
+      .card h3 {
+        margin: 1rem 0 0;
+        font-size: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      .file {
+        margin-top: 0.35rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+        word-break: break-word;
+      }
+
+      .note {
+        margin-top: 0.6rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>VT Logo Directions</h1>
+      <p class="lead">
+        A collection of 15 unique brand directions for VT, organized by the AI model that generated the base marks. 
+        Each section showcases the base organization mark followed by its specialized variants for `vt-playground`, 
+        `vt-design-system`, and `gemini-ai-lib`.
+      </p>
+
+      <!-- Section: Codex GPT 5.4 (Marks 01-05) -->
+      <section class="section">
+        <div class="section-head">
+          <h2>Codex GPT 5.4</h2>
+          <div class="chips">
+            <span class="chip">classic directions</span>
+            <span class="chip">marks 01-05</span>
+          </div>
+        </div>
+        <section class="grid">
+          <!-- Mark 01 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-01-fold.svg" alt="VT Mark 01 Fold" /></div>
+            <h3>01. Fold (Base)</h3>
+            <div class="file">vt-mark-01-fold.svg</div>
+            <div class="note">Sharp, engineering-heavy monogram with strong forward motion.</div>
+          </article>
+          <!-- <span> -> </span> -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-01-fold-vt-playground.svg" alt="VT Playground Fold" /></div>
+            <h3>01. Fold (Playground)</h3>
+            <div class="file">vt-mark-01-fold-vt-playground.svg</div>
+            <div class="note">Keeps the technical base mark but adds a brighter studio accent for experimentation.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-01-fold-vt-design-system.svg" alt="VT Design System Fold" /></div>
+            <h3>01. Fold (Design System)</h3>
+            <div class="file">vt-mark-01-fold-vt-design-system.svg</div>
+            <div class="note">A crisp and architectural monogram variant with a precise component-like accent.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-01-fold-gemini-ai-lib.svg" alt="Gemini AI Lib Fold" /></div>
+            <h3>01. Fold (AI Lib)</h3>
+            <div class="file">vt-mark-01-fold-gemini-ai-lib.svg</div>
+            <div class="note">A compact library mark with clear structure and a small API-style signal accent.</div>
+          </article>
+          <br />
+          <!-- Mark 02 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-02-frame.svg" alt="VT Mark 02 Frame" /></div>
+            <h3>02. Frame (Base)</h3>
+            <div class="file">vt-mark-02-frame.svg</div>
+            <div class="note">Stable, platform-like direction that is easy to turn into a system badge.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-02-frame-vt-playground.svg" alt="VT Playground Frame" /></div>
+            <h3>02. Frame (Playground)</h3>
+            <div class="file">vt-mark-02-frame-vt-playground.svg</div>
+            <div class="note">Feels like a reliable app shell with a playful signal node in the lower corner.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-02-frame-vt-design-system.svg" alt="VT Design System Frame" /></div>
+            <h3>02. Frame (Design System)</h3>
+            <div class="file">vt-mark-02-frame-vt-design-system.svg</div>
+            <div class="note">Probably the cleanest fit for a design-system badge or shared component registry icon.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-02-frame-gemini-ai-lib.svg" alt="Gemini AI Lib Frame" /></div>
+            <h3>02. Frame (AI Lib)</h3>
+            <div class="file">vt-mark-02-frame-gemini-ai-lib.svg</div>
+            <div class="note">Feels dependable and package-oriented, with a stable badge silhouette for tooling use.</div>
+          </article>
+
+          <br />
+          <!-- Mark 03 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-03-orbit.svg" alt="VT Mark 03 Orbit" /></div>
+            <h3>03. Orbit (Base)</h3>
+            <div class="file">vt-mark-03-orbit.svg</div>
+            <div class="note">A hub or network-oriented direction for an umbrella brand feeling.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-03-orbit-vt-playground.svg" alt="VT Playground Orbit" /></div>
+            <h3>03. Orbit (Playground)</h3>
+            <div class="file">vt-mark-03-orbit-vt-playground.svg</div>
+            <div class="note">A good fit if playground should feel like the central place for trying things out.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-03-orbit-vt-design-system.svg" alt="VT Design System Orbit" /></div>
+            <h3>03. Orbit (Design System)</h3>
+            <div class="file">vt-mark-03-orbit-vt-design-system.svg</div>
+            <div class="note">Useful if the design system should feel like the structured center of the workspace.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-03-orbit-gemini-ai-lib.svg" alt="Gemini AI Lib Orbit" /></div>
+            <h3>03. Orbit (AI Lib)</h3>
+            <div class="file">vt-mark-03-orbit-gemini-ai-lib.svg</div>
+            <div class="note">Suggests a model or runtime core with a lightweight package identity.</div>
+          </article>
+
+          <br />
+          <!-- Mark 04 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-04-totem.svg" alt="VT Mark 04 Totem" /></div>
+            <h3>04. Totem (Base)</h3>
+            <div class="file">vt-mark-04-totem.svg</div>
+            <div class="note">A modular family language built to scale across package and project icons.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-04-totem-vt-playground.svg" alt="VT Playground Totem" /></div>
+            <h3>04. Totem (Playground)</h3>
+            <div class="file">vt-mark-04-totem-vt-playground.svg</div>
+            <div class="note">Strong candidate for a package family because it already reads like a badge system.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-04-totem-vt-design-system.svg" alt="VT Design System Totem" /></div>
+            <h3>04. Totem (Design System)</h3>
+            <div class="file">vt-mark-04-totem-vt-design-system.svg</div>
+            <div class="note">Highly reusable for token, primitive, and component-level sub-branding.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-04-totem-gemini-ai-lib.svg" alt="Gemini AI Lib Totem" /></div>
+            <h3>04. Totem (AI Lib)</h3>
+            <div class="file">vt-mark-04-totem-gemini-ai-lib.svg</div>
+            <div class="note">The most extensible option if the library grows helper packages or transport layers.</div>
+          </article>
+
+          <br />
+          <!-- Mark 05 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-05-ribbon.svg" alt="VT Mark 05 Ribbon" /></div>
+            <h3>05. Ribbon (Base)</h3>
+            <div class="file">vt-mark-05-ribbon.svg</div>
+            <div class="note">The most dynamic direction, with the strongest brand and motion energy.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-05-ribbon-vt-playground.svg" alt="VT Playground Ribbon" /></div>
+            <h3>05. Ribbon (Playground)</h3>
+            <div class="file">vt-mark-05-ribbon-vt-playground.svg</div>
+            <div class="note">The boldest playground option, with the most obvious motion and experimentation vibe.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-05-ribbon-vt-design-system.svg" alt="VT Design System Ribbon" /></div>
+            <h3>05. Ribbon (Design System)</h3>
+            <div class="file">vt-mark-05-ribbon-vt-design-system.svg</div>
+            <div class="note">A branded design-system option that still keeps a controlled, systematic feel.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-05-ribbon-gemini-ai-lib.svg" alt="Gemini AI Lib Ribbon" /></div>
+            <h3>05. Ribbon (AI Lib)</h3>
+            <div class="file">vt-mark-05-ribbon-gemini-ai-lib.svg</div>
+            <div class="note">A premium package identity that still reads as technical rather than consumer-first.</div>
+          </article>
+        </section>
+      </section>
+
+      <!-- Section: Gemini 3 Flash (Marks 06-10) -->
+      <section class="section">
+        <div class="section-head">
+          <h2>Gemini 3 Flash</h2>
+          <div class="chips">
+            <span class="chip">geometric fusion</span>
+            <span class="chip">marks 06-10</span>
+          </div>
+        </div>
+        <section class="grid">
+          <!-- Mark 06 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-06-abstract.svg" alt="VT Mark 06 Abstract" /></div>
+            <h3>06. Abstract (Base)</h3>
+            <div class="file">vt-mark-06-abstract.svg</div>
+            <div class="note">Hexagonal geometric fusion of V and T.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-06-abstract-vt-playground.svg" alt="VT Playground Abstract" /></div>
+            <h3>06. Abstract (Playground)</h3>
+            <div class="file">vt-mark-06-abstract-vt-playground.svg</div>
+            <div class="note">A focused and geometric playground variant with a sharp layout.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-06-abstract-vt-design-system.svg" alt="VT Design System Abstract" /></div>
+            <h3>06. Abstract (Design System)</h3>
+            <div class="file">vt-mark-06-abstract-vt-design-system.svg</div>
+            <div class="note">A precise and systematic monogram built on architectural primitives.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-06-abstract-gemini-ai-lib.svg" alt="Gemini AI Lib Abstract" /></div>
+            <h3>06. Abstract (AI Lib)</h3>
+            <div class="file">vt-mark-06-abstract-gemini-ai-lib.svg</div>
+            <div class="note">A technical and dense monogram variant optimized for low-level library use.</div>
+          </article>
+
+          <br />
+          <!-- Mark 07 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-07-pulse.svg" alt="VT Mark 07 Pulse" /></div>
+            <h3>07. Pulse (Base)</h3>
+            <div class="file">vt-mark-07-pulse.svg</div>
+            <div class="note">A rhythmic representation of signal and activity.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-07-pulse-vt-playground.svg" alt="VT Playground Pulse" /></div>
+            <h3>07. Pulse (Playground)</h3>
+            <div class="file">vt-mark-07-pulse-vt-playground.svg</div>
+            <div class="note">Captures live telemetry and active studio signals in a compact mark.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-07-pulse-vt-design-system.svg" alt="VT Design System Pulse" /></div>
+            <h3>07. Pulse (Design System)</h3>
+            <div class="file">vt-mark-07-pulse-vt-design-system.svg</div>
+            <div class="note">A rhythmic representation of system state and component interactions.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-07-pulse-gemini-ai-lib.svg" alt="Gemini AI Lib Pulse" /></div>
+            <h3>07. Pulse (AI Lib)</h3>
+            <div class="file">vt-mark-07-pulse-gemini-ai-lib.svg</div>
+            <div class="note">Ideal for representing streaming data or model inference signals in an SDK.</div>
+          </article>
+
+          <br />
+          <!-- Mark 08 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-08-orbit.svg" alt="VT Mark 08 Orbit" /></div>
+            <h3>08. Orbit (Base)</h3>
+            <div class="file">vt-mark-08-orbit.svg</div>
+            <div class="note">A central core with a circulating satellite element.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-08-orbit-vt-playground.svg" alt="VT Playground Orbit" /></div>
+            <h3>08. Orbit (Playground)</h3>
+            <div class="file">vt-mark-08-orbit-vt-playground.svg</div>
+            <div class="note">Represents experimental nodes circulating around a stable platform core.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-08-orbit-vt-design-system.svg" alt="VT Design System Orbit" /></div>
+            <h3>08. Orbit (Design System)</h3>
+            <div class="file">vt-mark-08-orbit-vt-design-system.svg</div>
+            <div class="note">Suggests a central pattern library with circulating utility layers.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-08-orbit-gemini-ai-lib.svg" alt="Gemini AI Lib Orbit" /></div>
+            <h3>08. Orbit (AI Lib)</h3>
+            <div class="file">vt-mark-08-orbit-gemini-ai-lib.svg</div>
+            <div class="note">Represents core model integration with various utility transport layers.</div>
+          </article>
+
+          <br />
+          <!-- Mark 09 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-09-layer.svg" alt="VT Mark 09 Layer" /></div>
+            <h3>09. Layer (Base)</h3>
+            <div class="file">vt-mark-09-layer.svg</div>
+            <div class="note">Stackable perspective for a depth-oriented brand feel.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-09-layer-vt-playground.svg" alt="VT Playground Layer" /></div>
+            <h3>09. Layer (Playground)</h3>
+            <div class="file">vt-mark-09-layer-vt-playground.svg</div>
+            <div class="note">A multi-dimensional studio brand for complex exploratory work.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-09-layer-vt-design-system.svg" alt="VT Design System Layer" /></div>
+            <h3>09. Layer (Design System)</h3>
+            <div class="file">vt-mark-09-layer-vt-design-system.svg</div>
+            <div class="note">Perfect for a multi-layered design system with clearly separated concerns.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-09-layer-gemini-ai-lib.svg" alt="Gemini AI Lib Layer" /></div>
+            <h3>09. Layer (AI Lib)</h3>
+            <div class="file">vt-mark-09-layer-gemini-ai-lib.svg</div>
+            <div class="note">Reflects a multi-layered SDK structure with clean separation of concerns.</div>
+          </article>
+
+          <br />
+          <!-- Mark 10 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-10-nexus.svg" alt="VT Mark 10 Nexus" /></div>
+            <h3>10. Nexus (Base)</h3>
+            <div class="file">vt-mark-10-nexus.svg</div>
+            <div class="note">A central hub for converging data and interactions.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-10-nexus-vt-playground.svg" alt="VT Playground Nexus" /></div>
+            <h3>10. Nexus (Playground)</h3>
+            <div class="file">vt-mark-10-nexus-vt-playground.svg</div>
+            <div class="note">A convergence point for various experiments and playground modules.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-10-nexus-vt-design-system.svg" alt="VT Design System Nexus" /></div>
+            <h3>10. Nexus (Design System)</h3>
+            <div class="file">vt-mark-10-nexus-vt-design-system.svg</div>
+            <div class="note">The structural center of the component ecosystem and token registry.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-10-nexus-gemini-ai-lib.svg" alt="Gemini AI Lib Nexus" /></div>
+            <h3>10. Nexus (AI Lib)</h3>
+            <div class="file">vt-mark-10-nexus-gemini-ai-lib.svg</div>
+            <div class="note">Central convergence of AI capabilities and various integration endpoints.</div>
+          </article>
+        </section>
+      </section>
+
+      <!-- Section: Claude Opus 4.6 (Marks 11-15) -->
+      <section class="section">
+        <div class="section-head">
+          <h2>Claude Opus 4.6</h2>
+          <div class="chips">
+            <span class="chip">radiant patterns</span>
+            <span class="chip">marks 11-15</span>
+          </div>
+        </div>
+        <section class="grid">
+          <!-- Mark 11 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-11-prism.svg" alt="VT Mark 11 Prism" /></div>
+            <h3>11. Prism (Base)</h3>
+            <div class="file">vt-mark-11-prism.svg</div>
+            <div class="note">A triangular prism with internal refraction lines suggesting light decomposition.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-11-prism-vt-playground.svg" alt="VT Playground Prism" /></div>
+            <h3>11. Prism (Playground)</h3>
+            <div class="file">vt-mark-11-prism-vt-playground.svg</div>
+            <div class="note">Refracted exploration energy, splitting ideas into distinct experimentation paths.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-11-prism-vt-design-system.svg" alt="VT Design System Prism" /></div>
+            <h3>11. Prism (Design System)</h3>
+            <div class="file">vt-mark-11-prism-vt-design-system.svg</div>
+            <div class="note">Decomposition into structured primitives, tokens, and component layers.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-11-prism-gemini-ai-lib.svg" alt="Gemini AI Lib Prism" /></div>
+            <h3>11. Prism (AI Lib)</h3>
+            <div class="file">vt-mark-11-prism-gemini-ai-lib.svg</div>
+            <div class="note">Breaking down complex AI inputs into structured output channels.</div>
+          </article>
+
+          <br />
+          <!-- Mark 12 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-12-spark.svg" alt="VT Mark 12 Spark" /></div>
+            <h3>12. Spark (Base)</h3>
+            <div class="file">vt-mark-12-spark.svg</div>
+            <div class="note">A starburst radiating from a solid core, full of ignition energy.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-12-spark-vt-playground.svg" alt="VT Playground Spark" /></div>
+            <h3>12. Spark (Playground)</h3>
+            <div class="file">vt-mark-12-spark-vt-playground.svg</div>
+            <div class="note">An ignition point for creative studio experiments and rapid prototyping.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-12-spark-vt-design-system.svg" alt="VT Design System Spark" /></div>
+            <h3>12. Spark (Design System)</h3>
+            <div class="file">vt-mark-12-spark-vt-design-system.svg</div>
+            <div class="note">A precise and radiant system core that powers every component outward.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-12-spark-gemini-ai-lib.svg" alt="Gemini AI Lib Spark" /></div>
+            <h3>12. Spark (AI Lib)</h3>
+            <div class="file">vt-mark-12-spark-gemini-ai-lib.svg</div>
+            <div class="note">The ignition core of model inference and generative processing.</div>
+          </article>
+
+          <br />
+          <!-- Mark 13 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-13-weave.svg" alt="VT Mark 13 Weave" /></div>
+            <h3>13. Weave (Base)</h3>
+            <div class="file">vt-mark-13-weave.svg</div>
+            <div class="note">Interlocking chevrons forming a woven crossroads pattern.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-13-weave-vt-playground.svg" alt="VT Playground Weave" /></div>
+            <h3>13. Weave (Playground)</h3>
+            <div class="file">vt-mark-13-weave-vt-playground.svg</div>
+            <div class="note">Threads of different features interlocking into one cohesive playground experience.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-13-weave-vt-design-system.svg" alt="VT Design System Weave" /></div>
+            <h3>13. Weave (Design System)</h3>
+            <div class="file">vt-mark-13-weave-vt-design-system.svg</div>
+            <div class="note">Tightly interlocking patterns reflecting systematic component composition.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-13-weave-gemini-ai-lib.svg" alt="Gemini AI Lib Weave" /></div>
+            <h3>13. Weave (AI Lib)</h3>
+            <div class="file">vt-mark-13-weave-gemini-ai-lib.svg</div>
+            <div class="note">Interlocking text, audio, and image modalities into a unified SDK surface.</div>
+          </article>
+
+          <br />
+          <!-- Mark 14 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-14-beacon.svg" alt="VT Mark 14 Beacon" /></div>
+            <h3>14. Beacon (Base)</h3>
+            <div class="file">vt-mark-14-beacon.svg</div>
+            <div class="note">A signal tower emitting light, suggesting guidance and visibility.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-14-beacon-vt-playground.svg" alt="VT Playground Beacon" /></div>
+            <h3>14. Beacon (Playground)</h3>
+            <div class="file">vt-mark-14-beacon-vt-playground.svg</div>
+            <div class="note">A guiding signal for developers exploring new features and workflows.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-14-beacon-vt-design-system.svg" alt="VT Design System Beacon" /></div>
+            <h3>14. Beacon (Design System)</h3>
+            <div class="file">vt-mark-14-beacon-vt-design-system.svg</div>
+            <div class="note">A reliable reference point for consistent design language across projects.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-14-beacon-gemini-ai-lib.svg" alt="Gemini AI Lib Beacon" /></div>
+            <h3>14. Beacon (AI Lib)</h3>
+            <div class="file">vt-mark-14-beacon-gemini-ai-lib.svg</div>
+            <div class="note">A signaling tower for reliable API connectivity and model availability.</div>
+          </article>
+
+          <br />
+          <!-- Mark 15 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-15-crest.svg" alt="VT Mark 15 Crest" /></div>
+            <h3>15. Crest (Base)</h3>
+            <div class="file">vt-mark-15-crest.svg</div>
+            <div class="note">A shield emblem with a centered cross, evoking trust and authority.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-15-crest-vt-playground.svg" alt="VT Playground Crest" /></div>
+            <h3>15. Crest (Playground)</h3>
+            <div class="file">vt-mark-15-crest-vt-playground.svg</div>
+            <div class="note">A protective emblem for your experimental workspace and sandbox.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-15-crest-vt-design-system.svg" alt="VT Design System Crest" /></div>
+            <h3>15. Crest (Design System)</h3>
+            <div class="file">vt-mark-15-crest-vt-design-system.svg</div>
+            <div class="note">A quality seal for the shared component library and design standards.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-15-crest-gemini-ai-lib.svg" alt="Gemini AI Lib Crest" /></div>
+            <h3>15. Crest (AI Lib)</h3>
+            <div class="file">vt-mark-15-crest-gemini-ai-lib.svg</div>
+            <div class="note">A trust emblem for battle-tested, production-ready AI integrations.</div>
+          </article>
+        </section>
+      </section>
+
+      <!-- Section: Gemini Code Assist (Marks 16-20) -->
+      <section class="section">
+        <div class="section-head">
+          <h2>Gemini Code Assist</h2>
+          <div class="chips">
+            <span class="chip">fluid & structural concepts</span>
+            <span class="chip">marks 16-20</span>
+          </div>
+        </div>
+        <section class="grid">
+          <!-- Mark 16 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-16-stream.svg" alt="VT Mark 16 Stream" /></div>
+            <h3>16. Stream (Base)</h3>
+            <div class="file">vt-mark-16-stream.svg</div>
+            <div class="note">A fluid, continuous path representing seamless integration.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-16-stream-vt-playground.svg" alt="VT Playground Stream" /></div>
+            <h3>16. Stream (Playground)</h3>
+            <div class="file">vt-mark-16-stream-vt-playground.svg</div>
+            <div class="note">Dynamic flow with a vibrant studio terminal node.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-16-stream-vt-design-system.svg" alt="VT Design System Stream" /></div>
+            <h3>16. Stream (Design System)</h3>
+            <div class="file">vt-mark-16-stream-vt-design-system.svg</div>
+            <div class="note">Structured flow with a modular component-like anchor.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-16-stream-gemini-ai-lib.svg" alt="Gemini AI Lib Stream" /></div>
+            <h3>16. Stream (AI Lib)</h3>
+            <div class="file">vt-mark-16-stream-gemini-ai-lib.svg</div>
+            <div class="note">Intelligent pathing with a central diamond inference accent.</div>
+          </article>
+
+          <br />
+          <!-- Mark 17 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-17-circuit.svg" alt="VT Mark 17 Circuit" /></div>
+            <h3>17. Circuit (Base)</h3>
+            <div class="file">vt-mark-17-circuit.svg</div>
+            <div class="note">Logic-driven paths evoking high-level engineering.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-17-circuit-vt-playground.svg" alt="VT Playground Circuit" /></div>
+            <h3>17. Circuit (Playground)</h3>
+            <div class="file">vt-mark-17-circuit-vt-playground.svg</div>
+            <div class="note">A logic path ending in a creative experiment node.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-17-circuit-vt-design-system.svg" alt="VT Design System Circuit" /></div>
+            <h3>17. Circuit (Design System)</h3>
+            <div class="file">vt-mark-17-circuit-vt-design-system.svg</div>
+            <div class="note">Rigid architectural circuit with a system header accent.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-17-circuit-gemini-ai-lib.svg" alt="Gemini AI Lib Circuit" /></div>
+            <h3>17. Circuit (AI Lib)</h3>
+            <div class="file">vt-mark-17-circuit-gemini-ai-lib.svg</div>
+            <div class="note">Multi-node circuit representing AI neuron connectivity.</div>
+          </article>
+
+          <br />
+          <!-- Mark 18 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-18-mesh.svg" alt="VT Mark 18 Mesh" /></div>
+            <h3>18. Mesh (Base)</h3>
+            <div class="file">vt-mark-18-mesh.svg</div>
+            <div class="note">A heavy, interwoven monogram of V and T.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-18-mesh-vt-playground.svg" alt="VT Playground Mesh" /></div>
+            <h3>18. Mesh (Playground)</h3>
+            <div class="file">vt-mark-18-mesh-vt-playground.svg</div>
+            <div class="note">Woven structure with a creative studio accent.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-18-mesh-vt-design-system.svg" alt="VT Design System Mesh" /></div>
+            <h3>18. Mesh (Design System)</h3>
+            <div class="file">vt-mark-18-mesh-vt-design-system.svg</div>
+            <div class="note">Woven structure with a modular anchor point.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-18-mesh-gemini-ai-lib.svg" alt="Gemini AI Lib Mesh" /></div>
+            <h3>18. Mesh (AI Lib)</h3>
+            <div class="file">vt-mark-18-mesh-gemini-ai-lib.svg</div>
+            <div class="note">Woven structure with an intelligent inference node.</div>
+          </article>
+
+          <br />
+          <!-- Mark 19 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-19-vault.svg" alt="VT Mark 19 Vault" /></div>
+            <h3>19. Vault (Base)</h3>
+            <div class="file">vt-mark-19-vault.svg</div>
+            <div class="note">A protective and structural shield-like monogram.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-19-vault-vt-playground.svg" alt="VT Playground Vault" /></div>
+            <h3>19. Vault (Playground)</h3>
+            <div class="file">vt-mark-19-vault-vt-playground.svg</div>
+            <div class="note">Structural vault with a dynamic studio signal.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-19-vault-vt-design-system.svg" alt="VT Design System Vault" /></div>
+            <h3>19. Vault (Design System)</h3>
+            <div class="file">vt-mark-19-vault-vt-design-system.svg</div>
+            <div class="note">Architectural vault with a system-wide header.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-19-vault-gemini-ai-lib.svg" alt="Gemini AI Lib Vault" /></div>
+            <h3>19. Vault (AI Lib)</h3>
+            <div class="file">vt-mark-19-vault-gemini-ai-lib.svg</div>
+            <div class="note">Secure vault with an integrated AI processor node.</div>
+          </article>
+
+          <br />
+          <!-- Mark 20 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-20-apex.svg" alt="VT Mark 20 Apex" /></div>
+            <h3>20. Apex (Base)</h3>
+            <div class="file">vt-mark-20-apex.svg</div>
+            <div class="note">A pinnacle-oriented triangular fusion of the brand.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-18-mesh-vt-playground.svg" alt="VT Playground Mesh" /></div>
+            <h3>20. Apex (Playground)</h3>
+            <div class="file">vt-mark-20-apex-vt-playground.svg</div>
+            <div class="note">Upward growth with an experimental studio accent.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-20-apex-vt-design-system.svg" alt="VT Design System Apex" /></div>
+            <h3>20. Apex (Design System)</h3>
+            <div class="file">vt-mark-20-apex-vt-design-system.svg</div>
+            <div class="note">Upward growth with a stable system foundation.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-20-apex-gemini-ai-lib.svg" alt="Gemini AI Lib Apex" /></div>
+            <h3>20. Apex (AI Lib)</h3>
+            <div class="file">vt-mark-20-apex-gemini-ai-lib.svg</div>
+            <div class="note">Upward growth with dual-node inference signals.</div>
+          </article>
+        </section>
+      </section>
+
+      <!-- Section: Codex GPT-5.3-Codex (Marks 21-25) -->
+      <section class="section">
+        <div class="section-head">
+          <h2>Codex GPT-5.3-Codex</h2>
+          <div class="chips">
+            <span class="chip">fresh originals</span>
+            <span class="chip">marks 21-25</span>
+          </div>
+        </div>
+        <section class="grid">
+          <!-- Mark 21 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-21-lattice.svg" alt="VT Mark 21 Lattice" /></div>
+            <h3>21. Lattice (Base)</h3>
+            <div class="file">vt-mark-21-lattice.svg</div>
+            <div class="note">A structural diamond lattice with guide lines and a compact VT core.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-21-lattice-vt-playground.svg" alt="VT Playground Lattice" /></div>
+            <h3>21. Lattice (Playground)</h3>
+            <div class="file">vt-mark-21-lattice-vt-playground.svg</div>
+            <div class="note">Teal-forward lattice tuned for studio flow and rapid experimentation signals.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-21-lattice-vt-design-system.svg" alt="VT Design System Lattice" /></div>
+            <h3>21. Lattice (Design System)</h3>
+            <div class="file">vt-mark-21-lattice-vt-design-system.svg</div>
+            <div class="note">Blueprint-like lattice emphasizing order, spacing discipline, and component logic.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-21-lattice-gemini-ai-lib.svg" alt="Gemini AI Lib Lattice" /></div>
+            <h3>21. Lattice (AI Lib)</h3>
+            <div class="file">vt-mark-21-lattice-gemini-ai-lib.svg</div>
+            <div class="note">Emerald lattice for infrastructure and runtime topology across AI integration layers.</div>
+          </article>
+
+          <br />
+          <!-- Mark 22 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-22-comet.svg" alt="VT Mark 22 Comet" /></div>
+            <h3>22. Comet (Base)</h3>
+            <div class="file">vt-mark-22-comet.svg</div>
+            <div class="note">A bright core and swept trail that captures speed, direction, and momentum.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-22-comet-vt-playground.svg" alt="VT Playground Comet" /></div>
+            <h3>22. Comet (Playground)</h3>
+            <div class="file">vt-mark-22-comet-vt-playground.svg</div>
+            <div class="note">Fast exploration motif with a playful signal point for active studio sessions.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-22-comet-vt-design-system.svg" alt="VT Design System Comet" /></div>
+            <h3>22. Comet (Design System)</h3>
+            <div class="file">vt-mark-22-comet-vt-design-system.svg</div>
+            <div class="note">Controlled velocity for a system identity that feels dynamic but still precise.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-22-comet-gemini-ai-lib.svg" alt="Gemini AI Lib Comet" /></div>
+            <h3>22. Comet (AI Lib)</h3>
+            <div class="file">vt-mark-22-comet-gemini-ai-lib.svg</div>
+            <div class="note">Streaming-leaning comet language for transport, inference, and runtime throughput.</div>
+          </article>
+
+          <br />
+          <!-- Mark 23 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-23-glyph.svg" alt="VT Mark 23 Glyph" /></div>
+            <h3>23. Glyph (Base)</h3>
+            <div class="file">vt-mark-23-glyph.svg</div>
+            <div class="note">A block-rune VT mark with perimeter rhythm and high recognizability at small sizes.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-23-glyph-vt-playground.svg" alt="VT Playground Glyph" /></div>
+            <h3>23. Glyph (Playground)</h3>
+            <div class="file">vt-mark-23-glyph-vt-playground.svg</div>
+            <div class="note">Friendly, energetic glyph styling for UI surfaces where experimentation is central.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-23-glyph-vt-design-system.svg" alt="VT Design System Glyph" /></div>
+            <h3>23. Glyph (Design System)</h3>
+            <div class="file">vt-mark-23-glyph-vt-design-system.svg</div>
+            <div class="note">Ordered visual cadence for tokens, primitives, and composable system assets.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-23-glyph-gemini-ai-lib.svg" alt="Gemini AI Lib Glyph" /></div>
+            <h3>23. Glyph (AI Lib)</h3>
+            <div class="file">vt-mark-23-glyph-gemini-ai-lib.svg</div>
+            <div class="note">Dense library-like glyph optimized for SDK docs, CLI badges, and package listings.</div>
+          </article>
+
+          <br />
+          <!-- Mark 24 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-24-harbor.svg" alt="VT Mark 24 Harbor" /></div>
+            <h3>24. Harbor (Base)</h3>
+            <div class="file">vt-mark-24-harbor.svg</div>
+            <div class="note">A calm harbor silhouette with an arched horizon and stable basin geometry.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-24-harbor-vt-playground.svg" alt="VT Playground Harbor" /></div>
+            <h3>24. Harbor (Playground)</h3>
+            <div class="file">vt-mark-24-harbor-vt-playground.svg</div>
+            <div class="note">An inviting dock-like icon language for creative iteration and team handoff flow.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-24-harbor-vt-design-system.svg" alt="VT Design System Harbor" /></div>
+            <h3>24. Harbor (Design System)</h3>
+            <div class="file">vt-mark-24-harbor-vt-design-system.svg</div>
+            <div class="note">Stable harbor form translated into a calm but authoritative design-system identity.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-24-harbor-gemini-ai-lib.svg" alt="Gemini AI Lib Harbor" /></div>
+            <h3>24. Harbor (AI Lib)</h3>
+            <div class="file">vt-mark-24-harbor-gemini-ai-lib.svg</div>
+            <div class="note">Navigation-first metaphor for reliable API endpoints and model operation safety.</div>
+          </article>
+
+          <br />
+          <!-- Mark 25 -->
+          <article class="card">
+            <div class="art"><img src="./vt-mark-25-shard.svg" alt="VT Mark 25 Shard" /></div>
+            <h3>25. Shard (Base)</h3>
+            <div class="file">vt-mark-25-shard.svg</div>
+            <div class="note">A faceted crystal crest with sharp geometry and strong center-line hierarchy.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-25-shard-vt-playground.svg" alt="VT Playground Shard" /></div>
+            <h3>25. Shard (Playground)</h3>
+            <div class="file">vt-mark-25-shard-vt-playground.svg</div>
+            <div class="note">Bright shard contrasts that emphasize experimentation and kinetic UI energy.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-25-shard-vt-design-system.svg" alt="VT Design System Shard" /></div>
+            <h3>25. Shard (Design System)</h3>
+            <div class="file">vt-mark-25-shard-vt-design-system.svg</div>
+            <div class="note">Facet logic adapted to a precise system language with strict visual alignment.</div>
+          </article>
+          <article class="card">
+            <div class="art"><img src="./vt-mark-25-shard-gemini-ai-lib.svg" alt="Gemini AI Lib Shard" /></div>
+            <h3>25. Shard (AI Lib)</h3>
+            <div class="file">vt-mark-25-shard-gemini-ai-lib.svg</div>
+            <div class="note">Compute-oriented shard palette for infrastructure-heavy AI package branding.</div>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

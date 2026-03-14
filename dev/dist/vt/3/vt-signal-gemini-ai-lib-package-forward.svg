@@ -1,0 +1,18 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>VT Signal x gemini-ai-lib Package Forward</title>
+  <desc>A package-forward hybrid where gemini-ai-lib dominates inside the Signal brand frame.</desc>
+  <circle cx="128" cy="128" r="104" fill="#111827"/>
+  <path d="M128 40C177 40 216 79 216 128" stroke="#60A5FA" stroke-width="12" stroke-linecap="round"/>
+  <path d="M128 64C164 64 192 92 192 128" stroke="#F472B6" stroke-width="10" stroke-linecap="round"/>
+  <path d="M40 128C40 79 79 40 128 40" stroke="#FFF2B2" stroke-width="10" stroke-linecap="round"/>
+  <path d="M50 184C76 206 100 216 128 216C156 216 180 206 206 184" stroke="#60A5FA" stroke-width="8" stroke-linecap="round"/>
+  <g>
+  <path d="M128 54L188 90V166L128 202L68 166V90L128 54Z" fill="#8B6CFF" fill-opacity="0.16"/>
+  <circle cx="98" cy="112" r="24" fill="#EFF2FF"/>
+  <circle cx="158" cy="144" r="24" fill="#27E3D8"/>
+  <path d="M98 112L128 86L158 144" stroke="#8B6CFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M98 112L128 174L158 144" stroke="#EFF2FF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="128" cy="86" r="10" fill="#8B6CFF"/>
+  <circle cx="128" cy="174" r="10" fill="#EFF2FF"/>
+  </g>
+</svg>
