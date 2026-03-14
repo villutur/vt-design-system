@@ -1,3 +1,5 @@
+"use client";
+
 // Tokens
 export { designTokens, sizeModes } from "./tokens";
 export type { SizeMode } from "./tokens";
@@ -23,6 +25,7 @@ export * from "./components/Navigation/TreeView";
 // Surfaces
 export * from "./components/Surfaces/Accordion";
 export * from "./components/Surfaces/Card";
+export * from "./components/Surfaces/InspectorPanel";
 export * from "./components/Surfaces/MetricCard";
 export * from "./components/Surfaces/SectionPanel";
 

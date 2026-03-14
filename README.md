@@ -81,6 +81,18 @@ export function Example() {
 }
 ```
 
+When a Next.js Server Component only needs read-only presentation surfaces,
+prefer the server-safe subpath instead of the client-oriented root entrypoint:
+
+```tsx
+import { Banner, Badge, MetricCard } from "vt-design-system/server";
+```
+
+The root `vt-design-system` entrypoint is intentionally client-oriented so
+interactive components such as drawers, tabs, viewers, and complex form inputs
+can be consumed safely from client components without extra app-local wrapper
+files.
+
 ## Public Exports
 
 The package currently exports components in these categories.
@@ -109,6 +121,7 @@ The package currently exports components in these categories.
 
 - `Accordion`
 - `Card`
+- `InspectorPanel`
 - `MetricCard`
 - `SectionPanel`
 
@@ -173,6 +186,25 @@ The package currently exports components in these categories.
 - `designTokens`
 - `sizeModes`
 - `SizeMode` (TypeScript type)
+
+### Server-Safe Subpath
+
+- `vt-design-system/server`
+  - `Badge`
+  - `Banner`
+  - `Card`
+  - `CardHeader`
+  - `CardTitle`
+  - `CardDescription`
+  - `CardContent`
+  - `CardFooter`
+  - `EmptyState`
+  - `InspectorPanel`
+  - `MetricCard`
+  - `SectionPanel`
+  - `designTokens`
+  - `sizeModes`
+  - `SizeMode`
 
 ## Development
 

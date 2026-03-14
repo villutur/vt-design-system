@@ -1,4 +1,4 @@
-import { copyFile, mkdir } from "node:fs/promises";
+import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -21,3 +21,21 @@ await copyFile(
   path.join(distDir, "index.d.mts.map"),
   path.join(distDir, "index.d.ts.map"),
 );
+
+const serverDeclarationSource = path.join(distDir, "server.d.mts");
+const serverDeclarationMapSource = path.join(distDir, "server.d.mts.map");
+
+try {
+  await copyFile(serverDeclarationSource, path.join(distDir, "server.d.ts"));
+} catch {}
+
+try {
+  await copyFile(serverDeclarationMapSource, path.join(distDir, "server.d.ts.map"));
+} catch {}
+
+const indexModulePath = path.join(distDir, "index.mjs");
+const indexModuleSource = await readFile(indexModulePath, "utf8");
+
+if (!indexModuleSource.startsWith('"use client";')) {
+  await writeFile(indexModulePath, `"use client";\n${indexModuleSource}`, "utf8");
+}

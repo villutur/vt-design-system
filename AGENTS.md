@@ -46,6 +46,7 @@ When working in this repository, follow these rules so local conventions stay al
 - Components should accept a `className` prop and merge it with internal classes using the shared `cn(...)` utility from `src/utils/cn.ts`.
 - Prefer data-driven component APIs when that matches existing library patterns.
 - Prefer viewer-only or render-only contracts for workflow-oriented display surfaces unless the design system intentionally owns higher-level behavior. Components such as `MarkdownRenderer`, `AIResponseView`, and `LogViewer` should not absorb session state, logger/store concerns, worker logic, or transport orchestration by default.
+- Keep read-only inspection surfaces such as `InspectorPanel` presentation-first. They can frame details, metadata, and comparison content, but they should not own route orchestration, persistence, or workflow state.
 - If a component uses icons, prefer `@tabler/icons-react`, which is the icon library used across this design system.
 - For complex overlays, searchable lists, and menu-like components, prefer reusing shared helpers from `src/internal/` instead of reimplementing focus, dismissal, or list navigation behavior.
 - If app shells need reusable top-bar controls such as theme toggles or environment actions, prefer extending the shared `Header` API instead of layering custom absolute-positioned controls in each consumer.
@@ -66,6 +67,7 @@ When working in this repository, follow these rules so local conventions stay al
 
 - Every public component must be exported from `src/index.ts`.
 - If a component is not exported from `src/index.ts`, it will not be available in the built npm package.
+- Keep the package export surface intentional for React Server Components. The root `vt-design-system` entrypoint is the client-oriented barrel, while `vt-design-system/server` should stay limited to hook-free, read-only presentation exports that Server Components can import safely.
 - When a consumer app needs a reusable component, token, helper, or stylesheet path, fix the package export surface here rather than telling the consumer to import from this repository via `../..`.
 - Maintain a clean consumer contract. Other repositories in the workspace should consume `vt-design-system` through package exports, not through direct cross-repo source imports.
 - Keep the published consumer contract complete: package exports should cover runtime JS, CSS entrypoints, and a normal TypeScript declaration path that linked workspace apps can resolve reliably.
