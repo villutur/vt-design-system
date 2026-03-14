@@ -2,11 +2,7 @@ import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, userEvent, within } from "storybook/test";
 import type { Matcher } from "react-day-picker";
-import {
-  DatePicker,
-  type DatePickerProps,
-  type DateRangeValue,
-} from "./DatePicker";
+import { DatePicker, type DatePickerProps, type DateRangeValue } from "./DatePicker";
 
 const baseMonth = new Date(2026, 2, 1);
 
@@ -61,9 +57,7 @@ interface SingleDatePickerExampleProps {
 }
 
 function SingleDatePickerExample(args: SingleDatePickerExampleProps) {
-  const [value, setValue] = useState<Date | undefined>(
-    args.value as Date | undefined,
-  );
+  const [value, setValue] = useState<Date | undefined>(args.value as Date | undefined);
 
   return (
     <div className="max-w-md">
@@ -106,9 +100,7 @@ interface RangeDatePickerExampleProps {
 }
 
 function RangeDatePickerExample(args: RangeDatePickerExampleProps) {
-  const [value, setValue] = useState<DateRangeValue | undefined>(
-    args.value as DateRangeValue | undefined,
-  );
+  const [value, setValue] = useState<DateRangeValue | undefined>(args.value as DateRangeValue | undefined);
 
   return (
     <div className="max-w-md">
@@ -130,18 +122,14 @@ function RangeDatePickerExample(args: RangeDatePickerExampleProps) {
 }
 
 export const Default: Story = {
-  render: (args) => (
-    <SingleDatePickerExample {...(args as SingleDatePickerExampleProps)} />
-  ),
+  render: (args) => <SingleDatePickerExample {...(args as SingleDatePickerExampleProps)} />,
   args: {
     onValueChange: fn(),
   },
 };
 
 export const ErrorState: Story = {
-  render: (args) => (
-    <SingleDatePickerExample {...(args as SingleDatePickerExampleProps)} />
-  ),
+  render: (args) => <SingleDatePickerExample {...(args as SingleDatePickerExampleProps)} />,
   args: {
     error: true,
     helperText: "A release date is required before continuing.",
@@ -150,18 +138,14 @@ export const ErrorState: Story = {
 };
 
 export const RangeMode: Story = {
-  render: (args) => (
-    <RangeDatePickerExample {...(args as RangeDatePickerExampleProps)} />
-  ),
+  render: (args) => <RangeDatePickerExample {...(args as RangeDatePickerExampleProps)} />,
   args: {
     onValueChange: fn(),
   },
 };
 
 export const SingleDateSelection: Story = {
-  render: (args) => (
-    <SingleDatePickerExample {...(args as SingleDatePickerExampleProps)} />
-  ),
+  render: (args) => <SingleDatePickerExample {...(args as SingleDatePickerExampleProps)} />,
   args: {
     onValueChange: fn(),
   },
@@ -170,9 +154,7 @@ export const SingleDateSelection: Story = {
     const trigger = canvas.getByRole("button", { name: /release date/i });
 
     await userEvent.click(trigger);
-    await userEvent.click(
-      within(document.body).getByRole("button", { name: /march 12/i }),
-    );
+    await userEvent.click(within(document.body).getByRole("button", { name: /march 12/i }));
 
     await expect(trigger).toHaveTextContent(/mar 12, 2026/i);
     await expect(args.onValueChange).toHaveBeenCalled();
@@ -180,9 +162,7 @@ export const SingleDateSelection: Story = {
 };
 
 export const RangeSelectionAndEscape: Story = {
-  render: (args) => (
-    <RangeDatePickerExample {...(args as RangeDatePickerExampleProps)} />
-  ),
+  render: (args) => <RangeDatePickerExample {...(args as RangeDatePickerExampleProps)} />,
   args: {
     disabledDates: { dayOfWeek: [0, 6] },
     onValueChange: fn(),
@@ -193,21 +173,15 @@ export const RangeSelectionAndEscape: Story = {
 
     await userEvent.click(trigger);
     await new Promise((resolve) => setTimeout(resolve, 500));
-    await expect(
-      within(document.body).getByRole("button", { name: /march 7/i }),
-    ).toBeDisabled();
+    await expect(within(document.body).getByRole("button", { name: /march 7/i })).toBeDisabled();
 
     await new Promise((resolve) => setTimeout(resolve, 500));
-    await userEvent.click(
-      within(document.body).getByRole("button", { name: /march 10/i }),
-    );
+    await userEvent.click(within(document.body).getByRole("button", { name: /march 10/i }));
     await new Promise((resolve) => setTimeout(resolve, 500));
     await userEvent.click(trigger);
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    await userEvent.click(
-      within(document.body).getByRole("button", { name: /march 13/i }),
-    );
+    await userEvent.click(within(document.body).getByRole("button", { name: /march 13/i }));
 
     await expect(trigger).toHaveTextContent(/mar 10, 2026/i);
     await expect(trigger).toHaveTextContent(/mar 13, 2026/i);
@@ -216,8 +190,6 @@ export const RangeSelectionAndEscape: Story = {
     await userEvent.click(trigger);
     await expect(within(document.body).getByRole("dialog")).toBeInTheDocument();
     await userEvent.keyboard("{Escape}");
-    await expect(
-      within(document.body).queryByRole("dialog"),
-    ).not.toBeInTheDocument();
+    await expect(within(document.body).queryByRole("dialog")).not.toBeInTheDocument();
   },
 };

@@ -16,8 +16,7 @@ const meta: Meta<typeof Breadcrumbs> = {
     },
     maxItems: {
       control: { type: "number", min: 3, step: 1 },
-      description:
-        "Collapses long paths by keeping the first item and the tail.",
+      description: "Collapses long paths by keeping the first item and the tail.",
     },
   },
 };

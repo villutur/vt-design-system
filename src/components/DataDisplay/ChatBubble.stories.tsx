@@ -92,8 +92,7 @@ export const StreamingAssistant: Story = {
         <IconRobot size={16} />
       </div>
     ),
-    children:
-      "Drafting the handoff note now. Pulling the latest reviewer note and the anomaly screenshot metadata.",
+    children: "Drafting the handoff note now. Pulling the latest reviewer note and the anomaly screenshot metadata.",
   },
 };
 

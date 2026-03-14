@@ -47,8 +47,7 @@ export const Success: Story = {
   args: {
     type: "success",
     title: "Deployment Successful",
-    children:
-      "Your application has been deployed to the production environment.",
+    children: "Your application has been deployed to the production environment.",
   },
 };
 
@@ -64,8 +63,7 @@ export const Error: Story = {
   args: {
     type: "error",
     title: "Connection Failed",
-    children:
-      "Unable to connect to the database. Please check your network connection and try again.",
+    children: "Unable to connect to the database. Please check your network connection and try again.",
   },
 };
 
@@ -89,10 +87,7 @@ export const InlineRetry: Story = {
   render: (args) => (
     <Alert {...args}>
       <div className="space-y-sm">
-        <p>
-          The latest activity stream could not be loaded. Retry the request or
-          switch to a different workspace.
-        </p>
+        <p>The latest activity stream could not be loaded. Retry the request or switch to a different workspace.</p>
         <Button size="xs" variant="secondary">
           Retry fetch
         </Button>

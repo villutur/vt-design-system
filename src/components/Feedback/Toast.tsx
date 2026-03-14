@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  IconAlertTriangle,
-  IconCheck,
-  IconCircleX,
-  IconInfoCircle,
-  IconX,
-} from "@tabler/icons-react";
+import { IconAlertTriangle, IconCheck, IconCircleX, IconInfoCircle, IconX } from "@tabler/icons-react";
 import { cn } from "../../utils/cn";
 
 export type ToastType = "default" | "success" | "warning" | "error" | "info";
@@ -27,10 +21,7 @@ interface ToastItemProps extends ToastRecord {
   onClose: (id: string) => void;
 }
 
-const toastStyleMap: Record<
-  ToastType,
-  { icon: React.ReactNode; container: string; iconClassName: string }
-> = {
+const toastStyleMap: Record<ToastType, { icon: React.ReactNode; container: string; iconClassName: string }> = {
   default: {
     icon: <IconInfoCircle className="h-5 w-5" />,
     container: "border-default bg-surface text-foreground",
@@ -59,10 +50,7 @@ const toastStyleMap: Record<
 };
 
 function createToastId() {
-  if (
-    typeof crypto !== "undefined" &&
-    typeof crypto.randomUUID === "function"
-  ) {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
     return crypto.randomUUID();
   }
 
@@ -70,19 +58,7 @@ function createToastId() {
 }
 
 const ToastItem = React.forwardRef<HTMLDivElement, ToastItemProps>(
-  (
-    {
-      id,
-      title,
-      description,
-      type = "default",
-      duration = 5000,
-      icon,
-      action,
-      onClose,
-    },
-    ref,
-  ) => {
+  ({ id, title, description, type = "default", duration = 5000, icon, action, onClose }, ref) => {
     React.useEffect(() => {
       if (duration <= 0) {
         return;
@@ -93,8 +69,7 @@ const ToastItem = React.forwardRef<HTMLDivElement, ToastItemProps>(
     }, [duration, id, onClose]);
 
     const style = toastStyleMap[type];
-    const announcementRole =
-      type === "error" || type === "warning" ? "alert" : "status";
+    const announcementRole = type === "error" || type === "warning" ? "alert" : "status";
 
     return (
       <div
@@ -107,25 +82,17 @@ const ToastItem = React.forwardRef<HTMLDivElement, ToastItemProps>(
         )}
       >
         <div className="flex w-full items-start gap-md p-md">
-          <div className={cn("shrink-0", style.iconClassName)}>
-            {icon ?? style.icon}
-          </div>
+          <div className={cn("shrink-0", style.iconClassName)}>{icon ?? style.icon}</div>
           <div className="min-w-0 flex-1">
             {title ? <p className="text-sm font-semibold">{title}</p> : null}
-            {description ? (
-              <div className="mt-xs text-sm text-foreground-muted">
-                {description}
-              </div>
-            ) : null}
+            {description ? <div className="mt-xs text-sm text-foreground-muted">{description}</div> : null}
             {action ? <div className="mt-sm">{action}</div> : null}
           </div>
           <button
             type="button"
             className="inline-flex rounded-md p-xs text-foreground-subtle transition-colors hover:bg-foreground/5 hover:text-foreground focus:ring-2 focus:ring-primary/30 focus:outline-none"
             onClick={() => onClose(id)}
-            aria-label={
-              title ? `Dismiss ${title} notification` : "Dismiss notification"
-            }
+            aria-label={title ? `Dismiss ${title} notification` : "Dismiss notification"}
           >
             <IconX className="h-4 w-4" />
           </button>
@@ -142,9 +109,7 @@ interface ToastContextType {
   dismiss: (id: string) => void;
 }
 
-const ToastContext = React.createContext<ToastContextType | undefined>(
-  undefined,
-);
+const ToastContext = React.createContext<ToastContextType | undefined>(undefined);
 
 export interface ToastProviderProps {
   children: React.ReactNode;
@@ -152,17 +117,11 @@ export interface ToastProviderProps {
   position?: "bottom-right" | "top-right";
 }
 
-export const ToastProvider: React.FC<ToastProviderProps> = ({
-  children,
-  maxToasts = 5,
-  position = "bottom-right",
-}) => {
+export const ToastProvider: React.FC<ToastProviderProps> = ({ children, maxToasts = 5, position = "bottom-right" }) => {
   const [toasts, setToasts] = React.useState<ToastRecord[]>([]);
 
   const dismiss = React.useCallback((id: string) => {
-    setToasts((currentToasts) =>
-      currentToasts.filter((toast) => toast.id !== id),
-    );
+    setToasts((currentToasts) => currentToasts.filter((toast) => toast.id !== id));
   }, []);
 
   const toast = React.useCallback(
@@ -187,9 +146,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
         aria-label="Notifications"
         className={cn(
           "pointer-events-none fixed right-0 z-100 flex w-full max-w-md flex-col gap-sm p-lg",
-          position === "bottom-right"
-            ? "bottom-0 sm:right-0 sm:bottom-0"
-            : "top-0 sm:right-0",
+          position === "bottom-right" ? "bottom-0 sm:right-0 sm:bottom-0" : "top-0 sm:right-0",
         )}
       >
         {toasts.map((toastItem) => (

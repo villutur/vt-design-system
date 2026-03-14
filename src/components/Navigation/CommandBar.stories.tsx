@@ -17,7 +17,9 @@ export const Default: Story = {
     subtitle: "Live environment: Production-Cluster-04 // Refresh: 15s",
     actions: (
       <>
-        <Button size="xs" variant="secondary">Export CSV</Button>
+        <Button size="xs" variant="secondary">
+          Export CSV
+        </Button>
         <Button size="xs">Re-Sync Nodes</Button>
       </>
     ),

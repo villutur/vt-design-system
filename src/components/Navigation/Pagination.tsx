@@ -13,11 +13,7 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
   siblingCount?: number;
 }
 
-function getPageRange(
-  current: number,
-  total: number,
-  siblings: number,
-): (number | "...")[] {
+function getPageRange(current: number, total: number, siblings: number): (number | "...")[] {
   const pages: (number | "...")[] = [];
   const left = Math.max(2, current - siblings);
   const right = Math.min(total - 1, current + siblings);
@@ -44,17 +40,11 @@ export const Pagination: React.FC<PaginationProps> = ({
   const btnBase =
     "inline-flex h-7 min-w-[1.75rem] items-center justify-center rounded px-xs text-xs font-medium transition-colors";
   const btnActive = "bg-primary/10 font-bold text-primary";
-  const btnInactive =
-    "text-foreground-muted hover:bg-surface-muted hover:text-foreground";
+  const btnInactive = "text-foreground-muted hover:bg-surface-muted hover:text-foreground";
   const btnDisabled = "cursor-not-allowed opacity-30";
 
   return (
-    <div
-      className={cn("flex items-center gap-xs", className)}
-      role="navigation"
-      aria-label="Pagination"
-      {...props}
-    >
+    <div className={cn("flex items-center gap-xs", className)} role="navigation" aria-label="Pagination" {...props}>
       <button
         className={cn(btnBase, page <= 1 ? btnDisabled : btnInactive)}
         onClick={() => onPageChange(page - 1)}
@@ -66,10 +56,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
       {pages.map((p, i) =>
         p === "..." ? (
-          <span
-            key={`ellipsis-${i}`}
-            className="px-xs text-xs text-foreground-subtle"
-          >
+          <span key={`ellipsis-${i}`} className="px-xs text-xs text-foreground-subtle">
             ...
           </span>
         ) : (

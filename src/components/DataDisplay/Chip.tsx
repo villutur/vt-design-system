@@ -9,10 +9,8 @@ const chipVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-surface-muted text-foreground hover:bg-surface-subtle",
-        primary:
-          "bg-primary/10 text-primary hover:bg-primary/20",
+        default: "bg-surface-muted text-foreground hover:bg-surface-subtle",
+        primary: "bg-primary/10 text-primary hover:bg-primary/20",
         outline:
           "border border-default bg-transparent text-foreground-muted hover:bg-surface-muted hover:text-foreground",
       },
@@ -31,12 +29,11 @@ const chipVariants = cva(
       size: "default",
       interactive: false,
     },
-  }
+  },
 );
 
 export interface ChipProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onClick">,
-    VariantProps<typeof chipVariants> {
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onClick">, VariantProps<typeof chipVariants> {
   /**
    * Optional icon to show before the label
    */
@@ -57,21 +54,7 @@ export interface ChipProps
 }
 
 export const Chip = forwardRef<HTMLDivElement, ChipProps>(
-  (
-    {
-      className,
-      variant,
-      size,
-      children,
-      startIcon,
-      endIcon,
-      onClick,
-      onRemove,
-      disabled,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, variant, size, children, startIcon, endIcon, onClick, onRemove, disabled, ...props }, ref) => {
     const isInteractive = !!onClick;
     const hasRemove = !!onRemove;
 
@@ -80,31 +63,27 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
         ref={ref}
         className={cn(
           chipVariants({ variant, size, interactive: isInteractive }),
-          disabled ? "opacity-50 pointer-events-none" : "",
-          className
+          disabled ? "pointer-events-none opacity-50" : "",
+          className,
         )}
         onClick={disabled ? undefined : onClick}
         {...props}
       >
         {startIcon && (
-          <span className="mr-sm -ml-xs inline-flex shrink-0 items-center justify-center">
-            {startIcon}
-          </span>
+          <span className="mr-sm -ml-xs inline-flex shrink-0 items-center justify-center">{startIcon}</span>
         )}
-        
+
         <span className="truncate">{children}</span>
 
         {endIcon && !hasRemove && (
-          <span className="ml-sm -mr-xs inline-flex shrink-0 items-center justify-center">
-            {endIcon}
-          </span>
+          <span className="-mr-xs ml-sm inline-flex shrink-0 items-center justify-center">{endIcon}</span>
         )}
 
         {hasRemove && (
           <button
             type="button"
             className={cn(
-              "ml-sm -mr-sm inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full opacity-70 transition-opacity hover:bg-surface-subtle hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30",
+              "-mr-sm ml-sm inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full opacity-70 transition-opacity hover:bg-surface-subtle hover:opacity-100 focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:outline-none",
             )}
             onClick={(e) => {
               e.stopPropagation();
@@ -118,6 +97,6 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
         )}
       </div>
     );
-  }
+  },
 );
 Chip.displayName = "Chip";

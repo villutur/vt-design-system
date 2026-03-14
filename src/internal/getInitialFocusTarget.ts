@@ -1,9 +1,5 @@
 function isAvailableFocusTarget(element: HTMLElement | null | undefined) {
-  return Boolean(
-    element &&
-      !element.hasAttribute("disabled") &&
-      element.getAttribute("aria-hidden") !== "true",
-  );
+  return Boolean(element && !element.hasAttribute("disabled") && element.getAttribute("aria-hidden") !== "true");
 }
 
 const preferredFocusableSelector = [
@@ -25,10 +21,7 @@ const fallbackFocusableSelector = [
   "[tabindex]:not([tabindex='-1'])",
 ].join(",");
 
-export function getInitialFocusTarget(
-  container: HTMLElement | null,
-  preferredTarget?: HTMLElement | null,
-) {
+export function getInitialFocusTarget(container: HTMLElement | null, preferredTarget?: HTMLElement | null) {
   if (isAvailableFocusTarget(preferredTarget)) {
     return preferredTarget;
   }

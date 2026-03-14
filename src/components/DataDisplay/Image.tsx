@@ -22,12 +22,7 @@ const roundedClassMap = {
 
 export type ImageFit = keyof typeof fitClassMap;
 export type ImageRounded = keyof typeof roundedClassMap;
-export type ImageAspectRatio =
-  | "auto"
-  | "square"
-  | "video"
-  | number
-  | `${number}/${number}`;
+export type ImageAspectRatio = "auto" | "square" | "video" | number | `${number}/${number}`;
 
 function resolveAspectRatio(aspectRatio: ImageAspectRatio) {
   if (aspectRatio === "auto") {
@@ -49,10 +44,7 @@ function resolveAspectRatio(aspectRatio: ImageAspectRatio) {
   return aspectRatio.replace("/", " / ");
 }
 
-export interface ImageProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "children" | "onError" | "onLoad"
-> {
+export interface ImageProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "children" | "onError" | "onLoad"> {
   src?: string;
   alt?: string;
   fallback?: React.ReactNode;
@@ -144,12 +136,7 @@ export const Image = forwardRef<HTMLDivElement, ImageProps>(
             width={width}
             height={height}
             title={title}
-            className={cn(
-              "block w-full",
-              resolvedAspectRatio ? "h-full" : "h-auto",
-              fitClassMap[fit],
-              imgClassName,
-            )}
+            className={cn("block w-full", resolvedAspectRatio ? "h-full" : "h-auto", fitClassMap[fit], imgClassName)}
             style={imgStyle}
             onError={(event) => {
               setHasError(true);

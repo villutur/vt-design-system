@@ -1,10 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  IconCheck,
-  IconClockHour4,
-  IconFileAnalytics,
-  IconServerBolt,
-} from "@tabler/icons-react";
+import { IconCheck, IconClockHour4, IconFileAnalytics, IconServerBolt } from "@tabler/icons-react";
 import { Timeline } from "./Timeline";
 
 const meta: Meta<typeof Timeline> = {

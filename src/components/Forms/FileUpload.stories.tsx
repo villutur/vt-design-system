@@ -73,11 +73,7 @@ export const WithProgress: Story = {
     items: [
       {
         id: "release-notes",
-        file: createMockFile(
-          "release-notes.md",
-          "release notes",
-          "text/markdown",
-        ),
+        file: createMockFile("release-notes.md", "release notes", "text/markdown"),
         status: "uploading",
         progress: 68,
       },
@@ -121,26 +117,17 @@ export const UploadAndRemove: Story = {
     onItemsChange: fn(),
   },
   play: async ({ canvasElement, args }) => {
-    const fileInput = canvasElement.querySelector(
-      "input[type='file']",
-    ) as HTMLInputElement;
+    const fileInput = canvasElement.querySelector("input[type='file']") as HTMLInputElement;
 
-    await userEvent.upload(
-      fileInput,
-      createMockFile("release-plan.txt", "deploy checklist", "text/plain"),
-    );
+    await userEvent.upload(fileInput, createMockFile("release-plan.txt", "deploy checklist", "text/plain"));
 
     const canvas = within(canvasElement);
     await expect(canvas.getByText(/release-plan\.txt/i)).toBeInTheDocument();
     await expect(args.onItemsChange).toHaveBeenCalled();
 
-    await userEvent.click(
-      canvas.getByRole("button", { name: /remove release-plan\.txt/i }),
-    );
+    await userEvent.click(canvas.getByRole("button", { name: /remove release-plan\.txt/i }));
 
-    await expect(
-      canvas.queryByText(/release-plan\.txt/i),
-    ).not.toBeInTheDocument();
+    await expect(canvas.queryByText(/release-plan\.txt/i)).not.toBeInTheDocument();
   },
 };
 
@@ -151,19 +138,12 @@ export const RejectLargeFile: Story = {
     onRejectedFiles: fn(),
   },
   play: async ({ canvasElement, args }) => {
-    const fileInput = canvasElement.querySelector(
-      "input[type='file']",
-    ) as HTMLInputElement;
+    const fileInput = canvasElement.querySelector("input[type='file']") as HTMLInputElement;
 
-    await userEvent.upload(
-      fileInput,
-      createMockFile("too-large.txt", "this file is too large", "text/plain"),
-    );
+    await userEvent.upload(fileInput, createMockFile("too-large.txt", "this file is too large", "text/plain"));
 
     const canvas = within(canvasElement);
-    await expect(
-      canvas.getByText(/some files could not be added/i),
-    ).toBeInTheDocument();
+    await expect(canvas.getByText(/some files could not be added/i)).toBeInTheDocument();
     await expect(args.onRejectedFiles).toHaveBeenCalled();
   },
 };

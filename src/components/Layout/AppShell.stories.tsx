@@ -36,9 +36,7 @@ export const Default: Story = {
         sidebar={
           <aside className="hidden w-64 border-r bg-slate-50 p-4 md:block dark:bg-slate-800">
             <nav className="space-y-2">
-              <div className="rounded bg-slate-200 p-2 text-sm font-medium dark:bg-slate-700">
-                Dashboard
-              </div>
+              <div className="rounded bg-slate-200 p-2 text-sm font-medium dark:bg-slate-700">Dashboard</div>
               <div className="rounded p-2 text-sm text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700">
                 Settings
               </div>
@@ -52,9 +50,8 @@ export const Default: Story = {
         <div className="space-y-4">
           <h1 className="text-2xl font-bold">Welcome back</h1>
           <p className="text-slate-500">
-            This is the main content area of the application shell. It
-            automatically handles scrolling when content exceeds the viewport
-            height.
+            This is the main content area of the application shell. It automatically handles scrolling when content
+            exceeds the viewport height.
           </p>
           <div className="flex h-96 items-center justify-center rounded-xl border-2 border-dashed border-slate-300 text-slate-400 dark:border-slate-700">
             Content Space

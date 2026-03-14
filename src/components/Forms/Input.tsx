@@ -10,8 +10,7 @@ const inputVariants = cva(
     variants: {
       hasError: {
         true: "border-error/50 focus:border-error focus:ring-2 focus:ring-error/20",
-        false:
-          "border-default hover:border-strong focus:border-primary focus:ring-2 focus:ring-primary/20",
+        false: "border-default hover:border-strong focus:border-primary focus:ring-2 focus:ring-primary/20",
       },
       size: {
         xs: "py-xs px-sm text-[11px] h-6",
@@ -27,9 +26,7 @@ const inputVariants = cva(
 );
 
 export interface InputProps
-  extends
-    Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
-    VariantProps<typeof inputVariants> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">, VariantProps<typeof inputVariants> {
   label?: string;
   description?: React.ReactNode;
   helperText?: React.ReactNode;
@@ -71,18 +68,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         disabled={disabled}
         htmlFor={generatedId}
         labelHidden={labelHidden}
-        messageId={
-          helperText || errorText ? `${generatedId}-message` : undefined
-        }
+        messageId={helperText || errorText ? `${generatedId}-message` : undefined}
       >
         <input
           id={generatedId}
           ref={ref}
           className={cn(inputVariants({ hasError: !!error, size, className }))}
           aria-invalid={!!error}
-          aria-describedby={
-            helperText || errorText ? `${generatedId}-message` : undefined
-          }
+          aria-describedby={helperText || errorText ? `${generatedId}-message` : undefined}
           required={required}
           disabled={disabled}
           {...props}

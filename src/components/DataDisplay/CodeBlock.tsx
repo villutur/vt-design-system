@@ -6,10 +6,7 @@ import { cn } from "../../utils/cn";
 
 export type CodeBlockTheme = "auto" | "light" | "dark";
 
-export interface CodeBlockProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "title"
-> {
+export interface CodeBlockProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   code: string;
   language: string;
   title?: React.ReactNode;
@@ -55,13 +52,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   }, [theme]);
 
   const highlightTheme =
-    theme === "dark"
-      ? themes.vsDark
-      : theme === "light"
-        ? themes.vsLight
-        : isDark
-          ? themes.vsDark
-          : themes.vsLight;
+    theme === "dark" ? themes.vsDark : theme === "light" ? themes.vsLight : isDark ? themes.vsDark : themes.vsLight;
 
   const handleCopy = async () => {
     if (typeof navigator === "undefined" || !navigator.clipboard) {
@@ -87,12 +78,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             {title ?? language}
           </div>
           {copyable ? (
-            <Button
-              type="button"
-              size="xs"
-              variant="ghost"
-              onClick={() => void handleCopy()}
-            >
+            <Button type="button" size="xs" variant="ghost" onClick={() => void handleCopy()}>
               {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
               {copied ? "Copied" : "Copy"}
             </Button>
@@ -100,17 +86,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         </div>
       )}
 
-      <Highlight
-        theme={highlightTheme}
-        code={code.trimEnd()}
-        language={language}
-      >
-        {({
-          className: highlightClassName,
-          tokens,
-          getLineProps,
-          getTokenProps,
-        }) => (
+      <Highlight theme={highlightTheme} code={code.trimEnd()} language={language}>
+        {({ className: highlightClassName, tokens, getLineProps, getTokenProps }) => (
           <pre
             className={cn(
               highlightClassName,
@@ -133,9 +110,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                   )}
                 >
                   {showLineNumbers ? (
-                    <span className="pt-[1px] text-right text-xs text-foreground-subtle select-none">
-                      {lineNumber}
-                    </span>
+                    <span className="pt-[1px] text-right text-xs text-foreground-subtle select-none">{lineNumber}</span>
                   ) : null}
                   <span className={cn("block", wrapLongLines && "min-w-0")}>
                     {line.map((token, tokenIndex) => (

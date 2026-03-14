@@ -7,9 +7,7 @@ interface DropdownContextValue {
   closeMenu: () => void;
 }
 
-const DropdownContext = React.createContext<DropdownContextValue | undefined>(
-  undefined,
-);
+const DropdownContext = React.createContext<DropdownContextValue | undefined>(undefined);
 
 function useDropdownContext() {
   return React.useContext(DropdownContext);
@@ -20,11 +18,7 @@ function getFocusableMenuItems(container: HTMLElement | null) {
     return [];
   }
 
-  return Array.from(
-    container.querySelectorAll<HTMLButtonElement>(
-      "[data-dropdown-item='true']:not([disabled])",
-    ),
-  );
+  return Array.from(container.querySelectorAll<HTMLButtonElement>("[data-dropdown-item='true']:not([disabled])"));
 }
 
 export interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -59,12 +53,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
       onChange: onOpenChange,
     });
 
-    const placement =
-      align === "right"
-        ? "bottom-end"
-        : align === "center"
-          ? "bottom"
-          : "bottom-start";
+    const placement = align === "right" ? "bottom-end" : align === "center" ? "bottom" : "bottom-start";
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
       const items = getFocusableMenuItems(contentRef.current);
@@ -73,24 +62,18 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
         return;
       }
 
-      const activeIndex = items.findIndex(
-        (item) => item === document.activeElement,
-      );
+      const activeIndex = items.findIndex((item) => item === document.activeElement);
 
       switch (event.key) {
         case "ArrowDown": {
           event.preventDefault();
-          const nextIndex =
-            activeIndex < 0 ? 0 : (activeIndex + 1) % items.length;
+          const nextIndex = activeIndex < 0 ? 0 : (activeIndex + 1) % items.length;
           items[nextIndex]?.focus();
           break;
         }
         case "ArrowUp": {
           event.preventDefault();
-          const nextIndex =
-            activeIndex < 0
-              ? items.length - 1
-              : (activeIndex - 1 + items.length) % items.length;
+          const nextIndex = activeIndex < 0 ? items.length - 1 : (activeIndex - 1 + items.length) % items.length;
           items[nextIndex]?.focus();
           break;
         }
@@ -111,15 +94,11 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
     };
 
     const triggerElement = React.isValidElement(trigger) ? (
-      typeof trigger.type === "string" &&
-      !["button", "a", "input"].includes(trigger.type) ? (
-        React.cloneElement(
-          trigger as React.ReactElement<Record<string, unknown>>,
-          {
-            role: (trigger.props as { role?: string }).role ?? "button",
-            tabIndex: (trigger.props as { tabIndex?: number }).tabIndex ?? 0,
-          },
-        )
+      typeof trigger.type === "string" && !["button", "a", "input"].includes(trigger.type) ? (
+        React.cloneElement(trigger as React.ReactElement<Record<string, unknown>>, {
+          role: (trigger.props as { role?: string }).role ?? "button",
+          tabIndex: (trigger.props as { tabIndex?: number }).tabIndex ?? 0,
+        })
       ) : (
         trigger
       )
@@ -128,11 +107,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
     );
 
     return (
-      <Popover
-        open={currentOpen}
-        onOpenChange={setCurrentOpen}
-        placement={placement}
-      >
+      <Popover open={currentOpen} onOpenChange={setCurrentOpen} placement={placement}>
         <DropdownContext.Provider
           value={{
             closeMenu: () => setCurrentOpen(false),
@@ -160,10 +135,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
                 handleKeyDown(event);
               }
             }}
-            className={cn(
-              "animate-in fade-in-0 zoom-in-95 min-w-36 p-xs",
-              className,
-            )}
+            className={cn("animate-in fade-in-0 zoom-in-95 min-w-36 p-xs", className)}
             {...props}
           >
             {children}
@@ -180,47 +152,40 @@ export interface DropdownItemProps extends React.ButtonHTMLAttributes<HTMLButton
   closeOnSelect?: boolean;
 }
 
-export const DropdownItem = React.forwardRef<
-  HTMLButtonElement,
-  DropdownItemProps
->(({ className, closeOnSelect = true, disabled, onClick, ...props }, ref) => {
-  const context = useDropdownContext();
+export const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
+  ({ className, closeOnSelect = true, disabled, onClick, ...props }, ref) => {
+    const context = useDropdownContext();
 
-  return (
-    <button
-      ref={ref}
-      type="button"
-      role="menuitem"
-      data-dropdown-item="true"
-      disabled={disabled}
-      className={cn(
-        "relative flex w-full items-center gap-sm rounded-lg px-sm py-sm text-sm text-foreground transition-colors outline-none hover:bg-surface-muted hover:text-foreground focus:bg-surface-muted focus:text-foreground disabled:pointer-events-none disabled:opacity-50",
-        className,
-      )}
-      onClick={(event) => {
-        onClick?.(event);
+    return (
+      <button
+        ref={ref}
+        type="button"
+        role="menuitem"
+        data-dropdown-item="true"
+        disabled={disabled}
+        className={cn(
+          "relative flex w-full items-center gap-sm rounded-lg px-sm py-sm text-sm text-foreground transition-colors outline-none hover:bg-surface-muted hover:text-foreground focus:bg-surface-muted focus:text-foreground disabled:pointer-events-none disabled:opacity-50",
+          className,
+        )}
+        onClick={(event) => {
+          onClick?.(event);
 
-        if (!event.defaultPrevented && !disabled && closeOnSelect) {
-          context?.closeMenu();
-        }
-      }}
-      {...props}
-    />
-  );
-});
+          if (!event.defaultPrevented && !disabled && closeOnSelect) {
+            context?.closeMenu();
+          }
+        }}
+        {...props}
+      />
+    );
+  },
+);
 
 DropdownItem.displayName = "DropdownItem";
 
-export const DropdownSeparator = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    role="separator"
-    className={cn("-mx-xs my-xs h-px bg-border-default", className)}
-    {...props}
-  />
-));
+export const DropdownSeparator = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} role="separator" className={cn("-mx-xs my-xs h-px bg-border-default", className)} {...props} />
+  ),
+);
 
 DropdownSeparator.displayName = "DropdownSeparator";

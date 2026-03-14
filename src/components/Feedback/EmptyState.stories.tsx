@@ -25,8 +25,7 @@ export const Default: Story = {
     icon: <IconInbox size={24} />,
     eyebrow: "No content",
     title: "Nothing has been uploaded yet",
-    description:
-      "When files, notes, or release assets are added, they will appear here.",
+    description: "When files, notes, or release assets are added, they will appear here.",
     action: <Button size="sm">Upload first file</Button>,
   },
 };
@@ -35,8 +34,7 @@ export const LeftAligned: Story = {
   args: {
     icon: <IconSearch size={22} />,
     title: "No matching results",
-    description:
-      "Try widening the filters or searching for a different keyword.",
+    description: "Try widening the filters or searching for a different keyword.",
     align: "left",
     size: "sm",
     action: (
@@ -52,8 +50,7 @@ export const FirstRunSetup: Story = {
     icon: <IconInbox size={22} />,
     eyebrow: "First run",
     title: "No environments are connected yet",
-    description:
-      "Connect a workspace or import an existing configuration before monitoring can begin.",
+    description: "Connect a workspace or import an existing configuration before monitoring can begin.",
     action: <Button size="sm">Connect environment</Button>,
     size: "md",
   },

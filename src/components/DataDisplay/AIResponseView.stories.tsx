@@ -142,10 +142,8 @@ export const MultimodalAttachments: Story = {
 export const ErrorState: Story = {
   args: {
     status: "error",
-    content:
-      "## Partial output\n\nThe assistant started drafting the summary but the final handoff was interrupted.",
-    errorMessage:
-      "The workspace could not finish the response because the reviewer note service timed out.",
+    content: "## Partial output\n\nThe assistant started drafting the summary but the final handoff was interrupted.",
+    errorMessage: "The workspace could not finish the response because the reviewer note service timed out.",
     thought: {
       summary: "Fallback path",
       content: "Retry only the note lookup step and preserve the already drafted markdown.",

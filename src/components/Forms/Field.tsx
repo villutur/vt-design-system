@@ -8,23 +8,11 @@ export interface FieldLabelProps extends React.LabelHTMLAttributes<HTMLLabelElem
 }
 
 export const FieldLabel = React.forwardRef<HTMLLabelElement, FieldLabelProps>(
-  (
-    {
-      className,
-      children,
-      required = false,
-      hidden = false,
-      disabled = false,
-      ...props
-    },
-    ref,
-  ) => (
+  ({ className, children, required = false, hidden = false, disabled = false, ...props }, ref) => (
     <label
       ref={ref}
       className={cn(
-        hidden
-          ? "sr-only"
-          : "text-sm font-medium text-foreground-muted transition-colors",
+        hidden ? "sr-only" : "text-sm font-medium text-foreground-muted transition-colors",
         disabled && "opacity-70",
         className,
       )}
@@ -46,20 +34,11 @@ export interface FieldMessageProps extends React.HTMLAttributes<HTMLParagraphEle
   error?: boolean;
 }
 
-export const FieldMessage = React.forwardRef<
-  HTMLParagraphElement,
-  FieldMessageProps
->(({ className, error = false, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn(
-      "text-xs",
-      error ? "text-error" : "text-foreground-muted",
-      className,
-    )}
-    {...props}
-  />
-));
+export const FieldMessage = React.forwardRef<HTMLParagraphElement, FieldMessageProps>(
+  ({ className, error = false, ...props }, ref) => (
+    <p ref={ref} className={cn("text-xs", error ? "text-error" : "text-foreground-muted", className)} {...props} />
+  ),
+);
 
 FieldMessage.displayName = "FieldMessage";
 
@@ -100,25 +79,13 @@ export const Field = React.forwardRef<HTMLDivElement, FieldProps>(
     const message = error ? (errorText ?? helperText) : helperText;
 
     return (
-      <div
-        ref={ref}
-        className={cn("flex w-full flex-col gap-sm", className)}
-        {...props}
-      >
+      <div ref={ref} className={cn("flex w-full flex-col gap-sm", className)} {...props}>
         {label ? (
           <div className="space-y-xs">
-            <FieldLabel
-              id={labelId}
-              htmlFor={htmlFor}
-              required={required}
-              hidden={labelHidden}
-              disabled={disabled}
-            >
+            <FieldLabel id={labelId} htmlFor={htmlFor} required={required} hidden={labelHidden} disabled={disabled}>
               {label}
             </FieldLabel>
-            {description ? (
-              <p className="text-xs text-foreground-muted">{description}</p>
-            ) : null}
+            {description ? <p className="text-xs text-foreground-muted">{description}</p> : null}
           </div>
         ) : null}
 

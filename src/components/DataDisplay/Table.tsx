@@ -23,9 +23,7 @@ const densityClassMap = {
   },
 } as const;
 
-export interface TableProps<
-  T,
-> extends React.TableHTMLAttributes<HTMLTableElement> {
+export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElement> {
   columns: TableColumn<T>[];
   data: T[];
   keyExtractor: (row: T, index: number) => string | number;
@@ -52,9 +50,7 @@ function getAlignmentClass(align: TableColumn<unknown>["align"]) {
 }
 
 function renderCellValue<T>(column: TableColumn<T>, row: T) {
-  return typeof column.accessor === "function"
-    ? column.accessor(row)
-    : (row[column.accessor] as React.ReactNode);
+  return typeof column.accessor === "function" ? column.accessor(row) : (row[column.accessor] as React.ReactNode);
 }
 
 function TableInner<T>(
@@ -81,18 +77,8 @@ function TableInner<T>(
   const hasStateRow = !!errorState || (!loading && data.length === 0);
 
   return (
-    <div
-      className={cn(
-        "w-full overflow-x-auto",
-        stickyHeader && "max-h-[26rem] overflow-auto",
-        containerClassName,
-      )}
-    >
-      <table
-        ref={ref}
-        className={cn("min-w-full border-collapse text-left", className)}
-        {...props}
-      >
+    <div className={cn("w-full overflow-x-auto", stickyHeader && "max-h-[26rem] overflow-auto", containerClassName)}>
+      <table ref={ref} className={cn("min-w-full border-collapse text-left", className)} {...props}>
         <thead
           className={cn(
             "border-b border-default bg-surface-subtle/60",
@@ -124,12 +110,7 @@ function TableInner<T>(
                   {columns.map((column, columnIndex) => (
                     <td
                       key={column.id ?? columnIndex}
-                      className={cn(
-                        "text-foreground",
-                        sizing.cell,
-                        column.className,
-                        column.cellClassName,
-                      )}
+                      className={cn("text-foreground", sizing.cell, column.className, column.cellClassName)}
                     >
                       <div className="h-4 w-full animate-pulse rounded bg-surface-muted" />
                     </td>
@@ -146,9 +127,7 @@ function TableInner<T>(
                   className={cn(
                     "transition-colors",
                     onRowClick && "cursor-pointer hover:bg-surface-subtle",
-                    typeof rowClassName === "function"
-                      ? rowClassName(row, rowIndex)
-                      : rowClassName,
+                    typeof rowClassName === "function" ? rowClassName(row, rowIndex) : rowClassName,
                   )}
                 >
                   {columns.map((column, columnIndex) => (
@@ -175,9 +154,7 @@ function TableInner<T>(
                 colSpan={Math.max(columns.length, 1)}
                 className={cn(
                   "text-center text-foreground-muted",
-                  density === "sm"
-                    ? "px-sm py-lg text-xs"
-                    : "px-md py-xl text-sm",
+                  density === "sm" ? "px-sm py-lg text-xs" : "px-md py-xl text-sm",
                 )}
               >
                 {stateContent}

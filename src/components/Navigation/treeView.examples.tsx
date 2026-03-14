@@ -16,11 +16,7 @@ import {
 import { Avatar } from "../DataDisplay/Avatar";
 import { Badge } from "../DataDisplay/Badge";
 import { cn } from "../../utils/cn";
-import {
-  createTreeViewItemsFromObject,
-  type TreeViewItem,
-  type TreeViewRenderProps,
-} from "./TreeView";
+import { createTreeViewItemsFromObject, type TreeViewItem, type TreeViewRenderProps } from "./TreeView";
 
 const fileBadgeVariantMap = {
   css: "softWarning",
@@ -37,10 +33,7 @@ function getFileBadgeVariant(extension: string | undefined) {
     return "outlineGray";
   }
 
-  return (
-    fileBadgeVariantMap[extension as keyof typeof fileBadgeVariantMap] ??
-    "outlineGray"
-  );
+  return fileBadgeVariantMap[extension as keyof typeof fileBadgeVariantMap] ?? "outlineGray";
 }
 
 export const sampleConfigurationObject = {
@@ -327,9 +320,7 @@ export interface AsyncTreeLoaderOptions {
   failOnceIds?: string[];
 }
 
-export function createAsyncTreeChildLoader(
-  options: AsyncTreeLoaderOptions = {},
-) {
+export function createAsyncTreeChildLoader(options: AsyncTreeLoaderOptions = {}) {
   const attempts = new Map<string, number>();
   const failOnceIds = new Set(options.failOnceIds ?? ["async-config"]);
 
@@ -342,9 +333,7 @@ export function createAsyncTreeChildLoader(
     attempts.set(item.id, attemptCount);
 
     if (failOnceIds.has(item.id) && attemptCount === 1) {
-      throw new Error(
-        "Could not load environment presets on the first attempt.",
-      );
+      throw new Error("Could not load environment presets on the first attempt.");
     }
 
     if (item.id === "async-packages") {
@@ -389,10 +378,7 @@ export function createAsyncTreeChildLoader(
   };
 }
 
-export const branchFirstTreeComparator = (
-  left: TreeViewItem,
-  right: TreeViewItem,
-) => {
+export const branchFirstTreeComparator = (left: TreeViewItem, right: TreeViewItem) => {
   const leftIsBranch = canItemActAsBranch(left);
   const rightIsBranch = canItemActAsBranch(right);
 
@@ -408,8 +394,7 @@ function canItemActAsBranch(item: TreeViewItem) {
 }
 
 function renderFileIcon(item: TreeViewItem, isExpanded: boolean) {
-  const extension =
-    typeof item.data?.extension === "string" ? item.data.extension : undefined;
+  const extension = typeof item.data?.extension === "string" ? item.data.extension : undefined;
   const kind = item.data?.kind;
 
   if (kind === "folder") {
@@ -431,13 +416,8 @@ function renderFileIcon(item: TreeViewItem, isExpanded: boolean) {
   return <IconFileText size={16} />;
 }
 
-export function renderFileTreeNode({
-  item,
-  isExpanded,
-  isSelected,
-}: TreeViewRenderProps) {
-  const extension =
-    typeof item.data?.extension === "string" ? item.data.extension : undefined;
+export function renderFileTreeNode({ item, isExpanded, isSelected }: TreeViewRenderProps) {
+  const extension = typeof item.data?.extension === "string" ? item.data.extension : undefined;
 
   return (
     <div className="flex min-w-0 flex-1 items-center gap-sm">
@@ -445,19 +425,10 @@ export function renderFileTreeNode({
         {renderFileIcon(item, isExpanded)}
       </span>
       <div className="min-w-0 flex-1">
-        <div
-          className={cn(
-            "truncate text-sm font-medium",
-            isSelected ? "text-primary" : "text-foreground",
-          )}
-        >
+        <div className={cn("truncate text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
           {item.name}
         </div>
-        {item.description ? (
-          <div className="truncate text-xs text-foreground-muted">
-            {item.description}
-          </div>
-        ) : null}
+        {item.description ? <div className="truncate text-xs text-foreground-muted">{item.description}</div> : null}
       </div>
       {extension ? (
         <Badge size="sm" variant={getFileBadgeVariant(extension)}>
@@ -469,10 +440,8 @@ export function renderFileTreeNode({
 }
 
 export function renderTeamTreeNode({ item, isSelected }: TreeViewRenderProps) {
-  const initials =
-    typeof item.data?.initials === "string" ? item.data.initials : undefined;
-  const status =
-    typeof item.data?.status === "string" ? item.data.status : undefined;
+  const initials = typeof item.data?.initials === "string" ? item.data.initials : undefined;
+  const status = typeof item.data?.status === "string" ? item.data.status : undefined;
   const role = typeof item.data?.role === "string" ? item.data.role : undefined;
   const team = typeof item.data?.team === "string" ? item.data.team : undefined;
 
@@ -483,19 +452,10 @@ export function renderTeamTreeNode({ item, isSelected }: TreeViewRenderProps) {
           {item.icon ?? <IconUsers size={16} />}
         </span>
         <div className="min-w-0 flex-1">
-          <div
-            className={cn(
-              "truncate text-sm font-medium",
-              isSelected ? "text-primary" : "text-foreground",
-            )}
-          >
+          <div className={cn("truncate text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
             {item.name}
           </div>
-          {item.description ? (
-            <div className="truncate text-xs text-foreground-muted">
-              {item.description}
-            </div>
-          ) : null}
+          {item.description ? <div className="truncate text-xs text-foreground-muted">{item.description}</div> : null}
         </div>
       </div>
     );
@@ -505,17 +465,10 @@ export function renderTeamTreeNode({ item, isSelected }: TreeViewRenderProps) {
     <div className="flex min-w-0 flex-1 items-center gap-sm">
       <Avatar size="sm" initials={initials} fallbackText={item.name} />
       <div className="min-w-0 flex-1">
-        <div
-          className={cn(
-            "truncate text-sm font-medium",
-            isSelected ? "text-primary" : "text-foreground",
-          )}
-        >
+        <div className={cn("truncate text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
           {item.name}
         </div>
-        <div className="truncate text-xs text-foreground-muted">
-          {[role, team].filter(Boolean).join(" · ")}
-        </div>
+        <div className="truncate text-xs text-foreground-muted">{[role, team].filter(Boolean).join(" · ")}</div>
       </div>
       {status ? (
         <Badge size="sm" variant="softPrimary">
@@ -542,30 +495,17 @@ function renderAsyncExplorerIcon(item: TreeViewItem) {
   return <IconServer size={16} />;
 }
 
-export function renderAsyncExplorerNode({
-  item,
-  isSelected,
-  hasAsyncError,
-}: TreeViewRenderProps) {
+export function renderAsyncExplorerNode({ item, isSelected, hasAsyncError }: TreeViewRenderProps) {
   return (
     <div className="flex min-w-0 flex-1 items-center gap-sm">
       <span className="inline-flex shrink-0 items-center justify-center text-foreground-muted">
         {renderAsyncExplorerIcon(item)}
       </span>
       <div className="min-w-0 flex-1">
-        <div
-          className={cn(
-            "truncate text-sm font-medium",
-            isSelected ? "text-primary" : "text-foreground",
-          )}
-        >
+        <div className={cn("truncate text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
           {item.name}
         </div>
-        {item.description ? (
-          <div className="truncate text-xs text-foreground-muted">
-            {item.description}
-          </div>
-        ) : null}
+        {item.description ? <div className="truncate text-xs text-foreground-muted">{item.description}</div> : null}
       </div>
       {hasAsyncError ? (
         <Badge size="sm" variant="outlineError">

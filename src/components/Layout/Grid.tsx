@@ -43,15 +43,11 @@ const gapStyles: Record<GridGap, string> = {
 export const Grid = React.forwardRef<HTMLDivElement, GridProps>(
   ({ className, cols = 1, gap = "md", children, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={cn("grid", colStyles[cols], gapStyles[gap], className)}
-        {...props}
-      >
+      <div ref={ref} className={cn("grid", colStyles[cols], gapStyles[gap], className)} {...props}>
         {children}
       </div>
     );
-  }
+  },
 );
 Grid.displayName = "Grid";
 
@@ -84,14 +80,10 @@ const colSpanStyles: Record<ColSpan, string> = {
 export const GridItem = React.forwardRef<HTMLDivElement, GridItemProps>(
   ({ className, colSpan, children, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={cn(colSpan ? colSpanStyles[colSpan] : "", className)}
-        {...props}
-      >
+      <div ref={ref} className={cn(colSpan ? colSpanStyles[colSpan] : "", className)} {...props}>
         {children}
       </div>
     );
-  }
+  },
 );
 GridItem.displayName = "GridItem";

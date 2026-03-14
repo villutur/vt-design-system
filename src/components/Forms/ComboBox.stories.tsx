@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, userEvent, waitFor, within } from "storybook/test";
-import {
-  IconActivity,
-  IconPalette,
-  IconServer2,
-  IconSettings,
-  IconUsers,
-} from "@tabler/icons-react";
+import { IconActivity, IconPalette, IconServer2, IconSettings, IconUsers } from "@tabler/icons-react";
 import { ComboBox, type ComboBoxOption } from "./ComboBox";
 
 const options: ComboBoxOption[] = [
@@ -152,9 +146,7 @@ function createValueFromQuery(query: string) {
 }
 
 function SingleValueExample(args: Partial<ComboBoxProps>) {
-  const [value, setValue] = useState<string | undefined>(
-    args.value ?? args.defaultValue,
-  );
+  const [value, setValue] = useState<string | undefined>(args.value ?? args.defaultValue);
 
   return (
     <div className="max-w-md">
@@ -174,9 +166,7 @@ function SingleValueExample(args: Partial<ComboBoxProps>) {
 }
 
 function MultiSelectExample(args: Partial<ComboBoxProps>) {
-  const [values, setValues] = useState<string[]>(
-    args.values ?? args.defaultValues ?? [],
-  );
+  const [values, setValues] = useState<string[]>(args.values ?? args.defaultValues ?? []);
 
   return (
     <div className="max-w-lg">
@@ -197,14 +187,10 @@ function MultiSelectExample(args: Partial<ComboBoxProps>) {
 }
 
 function AsyncOptionsExample(args: Partial<ComboBoxProps>) {
-  const [value, setValue] = useState<string | undefined>(
-    args.value ?? args.defaultValue,
-  );
+  const [value, setValue] = useState<string | undefined>(args.value ?? args.defaultValue);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
-  const [asyncOptions, setAsyncOptions] = useState<ComboBoxOption[]>(
-    remoteOptions.slice(0, 4),
-  );
+  const [asyncOptions, setAsyncOptions] = useState<ComboBoxOption[]>(remoteOptions.slice(0, 4));
 
   useEffect(() => {
     setLoading(true);
@@ -213,13 +199,7 @@ function AsyncOptionsExample(args: Partial<ComboBoxProps>) {
       const normalizedQuery = query.trim().toLowerCase();
       const nextOptions = normalizedQuery
         ? remoteOptions.filter((option) =>
-            [
-              option.label,
-              option.description ?? "",
-              option.group ?? "",
-              option.value,
-              ...(option.keywords ?? []),
-            ]
+            [option.label, option.description ?? "", option.group ?? "", option.value, ...(option.keywords ?? [])]
               .join(" ")
               .toLowerCase()
               .includes(normalizedQuery),
@@ -256,12 +236,8 @@ function AsyncOptionsExample(args: Partial<ComboBoxProps>) {
 }
 
 function CreatableExample(args: Partial<ComboBoxProps>) {
-  const [value, setValue] = useState<string | undefined>(
-    args.value ?? args.defaultValue,
-  );
-  const [localOptions, setLocalOptions] = useState<ComboBoxOption[]>(
-    options.slice(0, 3),
-  );
+  const [value, setValue] = useState<string | undefined>(args.value ?? args.defaultValue);
+  const [localOptions, setLocalOptions] = useState<ComboBoxOption[]>(options.slice(0, 3));
 
   return (
     <div className="max-w-md">
@@ -331,9 +307,7 @@ export const MultiSelect: Story = {
     await expect(trigger).toHaveTextContent(/jamie rivera/i);
     await expect(args.onValuesChange).toHaveBeenCalled();
 
-    await userEvent.click(
-      canvas.getByRole("button", { name: /clear selections/i }),
-    );
+    await userEvent.click(canvas.getByRole("button", { name: /clear selections/i }));
 
     await expect(trigger).toHaveTextContent(/select reviewers/i);
   },
@@ -343,8 +317,7 @@ export const AsyncOptions: Story = {
   render: (args) => <AsyncOptionsExample {...args} />,
   args: {
     label: "Remote workspace",
-    helperText:
-      "This example disables client filtering and simulates remote search.",
+    helperText: "This example disables client filtering and simulates remote search.",
     options: remoteOptions,
     onValueChange: fn(),
   },
@@ -364,9 +337,7 @@ export const Creatable: Story = {
 
     await userEvent.click(trigger);
 
-    const searchInput = within(document.body).getByPlaceholderText(
-      /search or create teammates/i,
-    );
+    const searchInput = within(document.body).getByPlaceholderText(/search or create teammates/i);
     await userEvent.type(searchInput, "Taylor Greene");
     await userEvent.keyboard("{Enter}");
 
@@ -411,18 +382,14 @@ export const FilterSelectAndClear: Story = {
 
     await userEvent.click(trigger);
 
-    const searchInput = within(document.body).getByPlaceholderText(
-      /search teammates/i,
-    );
+    const searchInput = within(document.body).getByPlaceholderText(/search teammates/i);
     await userEvent.type(searchInput, "alex");
     await userEvent.keyboard("{ArrowDown}{Enter}");
 
     await expect(trigger).toHaveTextContent(/alex morgan/i);
     await expect(args.onValueChange).toHaveBeenCalled();
 
-    await userEvent.click(
-      canvas.getByRole("button", { name: /clear selection/i }),
-    );
+    await userEvent.click(canvas.getByRole("button", { name: /clear selection/i }));
 
     await expect(trigger).toHaveTextContent(/select an owner/i);
   },

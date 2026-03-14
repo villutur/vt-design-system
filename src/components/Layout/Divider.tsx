@@ -24,12 +24,7 @@ export const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
 
     if (label) {
       return (
-        <div
-          ref={ref}
-          role="separator"
-          className={cn("flex items-center gap-md", className)}
-          {...props}
-        >
+        <div ref={ref} role="separator" className={cn("flex items-center gap-md", className)} {...props}>
           <div className="h-px flex-1 bg-border-default" />
           <span className="text-xs font-medium whitespace-nowrap text-foreground-subtle">{label}</span>
           <div className="h-px flex-1 bg-border-default" />
@@ -37,15 +32,8 @@ export const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
       );
     }
 
-    return (
-      <div
-        ref={ref}
-        role="separator"
-        className={cn("h-px w-full bg-border-default", className)}
-        {...props}
-      />
-    );
-  }
+    return <div ref={ref} role="separator" className={cn("h-px w-full bg-border-default", className)} {...props} />;
+  },
 );
 
 Divider.displayName = "Divider";

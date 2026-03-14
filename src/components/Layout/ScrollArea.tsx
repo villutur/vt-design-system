@@ -55,18 +55,16 @@ export const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
       clientHeight: 0,
     });
     const lastAtBottomRef = React.useRef(true);
-    const [currentFollowTail, setCurrentFollowTail] =
-      useControllableState<boolean>({
-        value: followTail,
-        defaultValue: defaultFollowTail,
-        onChange: onFollowTailChange,
-      });
+    const [currentFollowTail, setCurrentFollowTail] = useControllableState<boolean>({
+      value: followTail,
+      defaultValue: defaultFollowTail,
+      onChange: onFollowTailChange,
+    });
     const previousFollowTailRef = React.useRef(currentFollowTail);
 
     const updateAtBottomState = React.useCallback(
       (element: HTMLDivElement) => {
-        const distanceFromBottom =
-          element.scrollHeight - element.scrollTop - element.clientHeight;
+        const distanceFromBottom = element.scrollHeight - element.scrollTop - element.clientHeight;
         const atBottom = distanceFromBottom <= followTailThreshold;
 
         if (lastAtBottomRef.current !== atBottom) {
@@ -88,10 +86,8 @@ export const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
 
       const previousMetrics = previousMetricsRef.current;
       const contentHeightChanged =
-        element.scrollHeight !== previousMetrics.scrollHeight ||
-        element.clientHeight !== previousMetrics.clientHeight;
-      const followTailJustEnabled =
-        currentFollowTail && !previousFollowTailRef.current;
+        element.scrollHeight !== previousMetrics.scrollHeight || element.clientHeight !== previousMetrics.clientHeight;
+      const followTailJustEnabled = currentFollowTail && !previousFollowTailRef.current;
 
       if (currentFollowTail && (contentHeightChanged || followTailJustEnabled)) {
         element.scrollTop = element.scrollHeight;
@@ -128,19 +124,11 @@ export const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
           const previousScrollTop = previousMetricsRef.current.scrollTop;
           const nextScrollTop = element.scrollTop;
           const { distanceFromBottom } = updateAtBottomState(element);
-          const scrolledUp =
-            nextScrollTop < previousScrollTop - FOLLOW_BREAK_SCROLL_DELTA;
+          const scrolledUp = nextScrollTop < previousScrollTop - FOLLOW_BREAK_SCROLL_DELTA;
 
-          if (
-            currentFollowTail &&
-            scrolledUp &&
-            distanceFromBottom > followTailThreshold
-          ) {
+          if (currentFollowTail && scrolledUp && distanceFromBottom > followTailThreshold) {
             setCurrentFollowTail(false);
-          } else if (
-            !currentFollowTail &&
-            distanceFromBottom <= followTailThreshold
-          ) {
+          } else if (!currentFollowTail && distanceFromBottom <= followTailThreshold) {
             setCurrentFollowTail(true);
           }
 

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  IconArrowDown,
-  IconMessageCircle,
-  IconRobot,
-  IconSparkles,
-  IconWand,
-} from "@tabler/icons-react";
+import { IconArrowDown, IconMessageCircle, IconRobot, IconSparkles, IconWand } from "@tabler/icons-react";
 import {
   AIResponseView,
   Avatar,
@@ -57,8 +51,7 @@ const promptHistory = [
     id: "chat-history-export",
     label: "Export bundle follow-up",
     description: "Short follow-up for packaging the final incident bundle.",
-    value:
-      "Add one short follow-up about which slash command I should use next to export the final incident bundle.",
+    value: "Add one short follow-up about which slash command I should use next to export the final incident bundle.",
   },
 ];
 
@@ -102,13 +95,10 @@ export function AIChatWorkspaceExample() {
 
           <Card variant="plain" className="rounded-2xl bg-surface-subtle">
             <CardContent className="space-y-sm p-lg">
-              <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">
-                Current boundary
-              </p>
+              <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">Current boundary</p>
               <p className="text-sm text-foreground-muted">
-                This workspace validates a reusable chat shell without locking
-                the design system into session state, transport logic, or agent
-                orchestration too early.
+                This workspace validates a reusable chat shell without locking the design system into session state,
+                transport logic, or agent orchestration too early.
               </p>
             </CardContent>
           </Card>
@@ -117,12 +107,9 @@ export function AIChatWorkspaceExample() {
             <div className="flex items-start gap-sm rounded-xl border border-default bg-surface-subtle/60 px-md py-md">
               <IconMessageCircle size={16} className="mt-[2px] text-primary" />
               <div>
-                <p className="text-sm font-semibold text-foreground">
-                  Conversation rows stay generic
-                </p>
+                <p className="text-sm font-semibold text-foreground">Conversation rows stay generic</p>
                 <p className="text-sm text-foreground-muted">
-                  `ChatBubble` only owns alignment, tone, meta, and resilient
-                  long-content layout.
+                  `ChatBubble` only owns alignment, tone, meta, and resilient long-content layout.
                 </p>
               </div>
             </div>
@@ -130,12 +117,9 @@ export function AIChatWorkspaceExample() {
             <div className="flex items-start gap-sm rounded-xl border border-default bg-surface-subtle/60 px-md py-md">
               <IconRobot size={16} className="mt-[2px] text-primary" />
               <div>
-                <p className="text-sm font-semibold text-foreground">
-                  Assistant payloads stay render-only
-                </p>
+                <p className="text-sm font-semibold text-foreground">Assistant payloads stay render-only</p>
                 <p className="text-sm text-foreground-muted">
-                  `AIResponseView` remains the dense tool-call and attachment
-                  surface inside the broader chat shell.
+                  `AIResponseView` remains the dense tool-call and attachment surface inside the broader chat shell.
                 </p>
               </div>
             </div>
@@ -143,12 +127,10 @@ export function AIChatWorkspaceExample() {
             <div className="flex items-start gap-sm rounded-xl border border-default bg-surface-subtle/60 px-md py-md">
               <IconWand size={16} className="mt-[2px] text-primary" />
               <div>
-                <p className="text-sm font-semibold text-foreground">
-                  Prompt input stays reusable
-                </p>
+                <p className="text-sm font-semibold text-foreground">Prompt input stays reusable</p>
                 <p className="text-sm text-foreground-muted">
-                  `CommandInput` continues to be the shared command and prompt
-                  primitive rather than a chat-specific textarea.
+                  `CommandInput` continues to be the shared command and prompt primitive rather than a chat-specific
+                  textarea.
                 </p>
               </div>
             </div>
@@ -175,8 +157,8 @@ export function AIChatWorkspaceExample() {
                 meta="09:42"
                 avatar={<Avatar fallbackText="Operator" size="sm" />}
               >
-                Summarize the rollout blocker for REL-3104 and draft the exact
-                rollback wording I can paste into the approval packet.
+                Summarize the rollout blocker for REL-3104 and draft the exact rollback wording I can paste into the
+                approval packet.
               </ChatBubble>
 
               <ChatBubble
@@ -200,8 +182,7 @@ export function AIChatWorkspaceExample() {
                       id: "fetch-release",
                       name: "fetchRelease",
                       status: "success",
-                      summary:
-                        "Loaded the current release status and environment data.",
+                      summary: "Loaded the current release status and environment data.",
                       input: `{"releaseId":"REL-3104"}`,
                       output: `{"environment":"Production","owner":"Jamie Rivera","status":"canary"}`,
                       language: "json",
@@ -210,8 +191,7 @@ export function AIChatWorkspaceExample() {
                       id: "fetch-reviewer-note",
                       name: "fetchReviewerNote",
                       status: "success",
-                      summary:
-                        "Returned the latest rollback guidance from the reviewer.",
+                      summary: "Returned the latest rollback guidance from the reviewer.",
                       input: `{"releaseId":"REL-3104","noteType":"rollback"}`,
                       output: `{"note":"Revert to REL-3106 if error rate exceeds 2%."}`,
                       language: "json",
@@ -223,8 +203,7 @@ export function AIChatWorkspaceExample() {
                       kind: "image",
                       title: "Approval packet preview",
                       src: attachmentPreview,
-                      description:
-                        "Shared screenshot packaged with the release summary.",
+                      description: "Shared screenshot packaged with the release summary.",
                       meta: "PNG · 640x360",
                     },
                     {
@@ -232,8 +211,7 @@ export function AIChatWorkspaceExample() {
                       kind: "file",
                       title: "handoff-note.md",
                       src: "/exports/handoff-note.md",
-                      description:
-                        "Generated markdown note ready to attach to the rollout ticket.",
+                      description: "Generated markdown note ready to attach to the rollout ticket.",
                       meta: "Markdown · 4 KB",
                     },
                   ]}
@@ -247,8 +225,7 @@ export function AIChatWorkspaceExample() {
                 meta="09:44"
                 avatar={<Avatar fallbackText="Operator" size="sm" />}
               >
-                Add one short follow-up about which slash command I should use
-                next to export the final incident bundle.
+                Add one short follow-up about which slash command I should use next to export the final incident bundle.
               </ChatBubble>
 
               <ChatBubble
@@ -259,10 +236,7 @@ export function AIChatWorkspaceExample() {
                 status="streaming"
                 avatar={<Avatar fallbackText="Assistant" size="sm" />}
               >
-                <MarkdownRenderer
-                  content={streamingResponse}
-                  density="compact"
-                />
+                <MarkdownRenderer content={streamingResponse} density="compact" />
               </ChatBubble>
             </div>
           </ScrollArea>
@@ -291,11 +265,7 @@ export function AIChatWorkspaceExample() {
             slashCommands={slashCommands}
             submitLabel="Send"
             actions={
-              <Button
-                size="sm"
-                variant="ghost"
-                leftIcon={<IconSparkles size={16} />}
-              >
+              <Button size="sm" variant="ghost" leftIcon={<IconSparkles size={16} />}>
                 Insert release template
               </Button>
             }

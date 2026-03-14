@@ -32,7 +32,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
       onValueChange,
       ...props
     },
-    ref
+    ref,
   ) => {
     // Uncontrolled state
     const [uncontrolledValue, setUncontrolledValue] = React.useState<string[]>(() => {
@@ -69,7 +69,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
       if (!isControlled) {
         setUncontrolledValue(newValue);
       }
-      
+
       if (onValueChange) {
         // We typecast or enforce depending on what the consumer expects,
         // but typically a single type expects a string and multiple expects string[].
@@ -78,20 +78,17 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
     };
 
     return (
-      <AccordionContext.Provider
-        value={{ type, collapsible, value, onItemClick: handleItemClick }}
-      >
-        <div ref={ref} className={cn("space-y-2 w-full", className)} {...props}>
+      <AccordionContext.Provider value={{ type, collapsible, value, onItemClick: handleItemClick }}>
+        <div ref={ref} className={cn("w-full space-y-2", className)} {...props}>
           {children}
         </div>
       </AccordionContext.Provider>
     );
-  }
+  },
 );
 Accordion.displayName = "Accordion";
 
-export interface AccordionItemProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
+export interface AccordionItemProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   title: React.ReactNode;
   value: string;
 }
@@ -99,7 +96,7 @@ export interface AccordionItemProps
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ className, title, value, children, ...props }, ref) => {
     const context = useContext(AccordionContext);
-    
+
     if (!context) {
       throw new Error("AccordionItem must be used within an Accordion");
     }
@@ -109,10 +106,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          "overflow-hidden rounded-lg border border-default bg-surface",
-          className
-        )}
+        className={cn("overflow-hidden rounded-lg border border-default bg-surface", className)}
         {...props}
       >
         <button
@@ -128,15 +122,13 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
           data-state={isOpen ? "open" : "closed"}
           className={cn(
             "overflow-hidden text-sm text-foreground-muted transition-all",
-            isOpen
-              ? "animate-accordion-down"
-              : "animate-accordion-up h-0 opacity-0"
+            isOpen ? "animate-accordion-down" : "h-0 animate-accordion-up opacity-0",
           )}
         >
-          <div className="px-lg pb-4 pt-0 leading-relaxed text-base">{children}</div>
+          <div className="px-lg pt-0 pb-4 text-base leading-relaxed">{children}</div>
         </div>
       </div>
     );
-  }
+  },
 );
 AccordionItem.displayName = "AccordionItem";

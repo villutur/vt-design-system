@@ -23,10 +23,7 @@ const avatarVariants = cva(
   },
 );
 
-export interface AvatarProps
-  extends
-    React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof avatarVariants> {
+export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof avatarVariants> {
   /**
    * The image URL. If it fails, falls back to initials or icon.
    */
@@ -46,10 +43,7 @@ export interface AvatarProps
 }
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
-  (
-    { className, size, src, alt, fallbackText, initials, children, ...props },
-    ref,
-  ) => {
+  ({ className, size, src, alt, fallbackText, initials, children, ...props }, ref) => {
     // Get initials based on provided text
     const getInitials = (text: string) => {
       if (!text) return "";
@@ -62,11 +56,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     const finalInitials = initials || getInitials(fallbackText || alt || "");
 
     return (
-      <div
-        ref={ref}
-        className={cn(avatarVariants({ size }), className)}
-        {...props}
-      >
+      <div ref={ref} className={cn(avatarVariants({ size }), className)} {...props}>
         <Image
           src={src}
           alt={alt || "Avatar"}
@@ -75,9 +65,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
           imgClassName="h-full w-full"
           fallback={
             finalInitials ? (
-              <span className="flex h-full w-full items-center justify-center">
-                {finalInitials}
-              </span>
+              <span className="flex h-full w-full items-center justify-center">{finalInitials}</span>
             ) : (
               <span className="flex h-full w-full items-center justify-center opacity-70">
                 <IconUser className="h-1/2 w-1/2 text-current" />

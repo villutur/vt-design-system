@@ -77,9 +77,7 @@ export const OpenCloseInteraction: Story = {
     await userEvent.click(canvas.getByRole("button", { name: /open drawer/i }));
     await expect(within(document.body).getByRole("dialog")).toBeInTheDocument();
     await userEvent.keyboard("{Escape}");
-    await expect(
-      within(document.body).queryByRole("dialog"),
-    ).not.toBeInTheDocument();
+    await expect(within(document.body).queryByRole("dialog")).not.toBeInTheDocument();
   },
 };
 

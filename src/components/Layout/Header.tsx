@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  IconLayersIntersect,
-  IconSearch,
-  IconBell,
-  IconHelp,
-} from "@tabler/icons-react";
+import { IconLayersIntersect, IconSearch, IconBell, IconHelp } from "@tabler/icons-react";
 import { Avatar } from "../DataDisplay/Avatar";
 
 export interface HeaderProps {
@@ -74,10 +69,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Search */}
         {showSearch && (
           <div className="relative w-64">
-            <IconSearch
-              size={16}
-              className="absolute top-1/2 left-3 -translate-y-1/2 text-foreground-subtle"
-            />
+            <IconSearch size={16} className="absolute top-1/2 left-3 -translate-y-1/2 text-foreground-subtle" />
             <input
               type="text"
               placeholder="Global search..."
@@ -115,20 +107,14 @@ export const Header: React.FC<HeaderProps> = ({
         )}
 
         {/* Divider between action buttons and user section */}
-        {showUser && hasActionButtons && (
-          <div className="mx-sm h-8 w-px bg-border-default"></div>
-        )}
+        {showUser && hasActionButtons && <div className="mx-sm h-8 w-px bg-border-default"></div>}
 
         {/* User section */}
         {showUser && (
           <div className="flex items-center gap-md">
             <div className="hidden text-right sm:block">
-              <p className="text-xs font-semibold text-foreground">
-                {userName}
-              </p>
-              <p className="text-[10px] tracking-wider text-foreground-muted uppercase">
-                {userRole}
-              </p>
+              <p className="text-xs font-semibold text-foreground">{userName}</p>
+              <p className="text-[10px] tracking-wider text-foreground-muted uppercase">{userRole}</p>
             </div>
             <Avatar
               src={userImageUrl}

@@ -48,8 +48,7 @@ export const WithDescription: Story = {
   args: {
     label: "System instruction",
     description: "Optional guidance that shapes the model's tone and priorities.",
-    defaultValue:
-      "Answer like a pragmatic product engineer. Prefer concise recommendations with tradeoffs.",
+    defaultValue: "Answer like a pragmatic product engineer. Prefer concise recommendations with tradeoffs.",
     resize: "none",
   },
 };

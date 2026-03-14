@@ -53,8 +53,8 @@ export const Multiple: Story = {
         Includes data tables, interactive charts, and resizable layout panels.
       </AccordionItem>
       <AccordionItem value="installation" title="Installation Guide">
-        Run `pnpm install`, import `vt-design-system/theme.css` in your app
-        stylesheet, then import `vt-design-system/styles.css` at the app root.
+        Run `pnpm install`, import `vt-design-system/theme.css` in your app stylesheet, then import
+        `vt-design-system/styles.css` at the app root.
       </AccordionItem>
     </Accordion>
   ),

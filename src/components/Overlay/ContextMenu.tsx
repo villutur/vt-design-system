@@ -14,9 +14,7 @@ interface ContextMenuState {
   close: () => void;
 }
 
-const ContextMenuContext = React.createContext<ContextMenuState | undefined>(
-  undefined,
-);
+const ContextMenuContext = React.createContext<ContextMenuState | undefined>(undefined);
 
 function useContextMenuState() {
   const context = React.useContext(ContextMenuContext);
@@ -41,10 +39,7 @@ function composeEventHandlers<E extends React.SyntheticEvent>(
 
 export interface ContextMenuProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export const ContextMenu: React.FC<ContextMenuProps> = ({
-  children,
-  ...props
-}) => {
+export const ContextMenu: React.FC<ContextMenuProps> = ({ children, ...props }) => {
   const contentId = React.useId();
   const [position, setPosition] = React.useState({ isOpen: false, x: 0, y: 0 });
 
@@ -56,7 +51,10 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
       contentId,
       openAt: (x: number, y: number) => setPosition({ isOpen: true, x, y }),
       close: () =>
-        setPosition((currentPosition) => ({ ...currentPosition, isOpen: false })),
+        setPosition((currentPosition) => ({
+          ...currentPosition,
+          isOpen: false,
+        })),
     }),
     [contentId, position],
   );
@@ -68,48 +66,46 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   );
 };
 
-export interface ContextMenuTriggerProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
+export interface ContextMenuTriggerProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export const ContextMenuTrigger = React.forwardRef<
-  HTMLDivElement,
-  ContextMenuTriggerProps
->(({ children, onContextMenu, onClick, onKeyDown, tabIndex, ...props }, ref) => {
-  const { openAt, close, isOpen, contentId } = useContextMenuState();
+export const ContextMenuTrigger = React.forwardRef<HTMLDivElement, ContextMenuTriggerProps>(
+  ({ children, onContextMenu, onClick, onKeyDown, tabIndex, ...props }, ref) => {
+    const { openAt, close, isOpen, contentId } = useContextMenuState();
 
-  return (
-    <div
-      ref={ref}
-      tabIndex={tabIndex ?? 0}
-      aria-haspopup="menu"
-      aria-expanded={isOpen}
-      aria-controls={isOpen ? contentId : undefined}
-      data-state={isOpen ? "open" : "closed"}
-      onClick={composeEventHandlers(onClick, () => {
-        close();
-      })}
-      onContextMenu={composeEventHandlers(onContextMenu, (event) => {
-        event.preventDefault();
-        openAt(event.clientX, event.clientY);
-      })}
-      onKeyDown={composeEventHandlers(onKeyDown, (event) => {
-        if (event.key === "ContextMenu" || (event.shiftKey && event.key === "F10")) {
-          event.preventDefault();
-          const rect = event.currentTarget.getBoundingClientRect();
-          openAt(rect.left, rect.bottom);
-          return;
-        }
-
-        if (event.key === "Escape") {
+    return (
+      <div
+        ref={ref}
+        tabIndex={tabIndex ?? 0}
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
+        aria-controls={isOpen ? contentId : undefined}
+        data-state={isOpen ? "open" : "closed"}
+        onClick={composeEventHandlers(onClick, () => {
           close();
-        }
-      })}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-});
+        })}
+        onContextMenu={composeEventHandlers(onContextMenu, (event) => {
+          event.preventDefault();
+          openAt(event.clientX, event.clientY);
+        })}
+        onKeyDown={composeEventHandlers(onKeyDown, (event) => {
+          if (event.key === "ContextMenu" || (event.shiftKey && event.key === "F10")) {
+            event.preventDefault();
+            const rect = event.currentTarget.getBoundingClientRect();
+            openAt(rect.left, rect.bottom);
+            return;
+          }
+
+          if (event.key === "Escape") {
+            close();
+          }
+        })}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  },
+);
 ContextMenuTrigger.displayName = "ContextMenuTrigger";
 
 interface ContextMenuItemInternalProps {
@@ -120,13 +116,9 @@ interface ContextMenuItemInternalProps {
   onRequestClose?: () => void;
 }
 
-export interface ContextMenuContentProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
+export interface ContextMenuContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export const ContextMenuContent = React.forwardRef<
-  HTMLDivElement,
-  ContextMenuContentProps
->(
+export const ContextMenuContent = React.forwardRef<HTMLDivElement, ContextMenuContentProps>(
   (
     {
       children,
@@ -140,32 +132,28 @@ export const ContextMenuContent = React.forwardRef<
     ref,
   ) => {
     const { isOpen, x, y, close, contentId } = useContextMenuState();
-  const contentRef = React.useRef<HTMLDivElement>(null);
+    const contentRef = React.useRef<HTMLDivElement>(null);
 
-  useFocusReturn(isOpen);
-  useDismissibleLayer({
-    enabled: isOpen,
-    refs: [contentRef],
-    onDismiss: close,
-  });
-
-  const menuItems = React.useMemo(() => {
-    const items: Array<{ disabled?: boolean }> = [];
-
-    React.Children.forEach(children, (child) => {
-      if (
-        React.isValidElement<ContextMenuItemProps>(child) &&
-        child.type === ContextMenuItem
-      ) {
-        items.push({ disabled: child.props.disabled });
-      }
+    useFocusReturn(isOpen);
+    useDismissibleLayer({
+      enabled: isOpen,
+      refs: [contentRef],
+      onDismiss: close,
     });
 
-    return items;
-  }, [children]);
+    const menuItems = React.useMemo(() => {
+      const items: Array<{ disabled?: boolean }> = [];
 
-  const { activeIndex, setActiveIndex, handleKeyDown, itemRefs, setItemRef } =
-    useListNavigation({
+      React.Children.forEach(children, (child) => {
+        if (React.isValidElement<ContextMenuItemProps>(child) && child.type === ContextMenuItem) {
+          items.push({ disabled: child.props.disabled });
+        }
+      });
+
+      return items;
+    }, [children]);
+
+    const { activeIndex, setActiveIndex, handleKeyDown, itemRefs, setItemRef } = useListNavigation({
       items: menuItems,
       open: isOpen,
       onClose: close,
@@ -175,41 +163,36 @@ export const ContextMenuContent = React.forwardRef<
       },
     });
 
-  React.useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
+    React.useEffect(() => {
+      if (!isOpen) {
+        return;
+      }
 
-    window.requestAnimationFrame(() => {
-      contentRef.current?.focus();
-    });
-  }, [isOpen]);
+      window.requestAnimationFrame(() => {
+        contentRef.current?.focus();
+      });
+    }, [isOpen]);
 
     if (!isOpen) {
       return null;
     }
 
-  let itemIndex = -1;
-  const decoratedChildren = React.Children.map(children, (child) => {
-    if (!React.isValidElement(child) || child.type !== ContextMenuItem) {
-      return child;
-    }
+    let itemIndex = -1;
+    const decoratedChildren = React.Children.map(children, (child) => {
+      if (!React.isValidElement(child) || child.type !== ContextMenuItem) {
+        return child;
+      }
 
-    itemIndex += 1;
+      itemIndex += 1;
 
-    return React.cloneElement(
-      child as React.ReactElement<
-        ContextMenuItemProps & ContextMenuItemInternalProps
-      >,
-      {
+      return React.cloneElement(child as React.ReactElement<ContextMenuItemProps & ContextMenuItemInternalProps>, {
         itemIndex,
         active: itemIndex === activeIndex,
         setItemRef: setItemRef(itemIndex),
         setActiveIndex,
         onRequestClose: close,
-      },
-    );
-  });
+      });
+    });
 
     return (
       <FloatingPortal>
@@ -247,16 +230,12 @@ export const ContextMenuContent = React.forwardRef<
 );
 ContextMenuContent.displayName = "ContextMenuContent";
 
-export interface ContextMenuItemProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ContextMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   shortcut?: React.ReactNode;
   inset?: boolean;
 }
 
-export const ContextMenuItem = React.forwardRef<
-  HTMLButtonElement,
-  ContextMenuItemProps & ContextMenuItemInternalProps
->(
+export const ContextMenuItem = React.forwardRef<HTMLButtonElement, ContextMenuItemProps & ContextMenuItemInternalProps>(
   (
     {
       className,
@@ -305,36 +284,24 @@ export const ContextMenuItem = React.forwardRef<
           }
         }}
         className={cn(
-          "flex w-full items-center justify-between gap-md rounded-lg px-sm py-sm text-sm text-foreground outline-none transition-colors disabled:cursor-not-allowed disabled:opacity-50",
+          "flex w-full items-center justify-between gap-md rounded-lg px-sm py-sm text-sm text-foreground transition-colors outline-none disabled:cursor-not-allowed disabled:opacity-50",
           inset && "pl-lg",
-          active
-            ? "bg-surface-muted"
-            : "hover:bg-surface-subtle hover:text-foreground",
+          active ? "bg-surface-muted" : "hover:bg-surface-subtle hover:text-foreground",
           className,
         )}
         {...props}
       >
         <span>{children}</span>
-        {shortcut ? (
-          <span className="text-xs tracking-wide text-foreground-subtle uppercase">
-            {shortcut}
-          </span>
-        ) : null}
+        {shortcut ? <span className="text-xs tracking-wide text-foreground-subtle uppercase">{shortcut}</span> : null}
       </button>
     );
   },
 );
 ContextMenuItem.displayName = "ContextMenuItem";
 
-export const ContextMenuSeparator = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    role="separator"
-    className={cn("my-xs h-px bg-border-default", className)}
-    {...props}
-  />
-));
+export const ContextMenuSeparator = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} role="separator" className={cn("my-xs h-px bg-border-default", className)} {...props} />
+  ),
+);
 ContextMenuSeparator.displayName = "ContextMenuSeparator";

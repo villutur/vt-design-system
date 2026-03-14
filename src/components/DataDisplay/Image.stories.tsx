@@ -82,17 +82,9 @@ export const FramedGallerySurface: Story = {
       <div className="space-y-sm">
         <div className="flex items-center gap-sm">
           <Badge variant="softPrimary">Cover</Badge>
-          <span className="text-sm text-foreground-muted">
-            Full-bleed preview for media cards and attachments.
-          </span>
+          <span className="text-sm text-foreground-muted">Full-bleed preview for media cards and attachments.</span>
         </div>
-        <Image
-          {...args}
-          src={landscapePreview}
-          alt="Landscape preview"
-          aspectRatio="16/10"
-          className="w-full"
-        />
+        <Image {...args} src={landscapePreview} alt="Landscape preview" aspectRatio="16/10" className="w-full" />
       </div>
 
       <div className="space-y-sm">

@@ -197,44 +197,26 @@ const loginHighlights = [
   },
 ];
 
-function ExampleBrandLockup({
-  name,
-  subtitle,
-}: {
-  name: string;
-  subtitle: string;
-}) {
+function ExampleBrandLockup({ name, subtitle }: { name: string; subtitle: string }) {
   return (
     <div className="flex items-center gap-md">
       <div className="rounded-2xl bg-primary p-sm text-white shadow-soft">
         <IconLayersIntersect size={22} />
       </div>
       <div>
-        <p className="text-base font-semibold tracking-tight text-foreground">
-          {name}
-        </p>
-        <p className="text-xs tracking-[0.18em] text-foreground-muted uppercase">
-          {subtitle}
-        </p>
+        <p className="text-base font-semibold tracking-tight text-foreground">{name}</p>
+        <p className="text-xs tracking-[0.18em] text-foreground-muted uppercase">{subtitle}</p>
       </div>
     </div>
   );
 }
 
-function LoginHighlightCard({
-  label,
-  description,
-}: {
-  label: string;
-  description: string;
-}) {
+function LoginHighlightCard({ label, description }: { label: string; description: string }) {
   return (
     <Card variant="plain" className="h-full rounded-2xl bg-surface/70">
       <CardContent className="p-lg">
         <p className="text-sm font-semibold text-foreground">{label}</p>
-        <p className="mt-sm text-sm leading-6 text-foreground-muted">
-          {description}
-        </p>
+        <p className="mt-sm text-sm leading-6 text-foreground-muted">{description}</p>
       </CardContent>
     </Card>
   );
@@ -245,9 +227,7 @@ export function LoginSplitShowcase({ contained = false }: MockupSurfaceProps) {
     <section
       className={cn(
         "relative overflow-hidden bg-canvas text-foreground",
-        contained
-          ? "min-h-[720px] rounded-[32px] border border-default shadow-soft"
-          : "min-h-screen",
+        contained ? "min-h-[720px] rounded-[32px] border border-default shadow-soft" : "min-h-screen",
       )}
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(14,116,216,0.18),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(20,184,166,0.16),transparent_38%)]" />
@@ -256,10 +236,7 @@ export function LoginSplitShowcase({ contained = false }: MockupSurfaceProps) {
       <div className="relative grid min-h-full lg:grid-cols-[1.05fr_0.95fr]">
         <div className="flex flex-col justify-between gap-10 p-2xl">
           <div className="space-y-5">
-            <ExampleBrandLockup
-              name="Northstar Cloud"
-              subtitle="Workspace access"
-            />
+            <ExampleBrandLockup name="Northstar Cloud" subtitle="Workspace access" />
 
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="softPrimary">Enterprise login</Badge>
@@ -272,8 +249,8 @@ export function LoginSplitShowcase({ contained = false }: MockupSurfaceProps) {
                   Secure sign-in that feels polished before the first keystroke.
                 </h1>
                 <p className="mt-lg max-w-xl text-base leading-7 text-foreground-muted">
-                  A professional enterprise login built from cards, inputs,
-                  badges, alerts, dividers, and buttons from this design system.
+                  A professional enterprise login built from cards, inputs, badges, alerts, dividers, and buttons from
+                  this design system.
                 </p>
               </div>
 
@@ -292,12 +269,10 @@ export function LoginSplitShowcase({ contained = false }: MockupSurfaceProps) {
           <Card variant="plain" className="max-w-xl rounded-3xl bg-surface/75">
             <CardContent className="grid gap-lg p-xl md:grid-cols-[1.3fr_0.7fr]">
               <div>
-                <p className="text-sm font-semibold text-foreground">
-                  Trusted workspace setup
-                </p>
+                <p className="text-sm font-semibold text-foreground">Trusted workspace setup</p>
                 <p className="mt-sm text-sm leading-6 text-foreground-muted">
-                  Teams can route users to SSO or password-based access without
-                  rebuilding the layout for each workspace.
+                  Teams can route users to SSO or password-based access without rebuilding the layout for each
+                  workspace.
                 </p>
               </div>
               <div className="flex flex-wrap items-start justify-start gap-2 md:justify-end">
@@ -313,38 +288,23 @@ export function LoginSplitShowcase({ contained = false }: MockupSurfaceProps) {
           <Card className="w-full max-w-md">
             <CardHeader>
               <div className="flex items-center justify-between gap-md">
-                <ExampleBrandLockup
-                  name="Northstar Cloud"
-                  subtitle="Workspace portal"
-                />
+                <ExampleBrandLockup name="Northstar Cloud" subtitle="Workspace portal" />
                 <StatusBadge status="active" label="Secure" />
               </div>
               <div className="pt-sm">
                 <CardTitle>Sign in to your workspace</CardTitle>
                 <CardDescription>
-                  Use your team credentials to access production dashboards and
-                  release controls.
+                  Use your team credentials to access production dashboards and release controls.
                 </CardDescription>
               </div>
             </CardHeader>
 
             <CardContent className="space-y-lg">
-              <Input
-                label="Work email"
-                type="email"
-                placeholder="alex@northstar.cloud"
-              />
-              <Input
-                label="Password"
-                type="password"
-                placeholder="Enter your password"
-              />
+              <Input label="Work email" type="email" placeholder="alex@northstar.cloud" />
+              <Input label="Password" type="password" placeholder="Enter your password" />
 
               <div className="flex items-center justify-between gap-md">
-                <Checkbox
-                  id="remember-session"
-                  label="Keep me signed in for 12 hours"
-                />
+                <Checkbox id="remember-session" label="Keep me signed in for 12 hours" />
                 <Button variant="ghost" size="xs">
                   Need help?
                 </Button>
@@ -360,8 +320,8 @@ export function LoginSplitShowcase({ contained = false }: MockupSurfaceProps) {
               <Divider label="Security note" />
 
               <Alert type="info" title="Privileged roles use MFA">
-                Production administrators and billing owners must complete an
-                extra verification step before access is granted.
+                Production administrators and billing owners must complete an extra verification step before access is
+                granted.
               </Alert>
             </CardContent>
           </Card>
@@ -371,16 +331,12 @@ export function LoginSplitShowcase({ contained = false }: MockupSurfaceProps) {
   );
 }
 
-export function LoginCompactShowcase({
-  contained = false,
-}: MockupSurfaceProps) {
+export function LoginCompactShowcase({ contained = false }: MockupSurfaceProps) {
   return (
     <section
       className={cn(
         "relative overflow-hidden bg-canvas text-foreground",
-        contained
-          ? "min-h-[720px] rounded-[32px] border border-default shadow-soft"
-          : "min-h-screen",
+        contained ? "min-h-[720px] rounded-[32px] border border-default shadow-soft" : "min-h-screen",
       )}
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.16),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(8,145,178,0.14),transparent_34%)]" />
@@ -390,16 +346,13 @@ export function LoginCompactShowcase({
           <Card variant="plain" className="rounded-[28px] bg-surface/75">
             <CardHeader>
               <div className="flex items-center justify-between gap-md">
-                <ExampleBrandLockup
-                  name="Atlas Console"
-                  subtitle="Passwordless access"
-                />
+                <ExampleBrandLockup name="Atlas Console" subtitle="Passwordless access" />
                 <Badge variant="softSuccess">Magic link</Badge>
               </div>
               <CardTitle>Fast workspace entry</CardTitle>
               <CardDescription>
-                A calmer login variation for internal tools, admin consoles, or
-                support portals that do not need a large hero panel.
+                A calmer login variation for internal tools, admin consoles, or support portals that do not need a large
+                hero panel.
               </CardDescription>
             </CardHeader>
 
@@ -417,12 +370,10 @@ export function LoginCompactShowcase({
               />
 
               <div className="rounded-2xl border border-default bg-surface-subtle p-md">
-                <p className="text-xs font-semibold text-foreground-muted uppercase">
-                  Why teams choose this flow
-                </p>
+                <p className="text-xs font-semibold text-foreground-muted uppercase">Why teams choose this flow</p>
                 <p className="mt-sm text-sm leading-6 text-foreground-muted">
-                  It reduces friction for low-risk internal tools while still
-                  leaving enough space for trust signals and workspace context.
+                  It reduces friction for low-risk internal tools while still leaving enough space for trust signals and
+                  workspace context.
                 </p>
               </div>
             </CardContent>
@@ -441,18 +392,13 @@ export function LoginCompactShowcase({
                 <div className="pt-sm">
                   <CardTitle>Send a secure magic link</CardTitle>
                   <CardDescription>
-                    Invite users back into the product with a compact,
-                    friendly-first authentication flow.
+                    Invite users back into the product with a compact, friendly-first authentication flow.
                   </CardDescription>
                 </div>
               </CardHeader>
 
               <CardContent className="space-y-lg">
-                <Input
-                  label="Work email"
-                  type="email"
-                  placeholder="morgan@atlas.console"
-                />
+                <Input label="Work email" type="email" placeholder="morgan@atlas.console" />
 
                 <div className="grid gap-md sm:grid-cols-2">
                   <Button>Send magic link</Button>
@@ -460,8 +406,7 @@ export function LoginCompactShowcase({
                 </div>
 
                 <Alert type="success" title="Workspace protections enabled">
-                  Sessions automatically fall back to step-up verification if a
-                  user enters from an unknown network.
+                  Sessions automatically fall back to step-up verification if a user enters from an unknown network.
                 </Alert>
 
                 <div className="grid gap-md sm:grid-cols-3">
@@ -470,18 +415,10 @@ export function LoginCompactShowcase({
                     "Region-aware session rules are enforced per workspace.",
                     "One-click fallback to password or SSO is available.",
                   ].map((copy, index) => (
-                    <Card
-                      key={index}
-                      variant="plain"
-                      className="rounded-2xl bg-surface/70"
-                    >
+                    <Card key={index} variant="plain" className="rounded-2xl bg-surface/70">
                       <CardContent className="p-md">
                         <p className="text-xs font-semibold text-foreground-muted uppercase">
-                          {index === 0
-                            ? "Audit"
-                            : index === 1
-                              ? "Policy"
-                              : "Recovery"}
+                          {index === 0 ? "Audit" : index === 1 ? "Policy" : "Recovery"}
                         </p>
                         <p className="mt-sm text-sm text-foreground">{copy}</p>
                       </CardContent>
@@ -513,17 +450,11 @@ function DashboardHeaderBlock({
       <div className="space-y-sm">
         <div className="flex flex-wrap items-center gap-2">{eyebrow}</div>
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">
-            {title}
-          </h1>
-          <p className="mt-sm max-w-3xl text-sm leading-6 text-foreground-muted">
-            {description}
-          </p>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">{title}</h1>
+          <p className="mt-sm max-w-3xl text-sm leading-6 text-foreground-muted">{description}</p>
         </div>
       </div>
-      {actions ? (
-        <div className="flex flex-wrap items-center gap-2">{actions}</div>
-      ) : null}
+      {actions ? <div className="flex flex-wrap items-center gap-2">{actions}</div> : null}
     </div>
   );
 }
@@ -533,11 +464,7 @@ export function DashboardOperationsContent() {
     <div className="space-y-8">
       <div className="space-y-md">
         <Breadcrumbs
-          items={[
-            { label: "Workspace", href: "#" },
-            { label: "Operations", href: "#" },
-            { label: "Release center" },
-          ]}
+          items={[{ label: "Workspace", href: "#" }, { label: "Operations", href: "#" }, { label: "Release center" }]}
         />
 
         <DashboardHeaderBlock
@@ -554,9 +481,7 @@ export function DashboardOperationsContent() {
               <Button variant="secondary" leftIcon={<IconRefresh size={14} />}>
                 Refresh snapshot
               </Button>
-              <Button rightIcon={<IconChevronDown size={14} />}>
-                New release
-              </Button>
+              <Button rightIcon={<IconChevronDown size={14} />}>New release</Button>
             </>
           }
         />
@@ -569,13 +494,7 @@ export function DashboardOperationsContent() {
           trendValue="+4%"
           trendType="success"
           icon={<IconServer size={22} />}
-          chart={
-            <Sparkline
-              data={[10, 12, 11, 15, 16, 19, 20, 22]}
-              height={30}
-              color="#22c55e"
-            />
-          }
+          chart={<Sparkline data={[10, 12, 11, 15, 16, 19, 20, 22]} height={30} color="#22c55e" />}
         />
         <MetricCard
           title="Pending approvals"
@@ -584,13 +503,7 @@ export function DashboardOperationsContent() {
           trendDirection="down"
           trendType="warning"
           icon={<IconActivity size={22} />}
-          chart={
-            <Sparkline
-              data={[16, 15, 14, 14, 12, 10, 8, 7]}
-              height={30}
-              color="#f59e0b"
-            />
-          }
+          chart={<Sparkline data={[16, 15, 14, 14, 12, 10, 8, 7]} height={30} color="#f59e0b" />}
         />
         <MetricCard
           title="Active workspace owners"
@@ -598,13 +511,7 @@ export function DashboardOperationsContent() {
           trendValue="+1"
           trendType="primary"
           icon={<IconUsers size={22} />}
-          chart={
-            <Sparkline
-              data={[6, 8, 8, 10, 11, 11, 13, 14]}
-              height={30}
-              color="#2563eb"
-            />
-          }
+          chart={<Sparkline data={[6, 8, 8, 10, 11, 11, 13, 14]} height={30} color="#2563eb" />}
         />
         <MetricCard
           title="Monthly cloud spend"
@@ -612,13 +519,7 @@ export function DashboardOperationsContent() {
           trendValue="+6.3%"
           trendType="error"
           icon={<IconCurrencyDollar size={22} />}
-          chart={
-            <Sparkline
-              data={[44, 48, 46, 51, 54, 56, 60, 64]}
-              height={30}
-              color="#ef4444"
-            />
-          }
+          chart={<Sparkline data={[44, 48, 46, 51, 54, 56, 60, 64]} height={30} color="#ef4444" />}
         />
       </div>
 
@@ -635,43 +536,29 @@ export function DashboardOperationsContent() {
               <TabsTrigger value="automation">Automation</TabsTrigger>
             </TabsList>
             <TabsContent value="queue">
-              <Table
-                columns={releaseQueueColumns}
-                data={releaseQueueRows}
-                keyExtractor={(row) => row.workflow}
-              />
+              <Table columns={releaseQueueColumns} data={releaseQueueRows} keyExtractor={(row) => row.workflow} />
             </TabsContent>
             <TabsContent value="capacity">
               <div className="space-y-md">
                 <div>
                   <div className="mb-sm flex items-center justify-between">
-                    <span className="text-sm font-medium text-foreground">
-                      Build runners
-                    </span>
-                    <span className="text-xs text-foreground-muted">
-                      78% reserved
-                    </span>
+                    <span className="text-sm font-medium text-foreground">Build runners</span>
+                    <span className="text-xs text-foreground-muted">78% reserved</span>
                   </div>
                   <ProgressBar value={78} />
                 </div>
                 <div>
                   <div className="mb-sm flex items-center justify-between">
-                    <span className="text-sm font-medium text-foreground">
-                      Review throughput
-                    </span>
-                    <span className="text-xs text-foreground-muted">
-                      64% complete
-                    </span>
+                    <span className="text-sm font-medium text-foreground">Review throughput</span>
+                    <span className="text-xs text-foreground-muted">64% complete</span>
                   </div>
                   <ProgressBar value={64} variant="success" />
                 </div>
                 <div className="rounded-2xl border border-default bg-surface-subtle p-md">
-                  <p className="text-sm font-semibold text-foreground">
-                    Queue recommendation
-                  </p>
+                  <p className="text-sm font-semibold text-foreground">Queue recommendation</p>
                   <p className="mt-sm text-sm text-foreground-muted">
-                    Shift the warehouse retry policy to the second deployment
-                    window to free approval capacity for customer-facing fixes.
+                    Shift the warehouse retry policy to the second deployment window to free approval capacity for
+                    customer-facing fixes.
                   </p>
                 </div>
               </div>
@@ -679,37 +566,15 @@ export function DashboardOperationsContent() {
             <TabsContent value="automation">
               <div className="grid gap-md md:grid-cols-3">
                 {[
-                  [
-                    "Auto rollout",
-                    "12 flows",
-                    "Promote automatically after smoke checks pass.",
-                  ],
-                  [
-                    "Manual review",
-                    "3 flows",
-                    "Human review remains for billing and identity changes.",
-                  ],
-                  [
-                    "Rollback ready",
-                    "100%",
-                    "Every active flow currently has a saved rollback point.",
-                  ],
+                  ["Auto rollout", "12 flows", "Promote automatically after smoke checks pass."],
+                  ["Manual review", "3 flows", "Human review remains for billing and identity changes."],
+                  ["Rollback ready", "100%", "Every active flow currently has a saved rollback point."],
                 ].map(([label, value, copy]) => (
-                  <Card
-                    key={label}
-                    variant="plain"
-                    className="rounded-2xl bg-surface/70"
-                  >
+                  <Card key={label} variant="plain" className="rounded-2xl bg-surface/70">
                     <CardContent className="p-lg">
-                      <p className="text-xs font-semibold text-foreground-muted uppercase">
-                        {label}
-                      </p>
-                      <p className="mt-sm text-lg font-semibold text-foreground">
-                        {value}
-                      </p>
-                      <p className="mt-sm text-sm text-foreground-muted">
-                        {copy}
-                      </p>
+                      <p className="text-xs font-semibold text-foreground-muted uppercase">{label}</p>
+                      <p className="mt-sm text-lg font-semibold text-foreground">{value}</p>
+                      <p className="mt-sm text-sm text-foreground-muted">{copy}</p>
                     </CardContent>
                   </Card>
                 ))}
@@ -725,8 +590,8 @@ export function DashboardOperationsContent() {
         >
           <div className="space-y-md">
             <Alert type="success" title="Release window healthy">
-              93% of platform services are ready for promotion. One identity
-              provider is waiting for credential rotation.
+              93% of platform services are ready for promotion. One identity provider is waiting for credential
+              rotation.
             </Alert>
 
             {[
@@ -737,12 +602,8 @@ export function DashboardOperationsContent() {
             ].map((item) => (
               <div key={item.name} className="space-y-sm">
                 <div className="flex items-center justify-between gap-md">
-                  <span className="text-sm font-medium text-foreground">
-                    {item.name}
-                  </span>
-                  <span className="text-xs text-foreground-muted">
-                    {item.value}%
-                  </span>
+                  <span className="text-sm font-medium text-foreground">{item.name}</span>
+                  <span className="text-xs text-foreground-muted">{item.value}%</span>
                 </div>
                 <HealthBar value={item.value} />
               </div>
@@ -752,17 +613,11 @@ export function DashboardOperationsContent() {
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
-        <SectionPanel
-          title="Release Activity"
-          subtitle="Recent milestones and warnings"
-        >
+        <SectionPanel title="Release Activity" subtitle="Recent milestones and warnings">
           <Timeline items={activityItems} density="compact" />
         </SectionPanel>
 
-        <SectionPanel
-          title="Workspace Owners"
-          subtitle="Active humans behind the current release"
-        >
+        <SectionPanel title="Workspace Owners" subtitle="Active humans behind the current release">
           <div className="space-y-lg">
             <div className="flex flex-wrap gap-md">
               {[
@@ -770,20 +625,12 @@ export function DashboardOperationsContent() {
                 { initials: "JP", name: "Jamie Patel", role: "Platform owner" },
                 { initials: "TR", name: "Taylor Ross", role: "QA reviewer" },
               ].map((person) => (
-                <Card
-                  key={person.name}
-                  variant="plain"
-                  className="min-w-[180px] rounded-2xl bg-surface/70"
-                >
+                <Card key={person.name} variant="plain" className="min-w-[180px] rounded-2xl bg-surface/70">
                   <CardContent className="flex items-center gap-md p-lg">
                     <Avatar size="default" initials={person.initials} />
                     <div>
-                      <p className="text-sm font-semibold text-foreground">
-                        {person.name}
-                      </p>
-                      <p className="text-xs text-foreground-muted">
-                        {person.role}
-                      </p>
+                      <p className="text-sm font-semibold text-foreground">{person.name}</p>
+                      <p className="text-xs text-foreground-muted">{person.role}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -832,9 +679,7 @@ export function DashboardExecutiveContent() {
             <Button variant="secondary" leftIcon={<IconChartBar size={14} />}>
               Export board pack
             </Button>
-            <Button leftIcon={<IconPalette size={14} />}>
-              Open planning view
-            </Button>
+            <Button leftIcon={<IconPalette size={14} />}>Open planning view</Button>
           </>
         }
       />
@@ -847,13 +692,7 @@ export function DashboardExecutiveContent() {
           trendDirection="down"
           trendType="warning"
           icon={<IconCurrencyDollar size={22} />}
-          chart={
-            <Sparkline
-              data={[22, 21, 20, 19, 17, 16, 15, 14]}
-              height={30}
-              color="#f59e0b"
-            />
-          }
+          chart={<Sparkline data={[22, 21, 20, 19, 17, 16, 15, 14]} height={30} color="#f59e0b" />}
         />
         <MetricCard
           title="Renewals this quarter"
@@ -861,13 +700,7 @@ export function DashboardExecutiveContent() {
           trendValue="+5"
           trendType="success"
           icon={<IconHome size={22} />}
-          chart={
-            <Sparkline
-              data={[6, 8, 9, 11, 12, 14, 18, 24]}
-              height={30}
-              color="#22c55e"
-            />
-          }
+          chart={<Sparkline data={[6, 8, 9, 11, 12, 14, 18, 24]} height={30} color="#22c55e" />}
         />
         <MetricCard
           title="Partner-led expansions"
@@ -875,13 +708,7 @@ export function DashboardExecutiveContent() {
           trendValue="+2"
           trendType="primary"
           icon={<IconSparkles size={22} />}
-          chart={
-            <Sparkline
-              data={[2, 3, 4, 4, 5, 7, 8, 9]}
-              height={30}
-              color="#2563eb"
-            />
-          }
+          chart={<Sparkline data={[2, 3, 4, 4, 5, 7, 8, 9]} height={30} color="#2563eb" />}
         />
         <MetricCard
           title="Open escalations"
@@ -890,13 +717,7 @@ export function DashboardExecutiveContent() {
           trendDirection="down"
           trendType="success"
           icon={<IconSettings size={22} />}
-          chart={
-            <Sparkline
-              data={[8, 8, 7, 6, 5, 5, 4, 3]}
-              height={30}
-              color="#16a34a"
-            />
-          }
+          chart={<Sparkline data={[8, 8, 7, 6, 5, 5, 4, 3]} height={30} color="#16a34a" />}
         />
       </div>
 
@@ -906,36 +727,24 @@ export function DashboardExecutiveContent() {
           subtitle="Accounts leadership should monitor weekly"
           controls={<Badge variant="softWarning">2 need attention</Badge>}
         >
-          <Table
-            columns={renewalColumns}
-            data={renewalRows}
-            keyExtractor={(row) => row.account}
-          />
+          <Table columns={renewalColumns} data={renewalRows} keyExtractor={(row) => row.account} />
         </SectionPanel>
 
-        <SectionPanel
-          title="Leadership Summary"
-          subtitle="Quick narrative built from reusable surfaces"
-        >
+        <SectionPanel title="Leadership Summary" subtitle="Quick narrative built from reusable surfaces">
           <div className="space-y-md">
             <Card variant="plain" className="rounded-2xl bg-surface/70">
               <CardContent className="p-lg">
-                <p className="text-sm font-semibold text-foreground">
-                  The quarter remains healthy overall.
-                </p>
+                <p className="text-sm font-semibold text-foreground">The quarter remains healthy overall.</p>
                 <p className="mt-sm text-sm leading-6 text-foreground-muted">
-                  The only soft spots are two renewals that need executive
-                  sponsorship and one escalation with a delayed procurement
-                  timeline.
+                  The only soft spots are two renewals that need executive sponsorship and one escalation with a delayed
+                  procurement timeline.
                 </p>
               </CardContent>
             </Card>
 
             <div className="space-y-sm">
               <div className="flex items-center justify-between text-sm">
-                <span className="font-medium text-foreground">
-                  Expansion coverage
-                </span>
+                <span className="font-medium text-foreground">Expansion coverage</span>
                 <span className="text-foreground-muted">72%</span>
               </div>
               <ProgressBar value={72} />
@@ -943,9 +752,7 @@ export function DashboardExecutiveContent() {
 
             <div className="space-y-sm">
               <div className="flex items-center justify-between text-sm">
-                <span className="font-medium text-foreground">
-                  Risk mitigation plan
-                </span>
+                <span className="font-medium text-foreground">Risk mitigation plan</span>
                 <span className="text-foreground-muted">58%</span>
               </div>
               <ProgressBar value={58} variant="warning" />
@@ -960,10 +767,7 @@ export function DashboardExecutiveContent() {
         </SectionPanel>
       </div>
 
-      <SectionPanel
-        title="Account Focus"
-        subtitle="A more card-heavy layout variation"
-      >
+      <SectionPanel title="Account Focus" subtitle="A more card-heavy layout variation">
         <div className="grid gap-4 md:grid-cols-3">
           {[
             {
@@ -1005,20 +809,11 @@ export function DashboardExecutiveContent() {
   );
 }
 
-export function DashboardShellExample({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function DashboardShellExample({ children }: { children: React.ReactNode }) {
   return (
     <AppShell
       header={
-        <Header
-          logoName="Northstar Control"
-          userName="Morgan Lee"
-          userRole="Operations Lead"
-          hasUnreadNotifications
-        />
+        <Header logoName="Northstar Control" userName="Morgan Lee" userRole="Operations Lead" hasUnreadNotifications />
       }
       sidebar={
         <Sidebar
@@ -1030,38 +825,13 @@ export function DashboardShellExample({
             />
           }
         >
-          <SidebarItem
-            icon={<IconHome size={18} />}
-            label="Overview"
-            href="#"
-            isActive
-          />
-          <SidebarItem
-            icon={<IconChartBar size={18} />}
-            label="Performance"
-            href="#"
-          />
-          <SidebarItem
-            icon={<IconUsers size={18} />}
-            label="Workspace owners"
-            href="#"
-          />
+          <SidebarItem icon={<IconHome size={18} />} label="Overview" href="#" isActive />
+          <SidebarItem icon={<IconChartBar size={18} />} label="Performance" href="#" />
+          <SidebarItem icon={<IconUsers size={18} />} label="Workspace owners" href="#" />
           <SidebarSectionBase title="Operations" />
-          <SidebarItem
-            icon={<IconServer size={18} />}
-            label="Infrastructure"
-            href="#"
-          />
-          <SidebarItem
-            icon={<IconDatabase size={18} />}
-            label="Data pipelines"
-            href="#"
-          />
-          <SidebarItem
-            icon={<IconSettings size={18} />}
-            label="Settings"
-            href="#"
-          />
+          <SidebarItem icon={<IconServer size={18} />} label="Infrastructure" href="#" />
+          <SidebarItem icon={<IconDatabase size={18} />} label="Data pipelines" href="#" />
+          <SidebarItem icon={<IconSettings size={18} />} label="Settings" href="#" />
         </Sidebar>
       }
     >

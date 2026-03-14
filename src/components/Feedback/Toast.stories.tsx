@@ -145,8 +145,7 @@ export const RetryAndConfirm: Story = {
         onClick={() => {
           toast({
             title: "Upload failed",
-            description:
-              "The release bundle could not be uploaded on the first attempt.",
+            description: "The release bundle could not be uploaded on the first attempt.",
             type: "warning",
             action: (
               <Button

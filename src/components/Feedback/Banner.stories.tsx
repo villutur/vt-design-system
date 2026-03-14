@@ -23,8 +23,7 @@ export const Info: Story = {
   args: {
     type: "info",
     title: "Scheduled maintenance window",
-    description:
-      "Workspace analytics will be briefly unavailable while the metrics cluster is upgraded.",
+    description: "Workspace analytics will be briefly unavailable while the metrics cluster is upgraded.",
     actions: <Button size="sm">Review timeline</Button>,
   },
 };
@@ -34,8 +33,7 @@ export const WarningDismissible: Story = {
   args: {
     type: "warning",
     title: "Storage nearing capacity",
-    description:
-      "The current plan is at 90% of the monthly storage quota. Consider upgrading before exports fail.",
+    description: "The current plan is at 90% of the monthly storage quota. Consider upgrading before exports fail.",
     actions: (
       <Button size="sm" variant="secondary">
         Manage plan
@@ -49,8 +47,7 @@ export const WorkflowEscalation: Story = {
   args: {
     type: "error",
     title: "Deployments are paused for this workspace",
-    description:
-      "A failed production rollout requires manual review before the release pipeline can continue.",
+    description: "A failed production rollout requires manual review before the release pipeline can continue.",
     actions: (
       <div className="flex flex-wrap gap-sm">
         <Button size="sm">Review incident</Button>

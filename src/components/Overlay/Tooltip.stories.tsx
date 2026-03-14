@@ -100,18 +100,11 @@ export const LongContent: Story = {
 export const WithExistingDescription: Story = {
   render: () => (
     <div className="flex h-48 w-full flex-col items-center justify-center gap-3">
-      <p
-        id="tooltip-existing-description"
-        className="max-w-sm text-center text-sm text-foreground-muted"
-      >
-        This action already has an inline accessibility description before the
-        tooltip opens.
+      <p id="tooltip-existing-description" className="max-w-sm text-center text-sm text-foreground-muted">
+        This action already has an inline accessibility description before the tooltip opens.
       </p>
       <Tooltip content="This tooltip adds a temporary contextual hint without replacing the existing description.">
-        <Button
-          variant="outline"
-          aria-describedby="tooltip-existing-description"
-        >
+        <Button variant="outline" aria-describedby="tooltip-existing-description">
           Publish workspace
         </Button>
       </Tooltip>

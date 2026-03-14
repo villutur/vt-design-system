@@ -31,19 +31,28 @@ export const PrimaryVariant: Story = {
         <TabsTrigger value="password">Password</TabsTrigger>
         <TabsTrigger value="settings">Settings</TabsTrigger>
       </TabsList>
-      
-      <TabsContent value="account" className="p-4 border rounded-xl mt-4 bg-slate-50 dark:bg-slate-900 dark:border-slate-800">
-        <h3 className="font-semibold text-lg mb-2">Account Settings</h3>
+
+      <TabsContent
+        value="account"
+        className="mt-4 rounded-xl border bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <h3 className="mb-2 text-lg font-semibold">Account Settings</h3>
         <p className="text-sm text-slate-500">Make changes to your account here.</p>
       </TabsContent>
-      
-      <TabsContent value="password" className="p-4 border rounded-xl mt-4 bg-slate-50 dark:bg-slate-900 dark:border-slate-800">
-        <h3 className="font-semibold text-lg mb-2">Password</h3>
+
+      <TabsContent
+        value="password"
+        className="mt-4 rounded-xl border bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <h3 className="mb-2 text-lg font-semibold">Password</h3>
         <p className="text-sm text-slate-500">Change your password here.</p>
       </TabsContent>
-      
-      <TabsContent value="settings" className="p-4 border rounded-xl mt-4 bg-slate-50 dark:bg-slate-900 dark:border-slate-800">
-        <h3 className="font-semibold text-lg mb-2">Preferences</h3>
+
+      <TabsContent
+        value="settings"
+        className="mt-4 rounded-xl border bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <h3 className="mb-2 text-lg font-semibold">Preferences</h3>
         <p className="text-sm text-slate-500">Manage your system preferences.</p>
       </TabsContent>
     </Tabs>
@@ -64,15 +73,15 @@ export const SecondaryVariant: Story = {
           <TabsTrigger value="logs">Error Logs</TabsTrigger>
         </TabsList>
       </div>
-      
+
       <TabsContent value="api" className="py-4">
         <p className="text-sm text-slate-700 dark:text-slate-300">You have 3 active API keys.</p>
       </TabsContent>
-      
+
       <TabsContent value="webhooks" className="py-4">
         <p className="text-sm text-slate-700 dark:text-slate-300">No webhooks configured.</p>
       </TabsContent>
-      
+
       <TabsContent value="logs" className="py-4">
         <p className="text-sm text-slate-700 dark:text-slate-300">System is operating normally. No errors logged.</p>
       </TabsContent>

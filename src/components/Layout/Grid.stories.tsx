@@ -23,8 +23,10 @@ export default meta;
 type Story = StoryObj<typeof Grid>;
 
 // Helper to generate mock content blocks
-const Box = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-  <div className={`flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-700 font-medium h-24 dark:bg-indigo-900/30 dark:text-indigo-400 ${className}`}>
+const Box = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <div
+    className={`flex h-24 items-center justify-center rounded-lg bg-indigo-100 font-medium text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 ${className}`}
+  >
     {children}
   </div>
 );
@@ -48,7 +50,7 @@ export const Default: Story = {
 
 export const DifferentGaps: Story = {
   render: () => (
-    <div className="space-y-8 w-full">
+    <div className="w-full space-y-8">
       <div>
         <p className="mb-2 text-sm font-semibold">Small Gap (sm)</p>
         <Grid cols={4} gap="sm">
@@ -79,23 +81,23 @@ export const ComplexLayout: Story = {
   render: (args) => (
     <Grid {...args} className="w-full">
       <GridItem colSpan="full">
-        <div className="flex items-center justify-center rounded-lg bg-teal-100 text-teal-700 font-medium h-16 dark:bg-teal-900/30 dark:text-teal-400">
+        <div className="flex h-16 items-center justify-center rounded-lg bg-teal-100 font-medium text-teal-700 dark:bg-teal-900/30 dark:text-teal-400">
           Header (colSpan="full")
         </div>
       </GridItem>
-      
+
       <GridItem colSpan={3}>
-        <div className="flex items-center justify-center rounded-lg bg-amber-100 text-amber-700 font-medium h-64 dark:bg-amber-900/30 dark:text-amber-400">
+        <div className="flex h-64 items-center justify-center rounded-lg bg-amber-100 font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
           Sidebar (colSpan=3)
         </div>
       </GridItem>
-      
+
       <GridItem colSpan={9}>
-        <div className="flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-700 font-medium h-64 dark:bg-indigo-900/30 dark:text-indigo-400">
+        <div className="flex h-64 items-center justify-center rounded-lg bg-indigo-100 font-medium text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400">
           Main Content (colSpan=9)
         </div>
       </GridItem>
-      
+
       <GridItem colSpan={4}>
         <Box>Widget 1 (colSpan=4)</Box>
       </GridItem>

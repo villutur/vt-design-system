@@ -77,9 +77,7 @@ export const MixedContentSurface: Story = {
       <div className="grid gap-lg lg:grid-cols-2">
         <div className="space-y-md">
           <div>
-            <h3 className="text-sm font-semibold tracking-wide uppercase">
-              Auto Theme
-            </h3>
+            <h3 className="text-sm font-semibold tracking-wide uppercase">Auto Theme</h3>
             <p className="mt-xs text-sm text-foreground-inverse/70">
               Follows the surrounding dark surface automatically.
             </p>
@@ -95,12 +93,9 @@ export const MixedContentSurface: Story = {
 
         <div className="space-y-md">
           <div>
-            <h3 className="text-sm font-semibold tracking-wide uppercase">
-              Forced Light
-            </h3>
+            <h3 className="text-sm font-semibold tracking-wide uppercase">Forced Light</h3>
             <p className="mt-xs text-sm text-foreground-inverse/70">
-              Useful when a mixed-content surface needs deterministic light code
-              styling.
+              Useful when a mixed-content surface needs deterministic light code styling.
             </p>
           </div>
           <CodeBlock

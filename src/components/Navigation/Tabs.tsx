@@ -21,10 +21,7 @@ function useTabs() {
 
 // --- Components ---
 
-export interface TabsProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "defaultValue" | "onChange"
-> {
+export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "defaultValue" | "onChange"> {
   defaultValue: string;
   value?: string;
   onValueChange?: (value: string) => void;
@@ -64,23 +61,12 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 );
 Tabs.displayName = "Tabs";
 
-export const TabsList = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  const { variant } = useTabs();
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "flex",
-        variant === "primary" ? "gap-xl" : "gap-md",
-        className,
-      )}
-      {...props}
-    />
-  );
-});
+export const TabsList = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => {
+    const { variant } = useTabs();
+    return <div ref={ref} className={cn("flex", variant === "primary" ? "gap-xl" : "gap-md", className)} {...props} />;
+  },
+);
 TabsList.displayName = "TabsList";
 
 export interface TabsTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -108,10 +94,7 @@ export const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
         role="tab"
         aria-selected={isSelected}
         onClick={() => onValueChange(value)}
-        className={cn(
-          variant === "primary" ? primaryStyles : secondaryStyles,
-          className,
-        )}
+        className={cn(variant === "primary" ? primaryStyles : secondaryStyles, className)}
         {...props}
       >
         {children}
@@ -132,12 +115,7 @@ export const TabsContent = forwardRef<HTMLDivElement, TabsContentProps>(
     if (selectedValue !== value) return null;
 
     return (
-      <div
-        ref={ref}
-        role="tabpanel"
-        className={cn("mt-md outline-none focus:ring-0", className)}
-        {...props}
-      >
+      <div ref={ref} role="tabpanel" className={cn("mt-md outline-none focus:ring-0", className)} {...props}>
         {children}
       </div>
     );

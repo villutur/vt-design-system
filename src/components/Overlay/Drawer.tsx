@@ -8,10 +8,7 @@ import { useFocusTrap } from "../../internal/useFocusTrap";
 import { getInitialFocusTarget } from "../../internal/getInitialFocusTarget";
 import { cn } from "../../utils/cn";
 
-export interface DrawerProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "title"
-> {
+export interface DrawerProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   isOpen: boolean;
   onClose: () => void;
   side?: "left" | "right" | "top" | "bottom";
@@ -96,10 +93,7 @@ export const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
         return;
       }
 
-      getInitialFocusTarget(
-        panelRef.current,
-        initialFocusRef?.current ?? closeButtonRef.current,
-      )?.focus();
+      getInitialFocusTarget(panelRef.current, initialFocusRef?.current ?? closeButtonRef.current)?.focus();
     }, [initialFocusRef, isOpen]);
 
     if (!isOpen) {
@@ -135,17 +129,11 @@ export const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
             <div className="flex h-full w-full flex-col">
               <div className="flex items-start justify-between gap-md border-b border-default px-lg py-lg">
                 <div className="min-w-0">
-                  <h2
-                    id={titleId}
-                    className="text-lg font-bold text-foreground"
-                  >
+                  <h2 id={titleId} className="text-lg font-bold text-foreground">
                     {title}
                   </h2>
                   {description ? (
-                    <p
-                      id={descriptionId}
-                      className="mt-sm text-sm text-foreground-muted"
-                    >
+                    <p id={descriptionId} className="mt-sm text-sm text-foreground-muted">
                       {description}
                     </p>
                   ) : null}
@@ -164,11 +152,7 @@ export const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
 
               <div className="flex-1 overflow-y-auto p-lg">{children}</div>
 
-              {footer ? (
-                <div className="border-t border-default px-lg py-md">
-                  {footer}
-                </div>
-              ) : null}
+              {footer ? <div className="border-t border-default px-lg py-md">{footer}</div> : null}
             </div>
           </div>
         </div>

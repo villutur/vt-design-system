@@ -1,13 +1,5 @@
 import { IconRobot, IconSparkles, IconWand } from "@tabler/icons-react";
-import {
-  AIResponseView,
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CommandInput,
-  SectionPanel,
-} from "../../index";
+import { AIResponseView, Badge, Button, Card, CardContent, CommandInput, SectionPanel } from "../../index";
 
 const attachmentPreview =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop stop-color='%23e0f2fe'/%3E%3Cstop offset='1' stop-color='%2393c5fd'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' rx='32' fill='url(%23g)'/%3E%3Crect x='56' y='60' width='220' height='22' rx='11' fill='%230f172a' fill-opacity='.12'/%3E%3Crect x='56' y='102' width='520' height='14' rx='7' fill='%230f172a' fill-opacity='.1'/%3E%3Crect x='56' y='132' width='460' height='14' rx='7' fill='%230f172a' fill-opacity='.1'/%3E%3Crect x='56' y='196' width='164' height='108' rx='20' fill='%23ffffff' fill-opacity='.78'/%3E%3Crect x='240' y='172' width='172' height='132' rx='20' fill='%23ffffff' fill-opacity='.88'/%3E%3Crect x='432' y='146' width='152' height='158' rx='20' fill='%23ffffff' fill-opacity='.96'/%3E%3C/svg%3E";
@@ -66,10 +58,7 @@ const slashCommands = [
 export function AIAssistantWorkspaceExample() {
   return (
     <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-      <SectionPanel
-        title="Prompt lane"
-        subtitle="CommandInput paired with reusable response rendering"
-      >
+      <SectionPanel title="Prompt lane" subtitle="CommandInput paired with reusable response rendering">
         <div className="space-y-md">
           <div className="flex flex-wrap items-center gap-sm">
             <Badge variant="softPrimary">Example</Badge>
@@ -78,12 +67,10 @@ export function AIAssistantWorkspaceExample() {
 
           <Card variant="plain" className="rounded-2xl bg-surface-subtle">
             <CardContent className="space-y-sm p-lg">
-              <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">
-                Workspace context
-              </p>
+              <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">Workspace context</p>
               <p className="text-sm text-foreground-muted">
-                This combines the new response renderer with the existing prompt
-                input rather than introducing a monolithic chat shell too early.
+                This combines the new response renderer with the existing prompt input rather than introducing a
+                monolithic chat shell too early.
               </p>
             </CardContent>
           </Card>
@@ -97,11 +84,7 @@ export function AIAssistantWorkspaceExample() {
             slashCommands={slashCommands}
             submitLabel="Run assistant"
             actions={
-              <Button
-                size="sm"
-                variant="ghost"
-                leftIcon={<IconWand size={16} />}
-              >
+              <Button size="sm" variant="ghost" leftIcon={<IconWand size={16} />}>
                 Insert release template
               </Button>
             }
@@ -112,10 +95,7 @@ export function AIAssistantWorkspaceExample() {
         </div>
       </SectionPanel>
 
-      <SectionPanel
-        title="Assistant lane"
-        subtitle="Markdown, tool calls, and attachments in one render-only surface"
-      >
+      <SectionPanel title="Assistant lane" subtitle="Markdown, tool calls, and attachments in one render-only surface">
         <AIResponseView
           status="complete"
           content={responseContent}
@@ -138,8 +118,7 @@ export function AIAssistantWorkspaceExample() {
               id: "fetch-reviewer-note",
               name: "fetchReviewerNote",
               status: "success",
-              summary:
-                "Returned the note that explains the remaining rollback requirement.",
+              summary: "Returned the note that explains the remaining rollback requirement.",
               input: `{"releaseId":"REL-3104","noteType":"rollback"}`,
               output: `{"note":"Revert to REL-3106 if command palette navigation regresses."}`,
               language: "json",
@@ -151,8 +130,7 @@ export function AIAssistantWorkspaceExample() {
               kind: "image",
               title: "Dashboard anomaly preview",
               src: attachmentPreview,
-              description:
-                "Shared as part of the approval packet so reviewers can see the pre-rollback signal.",
+              description: "Shared as part of the approval packet so reviewers can see the pre-rollback signal.",
               meta: "PNG · 640x360",
             },
             {
@@ -160,8 +138,7 @@ export function AIAssistantWorkspaceExample() {
               kind: "file",
               title: "handoff-note.md",
               src: "/exports/handoff-note.md",
-              description:
-                "Exported markdown ready to attach to the rollout ticket.",
+              description: "Exported markdown ready to attach to the rollout ticket.",
               meta: "Markdown · 4 KB",
             },
           ]}

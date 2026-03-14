@@ -18,10 +18,7 @@ const toggleSizeClassMap = {
   },
 } as const;
 
-export interface ToggleProps extends Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "type" | "size"
-> {
+export interface ToggleProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
   label?: React.ReactNode;
   description?: React.ReactNode;
   helperText?: React.ReactNode;
@@ -58,21 +55,12 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         errorText={errorText}
         error={error}
         disabled={disabled}
-        messageId={
-          helperText || errorText ? `${generatedId}-message` : undefined
-        }
+        messageId={helperText || errorText ? `${generatedId}-message` : undefined}
       >
-        <div
-          className={cn("flex items-center justify-between gap-md", className)}
-        >
+        <div className={cn("flex items-center justify-between gap-md", className)}>
           <div className="min-w-0">
             {label ? (
-              <p
-                className={cn(
-                  "font-medium text-foreground-muted",
-                  sizing.label,
-                )}
-              >
+              <p className={cn("font-medium text-foreground-muted", sizing.label)}>
                 {label}
                 {required ? (
                   <span className="ml-xs text-error" aria-hidden="true">
@@ -82,14 +70,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
               </p>
             ) : null}
             {description ? (
-              <p
-                className={cn(
-                  "mt-xs text-foreground-muted",
-                  sizing.description,
-                )}
-              >
-                {description}
-              </p>
+              <p className={cn("mt-xs text-foreground-muted", sizing.description)}>{description}</p>
             ) : null}
           </div>
           <label
@@ -109,9 +90,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
               required={required}
               disabled={disabled}
               aria-invalid={error || undefined}
-              aria-describedby={
-                helperText || errorText ? `${generatedId}-message` : undefined
-              }
+              aria-describedby={helperText || errorText ? `${generatedId}-message` : undefined}
               {...props}
             />
             <div

@@ -1,12 +1,6 @@
 import React from "react";
 import { useDropzone, type Accept, type FileRejection } from "react-dropzone";
-import {
-  IconAlertCircle,
-  IconFile,
-  IconLoader2,
-  IconTrash,
-  IconUpload,
-} from "@tabler/icons-react";
+import { IconAlertCircle, IconFile, IconLoader2, IconTrash, IconUpload } from "@tabler/icons-react";
 import { Badge } from "../DataDisplay/Badge";
 import { Button } from "./Button";
 import { ProgressBar } from "../Feedback/ProgressBar";
@@ -24,10 +18,7 @@ export interface FileUploadItem {
   error?: React.ReactNode;
 }
 
-export interface FileUploadProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "defaultValue" | "onChange"
-> {
+export interface FileUploadProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "defaultValue" | "onChange"> {
   label?: React.ReactNode;
   description?: React.ReactNode;
   helperText?: React.ReactNode;
@@ -47,10 +38,7 @@ export interface FileUploadProps extends Omit<
   onRejectedFiles?: (fileRejections: readonly FileRejection[]) => void;
 }
 
-const statusVariantMap: Record<
-  FileUploadItemStatus,
-  React.ComponentProps<typeof Badge>["variant"]
-> = {
+const statusVariantMap: Record<FileUploadItemStatus, React.ComponentProps<typeof Badge>["variant"]> = {
   idle: "soft",
   uploading: "softPrimary",
   success: "softSuccess",
@@ -95,20 +83,10 @@ function getUploadSummary(
     isAtMaxFiles: boolean;
   },
 ) {
-  const uploadingCount = items.filter(
-    (item) => (item.status ?? "idle") === "uploading",
-  ).length;
-  const errorCount = items.filter(
-    (item) => (item.status ?? "idle") === "error" || item.error,
-  ).length;
-  const successCount = items.filter(
-    (item) => (item.status ?? "idle") === "success",
-  ).length;
-  const parts = [
-    items.length > 0
-      ? `${formatItemCount(items.length)} selected.`
-      : "No files selected.",
-  ];
+  const uploadingCount = items.filter((item) => (item.status ?? "idle") === "uploading").length;
+  const errorCount = items.filter((item) => (item.status ?? "idle") === "error" || item.error).length;
+  const successCount = items.filter((item) => (item.status ?? "idle") === "success").length;
+  const parts = [items.length > 0 ? `${formatItemCount(items.length)} selected.` : "No files selected."];
 
   if (uploadingCount > 0) {
     parts.push(`${formatItemCount(uploadingCount)} uploading.`);
@@ -162,65 +140,38 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
       ...props
     },
     ref,
-    ) => {
-      const generatedId = id || React.useId();
-      const labelId = label ? `${generatedId}-label` : undefined;
-      const messageId =
-        helperText || errorText ? `${generatedId}-message` : undefined;
-      const constraintsId = `${generatedId}-constraints`;
-      const summaryId = `${generatedId}-summary`;
-      const liveRegionId = `${generatedId}-live-region`;
-      const [currentItems, setCurrentItems] = useControllableState<
-      FileUploadItem[]
-    >({
+  ) => {
+    const generatedId = id || React.useId();
+    const labelId = label ? `${generatedId}-label` : undefined;
+    const messageId = helperText || errorText ? `${generatedId}-message` : undefined;
+    const constraintsId = `${generatedId}-constraints`;
+    const summaryId = `${generatedId}-summary`;
+    const liveRegionId = `${generatedId}-live-region`;
+    const [currentItems, setCurrentItems] = useControllableState<FileUploadItem[]>({
       value: items,
       defaultValue: defaultItems,
       onChange: onItemsChange,
     });
-      const [liveMessage, setLiveMessage] = React.useState("");
-      const [lastRejections, setLastRejections] = React.useState<
-      readonly FileRejection[]
-    >([]);
-    const isAtMaxFiles =
-      maxFiles !== undefined && currentItems.length >= maxFiles;
-    const remainingFiles =
-      maxFiles !== undefined
-        ? Math.max(maxFiles - currentItems.length, 0)
-        : undefined;
-      const uploadingCount = currentItems.filter(
-        (item) => (item.status ?? "idle") === "uploading",
-      ).length;
-      const hasUploadingItems = uploadingCount > 0;
-      const rejectionId =
-        lastRejections.length > 0 ? `${generatedId}-rejections` : undefined;
-      const fileListId =
-        currentItems.length > 0 ? `${generatedId}-files` : undefined;
-      const describedBy = [
-        messageId,
-        constraintsId,
-        summaryId,
-        rejectionId,
-      ]
-        .filter(Boolean)
-        .join(" ") || undefined;
-      const uploadSummary = getUploadSummary(currentItems, {
-        rejectedCount: lastRejections.length,
-        disabled,
-        isAtMaxFiles,
-      });
+    const [liveMessage, setLiveMessage] = React.useState("");
+    const [lastRejections, setLastRejections] = React.useState<readonly FileRejection[]>([]);
+    const isAtMaxFiles = maxFiles !== undefined && currentItems.length >= maxFiles;
+    const remainingFiles = maxFiles !== undefined ? Math.max(maxFiles - currentItems.length, 0) : undefined;
+    const uploadingCount = currentItems.filter((item) => (item.status ?? "idle") === "uploading").length;
+    const hasUploadingItems = uploadingCount > 0;
+    const rejectionId = lastRejections.length > 0 ? `${generatedId}-rejections` : undefined;
+    const fileListId = currentItems.length > 0 ? `${generatedId}-files` : undefined;
+    const describedBy = [messageId, constraintsId, summaryId, rejectionId].filter(Boolean).join(" ") || undefined;
+    const uploadSummary = getUploadSummary(currentItems, {
+      rejectedCount: lastRejections.length,
+      disabled,
+      isAtMaxFiles,
+    });
 
     const handleAcceptedFiles = React.useCallback(
       (acceptedFiles: File[]) => {
-        const mappedItems = acceptedFiles.map((file, index) =>
-          createFileUploadItem(file, index),
-        );
-        const nextItemsBase = multiple
-          ? [...currentItems, ...mappedItems]
-          : mappedItems.slice(0, 1);
-        const nextItems =
-          maxFiles !== undefined
-            ? nextItemsBase.slice(0, maxFiles)
-            : nextItemsBase;
+        const mappedItems = acceptedFiles.map((file, index) => createFileUploadItem(file, index));
+        const nextItemsBase = multiple ? [...currentItems, ...mappedItems] : mappedItems.slice(0, 1);
+        const nextItems = maxFiles !== undefined ? nextItemsBase.slice(0, maxFiles) : nextItemsBase;
 
         setCurrentItems(nextItems);
         setLastRejections([]);
@@ -247,14 +198,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
       [onRejectedFiles],
     );
 
-    const {
-      getRootProps,
-      getInputProps,
-      isDragActive,
-      isDragAccept,
-      isDragReject,
-      open,
-    } = useDropzone({
+    const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject, open } = useDropzone({
       accept,
       disabled: disabled || isAtMaxFiles,
       multiple,
@@ -303,11 +247,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
               }
             },
             onKeyDown: (event) => {
-              if (
-                (event.key === "Enter" || event.key === " ") &&
-                !disabled &&
-                !isAtMaxFiles
-              ) {
+              if ((event.key === "Enter" || event.key === " ") && !disabled && !isAtMaxFiles) {
                 event.preventDefault();
                 open();
               }
@@ -323,9 +263,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
             "aria-required": required || undefined,
             className: cn(
               "rounded-2xl border border-dashed p-lg transition-colors outline-none",
-              error
-                ? "border-error/50 bg-error/5"
-                : "border-strong bg-surface-subtle/80",
+              error ? "border-error/50 bg-error/5" : "border-strong bg-surface-subtle/80",
               isDragActive && "border-primary bg-primary/5",
               isDragAccept && "border-success bg-success/5",
               isDragReject && "border-error bg-error/5",
@@ -347,9 +285,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
             </div>
             <div className="space-y-xs">
               <p className="text-sm font-semibold text-foreground">
-                {isDragActive
-                  ? "Drop files to add them"
-                  : "Drag and drop files here"}
+                {isDragActive ? "Drop files to add them" : "Drag and drop files here"}
               </p>
               <p className="text-xs text-foreground-muted">
                 {isAtMaxFiles
@@ -371,19 +307,10 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
             >
               Browse files
             </Button>
-            <div
-              id={constraintsId}
-              className="flex flex-wrap justify-center gap-sm text-[11px] text-foreground-subtle"
-            >
-              {maxFiles !== undefined ? (
-                <span>Max files: {maxFiles}</span>
-              ) : null}
-              {maxSize !== undefined ? (
-                <span>Max size: {formatBytes(maxSize)}</span>
-              ) : null}
-              {minSize !== undefined ? (
-                <span>Min size: {formatBytes(minSize)}</span>
-              ) : null}
+            <div id={constraintsId} className="flex flex-wrap justify-center gap-sm text-[11px] text-foreground-subtle">
+              {maxFiles !== undefined ? <span>Max files: {maxFiles}</span> : null}
+              {maxSize !== undefined ? <span>Max size: {formatBytes(maxSize)}</span> : null}
+              {minSize !== undefined ? <span>Min size: {formatBytes(minSize)}</span> : null}
             </div>
           </div>
         </div>
@@ -391,21 +318,12 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
         <p id={summaryId} className="sr-only">
           {uploadSummary}
         </p>
-        <p
-          id={liveRegionId}
-          className="sr-only"
-          aria-live="polite"
-          aria-atomic="true"
-        >
+        <p id={liveRegionId} className="sr-only" aria-live="polite" aria-atomic="true">
           {liveMessage}
         </p>
 
         {lastRejections.length > 0 ? (
-          <div
-            id={rejectionId}
-            role="alert"
-            className="rounded-xl border border-error/20 bg-error/5 p-md"
-          >
+          <div id={rejectionId} role="alert" className="rounded-xl border border-error/20 bg-error/5 p-md">
             <div className="mb-sm flex items-center gap-sm text-sm font-semibold text-error">
               <IconAlertCircle size={16} />
               Some files could not be added
@@ -413,9 +331,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
             <div className="space-y-sm">
               {lastRejections.map((rejection) => (
                 <div key={`${rejection.file.name}-${rejection.file.size}`}>
-                  <p className="text-xs font-medium text-foreground">
-                    {rejection.file.name}
-                  </p>
+                  <p className="text-xs font-medium text-foreground">{rejection.file.name}</p>
                   <p className="text-xs text-foreground-muted">
                     {rejection.errors.map((item) => item.message).join(" ")}
                   </p>
@@ -426,12 +342,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
         ) : null}
 
         {currentItems.length > 0 ? (
-          <ul
-            id={fileListId}
-            role="list"
-            aria-label="Selected files"
-            className="space-y-sm"
-          >
+          <ul id={fileListId} role="list" aria-label="Selected files" className="space-y-sm">
             {currentItems.map((item) => {
               const status = item.status ?? "idle";
               const itemNameId = `${generatedId}-${item.id}-name`;
@@ -440,12 +351,8 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
                 status === "uploading" || item.progress !== undefined
                   ? `${generatedId}-${item.id}-progress`
                   : undefined;
-              const itemErrorId = item.error
-                ? `${generatedId}-${item.id}-error`
-                : undefined;
-              const itemDescription = [itemMetaId, itemProgressId, itemErrorId]
-                .filter(Boolean)
-                .join(" ") || undefined;
+              const itemErrorId = item.error ? `${generatedId}-${item.id}-error` : undefined;
+              const itemDescription = [itemMetaId, itemProgressId, itemErrorId].filter(Boolean).join(" ") || undefined;
 
               return (
                 <li
@@ -464,19 +371,11 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
                         )}
                       </div>
                       <div className="min-w-0">
-                        <p
-                          id={itemNameId}
-                          className="truncate text-sm font-medium text-foreground"
-                        >
+                        <p id={itemNameId} className="truncate text-sm font-medium text-foreground">
                           {item.file.name}
                         </p>
-                        <div
-                          id={itemMetaId}
-                          className="mt-xs flex flex-wrap items-center gap-sm"
-                        >
-                          <span className="text-xs text-foreground-muted">
-                            {formatBytes(item.file.size)}
-                          </span>
+                        <div id={itemMetaId} className="mt-xs flex flex-wrap items-center gap-sm">
+                          <span className="text-xs text-foreground-muted">{formatBytes(item.file.size)}</span>
                           <Badge variant={statusVariantMap[status]} size="sm">
                             {status}
                           </Badge>
@@ -499,9 +398,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
                       <ProgressBar
                         id={itemProgressId}
                         value={item.progress}
-                        indeterminate={
-                          status === "uploading" && item.progress === undefined
-                        }
+                        indeterminate={status === "uploading" && item.progress === undefined}
                         variant={status === "error" ? "error" : "default"}
                         aria-label={`Upload progress for ${item.file.name}`}
                         aria-valuetext={

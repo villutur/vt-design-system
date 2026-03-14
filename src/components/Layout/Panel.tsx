@@ -34,11 +34,7 @@ export const Panel = React.forwardRef<HTMLDivElement, PanelProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          "flex overflow-hidden",
-          orientation === "horizontal" ? "flex-row" : "flex-col",
-          className,
-        )}
+        className={cn("flex overflow-hidden", orientation === "horizontal" ? "flex-row" : "flex-col", className)}
         style={{ ...flexStyles, ...style }}
         {...props}
       />
@@ -59,11 +55,7 @@ export const PanelGroup = React.forwardRef<HTMLDivElement, PanelGroupProps>(
   ({ orientation = "horizontal", className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn(
-        "flex h-full w-full",
-        orientation === "vertical" ? "flex-col" : "flex-row",
-        className,
-      )}
+      className={cn("flex h-full w-full", orientation === "vertical" ? "flex-col" : "flex-row", className)}
       {...props}
     />
   ),
@@ -84,20 +76,10 @@ export interface ResizablePanelGroupProps extends GroupProps {
   className?: string;
 }
 
-export function ResizablePanelGroup({
-  orientation = "horizontal",
-  className,
-  ...props
-}: ResizablePanelGroupProps) {
+export function ResizablePanelGroup({ orientation = "horizontal", className, ...props }: ResizablePanelGroupProps) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Group = LibResizablePanelGroup as any;
-  return (
-    <Group
-      orientation={orientation}
-      className={cn("flex h-full w-full", className)}
-      {...props}
-    />
-  );
+  return <Group orientation={orientation} className={cn("flex h-full w-full", className)} {...props} />;
 }
 
 // ─── Resize Handle ────────────────────────────────────────────────────────────
@@ -106,18 +88,14 @@ interface PanelResizeHandleProps extends SeparatorProps {
   withHandle?: boolean;
 }
 
-export const PanelResizeHandle = ({
-  withHandle = true,
-  className,
-  ...props
-}: PanelResizeHandleProps) => {
+export const PanelResizeHandle = ({ withHandle = true, className, ...props }: PanelResizeHandleProps) => {
   return (
     <ResizablePanelResizeHandle
       className={cn(
         // Base styles
-        "relative flex items-center justify-center bg-surface-muted transition-colors hover:bg-surface-subtle focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary",
+        "relative flex items-center justify-center bg-surface-muted transition-colors hover:bg-surface-subtle focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none",
         // Vertical handle (separator is vertical between horizontal panels)
-        "aria-[orientation=vertical]:w-1.5 aria-[orientation=vertical]:h-full",
+        "aria-[orientation=vertical]:h-full aria-[orientation=vertical]:w-1.5",
         // Horizontal handle (separator is horizontal between vertical panels)
         "aria-[orientation=horizontal]:h-1.5 aria-[orientation=horizontal]:w-full",
         "border-default",

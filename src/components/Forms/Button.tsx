@@ -5,13 +5,7 @@ import { cn } from "../../utils/cn";
 import { IconLoader2 } from "@tabler/icons-react";
 
 // Preserving types for backwards compatibility if needed, though they map to CVA variants now.
-export type ButtonVariant =
-  | "primary"
-  | "secondary"
-  | "outline"
-  | "ghost"
-  | "danger"
-  | "icon";
+export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "danger" | "icon";
 export type ButtonSize = "xs" | "sm" | "md" | "lg";
 
 const buttonVariants = cva(
@@ -30,7 +24,6 @@ const buttonVariants = cva(
         danger:
           "border border-transparent bg-error text-white hover:bg-error/90 hover:shadow-lg hover:shadow-error/20 focus:ring-error/50 focus:ring-offset-canvas",
         icon: "rounded-md border border-transparent bg-transparent text-foreground-muted hover:bg-surface-muted hover:text-foreground focus:ring-primary/20 focus:ring-offset-canvas",
-
       },
       size: {
         xs: "text-[10px] px-sm py-xs gap-xs",
@@ -51,9 +44,7 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    Omit<VariantProps<typeof buttonVariants>, "size" | "variant"> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>, Omit<VariantProps<typeof buttonVariants>, "size" | "variant"> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   isLoading?: boolean;
@@ -62,20 +53,7 @@ export interface ButtonProps
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      variant,
-      size = "md",
-      isLoading = false,
-      leftIcon,
-      rightIcon,
-      className,
-      children,
-      disabled,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ variant, size = "md", isLoading = false, leftIcon, rightIcon, className, children, disabled, ...props }, ref) => {
     // Map normal sizes to icon sizes when variant is 'icon'
     const actualSize =
       variant === "icon"
@@ -96,13 +74,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading && <IconLoader2 className="animate-spin text-[1.25em]" />}
-        {!isLoading && leftIcon && (
-          <span className="inline-flex">{leftIcon}</span>
-        )}
+        {!isLoading && leftIcon && <span className="inline-flex">{leftIcon}</span>}
         {children}
-        {!isLoading && rightIcon && (
-          <span className="inline-flex">{rightIcon}</span>
-        )}
+        {!isLoading && rightIcon && <span className="inline-flex">{rightIcon}</span>}
       </button>
     );
   },

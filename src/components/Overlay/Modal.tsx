@@ -25,10 +25,7 @@ function composeRefs<T>(...refs: Array<React.Ref<T> | undefined>) {
   };
 }
 
-export interface ModalProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "title"
-> {
+export interface ModalProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   isOpen: boolean;
   onClose: () => void;
   title: React.ReactNode;
@@ -97,10 +94,7 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
         return;
       }
 
-      getInitialFocusTarget(
-        panelRef.current,
-        initialFocusRef?.current ?? closeButtonRef.current,
-      )?.focus();
+      getInitialFocusTarget(panelRef.current, initialFocusRef?.current ?? closeButtonRef.current)?.focus();
     }, [initialFocusRef, isOpen]);
 
     if (!isOpen) {
@@ -113,10 +107,7 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
           <div
             className="absolute inset-0 bg-overlay/40 backdrop-blur-sm"
             onMouseDown={(event) => {
-              if (
-                closeOnBackdropClick &&
-                event.target === event.currentTarget
-              ) {
+              if (closeOnBackdropClick && event.target === event.currentTarget) {
                 onClose();
               }
             }}
@@ -139,17 +130,11 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
             <div className="p-lg">
               <div className="mb-md flex items-start justify-between gap-md">
                 <div className="min-w-0">
-                  <h3
-                    id={titleId}
-                    className="text-xl font-bold text-foreground"
-                  >
+                  <h3 id={titleId} className="text-xl font-bold text-foreground">
                     {title}
                   </h3>
                   {description ? (
-                    <p
-                      id={descriptionId}
-                      className="mt-sm text-sm text-foreground-muted"
-                    >
+                    <p id={descriptionId} className="mt-sm text-sm text-foreground-muted">
                       {description}
                     </p>
                   ) : null}

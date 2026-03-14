@@ -28,10 +28,7 @@ function getTextFromNode(node: React.ReactNode) {
   return "";
 }
 
-export function filterCollectionItems<T extends SearchableCollectionItem>(
-  items: T[],
-  query: string,
-) {
+export function filterCollectionItems<T extends SearchableCollectionItem>(items: T[], query: string) {
   const normalizedQuery = normalizeSearchValue(query);
 
   if (!normalizedQuery) {
@@ -53,9 +50,7 @@ export function filterCollectionItems<T extends SearchableCollectionItem>(
   });
 }
 
-export function groupCollectionItems<T extends SearchableCollectionItem>(
-  items: T[],
-) {
+export function groupCollectionItems<T extends SearchableCollectionItem>(items: T[]) {
   const grouped = new Map<string, T[]>();
 
   items.forEach((item) => {

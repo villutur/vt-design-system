@@ -48,10 +48,7 @@ const sparklineDataMap: Record<TrendDirection, number[]> = {
   neutral: [10, 10.2, 10.1, 10.8, 10.5, 11.1, 10.9, 11.3, 11.1, 11.5, 11.2],
 };
 
-export interface MetricCardProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "title"
-> {
+export interface MetricCardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   title?: React.ReactNode;
   value?: React.ReactNode;
   description?: React.ReactNode;
@@ -103,13 +100,11 @@ export const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
     const resolvedStatusDirection = statusDirection ?? trendDirection ?? "up";
     const resolvedStatusTone = statusTone ?? trendType ?? "success";
     const visualTone =
-      resolvedStatusDirection === "neutral"
-        ? trendClassMap.neutral
-        : trendClassMap[resolvedStatusTone];
+      resolvedStatusDirection === "neutral" ? trendClassMap.neutral : trendClassMap[resolvedStatusTone];
     const resolvedSparkline = chart ?? (
       <div
         className={cn(
-          "relative mt-lg overflow-hidden rounded-xl border border-default/80 bg-linear-to-r px-sm py-sm",
+          "border-default/80 relative mt-lg overflow-hidden rounded-xl border bg-linear-to-r px-sm py-sm",
           visualTone.chartShell,
         )}
       >
@@ -144,29 +139,19 @@ export const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
         </div>
 
         <div className="mt-md min-w-0 space-y-sm">
-          {resolvedEyebrow ? (
-            <p className="text-sm font-medium text-foreground-muted">
-              {resolvedEyebrow}
-            </p>
-          ) : null}
+          {resolvedEyebrow ? <p className="text-sm font-medium text-foreground-muted">{resolvedEyebrow}</p> : null}
           {resolvedHeadline ? (
             <h3 className="text-[clamp(1.85rem,2.35vw,2.45rem)] leading-[0.98] font-bold tracking-tight text-foreground">
               {resolvedHeadline}
             </h3>
           ) : null}
-          {resolvedSummary ? (
-            <p className="text-sm leading-6 text-foreground-muted">
-              {resolvedSummary}
-            </p>
-          ) : null}
+          {resolvedSummary ? <p className="text-sm leading-6 text-foreground-muted">{resolvedSummary}</p> : null}
         </div>
 
         {resolvedSparkline}
 
         {footer ? (
-          <div className="mt-md border-t border-default pt-md text-sm leading-6 text-foreground-muted">
-            {footer}
-          </div>
+          <div className="mt-md border-t border-default pt-md text-sm leading-6 text-foreground-muted">{footer}</div>
         ) : null}
       </Card>
     );

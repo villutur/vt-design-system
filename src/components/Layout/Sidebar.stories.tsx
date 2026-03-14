@@ -1,19 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  Sidebar,
-  SidebarItem,
-  SidebarSectionBase,
-  SidebarSystemHealth,
-} from "./Sidebar";
-import {
-  IconHome,
-  IconUsers,
-  IconSettings,
-  IconChartBar,
-  IconShield,
-  IconAlertCircle,
-} from "@tabler/icons-react";
+import { Sidebar, SidebarItem, SidebarSectionBase, SidebarSystemHealth } from "./Sidebar";
+import { IconHome, IconUsers, IconSettings, IconChartBar, IconShield, IconAlertCircle } from "@tabler/icons-react";
 
 const meta: Meta<typeof Sidebar> = {
   component: Sidebar,
@@ -60,7 +48,7 @@ export const Default: Story = {
     withLayout(
       <Sidebar {...args} footer={<SidebarSystemHealth />}>
         {navItems}
-      </Sidebar>
+      </Sidebar>,
     ),
 };
 
@@ -70,16 +58,10 @@ export const LowHealth: Story = {
     withLayout(
       <Sidebar
         {...args}
-        footer={
-          <SidebarSystemHealth
-            percentage={45}
-            label="System Health"
-            status="Service degraded (1 incident)"
-          />
-        }
+        footer={<SidebarSystemHealth percentage={45} label="System Health" status="Service degraded (1 incident)" />}
       >
         {navItems}
-      </Sidebar>
+      </Sidebar>,
     ),
 };
 
@@ -92,14 +74,12 @@ export const CustomFooter: Story = {
         footer={
           <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 p-3 dark:border-amber-800 dark:bg-amber-900/20">
             <IconAlertCircle size={16} className="shrink-0 text-amber-500" />
-            <p className="text-xs text-amber-700 dark:text-amber-400">
-              Maintenance window tonight at 22:00
-            </p>
+            <p className="text-xs text-amber-700 dark:text-amber-400">Maintenance window tonight at 22:00</p>
           </div>
         }
       >
         {navItems}
-      </Sidebar>
+      </Sidebar>,
     ),
 };
 
@@ -109,6 +89,6 @@ export const NoFooter: Story = {
     withLayout(
       <Sidebar {...args} footer={null}>
         {navItems}
-      </Sidebar>
+      </Sidebar>,
     ),
 };

@@ -34,9 +34,7 @@ export const Sparkline: React.FC<SparklineProps> = ({
   const h = 20;
   const step = w / (normalized.length - 1);
 
-  const points = normalized
-    .map((v, i) => `${i * step},${h - v * h}`)
-    .join(" ");
+  const points = normalized.map((v, i) => `${i * step},${h - v * h}`).join(" ");
 
   return (
     <svg

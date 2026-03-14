@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  createColumnHelper,
-  type ColumnDef,
-  type Table as TanStackTable,
-} from "@tanstack/react-table";
+import { createColumnHelper, type ColumnDef, type Table as TanStackTable } from "@tanstack/react-table";
 import {
   IconAlertTriangle,
   IconArrowUpRight,
@@ -92,12 +88,8 @@ const releaseColumns: ColumnDef<ReleaseRow, any>[] = [
     header: "Release",
     cell: (info) => (
       <div className="min-w-0">
-        <div className="truncate font-medium text-foreground">
-          {info.getValue()}
-        </div>
-        <div className="truncate text-xs text-foreground-muted">
-          {info.row.original.id}
-        </div>
+        <div className="truncate font-medium text-foreground">{info.getValue()}</div>
+        <div className="truncate text-xs text-foreground-muted">{info.row.original.id}</div>
       </div>
     ),
     size: 220,
@@ -134,12 +126,8 @@ const incidentColumns: ColumnDef<IncidentRow, any>[] = [
     header: "Service",
     cell: (info) => (
       <div className="min-w-0">
-        <div className="truncate font-medium text-foreground">
-          {info.getValue()}
-        </div>
-        <div className="truncate text-xs text-foreground-muted">
-          {info.row.original.id}
-        </div>
+        <div className="truncate font-medium text-foreground">{info.getValue()}</div>
+        <div className="truncate text-xs text-foreground-muted">{info.row.original.id}</div>
       </div>
     ),
     size: 220,
@@ -150,11 +138,7 @@ const incidentColumns: ColumnDef<IncidentRow, any>[] = [
       <Badge
         size="sm"
         variant={
-          info.getValue() === "Critical"
-            ? "softError"
-            : info.getValue() === "High"
-              ? "softWarning"
-              : "softPrimary"
+          info.getValue() === "Critical" ? "softError" : info.getValue() === "High" ? "softWarning" : "softPrimary"
         }
       >
         {info.getValue()}
@@ -446,13 +430,7 @@ function WorkspaceShell({
       }
       sidebar={
         <Sidebar
-          footer={
-            <SidebarSystemHealth
-              percentage={healthPercentage}
-              label={healthLabel}
-              status={healthStatus}
-            />
-          }
+          footer={<SidebarSystemHealth percentage={healthPercentage} label={healthLabel} status={healthStatus} />}
         >
           <SidebarItem
             href="#"
@@ -473,21 +451,9 @@ function WorkspaceShell({
             isActive={activeArea === "docs"}
           />
           <SidebarSectionBase title="Workspace" />
-          <SidebarItem
-            href="#"
-            icon={<IconGitBranch size={18} />}
-            label="Releases"
-          />
-          <SidebarItem
-            href="#"
-            icon={<IconShieldCheck size={18} />}
-            label="Policies"
-          />
-          <SidebarItem
-            href="#"
-            icon={<IconSettings size={18} />}
-            label="Settings"
-          />
+          <SidebarItem href="#" icon={<IconGitBranch size={18} />} label="Releases" />
+          <SidebarItem href="#" icon={<IconShieldCheck size={18} />} label="Policies" />
+          <SidebarItem href="#" icon={<IconSettings size={18} />} label="Settings" />
         </Sidebar>
       }
     >
@@ -517,9 +483,7 @@ function StatCard({
         <CardTitle className="text-base">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-2xl font-semibold tracking-tight text-foreground">
-          {value}
-        </p>
+        <p className="text-2xl font-semibold tracking-tight text-foreground">{value}</p>
         <p className="mt-sm text-sm text-foreground-muted">{supporting}</p>
       </CardContent>
     </Card>
@@ -528,24 +492,12 @@ function StatCard({
 
 function ReleaseTableToolbar({ table }: { table: TanStackTable<ReleaseRow> }) {
   return (
-    <Toolbar
-      size="sm"
-      tone="plain"
-      className="border border-default bg-surface"
-    >
+    <Toolbar size="sm" tone="plain" className="border border-default bg-surface">
       <ToolbarGroup compact>
-        <Button
-          size="xs"
-          variant="secondary"
-          leftIcon={<IconFilter size={14} />}
-        >
+        <Button size="xs" variant="secondary" leftIcon={<IconFilter size={14} />}>
           Filters
         </Button>
-        <Button
-          size="xs"
-          variant="secondary"
-          leftIcon={<IconColumns3 size={14} />}
-        >
+        <Button size="xs" variant="secondary" leftIcon={<IconColumns3 size={14} />}>
           Columns
         </Button>
       </ToolbarGroup>
@@ -557,30 +509,14 @@ function ReleaseTableToolbar({ table }: { table: TanStackTable<ReleaseRow> }) {
   );
 }
 
-function IncidentTableToolbar({
-  table,
-}: {
-  table: TanStackTable<IncidentRow>;
-}) {
+function IncidentTableToolbar({ table }: { table: TanStackTable<IncidentRow> }) {
   return (
-    <Toolbar
-      size="sm"
-      tone="plain"
-      className="border border-default bg-surface"
-    >
+    <Toolbar size="sm" tone="plain" className="border border-default bg-surface">
       <ToolbarGroup compact>
-        <Button
-          size="xs"
-          variant="secondary"
-          leftIcon={<IconRefresh size={14} />}
-        >
+        <Button size="xs" variant="secondary" leftIcon={<IconRefresh size={14} />}>
           Refresh view
         </Button>
-        <Button
-          size="xs"
-          variant="secondary"
-          leftIcon={<IconRouteAltLeft size={14} />}
-        >
+        <Button size="xs" variant="secondary" leftIcon={<IconRouteAltLeft size={14} />}>
           Group by region
         </Button>
       </ToolbarGroup>
@@ -608,11 +544,7 @@ export function ReleaseControlWorkspaceShowcase() {
           subtitle="Production lane // Thursday deploy window // refreshed 2 minutes ago"
           actions={
             <>
-              <Button
-                size="sm"
-                variant="secondary"
-                leftIcon={<IconRefresh size={16} />}
-              >
+              <Button size="sm" variant="secondary" leftIcon={<IconRefresh size={16} />}>
                 Refresh snapshot
               </Button>
               <SplitButton
@@ -663,18 +595,10 @@ export function ReleaseControlWorkspaceShowcase() {
             />
           </ToolbarGroup>
           <ToolbarGroup compact>
-            <Button
-              size="sm"
-              variant="secondary"
-              leftIcon={<IconFilter size={16} />}
-            >
+            <Button size="sm" variant="secondary" leftIcon={<IconFilter size={16} />}>
               Filters
             </Button>
-            <Button
-              size="sm"
-              variant="secondary"
-              leftIcon={<IconDownload size={16} />}
-            >
+            <Button size="sm" variant="secondary" leftIcon={<IconDownload size={16} />}>
               Export snapshot
             </Button>
           </ToolbarGroup>
@@ -716,9 +640,7 @@ export function ReleaseControlWorkspaceShowcase() {
           <div className="space-y-md">
             <div className="flex items-center justify-between gap-md">
               <div>
-                <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">
-                  Repository map
-                </p>
+                <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">Repository map</p>
                 <p className="mt-xs text-sm text-foreground-muted">
                   TreeView used as a file explorer for the release bundle.
                 </p>
@@ -737,12 +659,9 @@ export function ReleaseControlWorkspaceShowcase() {
           <div className="space-y-md">
             <div className="flex items-center justify-between gap-md">
               <div>
-                <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">
-                  Deployment queue
-                </p>
+                <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">Deployment queue</p>
                 <p className="mt-xs text-sm text-foreground-muted">
-                  DataTable with row selection, pinning, resizing, and a
-                  Toolbar-based action strip.
+                  DataTable with row selection, pinning, resizing, and a Toolbar-based action strip.
                 </p>
               </div>
               <Badge variant="outlineGray">DataTable</Badge>
@@ -765,10 +684,7 @@ export function ReleaseControlWorkspaceShowcase() {
         </div>
 
         <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
-          <SectionPanel
-            title="Automation command"
-            subtitle="CommandInput in a realistic release workflow"
-          >
+          <SectionPanel title="Automation command" subtitle="CommandInput in a realistic release workflow">
             <CommandInput
               label="Release assistant prompt"
               description="Use a multiline command surface for rollout notes, approval packets, or deployment bot instructions."
@@ -776,11 +692,7 @@ export function ReleaseControlWorkspaceShowcase() {
               defaultValue="Draft a canary rollout note for navigation-treeview-1.2.0 and highlight the remaining approval blocker."
               submitLabel="Run command"
               actions={
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  leftIcon={<IconRobot size={16} />}
-                >
+                <Button size="sm" variant="ghost" leftIcon={<IconRobot size={16} />}>
                   Insert template
                 </Button>
               }
@@ -790,21 +702,15 @@ export function ReleaseControlWorkspaceShowcase() {
             />
           </SectionPanel>
 
-          <SectionPanel
-            title="Approval summary"
-            subtitle="Complementary supporting surface"
-          >
+          <SectionPanel title="Approval summary" subtitle="Complementary supporting surface">
             <div className="space-y-md">
               <Card variant="plain" className="rounded-2xl bg-surface-subtle">
                 <CardContent className="p-lg">
                   <div className="flex items-center justify-between gap-md">
                     <div>
-                      <p className="text-sm font-semibold text-foreground">
-                        Production canary path is almost ready
-                      </p>
+                      <p className="text-sm font-semibold text-foreground">Production canary path is almost ready</p>
                       <p className="mt-xs text-sm text-foreground-muted">
-                        The remaining blocker is a missing rollback note for the
-                        command suite rollout.
+                        The remaining blocker is a missing rollback note for the command suite rollout.
                       </p>
                     </div>
                     <StatusBadge status="pending" label="Needs note" />
@@ -815,12 +721,8 @@ export function ReleaseControlWorkspaceShowcase() {
               <div className="grid gap-md sm:grid-cols-2">
                 <Card variant="plain" className="rounded-2xl bg-surface-subtle">
                   <CardContent className="p-lg">
-                    <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">
-                      Reviewer
-                    </p>
-                    <p className="mt-sm text-sm font-medium text-foreground">
-                      Jamie Rivera
-                    </p>
+                    <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">Reviewer</p>
+                    <p className="mt-sm text-sm font-medium text-foreground">Jamie Rivera</p>
                     <p className="mt-xs text-sm text-foreground-muted">
                       Watching cross-environment drift and QA coverage.
                     </p>
@@ -829,12 +731,8 @@ export function ReleaseControlWorkspaceShowcase() {
 
                 <Card variant="plain" className="rounded-2xl bg-surface-subtle">
                   <CardContent className="p-lg">
-                    <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">
-                      Packet
-                    </p>
-                    <p className="mt-sm text-sm font-medium text-foreground">
-                      Approval bundle ready
-                    </p>
+                    <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">Packet</p>
+                    <p className="mt-sm text-sm font-medium text-foreground">Approval bundle ready</p>
                     <p className="mt-xs text-sm text-foreground-muted">
                       Attach the generated summary before promoting the build.
                     </p>
@@ -849,11 +747,7 @@ export function ReleaseControlWorkspaceShowcase() {
   );
 }
 
-export function IncidentTriageWorkspaceShowcase({
-  startWithPaletteOpen = false,
-}: {
-  startWithPaletteOpen?: boolean;
-}) {
+export function IncidentTriageWorkspaceShowcase({ startWithPaletteOpen = false }: { startWithPaletteOpen?: boolean }) {
   const serviceItems = React.useMemo(() => createAsyncExplorerItems(), []);
   const loadChildren = React.useMemo(() => createAsyncTreeChildLoader(), []);
   const [paletteOpen, setPaletteOpen] = React.useState(startWithPaletteOpen);
@@ -947,8 +841,7 @@ export function IncidentTriageWorkspaceShowcase({
                   Affected services
                 </p>
                 <p className="mt-xs text-sm text-foreground-muted">
-                  Async TreeView example with built-in loading, error, and
-                  inline retry.
+                  Async TreeView example with built-in loading, error, and inline retry.
                 </p>
               </div>
               <Badge variant="outlineGray">TreeView</Badge>
@@ -964,12 +857,9 @@ export function IncidentTriageWorkspaceShowcase({
           <div className="space-y-md">
             <div className="flex items-center justify-between gap-md">
               <div>
-                <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">
-                  Triage queue
-                </p>
+                <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">Triage queue</p>
                 <p className="mt-xs text-sm text-foreground-muted">
-                  DataTable used for severity sorting, responder ownership, and
-                  fast operator actions.
+                  DataTable used for severity sorting, responder ownership, and fast operator actions.
                 </p>
               </div>
               <Badge variant="outlineGray">DataTable</Badge>
@@ -989,10 +879,7 @@ export function IncidentTriageWorkspaceShowcase({
         </div>
 
         <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
-          <SectionPanel
-            title="Responder command"
-            subtitle="CommandInput for guided remediation"
-          >
+          <SectionPanel title="Responder command" subtitle="CommandInput for guided remediation">
             <CommandInput
               label="Mitigation command"
               description="Use this command surface to draft instructions for the incident bot or capture a responder handoff."
@@ -1000,11 +887,7 @@ export function IncidentTriageWorkspaceShowcase({
               defaultValue="Draft the next safest mitigation step for auth-service in eu-north-1 and include rollback criteria."
               submitLabel="Run playbook"
               actions={
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  leftIcon={<IconSearch size={16} />}
-                >
+                <Button size="sm" variant="ghost" leftIcon={<IconSearch size={16} />}>
                   Insert runbook step
                 </Button>
               }
@@ -1014,10 +897,7 @@ export function IncidentTriageWorkspaceShowcase({
             />
           </SectionPanel>
 
-          <SectionPanel
-            title="Suggested next action"
-            subtitle="Supportive surface next to the command workflow"
-          >
+          <SectionPanel title="Suggested next action" subtitle="Supportive surface next to the command workflow">
             <EmptyState
               align="left"
               eyebrow="Operator note"
@@ -1038,11 +918,7 @@ export function IncidentTriageWorkspaceShowcase({
           </SectionPanel>
         </div>
 
-        <CommandPalette
-          isOpen={paletteOpen}
-          onOpenChange={setPaletteOpen}
-          sections={incidentPaletteSections}
-        />
+        <CommandPalette isOpen={paletteOpen} onOpenChange={setPaletteOpen} sections={incidentPaletteSections} />
       </div>
     </WorkspaceShell>
   );
@@ -1064,11 +940,7 @@ export function DocumentationOpsWorkspaceShowcase() {
           subtitle="Storybook examples // public docs // internal handbooks"
           actions={
             <>
-              <Button
-                size="sm"
-                variant="secondary"
-                leftIcon={<IconRefresh size={16} />}
-              >
+              <Button size="sm" variant="secondary" leftIcon={<IconRefresh size={16} />}>
                 Sync docs
               </Button>
               <SplitButton
@@ -1087,8 +959,7 @@ export function DocumentationOpsWorkspaceShowcase() {
                   },
                   {
                     label: "Open technical handbook",
-                    description:
-                      "Jump to the internal component patterns guide.",
+                    description: "Jump to the internal component patterns guide.",
                     icon: <IconSettings size={14} />,
                     separatorBefore: true,
                   },
@@ -1110,9 +981,7 @@ export function DocumentationOpsWorkspaceShowcase() {
           <div className="space-y-md">
             <div className="flex items-center justify-between gap-md">
               <div>
-                <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">
-                  Content map
-                </p>
+                <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">Content map</p>
                 <p className="mt-xs text-sm text-foreground-muted">
                   TreeView used as a documentation and handbook navigator.
                 </p>
@@ -1130,12 +999,9 @@ export function DocumentationOpsWorkspaceShowcase() {
           <div className="space-y-md">
             <div className="flex items-center justify-between gap-md">
               <div>
-                <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">
-                  Review queue
-                </p>
+                <p className="text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase">Review queue</p>
                 <p className="mt-xs text-sm text-foreground-muted">
-                  The same DataTable and Toolbar pattern also fits docs
-                  publishing and review.
+                  The same DataTable and Toolbar pattern also fits docs publishing and review.
                 </p>
               </div>
               <Badge variant="outlineGray">Toolbar + DataTable</Badge>
@@ -1151,10 +1017,7 @@ export function DocumentationOpsWorkspaceShowcase() {
           </div>
         </div>
 
-        <SectionPanel
-          title="Drafting lane"
-          subtitle="CommandInput for docs and migration notes"
-        >
+        <SectionPanel title="Drafting lane" subtitle="CommandInput for docs and migration notes">
           <CommandInput
             label="Docs assistant prompt"
             description="Create consumer-facing notes that align public Storybook guidance with internal implementation changes."
@@ -1162,11 +1025,7 @@ export function DocumentationOpsWorkspaceShowcase() {
             defaultValue="Draft a short Storybook docs note that explains when to choose Table versus DataTable and link it back to the technical patterns handbook."
             submitLabel="Draft note"
             actions={
-              <Button
-                size="sm"
-                variant="ghost"
-                leftIcon={<IconWand size={16} />}
-              >
+              <Button size="sm" variant="ghost" leftIcon={<IconWand size={16} />}>
                 Insert docs template
               </Button>
             }

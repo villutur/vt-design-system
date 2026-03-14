@@ -86,10 +86,8 @@ export const semanticCssVariables = {
     "--vt-color-overlay": semanticColorChannels.light.overlay,
     "--vt-color-foreground": semanticColorChannels.light.foreground,
     "--vt-color-foreground-muted": semanticColorChannels.light.foregroundMuted,
-    "--vt-color-foreground-subtle":
-      semanticColorChannels.light.foregroundSubtle,
-    "--vt-color-foreground-inverse":
-      semanticColorChannels.light.foregroundInverse,
+    "--vt-color-foreground-subtle": semanticColorChannels.light.foregroundSubtle,
+    "--vt-color-foreground-inverse": semanticColorChannels.light.foregroundInverse,
     "--vt-color-border-default": semanticColorChannels.light.borderDefault,
     "--vt-color-border-strong": semanticColorChannels.light.borderStrong,
   },
@@ -102,8 +100,7 @@ export const semanticCssVariables = {
     "--vt-color-foreground": semanticColorChannels.dark.foreground,
     "--vt-color-foreground-muted": semanticColorChannels.dark.foregroundMuted,
     "--vt-color-foreground-subtle": semanticColorChannels.dark.foregroundSubtle,
-    "--vt-color-foreground-inverse":
-      semanticColorChannels.dark.foregroundInverse,
+    "--vt-color-foreground-inverse": semanticColorChannels.dark.foregroundInverse,
     "--vt-color-border-default": semanticColorChannels.dark.borderDefault,
     "--vt-color-border-strong": semanticColorChannels.dark.borderStrong,
   },
@@ -216,8 +213,7 @@ export const designTokens = {
   },
   shadows: {
     soft: "0 2px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.15)",
-    "soft-dark":
-      "0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4)",
+    "soft-dark": "0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4)",
   },
   spacing: {
     none: "0",

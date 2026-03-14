@@ -24,8 +24,7 @@ const responseDensityClassMap = {
     bodyPadding: "p-lg",
     sectionSpacing: "space-y-md",
     headerPadding: "px-lg py-md",
-    subheading:
-      "text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase",
+    subheading: "text-xs font-bold tracking-[0.14em] text-foreground-subtle uppercase",
   },
   compact: {
     shell: "rounded-xl",
@@ -33,8 +32,7 @@ const responseDensityClassMap = {
     bodyPadding: "p-md",
     sectionSpacing: "space-y-sm",
     headerPadding: "px-md py-sm",
-    subheading:
-      "text-[10px] font-bold tracking-[0.14em] text-foreground-subtle uppercase",
+    subheading: "text-[10px] font-bold tracking-[0.14em] text-foreground-subtle uppercase",
   },
 } as const;
 
@@ -47,8 +45,7 @@ const statusConfig = {
   },
   streaming: {
     label: "Streaming",
-    description:
-      "Rendering partial output while the response is still in flight.",
+    description: "Rendering partial output while the response is still in flight.",
     variant: "softPrimary" as const,
     icon: <IconLoader2 size={14} className="animate-spin" />,
   },
@@ -88,10 +85,7 @@ export interface AIResponseAttachment {
   meta?: React.ReactNode;
 }
 
-export interface AIResponseViewProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "children"
-> {
+export interface AIResponseViewProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> {
   status?: AIResponseStatus;
   content?: string;
   thought?: {
@@ -107,9 +101,7 @@ export interface AIResponseViewProps extends Omit<
   errorMessage?: React.ReactNode;
 }
 
-function renderToolCallStatus(
-  status: AIResponseToolCall["status"] = "running",
-) {
+function renderToolCallStatus(status: AIResponseToolCall["status"] = "running") {
   if (status === "success") {
     return (
       <Badge variant="softSuccess" size="sm">
@@ -163,10 +155,7 @@ function renderAttachmentKind(kind: AIResponseAttachment["kind"]) {
   );
 }
 
-export const AIResponseView = React.forwardRef<
-  HTMLDivElement,
-  AIResponseViewProps
->(
+export const AIResponseView = React.forwardRef<HTMLDivElement, AIResponseViewProps>(
   (
     {
       status = "complete",
@@ -185,15 +174,9 @@ export const AIResponseView = React.forwardRef<
   ) => {
     const styles = responseDensityClassMap[density];
     const statusMeta = statusConfig[status];
-    const openToolCalls = toolCalls
-      .filter((toolCall) => toolCall.defaultOpen)
-      .map((toolCall) => toolCall.id);
-    const imageAttachments = attachments.filter(
-      (attachment) => attachment.kind === "image" && attachment.src,
-    );
-    const fileLikeAttachments = attachments.filter(
-      (attachment) => attachment.kind !== "image" || !attachment.src,
-    );
+    const openToolCalls = toolCalls.filter((toolCall) => toolCall.defaultOpen).map((toolCall) => toolCall.id);
+    const imageAttachments = attachments.filter((attachment) => attachment.kind === "image" && attachment.src);
+    const fileLikeAttachments = attachments.filter((attachment) => attachment.kind !== "image" || !attachment.src);
     const placeholderMessage =
       !content && status === "thinking"
         ? "The model is preparing a response."
@@ -225,9 +208,7 @@ export const AIResponseView = React.forwardRef<
                 {statusMeta.label}
               </Badge>
             </div>
-            <p className="mt-xs text-sm text-foreground-muted">
-              {statusMeta.description}
-            </p>
+            <p className="mt-xs text-sm text-foreground-muted">{statusMeta.description}</p>
           </div>
 
           {(toolCalls.length > 0 || attachments.length > 0) && (
@@ -267,11 +248,7 @@ export const AIResponseView = React.forwardRef<
           {showThought && thought ? (
             <div className={styles.sectionSpacing}>
               <p className={styles.subheading}>Thought</p>
-              <Accordion
-                type="single"
-                collapsible
-                defaultValue={thought.defaultOpen ? "thought" : undefined}
-              >
+              <Accordion type="single" collapsible defaultValue={thought.defaultOpen ? "thought" : undefined}>
                 <AccordionItem
                   value="thought"
                   title={
@@ -288,10 +265,7 @@ export const AIResponseView = React.forwardRef<
                     </div>
                   }
                 >
-                  <MarkdownRenderer
-                    content={thought.content}
-                    density={density}
-                  />
+                  <MarkdownRenderer content={thought.content} density={density} />
                 </AccordionItem>
               </Accordion>
             </div>
@@ -300,11 +274,7 @@ export const AIResponseView = React.forwardRef<
           {showToolCalls && toolCalls.length > 0 ? (
             <div className={styles.sectionSpacing}>
               <p className={styles.subheading}>Tool calls</p>
-              <Accordion
-                type="multiple"
-                defaultValue={openToolCalls}
-                collapsible
-              >
+              <Accordion type="multiple" defaultValue={openToolCalls} collapsible>
                 {toolCalls.map((toolCall) => (
                   <AccordionItem
                     key={toolCall.id}
@@ -312,15 +282,11 @@ export const AIResponseView = React.forwardRef<
                     title={
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-sm">
-                          <span className="text-sm font-semibold text-foreground">
-                            {toolCall.name}
-                          </span>
+                          <span className="text-sm font-semibold text-foreground">{toolCall.name}</span>
                           {renderToolCallStatus(toolCall.status)}
                         </div>
                         {toolCall.summary ? (
-                          <p className="mt-xs text-sm font-normal text-foreground-muted">
-                            {toolCall.summary}
-                          </p>
+                          <p className="mt-xs text-sm font-normal text-foreground-muted">{toolCall.summary}</p>
                         ) : null}
                       </div>
                     }
@@ -369,11 +335,7 @@ export const AIResponseView = React.forwardRef<
                     >
                       <Image
                         src={attachment.src}
-                        alt={
-                          typeof attachment.title === "string"
-                            ? attachment.title
-                            : "Attachment preview"
-                        }
+                        alt={typeof attachment.title === "string" ? attachment.title : "Attachment preview"}
                         aspectRatio="16/10"
                         className="w-full"
                       />
@@ -381,18 +343,12 @@ export const AIResponseView = React.forwardRef<
                         <div className="flex flex-wrap items-center gap-sm">
                           {renderAttachmentKind(attachment.kind)}
                           {attachment.meta ? (
-                            <span className="text-xs text-foreground-subtle">
-                              {attachment.meta}
-                            </span>
+                            <span className="text-xs text-foreground-subtle">{attachment.meta}</span>
                           ) : null}
                         </div>
-                        <p className="text-sm font-semibold text-foreground">
-                          {attachment.title}
-                        </p>
+                        <p className="text-sm font-semibold text-foreground">{attachment.title}</p>
                         {attachment.description ? (
-                          <p className="text-sm text-foreground-muted">
-                            {attachment.description}
-                          </p>
+                          <p className="text-sm text-foreground-muted">{attachment.description}</p>
                         ) : null}
                       </div>
                     </div>
@@ -411,18 +367,12 @@ export const AIResponseView = React.forwardRef<
                         <div className="flex flex-wrap items-center gap-sm">
                           {renderAttachmentKind(attachment.kind)}
                           {attachment.meta ? (
-                            <span className="text-xs text-foreground-subtle">
-                              {attachment.meta}
-                            </span>
+                            <span className="text-xs text-foreground-subtle">{attachment.meta}</span>
                           ) : null}
                         </div>
-                        <p className="mt-sm text-sm font-semibold text-foreground">
-                          {attachment.title}
-                        </p>
+                        <p className="mt-sm text-sm font-semibold text-foreground">{attachment.title}</p>
                         {attachment.description ? (
-                          <p className="mt-xs text-sm text-foreground-muted">
-                            {attachment.description}
-                          </p>
+                          <p className="mt-xs text-sm text-foreground-muted">{attachment.description}</p>
                         ) : null}
                       </div>
 

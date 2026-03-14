@@ -1,9 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  IconActivity,
-  IconDatabase,
-  IconTrendingDown,
-} from "@tabler/icons-react";
+import { IconActivity, IconDatabase, IconTrendingDown } from "@tabler/icons-react";
 import { MetricCard } from "./MetricCard";
 
 const meta: Meta<typeof MetricCard> = {
@@ -60,11 +56,7 @@ export const CustomChart: Story = {
     chart: (
       <div className="mt-md flex h-16 items-end gap-xs">
         {[28, 40, 24, 18, 22, 12, 16].map((value, index) => (
-          <div
-            key={index}
-            className="flex-1 rounded-t bg-error/30"
-            style={{ height: `${value}px` }}
-          />
+          <div key={index} className="flex-1 rounded-t bg-error/30" style={{ height: `${value}px` }} />
         ))}
       </div>
     ),
@@ -94,7 +86,6 @@ export const RouteSummary: Story = {
     statusDirection: "up",
     statusTone: "primary",
     icon: <IconActivity size={20} />,
-    footer:
-      "The studio lane now proves server-side Gemini access across both one-shot and multi-turn text flows.",
+    footer: "The studio lane now proves server-side Gemini access across both one-shot and multi-turn text flows.",
   },
 };

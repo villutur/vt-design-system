@@ -1,18 +1,7 @@
 import React from "react";
-import {
-  IconCheck,
-  IconChevronDown,
-  IconLoader2,
-  IconPlus,
-  IconSearch,
-  IconX,
-} from "@tabler/icons-react";
+import { IconCheck, IconChevronDown, IconLoader2, IconPlus, IconSearch, IconX } from "@tabler/icons-react";
 import { FloatingPortal } from "../../internal/FloatingPortal";
-import {
-  filterCollectionItems,
-  groupCollectionItems,
-  type SearchableCollectionItem,
-} from "../../internal/collection";
+import { filterCollectionItems, groupCollectionItems, type SearchableCollectionItem } from "../../internal/collection";
 import { useAnchoredFloating } from "../../internal/useAnchoredFloating";
 import { useControllableState } from "../../internal/useControllableState";
 import { useDismissibleLayer } from "../../internal/useDismissibleLayer";
@@ -84,13 +73,8 @@ function createDefaultOptionFromQuery(query: string): ComboBoxOption {
   };
 }
 
-function upsertCreatedOption(
-  currentOptions: ComboBoxOption[],
-  nextOption: ComboBoxOption,
-) {
-  const existingIndex = currentOptions.findIndex(
-    (option) => option.value === nextOption.value,
-  );
+function upsertCreatedOption(currentOptions: ComboBoxOption[], nextOption: ComboBoxOption) {
+  const existingIndex = currentOptions.findIndex((option) => option.value === nextOption.value);
 
   if (existingIndex < 0) {
     return [...currentOptions, nextOption];
@@ -102,10 +86,7 @@ function upsertCreatedOption(
   return nextOptions;
 }
 
-function mergeOptions(
-  options: ComboBoxOption[],
-  createdOptions: ComboBoxOption[],
-) {
+function mergeOptions(options: ComboBoxOption[], createdOptions: ComboBoxOption[]) {
   const optionMap = new Map(options.map((option) => [option.value, option]));
 
   createdOptions.forEach((option) => {
@@ -127,18 +108,13 @@ function resolveSelectedOptions(
   latestCreatedOption: ComboBoxOption | undefined,
 ) {
   return values.flatMap((value) => {
-    const option =
-      optionMap.get(value) ??
-      (latestCreatedOption?.value === value ? latestCreatedOption : undefined);
+    const option = optionMap.get(value) ?? (latestCreatedOption?.value === value ? latestCreatedOption : undefined);
 
     return option ? [option] : [];
   });
 }
 
-export interface ComboBoxProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "defaultValue" | "onChange"
-> {
+export interface ComboBoxProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "defaultValue" | "onChange"> {
   options: ComboBoxOption[];
   value?: string;
   defaultValue?: string;
@@ -166,9 +142,7 @@ export interface ComboBoxProps extends Omit<
   loadingText?: React.ReactNode;
   creatable?: boolean;
   createOptionLabel?: (query: string) => React.ReactNode;
-  onCreateOption?: (
-    query: string,
-  ) => ComboBoxOption | Promise<ComboBoxOption | undefined> | undefined;
+  onCreateOption?: (query: string) => ComboBoxOption | Promise<ComboBoxOption | undefined> | undefined;
   name?: string;
   size?: keyof typeof comboBoxSizeClassMap;
 }
@@ -214,27 +188,19 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
   ) => {
     const generatedId = id || React.useId();
     const labelId = label ? `${generatedId}-label` : undefined;
-    const messageId =
-      helperText || errorText ? `${generatedId}-message` : undefined;
+    const messageId = helperText || errorText ? `${generatedId}-message` : undefined;
     const liveRegionId = `${generatedId}-live-region`;
     const listboxId = `${generatedId}-listbox`;
     const triggerRef = React.useRef<HTMLButtonElement>(null);
     const popoverRef = React.useRef<HTMLDivElement>(null);
     const inputRef = React.useRef<HTMLInputElement>(null);
-    const latestCreatedOptionRef = React.useRef<ComboBoxOption | undefined>(
-      undefined,
-    );
+    const latestCreatedOptionRef = React.useRef<ComboBoxOption | undefined>(undefined);
     const sizing = comboBoxSizeClassMap[size];
     const dismissRefs = React.useMemo(() => [triggerRef, popoverRef], []);
     const [open, setOpen] = React.useState(false);
     const [creating, setCreating] = React.useState(false);
-    const [createdOptions, setCreatedOptions] = React.useState<
-      ComboBoxOption[]
-    >([]);
-    const mergedOptions = React.useMemo(
-      () => mergeOptions(options, createdOptions),
-      [createdOptions, options],
-    );
+    const [createdOptions, setCreatedOptions] = React.useState<ComboBoxOption[]>([]);
+    const mergedOptions = React.useMemo(() => mergeOptions(options, createdOptions), [createdOptions, options]);
     const optionMap = React.useMemo(
       () => new Map(mergedOptions.map((option) => [option.value, option])),
       [mergedOptions],
@@ -244,9 +210,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
       defaultValue: defaultSearchQuery,
       onChange: onSearchQueryChange,
     });
-    const [selectedValue, setSelectedValue] = useControllableState<
-      string | undefined
-    >({
+    const [selectedValue, setSelectedValue] = useControllableState<string | undefined>({
       value,
       defaultValue,
       onChange: (nextValue) => {
@@ -254,9 +218,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
           nextValue == null
             ? undefined
             : (optionMap.get(nextValue) ??
-              (latestCreatedOptionRef.current?.value === nextValue
-                ? latestCreatedOptionRef.current
-                : undefined));
+              (latestCreatedOptionRef.current?.value === nextValue ? latestCreatedOptionRef.current : undefined));
 
         onValueChange?.(nextValue, option);
       },
@@ -265,27 +227,14 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
       value: values,
       defaultValue: defaultValues,
       onChange: (nextValues) => {
-        onValuesChange?.(
-          nextValues,
-          resolveSelectedOptions(
-            nextValues,
-            optionMap,
-            latestCreatedOptionRef.current,
-          ),
-        );
+        onValuesChange?.(nextValues, resolveSelectedOptions(nextValues, optionMap, latestCreatedOptionRef.current));
       },
     });
     const filteredOptions = React.useMemo(
-      () =>
-        filterOptions
-          ? filterCollectionItems(mergedOptions, query)
-          : mergedOptions,
+      () => (filterOptions ? filterCollectionItems(mergedOptions, query) : mergedOptions),
       [filterOptions, mergedOptions, query],
     );
-    const groupedOptions = React.useMemo(
-      () => groupCollectionItems(filteredOptions),
-      [filteredOptions],
-    );
+    const groupedOptions = React.useMemo(() => groupCollectionItems(filteredOptions), [filteredOptions]);
     const selectedOption = React.useMemo(
       () =>
         multiple
@@ -293,9 +242,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
           : selectedValue == null
             ? undefined
             : (optionMap.get(selectedValue) ??
-              (latestCreatedOptionRef.current?.value === selectedValue
-                ? latestCreatedOptionRef.current
-                : undefined)),
+              (latestCreatedOptionRef.current?.value === selectedValue ? latestCreatedOptionRef.current : undefined)),
       [multiple, optionMap, selectedValue],
     );
     const normalizedQuery = normalizeComboBoxValue(query);
@@ -309,8 +256,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
         ),
       [mergedOptions, normalizedQuery],
     );
-    const showCreateOption =
-      creatable && normalizedQuery.length > 0 && !loading && !hasExactMatch;
+    const showCreateOption = creatable && normalizedQuery.length > 0 && !loading && !hasExactMatch;
     const listItems = React.useMemo<ComboBoxListItem[]>(() => {
       const optionItems: ComboBoxListItem[] = filteredOptions.map((option) => ({
         kind: "option" as const,
@@ -339,13 +285,8 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
 
       return map;
     }, [listItems]);
-    const createItemIndex = React.useMemo(
-      () => listItems.findIndex((item) => item.kind === "create"),
-      [listItems],
-    );
-    const triggerHasSelection = multiple
-      ? selectedValues.length > 0
-      : Boolean(selectedValue);
+    const createItemIndex = React.useMemo(() => listItems.findIndex((item) => item.kind === "create"), [listItems]);
+    const triggerHasSelection = multiple ? selectedValues.length > 0 : Boolean(selectedValue);
     const selectedLabels = React.useMemo(
       () =>
         multiple
@@ -363,9 +304,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
       ? "Loading options."
       : listItems.length === 0
         ? "No options available."
-        : `${listItems.length} option${
-            listItems.length === 1 ? "" : "s"
-          } available.${multiple ? ` ${selectedValues.length} selected.` : ""}`;
+        : `${listItems.length} option${listItems.length === 1 ? "" : "s"} available.${multiple ? ` ${selectedValues.length} selected.` : ""}`;
     const { refs, floatingStyles } = useAnchoredFloating({
       open,
       onOpenChange: setOpen,
@@ -377,9 +316,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
       (option: ComboBoxOption) => {
         if (multiple) {
           const nextValues = selectedValues.includes(option.value)
-            ? selectedValues.filter(
-                (currentValue) => currentValue !== option.value,
-              )
+            ? selectedValues.filter((currentValue) => currentValue !== option.value)
             : [...selectedValues, option.value];
 
           setSelectedValues(nextValues);
@@ -406,18 +343,14 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
       try {
         const createdOption =
           (await onCreateOption?.(trimmedQuery)) ??
-          (onCreateOption
-            ? undefined
-            : createDefaultOptionFromQuery(trimmedQuery));
+          (onCreateOption ? undefined : createDefaultOptionFromQuery(trimmedQuery));
 
         if (!createdOption) {
           return;
         }
 
         latestCreatedOptionRef.current = createdOption;
-        setCreatedOptions((currentOptions) =>
-          upsertCreatedOption(currentOptions, createdOption),
-        );
+        setCreatedOptions((currentOptions) => upsertCreatedOption(currentOptions, createdOption));
 
         if (multiple) {
           const nextValues = selectedValues.includes(createdOption.value)
@@ -436,16 +369,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
       } finally {
         setCreating(false);
       }
-    }, [
-      creating,
-      multiple,
-      onCreateOption,
-      query,
-      selectedValues,
-      setQuery,
-      setSelectedValue,
-      setSelectedValues,
-    ]);
+    }, [creating, multiple, onCreateOption, query, selectedValues, setQuery, setSelectedValue, setSelectedValues]);
 
     useFocusReturn(open);
     useDismissibleLayer({
@@ -454,21 +378,20 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
       onDismiss: () => setOpen(false),
     });
 
-    const { activeIndex, setActiveIndex, handleKeyDown, itemRefs, setItemRef } =
-      useListNavigation({
-        items: listItems,
-        open,
-        onClose: () => setOpen(false),
-        onSelect: (item) => {
-          if (item.kind === "create") {
-            void handleCreate();
-            return;
-          }
+    const { activeIndex, setActiveIndex, handleKeyDown, itemRefs, setItemRef } = useListNavigation({
+      items: listItems,
+      open,
+      onClose: () => setOpen(false),
+      onSelect: (item) => {
+        if (item.kind === "create") {
+          void handleCreate();
+          return;
+        }
 
-          handleOptionSelect(item.option);
-        },
-        focusItemOnChange: false,
-      });
+        handleOptionSelect(item.option);
+      },
+      focusItemOnChange: false,
+    });
 
     React.useEffect(() => {
       if (!open) {
@@ -485,29 +408,13 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
       }
 
       const preferredValue = multiple
-        ? selectedValues.find((currentValue) =>
-            optionIndexMap.has(currentValue),
-          )
+        ? selectedValues.find((currentValue) => optionIndexMap.has(currentValue))
         : selectedValue;
-      const selectedIndex =
-        preferredValue == null
-          ? -1
-          : (optionIndexMap.get(preferredValue) ?? -1);
-      const nextIndex =
-        selectedIndex >= 0
-          ? selectedIndex
-          : listItems.findIndex((item) => !item.disabled);
+      const selectedIndex = preferredValue == null ? -1 : (optionIndexMap.get(preferredValue) ?? -1);
+      const nextIndex = selectedIndex >= 0 ? selectedIndex : listItems.findIndex((item) => !item.disabled);
 
       setActiveIndex(nextIndex);
-    }, [
-      listItems,
-      multiple,
-      open,
-      optionIndexMap,
-      selectedValue,
-      selectedValues,
-      setActiveIndex,
-    ]);
+    }, [listItems, multiple, open, optionIndexMap, selectedValue, selectedValues, setActiveIndex]);
 
     React.useEffect(() => {
       if (!open || activeIndex < 0) {
@@ -517,15 +424,8 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
       itemRefs.current[activeIndex]?.scrollIntoView({ block: "nearest" });
     }, [activeIndex, itemRefs, open]);
 
-    const handleSearchInputKeyDown = (
-      event: React.KeyboardEvent<HTMLInputElement>,
-    ) => {
-      if (
-        multiple &&
-        !query &&
-        (event.key === "Backspace" || event.key === "Delete") &&
-        selectedValues.length > 0
-      ) {
+    const handleSearchInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (multiple && !query && (event.key === "Backspace" || event.key === "Delete") && selectedValues.length > 0) {
         event.preventDefault();
         setSelectedValues(selectedValues.slice(0, -1));
         return;
@@ -545,9 +445,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
       setQuery("");
     };
 
-    const handleTriggerKeyDown = (
-      event: React.KeyboardEvent<HTMLButtonElement>,
-    ) => {
+    const handleTriggerKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
       if (disabled) {
         return;
       }
@@ -588,12 +486,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
         {...props}
       >
         <div className="relative">
-          <div
-            id={liveRegionId}
-            className="sr-only"
-            aria-live="polite"
-            aria-atomic="true"
-          >
+          <div id={liveRegionId} className="sr-only" aria-live="polite" aria-atomic="true">
             {listStatusMessage}
           </div>
           <button
@@ -615,9 +508,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
             aria-invalid={error}
             aria-required={required || undefined}
             aria-describedby={joinIds(messageId, liveRegionId)}
-            aria-labelledby={
-              labelId ? `${labelId} ${generatedId}-value` : undefined
-            }
+            aria-labelledby={labelId ? `${labelId} ${generatedId}-value` : undefined}
             disabled={disabled}
             onClick={() => setOpen((currentOpen) => !currentOpen)}
             onKeyDown={handleTriggerKeyDown}
@@ -650,17 +541,13 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
                     </span>
                   ))
                 ) : (
-                  <span className="truncate text-foreground-subtle">
-                    {placeholder}
-                  </span>
+                  <span className="truncate text-foreground-subtle">{placeholder}</span>
                 )
               ) : (
                 <span
                   className={cn(
                     "min-w-0 truncate",
-                    selectedOption || selectedValue
-                      ? "text-foreground"
-                      : "text-foreground-subtle",
+                    selectedOption || selectedValue ? "text-foreground" : "text-foreground-subtle",
                   )}
                 >
                   {selectedOption?.label ?? selectedValue ?? placeholder}
@@ -697,12 +584,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
           {name ? (
             multiple ? (
               selectedValues.map((currentValue) => (
-                <input
-                  key={currentValue}
-                  type="hidden"
-                  name={name}
-                  value={currentValue}
-                />
+                <input key={currentValue} type="hidden" name={name} value={currentValue} />
               ))
             ) : (
               <input type="hidden" name={name} value={selectedValue ?? ""} />
@@ -721,10 +603,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
               >
                 <div className="border-b border-default px-sm py-sm">
                   <div className="relative">
-                    <label
-                      htmlFor={`${generatedId}-search`}
-                      className="sr-only"
-                    >
+                    <label htmlFor={`${generatedId}-search`} className="sr-only">
                       Search options
                     </label>
                     <IconSearch
@@ -741,11 +620,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
                       placeholder={searchPlaceholder}
                       aria-controls={listboxId}
                       aria-describedby={joinIds(messageId, liveRegionId)}
-                      aria-activedescendant={
-                        activeIndex >= 0
-                          ? `${generatedId}-option-${activeIndex}`
-                          : undefined
-                      }
+                      aria-activedescendant={activeIndex >= 0 ? `${generatedId}-option-${activeIndex}` : undefined}
                       className={cn(
                         "w-full rounded-lg border border-default bg-surface-subtle text-foreground transition-colors outline-none focus:border-primary focus:ring-2 focus:ring-primary/20",
                         sizing.searchInput,
@@ -761,18 +636,11 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
                   aria-busy={loading || creating || undefined}
                   className="max-h-72 overflow-y-auto p-xs"
                 >
-                  {filteredOptions.length === 0 &&
-                  !showCreateOption &&
-                  !loading ? (
-                    <div className="px-md py-lg text-sm text-foreground-muted">
-                      {emptyState}
-                    </div>
+                  {filteredOptions.length === 0 && !showCreateOption && !loading ? (
+                    <div className="px-md py-lg text-sm text-foreground-muted">{emptyState}</div>
                   ) : (
                     groupedOptions.map((group, groupIndex) => {
-                      const groupLabelId =
-                        group.label != null
-                          ? `${generatedId}-group-${groupIndex}`
-                          : undefined;
+                      const groupLabelId = group.label != null ? `${generatedId}-group-${groupIndex}` : undefined;
 
                       return (
                         <div
@@ -791,8 +659,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
                           ) : null}
                           <div className="space-y-[2px]">
                             {group.items.map((option) => {
-                              const optionIndex =
-                                optionIndexMap.get(option.value) ?? -1;
+                              const optionIndex = optionIndexMap.get(option.value) ?? -1;
                               const isSelected = multiple
                                 ? selectedValues.includes(option.value)
                                 : option.value === selectedValue;
@@ -802,11 +669,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
                                 <button
                                   key={option.value}
                                   id={`${generatedId}-option-${optionIndex}`}
-                                  ref={
-                                    optionIndex >= 0
-                                      ? setItemRef(optionIndex)
-                                      : undefined
-                                  }
+                                  ref={optionIndex >= 0 ? setItemRef(optionIndex) : undefined}
                                   type="button"
                                   role="option"
                                   aria-selected={isSelected}
@@ -819,21 +682,15 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
                                   onClick={() => handleOptionSelect(option)}
                                   className={cn(
                                     "flex w-full items-start justify-between gap-md rounded-lg px-sm py-sm text-left text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-50",
-                                    isActive
-                                      ? "bg-surface-muted"
-                                      : "hover:bg-surface-subtle",
+                                    isActive ? "bg-surface-muted" : "hover:bg-surface-subtle",
                                   )}
                                 >
                                   <span className="flex min-w-0 items-start gap-sm">
                                     {option.icon ? (
-                                      <span className="mt-[2px] shrink-0 text-foreground-subtle">
-                                        {option.icon}
-                                      </span>
+                                      <span className="mt-[2px] shrink-0 text-foreground-subtle">{option.icon}</span>
                                     ) : null}
                                     <span className="min-w-0">
-                                      <span className="block truncate font-medium text-foreground">
-                                        {option.label}
-                                      </span>
+                                      <span className="block truncate font-medium text-foreground">{option.label}</span>
                                       {option.description ? (
                                         <span className="mt-xs block text-xs text-foreground-muted">
                                           {option.description}
@@ -847,12 +704,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
                                         {option.shortcut}
                                       </span>
                                     ) : null}
-                                    {isSelected ? (
-                                      <IconCheck
-                                        size={16}
-                                        className="shrink-0 text-primary"
-                                      />
-                                    ) : null}
+                                    {isSelected ? <IconCheck size={16} className="shrink-0 text-primary" /> : null}
                                   </span>
                                 </button>
                               );
@@ -866,11 +718,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
                   {showCreateOption ? (
                     <button
                       id={`${generatedId}-option-${createItemIndex}`}
-                      ref={
-                        createItemIndex >= 0
-                          ? setItemRef(createItemIndex)
-                          : undefined
-                      }
+                      ref={createItemIndex >= 0 ? setItemRef(createItemIndex) : undefined}
                       type="button"
                       role="option"
                       aria-selected={false}
@@ -883,28 +731,19 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
                       onClick={() => void handleCreate()}
                       className={cn(
                         "mt-[2px] flex w-full items-center justify-between gap-md rounded-lg px-sm py-sm text-left text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-60",
-                        createItemIndex === activeIndex
-                          ? "bg-surface-muted"
-                          : "hover:bg-surface-subtle",
+                        createItemIndex === activeIndex ? "bg-surface-muted" : "hover:bg-surface-subtle",
                       )}
                     >
                       <span className="flex min-w-0 items-center gap-sm">
                         {creating ? (
-                          <IconLoader2
-                            size={16}
-                            className="shrink-0 animate-spin text-primary"
-                          />
+                          <IconLoader2 size={16} className="shrink-0 animate-spin text-primary" />
                         ) : (
-                          <IconPlus
-                            size={16}
-                            className="shrink-0 text-primary"
-                          />
+                          <IconPlus size={16} className="shrink-0 text-primary" />
                         )}
                         <span className="min-w-0 truncate font-medium text-foreground">
                           {creating
                             ? `Creating "${query.trim()}"...`
-                            : (createOptionLabel?.(query.trim()) ??
-                              `Create "${query.trim()}"`)}
+                            : (createOptionLabel?.(query.trim()) ?? `Create "${query.trim()}"`)}
                         </span>
                       </span>
                     </button>
@@ -912,10 +751,7 @@ export const ComboBox = React.forwardRef<HTMLButtonElement, ComboBoxProps>(
 
                   {loading ? (
                     <div className="flex items-center gap-sm px-md py-md text-sm text-foreground-muted">
-                      <IconLoader2
-                        size={16}
-                        className="shrink-0 animate-spin text-primary"
-                      />
+                      <IconLoader2 size={16} className="shrink-0 animate-spin text-primary" />
                       <span>{loadingText}</span>
                     </div>
                   ) : null}

@@ -63,9 +63,7 @@ export const OpenAndSelect: Story = {
     });
     await expect(within(document.body).getByRole("menu")).toBeInTheDocument();
     await userEvent.keyboard("{ArrowDown}{Enter}");
-    await expect(
-      within(document.body).queryByRole("menu"),
-    ).not.toBeInTheDocument();
+    await expect(within(document.body).queryByRole("menu")).not.toBeInTheDocument();
   },
 };
 

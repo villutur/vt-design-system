@@ -1,12 +1,7 @@
 import React from "react";
 import { cn } from "../../utils/cn";
 
-export type TimelineItemStatus =
-  | "default"
-  | "info"
-  | "success"
-  | "warning"
-  | "error";
+export type TimelineItemStatus = "default" | "info" | "success" | "warning" | "error";
 
 export interface TimelineItem {
   id?: React.Key;
@@ -31,22 +26,14 @@ const statusClasses: Record<TimelineItemStatus, string> = {
   error: "border-error/30 bg-error/10 text-error",
 };
 
-export const Timeline: React.FC<TimelineProps> = ({
-  items,
-  density = "default",
-  className,
-  ...props
-}) => {
+export const Timeline: React.FC<TimelineProps> = ({ items, density = "default", className, ...props }) => {
   return (
     <div className={cn("space-y-md", className)} {...props}>
       {items.map((item, index) => {
         const status = item.status ?? "default";
 
         return (
-          <div
-            key={item.id ?? `timeline-item-${index}`}
-            className="grid grid-cols-[auto_1fr] gap-md"
-          >
+          <div key={item.id ?? `timeline-item-${index}`} className="grid grid-cols-[auto_1fr] gap-md">
             <div className="flex flex-col items-center">
               <div
                 className={cn(
@@ -56,9 +43,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               >
                 {item.icon ?? <span className="h-2 w-2 rounded-full bg-current" />}
               </div>
-              {index < items.length - 1 ? (
-                <div className="mt-sm h-full min-h-8 w-px bg-border-default" />
-              ) : null}
+              {index < items.length - 1 ? <div className="mt-sm h-full min-h-8 w-px bg-border-default" /> : null}
             </div>
 
             <div
@@ -69,14 +54,8 @@ export const Timeline: React.FC<TimelineProps> = ({
             >
               <div className="flex flex-wrap items-start justify-between gap-sm">
                 <div>
-                  <h3 className="text-sm font-semibold text-foreground">
-                    {item.title}
-                  </h3>
-                  {item.description ? (
-                    <p className="mt-xs text-sm text-foreground-muted">
-                      {item.description}
-                    </p>
-                  ) : null}
+                  <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
+                  {item.description ? <p className="mt-xs text-sm text-foreground-muted">{item.description}</p> : null}
                 </div>
                 {item.timestamp ? (
                   <span className="text-xs font-medium tracking-wide text-foreground-subtle uppercase">
@@ -86,9 +65,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               </div>
 
               {item.content ? (
-                <div className="mt-md border-t border-default pt-md text-sm text-foreground-muted">
-                  {item.content}
-                </div>
+                <div className="mt-md border-t border-default pt-md text-sm text-foreground-muted">{item.content}</div>
               ) : null}
             </div>
           </div>

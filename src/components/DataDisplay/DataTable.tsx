@@ -41,38 +41,34 @@ interface SelectionCheckboxProps extends React.InputHTMLAttributes<HTMLInputElem
   indeterminate?: boolean;
 }
 
-const SelectionCheckbox = React.forwardRef<
-  HTMLInputElement,
-  SelectionCheckboxProps
->(({ indeterminate = false, className, ...props }, ref) => {
-  const localRef = React.useRef<HTMLInputElement | null>(null);
+const SelectionCheckbox = React.forwardRef<HTMLInputElement, SelectionCheckboxProps>(
+  ({ indeterminate = false, className, ...props }, ref) => {
+    const localRef = React.useRef<HTMLInputElement | null>(null);
 
-  React.useEffect(() => {
-    if (localRef.current) {
-      localRef.current.indeterminate = indeterminate;
-    }
-  }, [indeterminate]);
+    React.useEffect(() => {
+      if (localRef.current) {
+        localRef.current.indeterminate = indeterminate;
+      }
+    }, [indeterminate]);
 
-  return (
-    <input
-      ref={(node) => {
-        localRef.current = node;
+    return (
+      <input
+        ref={(node) => {
+          localRef.current = node;
 
-        if (typeof ref === "function") {
-          ref(node);
-        } else if (ref) {
-          ref.current = node;
-        }
-      }}
-      type="checkbox"
-      className={cn(
-        "h-4 w-4 rounded border-default text-primary focus:ring-2 focus:ring-primary/20",
-        className,
-      )}
-      {...props}
-    />
-  );
-});
+          if (typeof ref === "function") {
+            ref(node);
+          } else if (ref) {
+            ref.current = node;
+          }
+        }}
+        type="checkbox"
+        className={cn("h-4 w-4 rounded border-default text-primary focus:ring-2 focus:ring-primary/20", className)}
+        {...props}
+      />
+    );
+  },
+);
 
 SelectionCheckbox.displayName = "SelectionCheckbox";
 
@@ -137,20 +133,16 @@ function joinIds(...ids: Array<string | undefined>) {
   return ids.filter(Boolean).join(" ") || undefined;
 }
 
-function getHeaderAccessibilityLabel(
-  header: {
-    column: {
-      id: string;
-      columnDef: { header?: unknown };
-      getNextSortingOrder?: () => false | "asc" | "desc";
-    };
-  },
-) {
+function getHeaderAccessibilityLabel(header: {
+  column: {
+    id: string;
+    columnDef: { header?: unknown };
+    getNextSortingOrder?: () => false | "asc" | "desc";
+  };
+}) {
   const headerContent = header.column.columnDef.header;
   const headerLabel =
-    typeof headerContent === "string" && headerContent.trim().length > 0
-      ? headerContent
-      : header.column.id;
+    typeof headerContent === "string" && headerContent.trim().length > 0 ? headerContent : header.column.id;
   const nextSortingOrder = header.column.getNextSortingOrder?.();
 
   if (nextSortingOrder === "desc") {
@@ -164,10 +156,7 @@ function getHeaderAccessibilityLabel(
   return `Sort ${headerLabel} ascending`;
 }
 
-export interface DataTableProps<
-  TData,
-  TValue,
-> extends React.HTMLAttributes<HTMLDivElement> {
+export interface DataTableProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   pageSize?: number;
@@ -192,13 +181,9 @@ export interface DataTableProps<
   defaultColumnPinning?: ColumnPinningState;
   onColumnPinningChange?: (state: ColumnPinningState) => void;
   getRowId?: (originalRow: TData, index: number) => string;
-  rowClassName?:
-    | string
-    | ((row: TData, rowIndex: number) => string | undefined);
+  rowClassName?: string | ((row: TData, rowIndex: number) => string | undefined);
   scrollContainerRef?: React.Ref<HTMLDivElement>;
-  toolbar?:
-    | React.ReactNode
-    | ((table: TanStackTable<TData>) => React.ReactNode);
+  toolbar?: React.ReactNode | ((table: TanStackTable<TData>) => React.ReactNode);
 }
 
 export const DataTable = React.forwardRef(
@@ -247,22 +232,18 @@ export const DataTable = React.forwardRef(
     const [sorting, setSorting] = React.useState<SortingState>([]);
     const [rowSelection, setRowSelection] = React.useState({});
     const [globalFilter, setGlobalFilter] = React.useState("");
-    const [currentColumnSizing, setCurrentColumnSizing] =
-      useControllableState<ColumnSizingState>({
-        value: columnSizing,
-        defaultValue: defaultColumnSizing ?? {},
-        onChange: onColumnSizingChange,
-      });
-    const [currentColumnPinning, setCurrentColumnPinning] =
-      useControllableState<ColumnPinningState>({
-        value: columnPinning,
-        defaultValue:
-          defaultColumnPinning ??
-          (enableColumnPinning && enableRowSelection
-            ? { left: ["__select"], right: [] }
-            : { left: [], right: [] }),
-        onChange: onColumnPinningChange,
-      });
+    const [currentColumnSizing, setCurrentColumnSizing] = useControllableState<ColumnSizingState>({
+      value: columnSizing,
+      defaultValue: defaultColumnSizing ?? {},
+      onChange: onColumnSizingChange,
+    });
+    const [currentColumnPinning, setCurrentColumnPinning] = useControllableState<ColumnPinningState>({
+      value: columnPinning,
+      defaultValue:
+        defaultColumnPinning ??
+        (enableColumnPinning && enableRowSelection ? { left: ["__select"], right: [] } : { left: [], right: [] }),
+      onChange: onColumnPinningChange,
+    });
     const columnSizingRef = React.useRef(currentColumnSizing);
     const columnPinningRef = React.useRef(currentColumnPinning);
     const sizing = densityClassMap[density];
@@ -275,28 +256,20 @@ export const DataTable = React.forwardRef(
       columnPinningRef.current = currentColumnPinning;
     }, [currentColumnPinning]);
 
-    const handleColumnSizingChange = React.useCallback<
-      OnChangeFn<ColumnSizingState>
-    >(
+    const handleColumnSizingChange = React.useCallback<OnChangeFn<ColumnSizingState>>(
       (updaterOrValue) => {
         const nextValue =
-          typeof updaterOrValue === "function"
-            ? updaterOrValue(columnSizingRef.current)
-            : updaterOrValue;
+          typeof updaterOrValue === "function" ? updaterOrValue(columnSizingRef.current) : updaterOrValue;
 
         setCurrentColumnSizing(nextValue);
       },
       [setCurrentColumnSizing],
     );
 
-    const handleColumnPinningChange = React.useCallback<
-      OnChangeFn<ColumnPinningState>
-    >(
+    const handleColumnPinningChange = React.useCallback<OnChangeFn<ColumnPinningState>>(
       (updaterOrValue) => {
         const nextValue =
-          typeof updaterOrValue === "function"
-            ? updaterOrValue(columnPinningRef.current)
-            : updaterOrValue;
+          typeof updaterOrValue === "function" ? updaterOrValue(columnPinningRef.current) : updaterOrValue;
 
         setCurrentColumnPinning(nextValue);
       },
@@ -366,9 +339,7 @@ export const DataTable = React.forwardRef(
       getCoreRowModel: getCoreRowModel(),
       getSortedRowModel: getSortedRowModel(),
       getFilteredRowModel: getFilteredRowModel(),
-      getPaginationRowModel: enablePagination
-        ? getPaginationRowModel()
-        : undefined,
+      getPaginationRowModel: enablePagination ? getPaginationRowModel() : undefined,
       initialState: {
         pagination: {
           pageSize,
@@ -376,8 +347,7 @@ export const DataTable = React.forwardRef(
       },
     });
 
-    const toolbarContent =
-      typeof toolbar === "function" ? toolbar(table) : toolbar;
+    const toolbarContent = typeof toolbar === "function" ? toolbar(table) : toolbar;
     const visibleColumns = table.getVisibleLeafColumns().length;
     const filteredRows = table.getFilteredRowModel().rows;
     const rows = table.getRowModel().rows;
@@ -387,12 +357,8 @@ export const DataTable = React.forwardRef(
     const pageCount = table.getPageCount() || 1;
     const showStateRow = !!errorState || (!loading && rows.length === 0);
     const resultsSummary = enablePagination
-      ? `Showing ${rows.length} of ${filteredCount} filtered result${
-          filteredCount === 1 ? "" : "s"
-        } on page ${pageIndex + 1} of ${pageCount}.`
-      : `Showing ${rows.length} of ${filteredCount} filtered result${
-          filteredCount === 1 ? "" : "s"
-        }.`;
+      ? `Showing ${rows.length} of ${filteredCount} filtered result${filteredCount === 1 ? "" : "s"} on page ${pageIndex + 1} of ${pageCount}.`
+      : `Showing ${rows.length} of ${filteredCount} filtered result${filteredCount === 1 ? "" : "s"}.`;
     const selectionSummary = enableRowSelection
       ? `${selectedCount} row${selectedCount === 1 ? "" : "s"} selected.`
       : undefined;
@@ -402,12 +368,9 @@ export const DataTable = React.forwardRef(
         ? "The table is showing an error state."
         : filteredCount === 0
           ? "No table results are available."
-          : joinIds(resultsSummary, selectionSummary)?.replaceAll?.("  ", " ") ??
-            [resultsSummary, selectionSummary].filter(Boolean).join(" ");
-    const tableRegionLabel =
-      typeof ariaLabel === "string" && ariaLabel.trim().length > 0
-        ? ariaLabel
-        : "Data table";
+          : (joinIds(resultsSummary, selectionSummary)?.replaceAll?.("  ", " ") ??
+            [resultsSummary, selectionSummary].filter(Boolean).join(" "));
+    const tableRegionLabel = typeof ariaLabel === "string" && ariaLabel.trim().length > 0 ? ariaLabel : "Data table";
     const regionDescription = joinIds(ariaDescribedBy, summaryId);
 
     return (
@@ -424,12 +387,7 @@ export const DataTable = React.forwardRef(
         <p id={summaryId} className="sr-only">
           {statusSummary}
         </p>
-        <div
-          id={liveRegionId}
-          className="sr-only"
-          aria-live="polite"
-          aria-atomic="true"
-        >
+        <div id={liveRegionId} className="sr-only" aria-live="polite" aria-atomic="true">
           {statusSummary}
         </div>
         {enableGlobalFilter || toolbarContent ? (
@@ -453,11 +411,7 @@ export const DataTable = React.forwardRef(
           <div
             ref={(node) => assignRef(scrollContainerRef, node)}
             aria-busy={loading || undefined}
-            className={cn(
-              stickyHeader || enableColumnPinning
-                ? "max-h-[26rem] overflow-auto"
-                : "overflow-x-auto",
-            )}
+            className={cn(stickyHeader || enableColumnPinning ? "max-h-[26rem] overflow-auto" : "overflow-x-auto")}
           >
             <table
               aria-describedby={summaryId}
@@ -498,18 +452,13 @@ export const DataTable = React.forwardRef(
                           className={cn(
                             "group font-medium whitespace-nowrap transition-colors",
                             sizing.header,
-                            showColumnBorders &&
-                              "border-r border-default last:border-r-0",
+                            showColumnBorders && "border-r border-default last:border-r-0",
                             getPinnedCellClassName(header.column, "header"),
                           )}
                           style={{
                             ...getPinnedCellStyles(header.column),
                             width: header.getSize(),
-                            zIndex: header.column.getIsPinned()
-                              ? stickyHeader
-                                ? 30
-                                : 20
-                              : undefined,
+                            zIndex: header.column.getIsPinned() ? (stickyHeader ? 30 : 20) : undefined,
                           }}
                         >
                           {header.isPlaceholder ? null : (
@@ -519,18 +468,13 @@ export const DataTable = React.forwardRef(
                                   type="button"
                                   onClick={header.column.getToggleSortingHandler()}
                                   className={cn(
-                                    "flex min-w-0 flex-1 items-center gap-sm rounded-md text-left outline-none transition-colors",
+                                    "flex min-w-0 flex-1 items-center gap-sm rounded-md text-left transition-colors outline-none",
                                     "hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary/20",
                                   )}
-                                  aria-label={getHeaderAccessibilityLabel(
-                                    header,
-                                  )}
+                                  aria-label={getHeaderAccessibilityLabel(header)}
                                 >
                                   <span className="flex min-w-0 items-center gap-sm">
-                                    {flexRender(
-                                      header.column.columnDef.header,
-                                      header.getContext(),
-                                    )}
+                                    {flexRender(header.column.columnDef.header, header.getContext())}
                                     <span
                                       aria-hidden="true"
                                       className="flex origin-center flex-col text-foreground-subtle"
@@ -540,7 +484,7 @@ export const DataTable = React.forwardRef(
                                       ) : isSorted === "desc" ? (
                                         <IconChevronDown className="h-4 w-4 text-primary" />
                                       ) : (
-                                        <div className="flex flex-col -space-y-1.5 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
+                                        <div className="flex flex-col -space-y-1.5 opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100">
                                           <IconChevronUp className="h-3 w-3" />
                                           <IconChevronDown className="h-3 w-3" />
                                         </div>
@@ -550,21 +494,15 @@ export const DataTable = React.forwardRef(
                                 </button>
                               ) : (
                                 <div className="flex min-w-0 flex-1 items-center gap-sm">
-                                  {flexRender(
-                                    header.column.columnDef.header,
-                                    header.getContext(),
-                                  )}
+                                  {flexRender(header.column.columnDef.header, header.getContext())}
                                 </div>
                               )}
-                              {enableColumnResizing &&
-                              header.column.getCanResize() ? (
+                              {enableColumnResizing && header.column.getCanResize() ? (
                                 <div
                                   role="separator"
                                   aria-orientation="vertical"
                                   aria-label={`Resize ${String(header.column.id)} column`}
-                                  onDoubleClick={() =>
-                                    header.column.resetSize()
-                                  }
+                                  onDoubleClick={() => header.column.resetSize()}
                                   onMouseDown={(event) => {
                                     event.stopPropagation();
                                     header.getResizeHandler()(event);
@@ -575,15 +513,13 @@ export const DataTable = React.forwardRef(
                                   }}
                                   className={cn(
                                     "absolute top-0 right-0 h-full w-2 cursor-col-resize touch-none opacity-0 transition-opacity select-none group-hover:opacity-100",
-                                    header.column.getIsResizing() &&
-                                      "opacity-100",
+                                    header.column.getIsResizing() && "opacity-100",
                                   )}
                                 >
                                   <span
                                     className={cn(
                                       "absolute top-1/2 right-0 h-[70%] w-px -translate-y-1/2 bg-border-strong",
-                                      header.column.getIsResizing() &&
-                                        "bg-primary",
+                                      header.column.getIsResizing() && "bg-primary",
                                     )}
                                   />
                                 </div>
@@ -600,21 +536,14 @@ export const DataTable = React.forwardRef(
                 {loading
                   ? Array.from({ length: loadingRows }, (_, rowIndex) => (
                       <tr key={`loading-row-${rowIndex}`} aria-hidden="true">
-                        {Array.from(
-                          { length: visibleColumns },
-                          (_, cellIndex) => (
-                            <td
-                              key={cellIndex}
-                              className={cn(
-                                sizing.cell,
-                                showColumnBorders &&
-                                  "border-r border-default last:border-r-0",
-                              )}
-                            >
-                              <div className="h-4 w-full animate-pulse rounded bg-surface-muted" />
-                            </td>
-                          ),
-                        )}
+                        {Array.from({ length: visibleColumns }, (_, cellIndex) => (
+                          <td
+                            key={cellIndex}
+                            className={cn(sizing.cell, showColumnBorders && "border-r border-default last:border-r-0")}
+                          >
+                            <div className="h-4 w-full animate-pulse rounded bg-surface-muted" />
+                          </td>
+                        ))}
                       </tr>
                     ))
                   : null}
@@ -623,15 +552,11 @@ export const DataTable = React.forwardRef(
                   ? rows.map((row) => (
                       <tr
                         key={row.id}
-                        data-state={
-                          row.getIsSelected() ? "selected" : undefined
-                        }
+                        data-state={row.getIsSelected() ? "selected" : undefined}
                         className={cn(
                           "transition-colors hover:bg-surface-subtle/80",
                           row.getIsSelected() && "bg-primary/5",
-                          typeof rowClassName === "function"
-                            ? rowClassName(row.original, row.index)
-                            : rowClassName,
+                          typeof rowClassName === "function" ? rowClassName(row.original, row.index) : rowClassName,
                         )}
                       >
                         {row.getVisibleCells().map((cell) => (
@@ -640,22 +565,16 @@ export const DataTable = React.forwardRef(
                             className={cn(
                               "relative",
                               sizing.cell,
-                              showColumnBorders &&
-                                "border-r border-default last:border-r-0",
+                              showColumnBorders && "border-r border-default last:border-r-0",
                               getPinnedCellClassName(cell.column, "cell"),
                             )}
                             style={{
                               ...getPinnedCellStyles(cell.column),
                               width: cell.column.getSize(),
-                              zIndex: cell.column.getIsPinned()
-                                ? 10
-                                : undefined,
+                              zIndex: cell.column.getIsPinned() ? 10 : undefined,
                             }}
                           >
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext(),
-                            )}
+                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
                           </td>
                         ))}
                       </tr>
@@ -668,9 +587,7 @@ export const DataTable = React.forwardRef(
                       colSpan={Math.max(visibleColumns, 1)}
                       className={cn(
                         "text-center text-foreground-muted",
-                        density === "sm"
-                          ? "px-sm py-lg text-xs"
-                          : "px-md py-xl text-sm",
+                        density === "sm" ? "px-sm py-lg text-xs" : "px-md py-xl text-sm",
                       )}
                     >
                       {errorState ?? emptyState}
@@ -693,8 +610,7 @@ export const DataTable = React.forwardRef(
           {enablePagination && table.getPageCount() > 1 ? (
             <div className="flex items-center gap-sm">
               <span className="mr-xs">
-                Page {table.getState().pagination.pageIndex + 1} of{" "}
-                {table.getPageCount() || 1}
+                Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount() || 1}
               </span>
               <Button
                 variant="secondary"

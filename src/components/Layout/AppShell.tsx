@@ -17,22 +17,13 @@ export const AppShell: React.FC<AppShellProps> = ({
   contentContainerClassName = "max-w-[1280px]",
 }) => {
   return (
-    <div
-      className={cn(
-        "min-h-screen bg-canvas font-display text-foreground",
-        className,
-      )}
-    >
+    <div className={cn("min-h-screen bg-canvas font-display text-foreground", className)}>
       <div className="flex h-screen flex-col">
         {header}
         <div className="flex flex-1 overflow-hidden">
           {sidebar}
           <main className="relative flex-1 overflow-y-auto bg-canvas/60 p-xl">
-            <div
-              className={cn("mx-auto space-y-10", contentContainerClassName)}
-            >
-              {children}
-            </div>
+            <div className={cn("mx-auto space-y-10", contentContainerClassName)}>{children}</div>
           </main>
         </div>
       </div>

@@ -35,28 +35,10 @@ function getComputedStatus(step: StepItem, index: number, currentStep: number) {
 }
 
 export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
-  (
-    {
-      steps,
-      currentStep,
-      onStepChange,
-      interactive = false,
-      orientation = "horizontal",
-      className,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ steps, currentStep, onStepChange, interactive = false, orientation = "horizontal", className, ...props }, ref) => {
     return (
       <div ref={ref} className={cn("w-full", className)} {...props}>
-        <ol
-          className={cn(
-            "flex gap-md",
-            orientation === "horizontal"
-              ? "flex-col md:flex-row"
-              : "flex-col",
-          )}
-        >
+        <ol className={cn("flex gap-md", orientation === "horizontal" ? "flex-col md:flex-row" : "flex-col")}>
           {steps.map((step, index) => {
             const status = getComputedStatus(step, index, currentStep);
             const isActive = status === "current";
@@ -78,9 +60,7 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
                   onClick={() => onStepChange?.(index, step)}
                   className={cn(
                     "group flex flex-1 items-start gap-md rounded-xl text-left transition-colors",
-                    orientation === "horizontal"
-                      ? "md:flex-col md:items-stretch"
-                      : "items-start",
+                    orientation === "horizontal" ? "md:flex-col md:items-stretch" : "items-start",
                     isInteractive && "hover:bg-surface-subtle",
                     !isInteractive && "cursor-default",
                   )}
@@ -89,13 +69,10 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
                     <span
                       className={cn(
                         "flex h-9 w-9 items-center justify-center rounded-full border text-sm font-semibold transition-colors",
-                        isComplete &&
-                          "border-success/30 bg-success text-white",
-                        isActive &&
-                          "border-primary bg-primary text-white",
+                        isComplete && "border-success/30 bg-success text-white",
+                        isActive && "border-primary bg-primary text-white",
                         isError && "border-error bg-error text-white",
-                        status === "pending" &&
-                          "border-strong bg-surface text-foreground-muted",
+                        status === "pending" && "border-strong bg-surface text-foreground-muted",
                       )}
                     >
                       {isComplete ? <IconCheck size={16} /> : index + 1}
@@ -104,9 +81,7 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
                       <span
                         className={cn(
                           "mt-sm block bg-border-default",
-                          orientation === "horizontal"
-                            ? "hidden h-px w-full md:block"
-                            : "h-10 w-px",
+                          orientation === "horizontal" ? "hidden h-px w-full md:block" : "h-10 w-px",
                         )}
                       />
                     ) : null}
@@ -116,18 +91,14 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
                     <span
                       className={cn(
                         "block text-sm font-semibold",
-                        isActive
-                          ? "text-primary"
-                          : "text-foreground",
+                        isActive ? "text-primary" : "text-foreground",
                         isError && "text-error",
                       )}
                     >
                       {step.title}
                     </span>
                     {step.description ? (
-                      <span className="mt-xs block text-sm text-foreground-muted">
-                        {step.description}
-                      </span>
+                      <span className="mt-xs block text-sm text-foreground-muted">{step.description}</span>
                     ) : null}
                   </span>
                 </button>

@@ -11,16 +11,34 @@ const meta: Meta<typeof Header> = {
     layout: "fullscreen",
   },
   argTypes: {
-    logo: { control: false, description: "Custom logo element (ReactNode). Overrides `logoName` and the default icon." },
-    logoName: { control: "text", description: "Text shown next to the default icon logo." },
+    logo: {
+      control: false,
+      description: "Custom logo element (ReactNode). Overrides `logoName` and the default icon.",
+    },
+    logoName: {
+      control: "text",
+      description: "Text shown next to the default icon logo.",
+    },
     userName: { control: "text" },
     userRole: { control: "text" },
     userImageUrl: { control: "text" },
     hasUnreadNotifications: { control: "boolean" },
-    showSearch: { control: "boolean", description: "Show or hide the search input." },
-    showNotifications: { control: "boolean", description: "Show or hide the notifications bell." },
-    showHelp: { control: "boolean", description: "Show or hide the help button." },
-    showUser: { control: "boolean", description: "Show or hide the user section (avatar + name)." },
+    showSearch: {
+      control: "boolean",
+      description: "Show or hide the search input.",
+    },
+    showNotifications: {
+      control: "boolean",
+      description: "Show or hide the notifications bell.",
+    },
+    showHelp: {
+      control: "boolean",
+      description: "Show or hide the help button.",
+    },
+    showUser: {
+      control: "boolean",
+      description: "Show or hide the user section (avatar + name).",
+    },
     onSearch: { action: "search" },
     onNotificationsClick: { action: "notifications clicked" },
     onHelpClick: { action: "help clicked" },
@@ -75,9 +93,7 @@ export const CustomLogo: Story = {
         <div className="rounded-lg bg-emerald-500 p-1.5 text-white">
           <IconRocket size={20} />
         </div>
-        <span className="text-lg font-bold tracking-tight text-emerald-600">
-          My Custom App
-        </span>
+        <span className="text-lg font-bold tracking-tight text-emerald-600">My Custom App</span>
       </div>
     ),
   },

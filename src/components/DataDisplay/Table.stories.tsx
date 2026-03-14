@@ -114,8 +114,7 @@ export const CompactStickyHeader: Story = {
       id: `${index + 1}`,
       name: `Member ${index + 1}`,
       role: index % 3 === 0 ? "Admin" : "Member",
-      status:
-        index % 4 === 0 ? "pending" : index % 5 === 0 ? "error" : "active",
+      status: index % 4 === 0 ? "pending" : index % 5 === 0 ? "error" : "active",
       notes: "Compact density works well for list-heavy admin views.",
     })),
     density: "sm",

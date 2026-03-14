@@ -16,10 +16,7 @@ export interface SplitButtonAction {
   separatorBefore?: boolean;
 }
 
-export interface SplitButtonProps extends Omit<
-  ButtonProps,
-  "children" | "rightIcon"
-> {
+export interface SplitButtonProps extends Omit<ButtonProps, "children" | "rightIcon"> {
   children: React.ReactNode;
   actions: ReadonlyArray<SplitButtonAction>;
   menuAlign?: "left" | "center" | "right";
@@ -32,10 +29,7 @@ export interface SplitButtonProps extends Omit<
   onActionSelect?: (action: SplitButtonAction, index: number) => void;
 }
 
-export const SplitButton = React.forwardRef<
-  HTMLButtonElement,
-  SplitButtonProps
->(
+export const SplitButton = React.forwardRef<HTMLButtonElement, SplitButtonProps>(
   (
     {
       children,
@@ -63,21 +57,13 @@ export const SplitButton = React.forwardRef<
     const menuDisabled = disabled || actions.length === 0;
     const resolvedGroupAriaLabel =
       groupAriaLabel ??
-      (typeof children === "string" && children.trim().length > 0
-        ? `${children} split button`
-        : "Split button");
+      (typeof children === "string" && children.trim().length > 0 ? `${children} split button` : "Split button");
     const resolvedMenuAriaLabel =
       menuAriaLabel ??
-      (typeof children === "string" && children.trim().length > 0
-        ? `More actions for ${children}`
-        : "More actions");
+      (typeof children === "string" && children.trim().length > 0 ? `More actions for ${children}` : "More actions");
 
     return (
-      <div
-        role="group"
-        aria-label={resolvedGroupAriaLabel}
-        className={cn("inline-flex items-stretch", className)}
-      >
+      <div role="group" aria-label={resolvedGroupAriaLabel} className={cn("inline-flex items-stretch", className)}>
         <Button
           {...buttonProps}
           ref={ref}
@@ -121,19 +107,11 @@ export const SplitButton = React.forwardRef<
                 }}
               >
                 <span className="flex min-w-0 flex-1 items-start gap-sm">
-                  {action.icon ? (
-                    <span className="mt-[2px] shrink-0 text-foreground-subtle">
-                      {action.icon}
-                    </span>
-                  ) : null}
+                  {action.icon ? <span className="mt-[2px] shrink-0 text-foreground-subtle">{action.icon}</span> : null}
                   <span className="min-w-0">
-                    <span className="block truncate font-medium text-foreground">
-                      {action.label}
-                    </span>
+                    <span className="block truncate font-medium text-foreground">{action.label}</span>
                     {action.description ? (
-                      <span className="mt-xs block text-xs text-foreground-muted">
-                        {action.description}
-                      </span>
+                      <span className="mt-xs block text-xs text-foreground-muted">{action.description}</span>
                     ) : null}
                   </span>
                 </span>

@@ -14,10 +14,7 @@ type Story = StoryObj<typeof ScrollArea>;
 
 export const Default: Story = {
   render: () => (
-    <ScrollArea
-      maxHeight={200}
-      className="w-64 rounded border border-slate-200 p-md dark:border-border-muted"
-    >
+    <ScrollArea maxHeight={200} className="w-64 rounded border border-slate-200 p-md dark:border-border-muted">
       {Array.from({ length: 20 }, (_, i) => (
         <p
           key={i}
@@ -32,11 +29,7 @@ export const Default: Story = {
 
 function FollowTailDemo() {
   const allItems = React.useMemo(
-    () =>
-      Array.from(
-        { length: 24 },
-        (_, index) => `log-${String(index + 1).padStart(3, "0")}`,
-      ),
+    () => Array.from({ length: 24 }, (_, index) => `log-${String(index + 1).padStart(3, "0")}`),
     [],
   );
   const [visibleCount, setVisibleCount] = React.useState(10);
@@ -44,9 +37,7 @@ function FollowTailDemo() {
 
   React.useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setVisibleCount((current) =>
-        current < allItems.length ? current + 1 : current,
-      );
+      setVisibleCount((current) => (current < allItems.length ? current + 1 : current));
     }, 900);
 
     return () => window.clearInterval(intervalId);
@@ -55,17 +46,10 @@ function FollowTailDemo() {
   return (
     <div className="space-y-md">
       <div className="flex flex-wrap items-center gap-sm">
-        <Button
-          type="button"
-          size="xs"
-          variant="ghost"
-          onClick={() => setVisibleCount(10)}
-        >
+        <Button type="button" size="xs" variant="ghost" onClick={() => setVisibleCount(10)}>
           Restart feed
         </Button>
-        <p className="text-sm text-foreground-muted">
-          Follow mode stays pinned until the user scrolls away.
-        </p>
+        <p className="text-sm text-foreground-muted">Follow mode stays pinned until the user scrolls away.</p>
       </div>
 
       <ScrollArea
@@ -76,16 +60,9 @@ function FollowTailDemo() {
       >
         <div className="space-y-xs">
           {allItems.slice(0, visibleCount).map((item, index) => (
-            <div
-              key={item}
-              className="rounded-lg border border-default bg-surface px-md py-sm"
-            >
-              <p className="font-mono text-xs text-foreground-subtle">
-                09:{String(10 + index).padStart(2, "0")}
-              </p>
-              <p className="text-sm text-foreground">
-                {item} appended to the shared scroll container.
-              </p>
+            <div key={item} className="rounded-lg border border-default bg-surface px-md py-sm">
+              <p className="font-mono text-xs text-foreground-subtle">09:{String(10 + index).padStart(2, "0")}</p>
+              <p className="text-sm text-foreground">{item} appended to the shared scroll container.</p>
             </div>
           ))}
         </div>

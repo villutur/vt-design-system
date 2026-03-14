@@ -33,8 +33,7 @@ export const Default: Story = {
   args: {
     label: "Release notes",
     htmlFor: "field-story-default",
-    description:
-      "Use Field to add consistent labels, descriptions, and messages.",
+    description: "Use Field to add consistent labels, descriptions, and messages.",
     helperText: "This message uses the default neutral helper styling.",
   },
 };

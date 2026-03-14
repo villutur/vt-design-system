@@ -21,10 +21,7 @@ export interface BreadcrumbsProps extends React.HTMLAttributes<HTMLElement> {
 
 type BreadcrumbPart = BreadcrumbItem | { type: "ellipsis"; id: string };
 
-function collapseItems(
-  items: BreadcrumbItem[],
-  maxItems?: number,
-): BreadcrumbPart[] {
+function collapseItems(items: BreadcrumbItem[], maxItems?: number): BreadcrumbPart[] {
   if (!maxItems || maxItems < 3 || items.length <= maxItems) {
     return items;
   }
@@ -33,9 +30,7 @@ function collapseItems(
   return [items[0], { type: "ellipsis", id: "ellipsis" }, ...tail];
 }
 
-function isEllipsisPart(
-  part: BreadcrumbPart,
-): part is { type: "ellipsis"; id: string } {
+function isEllipsisPart(part: BreadcrumbPart): part is { type: "ellipsis"; id: string } {
   return "type" in part;
 }
 
@@ -51,22 +46,14 @@ export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
     },
     ref,
   ) => {
-    const currentItem =
-      items.find((item) => item.current) ?? items[items.length - 1];
+    const currentItem = items.find((item) => item.current) ?? items[items.length - 1];
     const visibleItems = collapseItems(items, maxItems);
 
     return (
-      <nav
-        ref={ref}
-        className={cn("w-full", className)}
-        aria-label="Breadcrumb"
-        {...props}
-      >
+      <nav ref={ref} className={cn("w-full", className)} aria-label="Breadcrumb" {...props}>
         <ol className="flex flex-wrap items-center gap-xs text-xs text-foreground-muted">
           {visibleItems.map((part, index) => {
-            const key = isEllipsisPart(part)
-              ? part.id
-              : (part.id ?? part.href ?? `breadcrumb-${index}`);
+            const key = isEllipsisPart(part) ? part.id : (part.id ?? part.href ?? `breadcrumb-${index}`);
 
             return (
               <React.Fragment key={key}>
@@ -83,11 +70,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
                       className="inline-flex max-w-full items-center gap-xs rounded-md bg-primary/10 px-sm py-[2px] font-semibold text-primary"
                       aria-current="page"
                     >
-                      {part.icon ? (
-                        <span className="inline-flex shrink-0">
-                          {part.icon}
-                        </span>
-                      ) : null}
+                      {part.icon ? <span className="inline-flex shrink-0">{part.icon}</span> : null}
                       <span className="truncate">{part.label}</span>
                     </span>
                   ) : part.href ? (
@@ -96,32 +79,21 @@ export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
                       onClick={part.onClick}
                       rel={part.rel}
                       target={part.target}
-                      className="inline-flex max-w-full items-center gap-xs rounded-md px-xs py-[2px] transition-colors hover:bg-surface-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 focus:ring-offset-surface"
+                      className="inline-flex max-w-full items-center gap-xs rounded-md px-xs py-[2px] transition-colors hover:bg-surface-muted hover:text-foreground focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 focus:ring-offset-surface focus:outline-none"
                     >
-                      {part.icon ? (
-                        <span className="inline-flex shrink-0">
-                          {part.icon}
-                        </span>
-                      ) : null}
+                      {part.icon ? <span className="inline-flex shrink-0">{part.icon}</span> : null}
                       <span className="truncate">{part.label}</span>
                     </a>
                   ) : (
                     <span className="inline-flex max-w-full items-center gap-xs px-xs py-[2px]">
-                      {part.icon ? (
-                        <span className="inline-flex shrink-0">
-                          {part.icon}
-                        </span>
-                      ) : null}
+                      {part.icon ? <span className="inline-flex shrink-0">{part.icon}</span> : null}
                       <span className="truncate">{part.label}</span>
                     </span>
                   )}
                 </li>
 
                 {index < visibleItems.length - 1 ? (
-                  <li
-                    className="inline-flex items-center text-foreground-subtle"
-                    aria-hidden="true"
-                  >
+                  <li className="inline-flex items-center text-foreground-subtle" aria-hidden="true">
                     {separator}
                   </li>
                 ) : null}

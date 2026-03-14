@@ -12,11 +12,7 @@ export interface ListNavigationOptions<T extends ListItem> {
   focusItemOnChange?: boolean;
 }
 
-function getNextEnabledIndex<T extends ListItem>(
-  items: T[],
-  startIndex: number,
-  direction: 1 | -1,
-) {
+function getNextEnabledIndex<T extends ListItem>(items: T[], startIndex: number, direction: 1 | -1) {
   if (!items.length) {
     return -1;
   }
@@ -86,22 +82,12 @@ export function useListNavigation<T extends ListItem>({
         case "ArrowDown":
           event.preventDefault();
           setActiveIndex((currentIndex) =>
-            getNextEnabledIndex(
-              items,
-              currentIndex < 0 ? items.length - 1 : currentIndex,
-              1,
-            ),
+            getNextEnabledIndex(items, currentIndex < 0 ? items.length - 1 : currentIndex, 1),
           );
           break;
         case "ArrowUp":
           event.preventDefault();
-          setActiveIndex((currentIndex) =>
-            getNextEnabledIndex(
-              items,
-              currentIndex < 0 ? 0 : currentIndex,
-              -1,
-            ),
-          );
+          setActiveIndex((currentIndex) => getNextEnabledIndex(items, currentIndex < 0 ? 0 : currentIndex, -1));
           break;
         case "Home":
           event.preventDefault();

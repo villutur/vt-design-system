@@ -3,42 +3,35 @@ import { forwardRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
-const progressBarVariants = cva(
-  "relative w-full overflow-hidden rounded-full bg-surface-muted",
-  {
-    variants: {
-      size: {
-        sm: "h-1.5",
-        default: "h-2.5",
-        lg: "h-4",
-      },
+const progressBarVariants = cva("relative w-full overflow-hidden rounded-full bg-surface-muted", {
+  variants: {
+    size: {
+      sm: "h-1.5",
+      default: "h-2.5",
+      lg: "h-4",
     },
-    defaultVariants: {
-      size: "default",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    size: "default",
+  },
+});
 
-const progressIndicatorVariants = cva(
-  "h-full w-full flex-1 transition-all duration-500 ease-in-out",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary",
-        success: "bg-success",
-        warning: "bg-warning",
-        error: "bg-error",
-      },
+const progressIndicatorVariants = cva("h-full w-full flex-1 transition-all duration-500 ease-in-out", {
+  variants: {
+    variant: {
+      default: "bg-primary",
+      success: "bg-success",
+      warning: "bg-warning",
+      error: "bg-error",
     },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 export interface ProgressBarProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof progressBarVariants> {
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof progressBarVariants> {
   /**
    * Value between 0 and max
    */
@@ -58,18 +51,7 @@ export interface ProgressBarProps
 }
 
 export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
-  (
-    {
-      className,
-      value = 0,
-      max = 100,
-      size,
-      variant,
-      indeterminate,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, value = 0, max = 100, size, variant, indeterminate, ...props }, ref) => {
     // Ensure value is between 0 and max
     const safeValue = Math.min(Math.max(value, 0), max);
     const percentage = (safeValue / max) * 100;
@@ -87,12 +69,14 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
         <div
           className={cn(
             progressIndicatorVariants({ variant }),
-            indeterminate && "animate-progress-indeterminate origin-left"
+            indeterminate && "origin-left animate-progress-indeterminate",
           )}
-          style={{ transform: indeterminate ? undefined : `translateX(-${100 - percentage}%)` }}
+          style={{
+            transform: indeterminate ? undefined : `translateX(-${100 - percentage}%)`,
+          }}
         />
       </div>
     );
-  }
+  },
 );
 ProgressBar.displayName = "ProgressBar";

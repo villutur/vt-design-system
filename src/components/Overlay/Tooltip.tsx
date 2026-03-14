@@ -10,14 +10,8 @@ const placementMap = {
   right: "right",
 } as const;
 
-function mergeDescribedBy(
-  currentValue: unknown,
-  nextValue: string | undefined,
-) {
-  const values = [
-    typeof currentValue === "string" ? currentValue : undefined,
-    nextValue,
-  ].filter(Boolean);
+function mergeDescribedBy(currentValue: unknown, nextValue: string | undefined) {
+  const values = [typeof currentValue === "string" ? currentValue : undefined, nextValue].filter(Boolean);
 
   return values.length > 0 ? values.join(" ") : undefined;
 }
@@ -35,10 +29,7 @@ function composeEventHandlers<E extends React.SyntheticEvent>(
   };
 }
 
-export interface TooltipProps extends Omit<
-  React.HTMLAttributes<HTMLSpanElement>,
-  "content"
-> {
+export interface TooltipProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, "content"> {
   content: React.ReactNode;
   delay?: number;
   position?: keyof typeof placementMap;
@@ -93,16 +84,11 @@ export const Tooltip = React.forwardRef<HTMLSpanElement, TooltipProps>(
 
     const child = React.isValidElement(children)
       ? (() => {
-          const childElement = children as React.ReactElement<
-            Record<string, unknown>
-          >;
+          const childElement = children as React.ReactElement<Record<string, unknown>>;
           const existingDescribedBy = childElement.props["aria-describedby"];
 
           return React.cloneElement(childElement, {
-            "aria-describedby": mergeDescribedBy(
-              existingDescribedBy,
-              open ? tooltipId : undefined,
-            ),
+            "aria-describedby": mergeDescribedBy(existingDescribedBy, open ? tooltipId : undefined),
           });
         })()
       : children;

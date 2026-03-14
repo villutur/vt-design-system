@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Input } from "./Input";
 
-
 const meta: Meta<typeof Input> = {
   component: Input,
   title: "Components/Forms/Input",
@@ -67,4 +66,3 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
-

@@ -15,9 +15,7 @@ function LiveAppendDemo() {
 
   React.useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setVisibleCount((current) =>
-        current < allItems.length ? current + 1 : current,
-      );
+      setVisibleCount((current) => (current < allItems.length ? current + 1 : current));
     }, 900);
 
     return () => window.clearInterval(intervalId);
@@ -26,17 +24,11 @@ function LiveAppendDemo() {
   return (
     <div className="space-y-md">
       <div className="flex flex-wrap items-center gap-sm">
-        <Button
-          type="button"
-          size="xs"
-          variant="ghost"
-          onClick={() => setVisibleCount(18)}
-        >
+        <Button type="button" size="xs" variant="ghost" onClick={() => setVisibleCount(18)}>
           Restart feed
         </Button>
         <p className="text-sm text-foreground-muted">
-          This demo appends one log at a time and keeps follow mode enabled by
-          default.
+          This demo appends one log at a time and keeps follow mode enabled by default.
         </p>
       </div>
 

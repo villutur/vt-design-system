@@ -16,10 +16,7 @@ const sizeClassMap = {
   },
 } as const;
 
-export interface EmptyStateProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "title"
-> {
+export interface EmptyStateProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   icon?: React.ReactNode;
   title: React.ReactNode;
   description?: React.ReactNode;
@@ -30,20 +27,7 @@ export interface EmptyStateProps extends Omit<
 }
 
 export const EmptyState = React.forwardRef<HTMLDivElement, EmptyStateProps>(
-  (
-    {
-      icon,
-      title,
-      description,
-      action,
-      eyebrow,
-      align = "center",
-      size = "md",
-      className,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ icon, title, description, action, eyebrow, align = "center", size = "md", className, ...props }, ref) => {
     const sizing = sizeClassMap[size];
 
     return (
@@ -51,9 +35,7 @@ export const EmptyState = React.forwardRef<HTMLDivElement, EmptyStateProps>(
         ref={ref}
         className={cn(
           "flex flex-col justify-center",
-          align === "center"
-            ? "items-center text-center"
-            : "items-start text-left",
+          align === "center" ? "items-center text-center" : "items-start text-left",
           sizing.root,
           className,
         )}
@@ -71,18 +53,10 @@ export const EmptyState = React.forwardRef<HTMLDivElement, EmptyStateProps>(
         ) : null}
         <div className="space-y-xs">
           {eyebrow ? (
-            <p className="text-[11px] font-bold tracking-[0.14em] text-foreground-subtle uppercase">
-              {eyebrow}
-            </p>
+            <p className="text-[11px] font-bold tracking-[0.14em] text-foreground-subtle uppercase">{eyebrow}</p>
           ) : null}
-          <h3 className={cn("font-semibold text-foreground", sizing.title)}>
-            {title}
-          </h3>
-          {description ? (
-            <p className={cn("text-foreground-muted", sizing.description)}>
-              {description}
-            </p>
-          ) : null}
+          <h3 className={cn("font-semibold text-foreground", sizing.title)}>{title}</h3>
+          {description ? <p className={cn("text-foreground-muted", sizing.description)}>{description}</p> : null}
         </div>
         {action ? <div className="mt-xs">{action}</div> : null}
       </div>

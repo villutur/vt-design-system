@@ -1,9 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  createColumnHelper,
-  type ColumnDef,
-  type Table as TanStackTable,
-} from "@tanstack/react-table";
+import { createColumnHelper, type ColumnDef, type Table as TanStackTable } from "@tanstack/react-table";
 import { IconColumns3, IconDownload, IconRefresh } from "@tabler/icons-react";
 import { Button } from "../Forms/Button";
 import { Toolbar, ToolbarGroup, ToolbarSpacer } from "../Layout/Toolbar";
@@ -96,9 +92,7 @@ export const WithFilteringAndSelection: Story = {
         </ToolbarGroup>
         <ToolbarSpacer />
         <ToolbarGroup compact className="text-[11px] text-foreground-muted">
-          <span>
-            {table.getFilteredSelectedRowModel().rows.length} selected
-          </span>
+          <span>{table.getFilteredSelectedRowModel().rows.length} selected</span>
         </ToolbarGroup>
       </Toolbar>
     ),
@@ -164,9 +158,7 @@ export const ErrorState: Story = {
     data: [],
     errorState: (
       <div className="flex flex-col items-center gap-sm py-sm text-center">
-        <p className="font-medium text-error">
-          Deployment history is unavailable.
-        </p>
+        <p className="font-medium text-error">Deployment history is unavailable.</p>
         <Button size="xs" variant="secondary">
           Retry fetch
         </Button>

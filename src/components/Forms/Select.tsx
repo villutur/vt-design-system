@@ -10,10 +10,7 @@ const selectSizeClasses = {
   md: "py-sm pr-2xl pl-md text-sm",
 } as const;
 
-export interface SelectProps extends Omit<
-  React.SelectHTMLAttributes<HTMLSelectElement>,
-  "size"
-> {
+export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "size"> {
   label?: string;
   description?: React.ReactNode;
   helperText?: React.ReactNode;
@@ -53,9 +50,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         required={required}
         disabled={disabled}
         htmlFor={generatedId}
-        messageId={
-          helperText || errorText ? `${generatedId}-message` : undefined
-        }
+        messageId={helperText || errorText ? `${generatedId}-message` : undefined}
       >
         <div className="relative">
           <select
@@ -70,9 +65,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
               className,
             )}
             aria-invalid={!!error}
-            aria-describedby={
-              helperText || errorText ? `${generatedId}-message` : undefined
-            }
+            aria-describedby={helperText || errorText ? `${generatedId}-message` : undefined}
             required={required}
             disabled={disabled}
             {...props}

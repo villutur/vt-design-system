@@ -23,7 +23,14 @@ export const Default: Story = {
 
 export const WithLabel: Story = {
   render: () => (
-    <Controlled value={10} min={1} max={50} step={1} label="Retry Limit" helperText="Number of retries before failing" />
+    <Controlled
+      value={10}
+      min={1}
+      max={50}
+      step={1}
+      label="Retry Limit"
+      helperText="Number of retries before failing"
+    />
   ),
 };
 

@@ -39,15 +39,7 @@ const steps = [
 function InteractiveStepper(args: Partial<React.ComponentProps<typeof Stepper>>) {
   const [currentStep, setCurrentStep] = useState(1);
 
-  return (
-    <Stepper
-      steps={steps}
-      currentStep={currentStep}
-      onStepChange={setCurrentStep}
-      interactive
-      {...args}
-    />
-  );
+  return <Stepper steps={steps} currentStep={currentStep} onStepChange={setCurrentStep} interactive {...args} />;
 }
 
 export const Default: Story = {

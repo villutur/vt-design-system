@@ -19,10 +19,7 @@ const checkboxSizeClassMap = {
   },
 } as const;
 
-export interface CheckboxProps extends Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "type" | "size"
-> {
+export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
   label?: React.ReactNode;
   description?: React.ReactNode;
   helperText?: React.ReactNode;
@@ -57,9 +54,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         errorText={errorText}
         error={error}
         disabled={disabled}
-        messageId={
-          helperText || errorText ? `${generatedId}-message` : undefined
-        }
+        messageId={helperText || errorText ? `${generatedId}-message` : undefined}
       >
         <label
           htmlFor={generatedId}
@@ -77,9 +72,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               disabled={disabled}
               required={required}
               aria-invalid={error || undefined}
-              aria-describedby={
-                helperText || errorText ? `${generatedId}-message` : undefined
-              }
+              aria-describedby={helperText || errorText ? `${generatedId}-message` : undefined}
               className={cn(
                 "peer cursor-pointer appearance-none rounded border-2 border-strong transition-all checked:border-primary checked:bg-primary hover:border-primary/50 focus:ring-2 focus:ring-primary/20 focus:outline-none disabled:cursor-not-allowed disabled:opacity-70",
                 sizing.control,
@@ -112,14 +105,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               </span>
             ) : null}
             {description ? (
-              <p
-                className={cn(
-                  "mt-xs text-foreground-muted",
-                  sizing.description,
-                )}
-              >
-                {description}
-              </p>
+              <p className={cn("mt-xs text-foreground-muted", sizing.description)}>{description}</p>
             ) : null}
           </div>
         </label>

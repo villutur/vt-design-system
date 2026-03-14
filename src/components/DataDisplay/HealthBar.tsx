@@ -14,12 +14,7 @@ function colorForValue(v: number): string {
   return "bg-error";
 }
 
-export const HealthBar: React.FC<HealthBarProps> = ({
-  value,
-  widthClass = "w-16",
-  className,
-  ...props
-}) => {
+export const HealthBar: React.FC<HealthBarProps> = ({ value, widthClass = "w-16", className, ...props }) => {
   const clamped = Math.max(0, Math.min(100, value));
   return (
     <div
@@ -30,10 +25,7 @@ export const HealthBar: React.FC<HealthBarProps> = ({
       aria-valuemax={100}
       {...props}
     >
-      <div
-        className={cn("h-full rounded-full", colorForValue(clamped))}
-        style={{ width: `${clamped}%` }}
-      />
+      <div className={cn("h-full rounded-full", colorForValue(clamped))} style={{ width: `${clamped}%` }} />
     </div>
   );
 };

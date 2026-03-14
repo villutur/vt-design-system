@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  IconAlertCircle,
-  IconAlertTriangle,
-  IconCircleCheck,
-  IconInfoCircle,
-  IconX,
-} from "@tabler/icons-react";
+import { IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle, IconX } from "@tabler/icons-react";
 import { cn } from "../../utils/cn";
 
 export type BannerType = "success" | "warning" | "error" | "info";
@@ -45,10 +39,7 @@ const bannerStyles: Record<
   },
 };
 
-export interface BannerProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "title"
-> {
+export interface BannerProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   type?: BannerType;
   title: React.ReactNode;
   description?: React.ReactNode;
@@ -76,10 +67,8 @@ export const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
     ref,
   ) => {
     const styles = bannerStyles[type];
-    const resolvedRole =
-      role ?? (type === "error" || type === "warning" ? "alert" : "status");
-    const resolvedAriaLive =
-      ariaLive ?? (resolvedRole === "alert" ? "assertive" : "polite");
+    const resolvedRole = role ?? (type === "error" || type === "warning" ? "alert" : "status");
+    const resolvedAriaLive = ariaLive ?? (resolvedRole === "alert" ? "assertive" : "polite");
 
     return (
       <div
@@ -103,14 +92,8 @@ export const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
             {icon ?? styles.icon}
           </div>
           <div className="min-w-0">
-            <h3 className={cn("text-sm font-semibold", styles.textColor)}>
-              {title}
-            </h3>
-            {description ? (
-              <div className="mt-xs text-sm text-foreground-muted">
-                {description}
-              </div>
-            ) : null}
+            <h3 className={cn("text-sm font-semibold", styles.textColor)}>{title}</h3>
+            {description ? <div className="mt-xs text-sm text-foreground-muted">{description}</div> : null}
           </div>
         </div>
 

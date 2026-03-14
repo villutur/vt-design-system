@@ -2,12 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
 import { Dropdown, DropdownItem, DropdownSeparator } from "./Dropdown";
 import { Button } from "../Forms/Button";
-import {
-  IconSettings,
-  IconUser,
-  IconLogout,
-  IconChevronDown,
-} from "@tabler/icons-react";
+import { IconSettings, IconUser, IconLogout, IconChevronDown } from "@tabler/icons-react";
 
 const meta: Meta<typeof Dropdown> = {
   component: Dropdown,
@@ -50,9 +45,7 @@ export const Default: Story = {
         <DropdownItem>Billing Configuration</DropdownItem>
         <DropdownItem>Team Settings</DropdownItem>
         <DropdownSeparator />
-        <DropdownItem className="text-error hover:text-error focus:text-error">
-          Delete Account
-        </DropdownItem>
+        <DropdownItem className="text-error hover:text-error focus:text-error">Delete Account</DropdownItem>
       </Dropdown>
     </div>
   ),
@@ -134,9 +127,7 @@ export const KeyboardNavigation: Story = {
     ).toHaveFocus();
 
     await userEvent.keyboard("{Escape}");
-    await expect(
-      within(document.body).queryByRole("menu"),
-    ).not.toBeInTheDocument();
+    await expect(within(document.body).queryByRole("menu")).not.toBeInTheDocument();
   },
 };
 

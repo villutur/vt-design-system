@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  IconAlertCircle,
-  IconCheck,
-  IconLoader2,
-} from "@tabler/icons-react";
+import { IconAlertCircle, IconCheck, IconLoader2 } from "@tabler/icons-react";
 import { cn } from "../../utils/cn";
 import { Badge } from "./Badge";
 
@@ -54,17 +50,10 @@ const statusBadgeMap = {
 } as const;
 
 export type ChatBubbleAlign = "start" | "end";
-export type ChatBubbleTone =
-  | "neutral"
-  | "assistant"
-  | "user"
-  | "success"
-  | "warning"
-  | "error";
+export type ChatBubbleTone = "neutral" | "assistant" | "user" | "success" | "warning" | "error";
 export type ChatBubbleStatus = "idle" | "streaming" | "complete" | "error";
 
-export interface ChatBubbleProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> {
+export interface ChatBubbleProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> {
   align?: ChatBubbleAlign;
   tone?: ChatBubbleTone;
   density?: "default" | "compact";
@@ -118,26 +107,12 @@ export const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
     const statusBadge = renderStatusBadge(status);
     const hasHeader = author || meta || statusBadge;
     const alignEnd = align === "end";
-    const avatarNode = avatar ? (
-      <div className="shrink-0 self-start">{avatar}</div>
-    ) : null;
+    const avatarNode = avatar ? <div className="shrink-0 self-start">{avatar}</div> : null;
 
     return (
-      <div
-        ref={ref}
-        className={cn(
-          "flex w-full",
-          alignEnd ? "justify-end" : "justify-start",
-          className,
-        )}
-        {...props}
-      >
+      <div ref={ref} className={cn("flex w-full", alignEnd ? "justify-end" : "justify-start", className)} {...props}>
         <div
-          className={cn(
-            "flex w-full max-w-[min(52rem,100%)] items-end",
-            styles.rowGap,
-            alignEnd && "flex-row-reverse",
-          )}
+          className={cn("flex w-full max-w-[min(52rem,100%)] items-end", styles.rowGap, alignEnd && "flex-row-reverse")}
         >
           {avatarNode}
 
@@ -146,11 +121,7 @@ export const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
               className={cn(
                 "min-w-0",
                 surface === "bubble"
-                  ? cn(
-                      "rounded-2xl border shadow-soft dark:shadow-soft-dark",
-                      toneClassMap[tone],
-                      styles.bubblePadding,
-                    )
+                  ? cn("rounded-2xl border shadow-soft dark:shadow-soft-dark", toneClassMap[tone], styles.bubblePadding)
                   : "",
                 bubbleClassName,
               )}
@@ -164,20 +135,10 @@ export const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
                       alignEnd && "justify-end text-right",
                     )}
                   >
-                    {author ? (
-                      <span className={cn(styles.author, "text-foreground")}>
-                        {author}
-                      </span>
-                    ) : null}
+                    {author ? <span className={cn(styles.author, "text-foreground")}>{author}</span> : null}
 
                     {meta ? (
-                      <span
-                        className={cn(
-                          styles.meta,
-                          "text-foreground-subtle",
-                          alignEnd && "order-first",
-                        )}
-                      >
+                      <span className={cn(styles.meta, "text-foreground-subtle", alignEnd && "order-first")}>
                         {meta}
                       </span>
                     ) : null}
@@ -186,23 +147,12 @@ export const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
                   </div>
                 ) : null}
 
-                {children ? (
-                  <div className="min-w-0 break-words text-sm text-foreground">
-                    {children}
-                  </div>
-                ) : null}
+                {children ? <div className="min-w-0 text-sm break-words text-foreground">{children}</div> : null}
 
                 {attachments ? <div className="min-w-0">{attachments}</div> : null}
 
                 {footer ? (
-                  <div
-                    className={cn(
-                      "text-xs text-foreground-subtle",
-                      alignEnd && "text-right",
-                    )}
-                  >
-                    {footer}
-                  </div>
+                  <div className={cn("text-xs text-foreground-subtle", alignEnd && "text-right")}>{footer}</div>
                 ) : null}
               </div>
             </div>

@@ -1,16 +1,7 @@
 import React from "react";
-import {
-  IconArrowRight,
-  IconHistory,
-  IconLoader2,
-  IconSearch,
-} from "@tabler/icons-react";
+import { IconArrowRight, IconHistory, IconLoader2, IconSearch } from "@tabler/icons-react";
 import { FloatingPortal } from "../../internal/FloatingPortal";
-import {
-  filterCollectionItems,
-  groupCollectionItems,
-  type SearchableCollectionItem,
-} from "../../internal/collection";
+import { filterCollectionItems, groupCollectionItems, type SearchableCollectionItem } from "../../internal/collection";
 import { useAnchoredFloating } from "../../internal/useAnchoredFloating";
 import { useControllableState } from "../../internal/useControllableState";
 import { useDismissibleLayer } from "../../internal/useDismissibleLayer";
@@ -66,8 +57,7 @@ interface NormalizedCommandInputHistoryItem extends SearchableCollectionItem {
   originalIndex: number;
 }
 
-interface NormalizedCommandInputSlashCommand
-  extends CommandInputSlashCommand, SearchableCollectionItem {
+interface NormalizedCommandInputSlashCommand extends CommandInputSlashCommand, SearchableCollectionItem {
   originalIndex: number;
 }
 
@@ -85,9 +75,7 @@ interface CommandInputSlashMenuItem extends CommandInputMenuItemBase {
   item: NormalizedCommandInputSlashCommand;
 }
 
-type CommandInputMenuItem =
-  | CommandInputHistoryMenuItem
-  | CommandInputSlashMenuItem;
+type CommandInputMenuItem = CommandInputHistoryMenuItem | CommandInputSlashMenuItem;
 
 function joinIds(...ids: Array<string | undefined>) {
   return ids.filter(Boolean).join(" ") || undefined;
@@ -146,10 +134,7 @@ function normalizeHistoryItem(
   };
 }
 
-function normalizeSlashCommand(
-  command: CommandInputSlashCommand,
-  index: number,
-): NormalizedCommandInputSlashCommand {
+function normalizeSlashCommand(command: CommandInputSlashCommand, index: number): NormalizedCommandInputSlashCommand {
   return {
     ...command,
     insertText: command.insertText ?? command.insertValue,
@@ -180,14 +165,10 @@ function isCaretAtPromptStart(textarea: HTMLTextAreaElement) {
   return selectionStart === 0 && selectionEnd === 0;
 }
 
-function replaceLeadingSlashToken(
-  currentValue: string,
-  command: CommandInputSlashCommand,
-) {
+function replaceLeadingSlashToken(currentValue: string, command: CommandInputSlashCommand) {
   const tokenMatch = currentValue.match(/^(\s*)\/[^\s\r\n]*/);
   const leadingWhitespace = tokenMatch?.[1] ?? "";
-  const insertText =
-    command.insertText ?? command.insertValue ?? `/${command.value}`;
+  const insertText = command.insertText ?? command.insertValue ?? `/${command.value}`;
 
   if (!tokenMatch) {
     return `${leadingWhitespace}${insertText.trimEnd()} `;
@@ -196,9 +177,7 @@ function replaceLeadingSlashToken(
   const remainder = currentValue.slice(tokenMatch[0].length);
   const needsSeparator = remainder.length === 0 || !/^\s/.test(remainder);
 
-  return `${leadingWhitespace}${insertText.trimEnd()}${
-    needsSeparator ? " " : ""
-  }${remainder}`;
+  return `${leadingWhitespace}${insertText.trimEnd()}${needsSeparator ? " " : ""}${remainder}`;
 }
 
 function focusTextareaAtEnd(textarea: HTMLTextAreaElement | null) {
@@ -256,16 +235,10 @@ export interface CommandInputProps extends Omit<
   onHistorySelect?: (item: CommandInputHistoryItem, index: number) => void;
   slashCommands?: CommandInputSlashCommand[];
   slashCommandsEmptyState?: React.ReactNode;
-  onSlashCommandSelect?: (
-    command: CommandInputSlashCommand,
-    index: number,
-  ) => void;
+  onSlashCommandSelect?: (command: CommandInputSlashCommand, index: number) => void;
 }
 
-export const CommandInput = React.forwardRef<
-  HTMLTextAreaElement,
-  CommandInputProps
->(
+export const CommandInput = React.forwardRef<HTMLTextAreaElement, CommandInputProps>(
   (
     {
       value,
@@ -310,11 +283,9 @@ export const CommandInput = React.forwardRef<
   ) => {
     const generatedId = id || React.useId();
     const labelId = label ? `${generatedId}-label` : undefined;
-    const shortcutHintId =
-      showShortcutHint && onSubmit ? `${generatedId}-shortcut-hint` : undefined;
+    const shortcutHintId = showShortcutHint && onSubmit ? `${generatedId}-shortcut-hint` : undefined;
     const liveRegionId = `${generatedId}-live-region`;
-    const messageId =
-      helperText || errorText ? `${generatedId}-message` : undefined;
+    const messageId = helperText || errorText ? `${generatedId}-message` : undefined;
     const listboxId = `${generatedId}-listbox`;
     const shellRef = React.useRef<HTMLDivElement | null>(null);
     const menuRef = React.useRef<HTMLDivElement | null>(null);
@@ -326,32 +297,19 @@ export const CommandInput = React.forwardRef<
       onChange: onValueChange,
     });
     const [internalSubmitting, setInternalSubmitting] = React.useState(false);
-    const [openMenu, setOpenMenu] = React.useState<CommandInputMenuMode | null>(
-      null,
-    );
+    const [openMenu, setOpenMenu] = React.useState<CommandInputMenuMode | null>(null);
     const sizing = commandInputSizeClassMap[size];
     const submitting = isSubmitting ?? internalSubmitting;
-    const normalizedHistory = React.useMemo(
-      () => history.map(normalizeHistoryItem),
-      [history],
-    );
-    const normalizedSlashCommands = React.useMemo(
-      () => slashCommands.map(normalizeSlashCommand),
-      [slashCommands],
-    );
+    const normalizedHistory = React.useMemo(() => history.map(normalizeHistoryItem), [history]);
+    const normalizedSlashCommands = React.useMemo(() => slashCommands.map(normalizeSlashCommand), [slashCommands]);
     const filteredHistory = React.useMemo(
       () => filterCollectionItems(normalizedHistory, currentValue),
       [currentValue, normalizedHistory],
     );
-    const slashQuery = React.useMemo(
-      () => getSlashQuery(currentValue),
-      [currentValue],
-    );
+    const slashQuery = React.useMemo(() => getSlashQuery(currentValue), [currentValue]);
     const filteredSlashCommands = React.useMemo(
       () =>
-        slashQuery === null
-          ? normalizedSlashCommands
-          : filterCollectionItems(normalizedSlashCommands, slashQuery),
+        slashQuery === null ? normalizedSlashCommands : filterCollectionItems(normalizedSlashCommands, slashQuery),
       [normalizedSlashCommands, slashQuery],
     );
     const groupedSlashCommands = React.useMemo(
@@ -386,21 +344,16 @@ export const CommandInput = React.forwardRef<
 
       return map;
     }, [filteredSlashCommands]);
-    const resolvedSubmitDisabled =
-      submitDisabled ?? (!currentValue.trim() || disabled || submitting);
+    const resolvedSubmitDisabled = submitDisabled ?? (!currentValue.trim() || disabled || submitting);
     const listStatusMessage =
       openMenu === "history"
         ? filteredHistory.length === 0
           ? "No history entries available."
-          : `${filteredHistory.length} history entr${
-              filteredHistory.length === 1 ? "y" : "ies"
-            } available.`
+          : `${filteredHistory.length} history entr${filteredHistory.length === 1 ? "y" : "ies"} available.`
         : openMenu === "slash"
           ? filteredSlashCommands.length === 0
             ? "No slash commands available."
-            : `${filteredSlashCommands.length} slash command${
-                filteredSlashCommands.length === 1 ? "" : "s"
-              } available.`
+            : `${filteredSlashCommands.length} slash command${filteredSlashCommands.length === 1 ? "" : "s"} available.`
           : submitting
             ? "Submitting command."
             : resolvedSubmitDisabled
@@ -440,9 +393,7 @@ export const CommandInput = React.forwardRef<
             },
             item.item.originalIndex,
           );
-          window.requestAnimationFrame(() =>
-            focusTextareaAtEnd(textareaRef.current),
-          );
+          window.requestAnimationFrame(() => focusTextareaAtEnd(textareaRef.current));
           return;
         }
 
@@ -451,15 +402,11 @@ export const CommandInput = React.forwardRef<
         setCurrentValue(nextValue);
         setOpenMenu(null);
         onSlashCommandSelect?.(item.item, item.item.originalIndex);
-        window.requestAnimationFrame(() =>
-          focusTextareaAtEnd(textareaRef.current),
-        );
+        window.requestAnimationFrame(() => focusTextareaAtEnd(textareaRef.current));
       },
       onClose: () => {
         setOpenMenu(null);
-        window.requestAnimationFrame(() =>
-          focusTextareaAtEnd(textareaRef.current),
-        );
+        window.requestAnimationFrame(() => focusTextareaAtEnd(textareaRef.current));
       },
     });
 
@@ -470,10 +417,7 @@ export const CommandInput = React.forwardRef<
     });
 
     React.useEffect(() => {
-      if (
-        openMenu === "slash" &&
-        (normalizedSlashCommands.length === 0 || slashQuery === null)
-      ) {
+      if (openMenu === "slash" && (normalizedSlashCommands.length === 0 || slashQuery === null)) {
         setOpenMenu(null);
       }
     }, [normalizedSlashCommands.length, openMenu, slashQuery]);
@@ -489,11 +433,7 @@ export const CommandInput = React.forwardRef<
     }, [activeIndex, itemRefs, openMenu]);
 
     const resizeTextarea = React.useCallback(() => {
-      if (
-        !autoResize ||
-        !textareaRef.current ||
-        typeof window === "undefined"
-      ) {
+      if (!autoResize || !textareaRef.current || typeof window === "undefined") {
         return;
       }
 
@@ -501,19 +441,14 @@ export const CommandInput = React.forwardRef<
       textarea.style.height = "auto";
 
       const computedStyle = window.getComputedStyle(textarea);
-      const lineHeight =
-        Number.parseFloat(computedStyle.lineHeight || "") || 20;
+      const lineHeight = Number.parseFloat(computedStyle.lineHeight || "") || 20;
       const borderBox = textarea.offsetHeight - textarea.clientHeight;
       const minHeight = lineHeight * minRows + borderBox;
       const maxHeight = lineHeight * maxRows + borderBox;
-      const nextHeight = Math.min(
-        Math.max(textarea.scrollHeight, minHeight),
-        maxHeight,
-      );
+      const nextHeight = Math.min(Math.max(textarea.scrollHeight, minHeight), maxHeight);
 
       textarea.style.height = `${nextHeight}px`;
-      textarea.style.overflowY =
-        textarea.scrollHeight > maxHeight ? "auto" : "hidden";
+      textarea.style.overflowY = textarea.scrollHeight > maxHeight ? "auto" : "hidden";
     }, [autoResize, maxRows, minRows]);
 
     React.useLayoutEffect(() => {
@@ -546,14 +481,7 @@ export const CommandInput = React.forwardRef<
           setInternalSubmitting(false);
         }
       }
-    }, [
-      clearAfterSubmit,
-      currentValue,
-      isSubmitting,
-      onSubmit,
-      resolvedSubmitDisabled,
-      setCurrentValue,
-    ]);
+    }, [clearAfterSubmit, currentValue, isSubmitting, onSubmit, resolvedSubmitDisabled, setCurrentValue]);
 
     return (
       <Field
@@ -570,12 +498,7 @@ export const CommandInput = React.forwardRef<
         messageId={messageId}
       >
         <div className="relative">
-          <div
-            id={liveRegionId}
-            className="sr-only"
-            aria-live="polite"
-            aria-atomic="true"
-          >
+          <div id={liveRegionId} className="sr-only" aria-live="polite" aria-atomic="true">
             {listStatusMessage}
           </div>
 
@@ -603,19 +526,13 @@ export const CommandInput = React.forwardRef<
               disabled={disabled}
               aria-invalid={error}
               aria-required={required || undefined}
-              aria-describedby={joinIds(
-                messageId,
-                shortcutHintId,
-                liveRegionId,
-              )}
+              aria-describedby={joinIds(messageId, shortcutHintId, liveRegionId)}
               aria-labelledby={labelId}
               aria-busy={submitting || undefined}
               aria-controls={openMenu ? listboxId : undefined}
               aria-expanded={openMenu !== null}
               aria-activedescendant={
-                openMenu !== null && activeIndex >= 0
-                  ? `${generatedId}-option-${activeIndex}`
-                  : undefined
+                openMenu !== null && activeIndex >= 0 ? `${generatedId}-option-${activeIndex}` : undefined
               }
               onChange={(event) => {
                 const nextValue = event.target.value;
@@ -623,10 +540,7 @@ export const CommandInput = React.forwardRef<
                 setCurrentValue(nextValue);
                 onChange?.(event);
 
-                if (
-                  slashCommands.length > 0 &&
-                  getSlashQuery(nextValue) !== null
-                ) {
+                if (slashCommands.length > 0 && getSlashQuery(nextValue) !== null) {
                   setOpenMenu("slash");
                 } else if (openMenu === "slash") {
                   setOpenMenu(null);
@@ -674,11 +588,7 @@ export const CommandInput = React.forwardRef<
                   return;
                 }
 
-                if (
-                  slashCommands.length > 0 &&
-                  event.key === "ArrowDown" &&
-                  slashQuery !== null
-                ) {
+                if (slashCommands.length > 0 && event.key === "ArrowDown" && slashQuery !== null) {
                   event.preventDefault();
                   setOpenMenu("slash");
                   return;
@@ -705,10 +615,7 @@ export const CommandInput = React.forwardRef<
                 )}
               >
                 {showShortcutHint ? (
-                  <span
-                    id={shortcutHintId}
-                    className={cn("text-foreground-subtle", sizing.shortcut)}
-                  >
+                  <span id={shortcutHintId} className={cn("text-foreground-subtle", sizing.shortcut)}>
                     {submitShortcutHint}
                   </span>
                 ) : (
@@ -725,11 +632,7 @@ export const CommandInput = React.forwardRef<
                       disabled={resolvedSubmitDisabled}
                       onClick={() => void handleSubmit()}
                       rightIcon={
-                        submitting ? (
-                          <IconLoader2 size={16} className="animate-spin" />
-                        ) : (
-                          <IconArrowRight size={16} />
-                        )
+                        submitting ? <IconLoader2 size={16} className="animate-spin" /> : <IconArrowRight size={16} />
                       }
                     >
                       {submitLabel}
@@ -769,11 +672,7 @@ export const CommandInput = React.forwardRef<
                   )}
                 </div>
 
-                <div
-                  id={listboxId}
-                  role="listbox"
-                  className="max-h-72 overflow-auto py-xs"
-                >
+                <div id={listboxId} role="listbox" className="max-h-72 overflow-auto py-xs">
                   {openMenu === "history" ? (
                     filteredHistory.length > 0 ? (
                       filteredHistory.map((item, index) => {
@@ -803,27 +702,18 @@ export const CommandInput = React.forwardRef<
                                 },
                                 item.originalIndex,
                               );
-                              window.requestAnimationFrame(() =>
-                                focusTextareaAtEnd(textareaRef.current),
-                              );
+                              window.requestAnimationFrame(() => focusTextareaAtEnd(textareaRef.current));
                             }}
                             className={cn(
                               "flex w-full items-start gap-sm text-left transition-colors",
                               sizing.menuItem,
-                              active
-                                ? "bg-primary/10 text-foreground"
-                                : "text-foreground hover:bg-surface-subtle",
+                              active ? "bg-primary/10 text-foreground" : "text-foreground hover:bg-surface-subtle",
                               item.disabled && "cursor-not-allowed opacity-50",
                             )}
                           >
-                            <IconHistory
-                              size={14}
-                              className="mt-[3px] shrink-0 text-foreground-subtle"
-                            />
+                            <IconHistory size={14} className="mt-[3px] shrink-0 text-foreground-subtle" />
                             <span className="min-w-0 flex-1">
-                              <span className="block truncate text-sm font-medium">
-                                {item.label}
-                              </span>
+                              <span className="block truncate text-sm font-medium">{item.label}</span>
                               <span className="mt-xs line-clamp-2 block text-xs text-foreground-subtle">
                                 {item.description ?? item.historyValue}
                               </span>
@@ -832,12 +722,7 @@ export const CommandInput = React.forwardRef<
                         );
                       })
                     ) : (
-                      <div
-                        className={cn(
-                          "px-md py-md text-sm text-foreground-muted",
-                          sizing.menuItem,
-                        )}
-                      >
+                      <div className={cn("px-md py-md text-sm text-foreground-muted", sizing.menuItem)}>
                         {historyEmptyState}
                       </div>
                     )
@@ -851,8 +736,7 @@ export const CommandInput = React.forwardRef<
                         ) : null}
 
                         {group.items.map((command) => {
-                          const index =
-                            slashCommandIndexMap.get(command.value) ?? -1;
+                          const index = slashCommandIndexMap.get(command.value) ?? -1;
                           const active = index === activeIndex;
 
                           return (
@@ -866,38 +750,23 @@ export const CommandInput = React.forwardRef<
                               ref={setItemRef(index)}
                               onMouseEnter={() => setActiveIndex(index)}
                               onClick={() => {
-                                setCurrentValue(
-                                  replaceLeadingSlashToken(
-                                    currentValue,
-                                    command,
-                                  ),
-                                );
+                                setCurrentValue(replaceLeadingSlashToken(currentValue, command));
                                 setOpenMenu(null);
-                                onSlashCommandSelect?.(
-                                  command,
-                                  command.originalIndex,
-                                );
-                                window.requestAnimationFrame(() =>
-                                  focusTextareaAtEnd(textareaRef.current),
-                                );
+                                onSlashCommandSelect?.(command, command.originalIndex);
+                                window.requestAnimationFrame(() => focusTextareaAtEnd(textareaRef.current));
                               }}
                               className={cn(
                                 "flex w-full items-start gap-sm text-left transition-colors",
                                 sizing.menuItem,
-                                active
-                                  ? "bg-primary/10 text-foreground"
-                                  : "text-foreground hover:bg-surface-subtle",
-                                command.disabled &&
-                                  "cursor-not-allowed opacity-50",
+                                active ? "bg-primary/10 text-foreground" : "text-foreground hover:bg-surface-subtle",
+                                command.disabled && "cursor-not-allowed opacity-50",
                               )}
                             >
                               <span className="mt-[2px] shrink-0 text-foreground-subtle">
                                 {command.icon ?? <IconSearch size={14} />}
                               </span>
                               <span className="min-w-0 flex-1">
-                                <span className="block truncate text-sm font-medium">
-                                  {command.label}
-                                </span>
+                                <span className="block truncate text-sm font-medium">{command.label}</span>
                                 {command.description ? (
                                   <span className="mt-xs line-clamp-2 block text-xs text-foreground-subtle">
                                     {command.description}
@@ -905,9 +774,7 @@ export const CommandInput = React.forwardRef<
                                 ) : null}
                               </span>
                               {command.shortcut ? (
-                                <span className="shrink-0 text-xs text-foreground-subtle">
-                                  {command.shortcut}
-                                </span>
+                                <span className="shrink-0 text-xs text-foreground-subtle">{command.shortcut}</span>
                               ) : null}
                             </button>
                           );
@@ -915,12 +782,7 @@ export const CommandInput = React.forwardRef<
                       </div>
                     ))
                   ) : (
-                    <div
-                      className={cn(
-                        "px-md py-md text-sm text-foreground-muted",
-                        sizing.menuItem,
-                      )}
-                    >
+                    <div className={cn("px-md py-md text-sm text-foreground-muted", sizing.menuItem)}>
                       {slashCommandsEmptyState}
                     </div>
                   )}

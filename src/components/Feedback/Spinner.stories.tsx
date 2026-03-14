@@ -31,13 +31,13 @@ export const Default: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div className="flex gap-lg items-center p-md bg-slate-50 dark:bg-slate-900 rounded-lg">
+    <div className="flex items-center gap-lg rounded-lg bg-slate-50 p-md dark:bg-slate-900">
       <Spinner variant="default" />
       <Spinner variant="primary" />
       <Spinner variant="success" />
       <Spinner variant="warning" />
       <Spinner variant="error" />
-      <div className="p-sm bg-slate-800 rounded">
+      <div className="rounded bg-slate-800 p-sm">
         <Spinner variant="white" />
       </div>
     </div>

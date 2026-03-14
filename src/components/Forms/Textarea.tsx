@@ -10,8 +10,7 @@ const textareaVariants = cva(
     variants: {
       hasError: {
         true: "border-error/50 focus:border-error focus:ring-2 focus:ring-error/20",
-        false:
-          "border-default hover:border-strong focus:border-primary focus:ring-2 focus:ring-primary/20",
+        false: "border-default hover:border-strong focus:border-primary focus:ring-2 focus:ring-primary/20",
       },
       size: {
         xs: "min-h-20 px-sm py-xs text-[11px]",
@@ -33,8 +32,7 @@ const textareaVariants = cva(
 );
 
 export interface TextareaProps
-  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "size">,
-    VariantProps<typeof textareaVariants> {
+  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "size">, VariantProps<typeof textareaVariants> {
   label?: string;
   description?: React.ReactNode;
   helperText?: React.ReactNode;
@@ -78,21 +76,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         disabled={disabled}
         htmlFor={generatedId}
         labelHidden={labelHidden}
-        messageId={
-          helperText || errorText ? `${generatedId}-message` : undefined
-        }
+        messageId={helperText || errorText ? `${generatedId}-message` : undefined}
       >
         <textarea
           id={generatedId}
           ref={ref}
           rows={rows}
-          className={cn(
-            textareaVariants({ hasError: !!error, size, resize, className }),
-          )}
+          className={cn(textareaVariants({ hasError: !!error, size, resize, className }))}
           aria-invalid={!!error}
-          aria-describedby={
-            helperText || errorText ? `${generatedId}-message` : undefined
-          }
+          aria-describedby={helperText || errorText ? `${generatedId}-message` : undefined}
           required={required}
           disabled={disabled}
           {...props}

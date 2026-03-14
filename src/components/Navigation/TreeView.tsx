@@ -47,9 +47,7 @@ export interface TreeViewRenderProps {
   isDragging: boolean;
   searchQuery: string;
   toggle: () => void;
-  select: (
-    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-  ) => void;
+  select: (event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
   startEditing: () => void;
   retryLoad: () => void;
 }
@@ -103,20 +101,11 @@ export type TreeViewSlot =
 
 export type TreeViewClassNames = Partial<Record<TreeViewSlot, string>>;
 
-type TreeViewIconRenderer =
-  | React.ReactNode
-  | ((props: TreeViewRenderProps) => React.ReactNode);
-type TreeViewLoadErrorMessage =
-  | React.ReactNode
-  | ((item: TreeViewItem, error: unknown) => React.ReactNode);
-type TreeViewRetryLabel =
-  | React.ReactNode
-  | ((item: TreeViewItem) => React.ReactNode);
+type TreeViewIconRenderer = React.ReactNode | ((props: TreeViewRenderProps) => React.ReactNode);
+type TreeViewLoadErrorMessage = React.ReactNode | ((item: TreeViewItem, error: unknown) => React.ReactNode);
+type TreeViewRetryLabel = React.ReactNode | ((item: TreeViewItem) => React.ReactNode);
 
-export interface TreeViewProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "defaultValue" | "onChange"
-> {
+export interface TreeViewProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "defaultValue" | "onChange"> {
   items?: TreeViewItem[];
   defaultItems?: TreeViewItem[];
   onItemsChange?: (items: TreeViewItem[]) => void;
@@ -149,9 +138,7 @@ export interface TreeViewProps extends Omit<
   leafIcon?: TreeViewIconRenderer;
   loadingIcon?: TreeViewIconRenderer;
   createItem?: (context: TreeViewCreateItemContext) => TreeViewItem;
-  onAddItem?: (
-    context: TreeViewCreateItemContext & { item: TreeViewItem },
-  ) => void;
+  onAddItem?: (context: TreeViewCreateItemContext & { item: TreeViewItem }) => void;
   onDeleteItem?: (item: TreeViewItem) => void;
   onRenameItem?: (item: TreeViewItem, nextName: string) => void;
   onItemMove?: (operation: TreeViewMoveOperation) => void;
@@ -195,9 +182,7 @@ function defaultTreeFilter(item: TreeViewItem, query: string) {
     return true;
   }
 
-  const haystack = [item.name, ...(item.keywords ?? [])]
-    .join(" ")
-    .toLowerCase();
+  const haystack = [item.name, ...(item.keywords ?? [])].join(" ").toLowerCase();
 
   return haystack.includes(normalizedQuery);
 }
@@ -269,16 +254,9 @@ function processTreeItems(
 
   const processedItems = items.reduce<TreeViewItem[]>((accumulator, item) => {
     const processedChildren = item.children
-      ? processTreeItems(
-          item.children,
-          normalizedQuery,
-          filterFn,
-          sortComparator,
-        )
+      ? processTreeItems(item.children, normalizedQuery, filterFn, sortComparator)
       : item.children;
-    const matchesQuery = normalizedQuery
-      ? filterFn(item, normalizedQuery)
-      : true;
+    const matchesQuery = normalizedQuery ? filterFn(item, normalizedQuery) : true;
     const hasMatchingChildren = Boolean(processedChildren?.length);
 
     if (normalizedQuery && !matchesQuery && !hasMatchingChildren) {
@@ -325,10 +303,7 @@ function flattenVisibleItems(
   });
 }
 
-function findTreeItem(
-  items: TreeViewItem[],
-  itemId: string,
-): TreeViewItem | undefined {
+function findTreeItem(items: TreeViewItem[], itemId: string): TreeViewItem | undefined {
   for (const item of items) {
     if (item.id === itemId) {
       return item;
@@ -367,11 +342,7 @@ function updateTreeItemById(
   });
 }
 
-function insertTreeItemAsChild(
-  items: TreeViewItem[],
-  targetId: string,
-  newItem: TreeViewItem,
-): TreeViewItem[] {
+function insertTreeItemAsChild(items: TreeViewItem[], targetId: string, newItem: TreeViewItem): TreeViewItem[] {
   return items.map((item) => {
     if (item.id === targetId) {
       return {
@@ -391,10 +362,7 @@ function insertTreeItemAsChild(
   });
 }
 
-function removeTreeItemById(
-  items: TreeViewItem[],
-  itemId: string,
-): TreeViewItem[] {
+function removeTreeItemById(items: TreeViewItem[], itemId: string): TreeViewItem[] {
   return items
     .filter((item) => item.id !== itemId)
     .map((item) => {
@@ -456,21 +424,14 @@ function cloneTreeItemWithNewIds(item: TreeViewItem): TreeViewItem {
 }
 
 function collectItemIds(item: TreeViewItem): string[] {
-  return [
-    item.id,
-    ...(item.children?.flatMap((child) => collectItemIds(child)) ?? []),
-  ];
+  return [item.id, ...(item.children?.flatMap((child) => collectItemIds(child)) ?? [])];
 }
 
 function collectTreeIds(items: TreeViewItem[]) {
   return items.flatMap((item) => collectItemIds(item));
 }
 
-function findTreeItemPath(
-  items: TreeViewItem[],
-  itemId: string,
-  trail: string[] = [],
-): string[] | undefined {
+function findTreeItemPath(items: TreeViewItem[], itemId: string, trail: string[] = []): string[] | undefined {
   for (const item of items) {
     const nextTrail = [...trail, item.id];
 
@@ -490,10 +451,7 @@ function findTreeItemPath(
   return undefined;
 }
 
-function resolveTreeIcon(
-  icon: TreeViewIconRenderer | undefined,
-  props: TreeViewRenderProps,
-) {
+function resolveTreeIcon(icon: TreeViewIconRenderer | undefined, props: TreeViewRenderProps) {
   if (typeof icon === "function") {
     return icon(props);
   }
@@ -501,11 +459,7 @@ function resolveTreeIcon(
   return icon ?? null;
 }
 
-function resolveLoadErrorMessage(
-  message: TreeViewLoadErrorMessage | undefined,
-  item: TreeViewItem,
-  error: unknown,
-) {
+function resolveLoadErrorMessage(message: TreeViewLoadErrorMessage | undefined, item: TreeViewItem, error: unknown) {
   if (typeof message === "function") {
     return message(item, error);
   }
@@ -525,10 +479,7 @@ function resolveLoadErrorMessage(
   return `Could not load children for ${item.name}.`;
 }
 
-function resolveRetryLabel(
-  label: TreeViewRetryLabel | undefined,
-  item: TreeViewItem,
-) {
+function resolveRetryLabel(label: TreeViewRetryLabel | undefined, item: TreeViewItem) {
   if (typeof label === "function") {
     return label(item);
   }
@@ -551,9 +502,7 @@ function buildTreeInstructions(options: {
   ];
 
   if (options.multiSelect) {
-    instructions.push(
-      "Use Control or Command plus A to select all visible items.",
-    );
+    instructions.push("Use Control or Command plus A to select all visible items.");
   }
 
   if (options.editable) {
@@ -571,9 +520,7 @@ function buildTreeInstructions(options: {
   return instructions.join(" ");
 }
 
-function createDefaultTreeItem(
-  context: TreeViewCreateItemContext,
-): TreeViewItem {
+function createDefaultTreeItem(context: TreeViewCreateItemContext): TreeViewItem {
   return {
     id: generateTreeItemId("new-item"),
     name: context.parent.name ? `New item ${context.index + 1}` : "New item",
@@ -599,12 +546,7 @@ function formatPrimitiveValue(value: unknown) {
   return String(value);
 }
 
-function buildTreeItemFromValue(
-  name: string,
-  value: unknown,
-  path: string[],
-  sortKeys: boolean,
-): TreeViewItem {
+function buildTreeItemFromValue(name: string, value: unknown, path: string[], sortKeys: boolean): TreeViewItem {
   const itemId = path.join(".");
 
   if (Array.isArray(value)) {
@@ -617,12 +559,7 @@ function buildTreeItemFromValue(
         valueType: "array",
       },
       children: value.map((child, index) =>
-        buildTreeItemFromValue(
-          String(index),
-          child,
-          [...path, String(index)],
-          sortKeys,
-        ),
+        buildTreeItemFromValue(String(index), child, [...path, String(index)], sortKeys),
       ),
     };
   }
@@ -630,28 +567,19 @@ function buildTreeItemFromValue(
   if (value && typeof value === "object") {
     const entries = Object.entries(value);
     const orderedEntries = sortKeys
-      ? [...entries].sort(([leftKey], [rightKey]) =>
-          leftKey.localeCompare(rightKey),
-        )
+      ? [...entries].sort(([leftKey], [rightKey]) => leftKey.localeCompare(rightKey))
       : entries;
 
     return {
       id: itemId,
       name,
-      description: `${orderedEntries.length} key${
-        orderedEntries.length === 1 ? "" : "s"
-      }`,
+      description: `${orderedEntries.length} key${orderedEntries.length === 1 ? "" : "s"}`,
       defaultExpanded: path.length <= 2,
       data: {
         valueType: "object",
       },
       children: orderedEntries.map(([childName, childValue]) =>
-        buildTreeItemFromValue(
-          childName,
-          childValue,
-          [...path, childName],
-          sortKeys,
-        ),
+        buildTreeItemFromValue(childName, childValue, [...path, childName], sortKeys),
       ),
     };
   }
@@ -661,34 +589,17 @@ function buildTreeItemFromValue(
     name,
     description: formatPrimitiveValue(value),
     data: {
-      valueType:
-        value === null
-          ? "null"
-          : value === undefined
-            ? "undefined"
-            : typeof value,
+      valueType: value === null ? "null" : value === undefined ? "undefined" : typeof value,
       value,
     },
   };
 }
 
-export function createTreeViewItemsFromObject(
-  value: unknown,
-  options: TreeViewObjectAdapterOptions = {},
-) {
+export function createTreeViewItemsFromObject(value: unknown, options: TreeViewObjectAdapterOptions = {}) {
   const rootName = options.rootName ?? "root";
-  const rootItem = buildTreeItemFromValue(
-    rootName,
-    value,
-    [rootName],
-    options.sortKeys ?? false,
-  );
+  const rootItem = buildTreeItemFromValue(rootName, value, [rootName], options.sortKeys ?? false);
 
-  if (
-    (options.includeRoot ?? Array.isArray(value)) ||
-    value === null ||
-    typeof value !== "object"
-  ) {
+  if ((options.includeRoot ?? Array.isArray(value)) || value === null || typeof value !== "object") {
     return [rootItem];
   }
 
@@ -751,55 +662,39 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
     const instructionsId = `${rootId}-instructions`;
     const liveRegionId = `${rootId}-live-region`;
     const viewportId = `${rootId}-viewport`;
-    const [currentItems, setCurrentItems] = useControllableState<
-      TreeViewItem[]
-    >({
+    const [currentItems, setCurrentItems] = useControllableState<TreeViewItem[]>({
       value: items,
       defaultValue: defaultItems,
       onChange: onItemsChange,
     });
-    const [currentExpandedIds, setCurrentExpandedIds] = useControllableState<
-      string[]
-    >({
+    const [currentExpandedIds, setCurrentExpandedIds] = useControllableState<string[]>({
       value: expandedIds,
-      defaultValue:
-        defaultExpandedIds ?? collectDefaultExpandedIds(defaultItems),
+      defaultValue: defaultExpandedIds ?? collectDefaultExpandedIds(defaultItems),
       onChange: onExpandedIdsChange,
     });
-    const [currentSelectedIds, setCurrentSelectedIds] = useControllableState<
-      string[]
-    >({
+    const [currentSelectedIds, setCurrentSelectedIds] = useControllableState<string[]>({
       value: selectedIds,
       defaultValue: defaultSelectedIds,
       onChange: onSelectedIdsChange,
     });
-    const [currentSearchQuery, setCurrentSearchQuery] =
-      useControllableState<string>({
-        value: searchQuery,
-        defaultValue: defaultSearchQuery,
-        onChange: onSearchQueryChange,
-      });
-    const [focusedId, setFocusedId] = React.useState<string | undefined>(
-      defaultSelectedIds[0],
-    );
+    const [currentSearchQuery, setCurrentSearchQuery] = useControllableState<string>({
+      value: searchQuery,
+      defaultValue: defaultSearchQuery,
+      onChange: onSearchQueryChange,
+    });
+    const [focusedId, setFocusedId] = React.useState<string | undefined>(defaultSelectedIds[0]);
     const [editingId, setEditingId] = React.useState<string | undefined>();
     const [editingValue, setEditingValue] = React.useState("");
     const [loadingIds, setLoadingIds] = React.useState<string[]>([]);
-    const [asyncLoadErrors, setAsyncLoadErrors] = React.useState<
-      Record<string, unknown>
-    >({});
+    const [asyncLoadErrors, setAsyncLoadErrors] = React.useState<Record<string, unknown>>({});
     const [draggingId, setDraggingId] = React.useState<string | undefined>();
-    const [dropTargetId, setDropTargetId] = React.useState<
-      string | undefined
-    >();
+    const [dropTargetId, setDropTargetId] = React.useState<string | undefined>();
     const [liveMessage, setLiveMessage] = React.useState("");
     const itemRefs = React.useRef(new Map<string, HTMLDivElement | null>());
     const renameInputRef = React.useRef<HTMLInputElement>(null);
     const currentItemsRef = React.useRef(currentItems);
     const loadingIdsRef = React.useRef(loadingIds);
-    const selectionAnchorRef = React.useRef<string | undefined>(
-      defaultSelectedIds[0],
-    );
+    const selectionAnchorRef = React.useRef<string | undefined>(defaultSelectedIds[0]);
     const typeaheadStateRef = React.useRef<{
       query: string;
       timeoutId?: number;
@@ -819,13 +714,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
     );
 
     const processedItems = React.useMemo(
-      () =>
-        processTreeItems(
-          currentItems,
-          currentSearchQuery,
-          filterFn,
-          sortComparator,
-        ),
+      () => processTreeItems(currentItems, currentSearchQuery, filterFn, sortComparator),
       [currentItems, currentSearchQuery, filterFn, sortComparator],
     );
 
@@ -834,28 +723,18 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
         return new Set(currentExpandedIds);
       }
 
-      return new Set([
-        ...currentExpandedIds,
-        ...Array.from(collectBranchIds(processedItems)),
-      ]);
+      return new Set([...currentExpandedIds, ...Array.from(collectBranchIds(processedItems))]);
     }, [currentExpandedIds, currentSearchQuery, processedItems]);
 
     const visibleItems = React.useMemo(
       () => flattenVisibleItems(processedItems, effectiveExpandedIds),
       [processedItems, effectiveExpandedIds],
     );
-    const visibleIdSet = React.useMemo(
-      () => new Set(visibleItems.map((entry) => entry.item.id)),
-      [visibleItems],
-    );
-    const selectedIdSet = React.useMemo(
-      () => new Set(currentSelectedIds),
-      [currentSelectedIds],
-    );
+    const visibleIdSet = React.useMemo(() => new Set(visibleItems.map((entry) => entry.item.id)), [visibleItems]);
+    const selectedIdSet = React.useMemo(() => new Set(currentSelectedIds), [currentSelectedIds]);
 
     const getClassName = React.useCallback(
-      (slot: TreeViewSlot, baseClassName: string) =>
-        cn(baseClassName, classNames?.[slot]),
+      (slot: TreeViewSlot, baseClassName: string) => cn(baseClassName, classNames?.[slot]),
       [classNames],
     );
 
@@ -897,22 +776,16 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
       const validIds = new Set(collectTreeIds(currentItems));
 
       setLoadingIds((currentIds) => {
-        const nextIds = currentIds.filter((loadingId) =>
-          validIds.has(loadingId),
-        );
+        const nextIds = currentIds.filter((loadingId) => validIds.has(loadingId));
 
         return nextIds.length === currentIds.length ? currentIds : nextIds;
       });
 
       setAsyncLoadErrors((currentErrors) => {
         const currentEntries = Object.entries(currentErrors);
-        const nextEntries = currentEntries.filter(([itemId]) =>
-          validIds.has(itemId),
-        );
+        const nextEntries = currentEntries.filter(([itemId]) => validIds.has(itemId));
 
-        return nextEntries.length === currentEntries.length
-          ? currentErrors
-          : Object.fromEntries(nextEntries);
+        return nextEntries.length === currentEntries.length ? currentErrors : Object.fromEntries(nextEntries);
       });
     }, [currentItems]);
 
@@ -963,18 +836,11 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 
         const latestItem = findTreeItem(currentItemsRef.current, itemId);
 
-        if (
-          !latestItem ||
-          latestItem.disabled ||
-          !latestItem.hasAsyncChildren ||
-          latestItem.children?.length
-        ) {
+        if (!latestItem || latestItem.disabled || !latestItem.hasAsyncChildren || latestItem.children?.length) {
           return;
         }
 
-        setLoadingIds((currentIds) =>
-          Array.from(new Set([...currentIds, itemId])),
-        );
+        setLoadingIds((currentIds) => Array.from(new Set([...currentIds, itemId])));
         setAsyncLoadErrors((currentErrors) => {
           if (!Object.prototype.hasOwnProperty.call(currentErrors, itemId)) {
             return currentErrors;
@@ -1003,9 +869,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
             })),
           );
           announce(
-            `Loaded ${loadedChildren.length} child${
-              loadedChildren.length === 1 ? "" : "ren"
-            } for ${latestItem.name}.`,
+            `Loaded ${loadedChildren.length} child${loadedChildren.length === 1 ? "" : "ren"} for ${latestItem.name}.`,
           );
         } catch (error) {
           onLoadChildrenError?.(latestItem, error);
@@ -1015,9 +879,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
           }));
           announce(`Could not load children for ${latestItem.name}.`);
         } finally {
-          setLoadingIds((currentIds) =>
-            currentIds.filter((loadingId) => loadingId !== itemId),
-          );
+          setLoadingIds((currentIds) => currentIds.filter((loadingId) => loadingId !== itemId));
         }
       },
       [announce, loadChildren, onLoadChildrenError, setCurrentItems],
@@ -1049,23 +911,11 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
           await loadChildrenForItem(item.id);
         }
       },
-      [
-        asyncLoadErrors,
-        currentExpandedIds,
-        loadChildren,
-        loadChildrenForItem,
-        loadingIdSet,
-        setCurrentExpandedIds,
-      ],
+      [asyncLoadErrors, currentExpandedIds, loadChildren, loadChildrenForItem, loadingIdSet, setCurrentExpandedIds],
     );
 
     const selectItem = React.useCallback(
-      (
-        itemId: string,
-        event?:
-          | React.MouseEvent<HTMLElement>
-          | React.KeyboardEvent<HTMLElement>,
-      ) => {
+      (itemId: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
         setFocusedId(itemId);
 
         const targetItem = findTreeItem(currentItemsRef.current, itemId);
@@ -1078,32 +928,18 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
           return;
         }
 
-        const itemIndex = visibleItems.findIndex(
-          (entry) => entry.item.id === itemId,
-        );
+        const itemIndex = visibleItems.findIndex((entry) => entry.item.id === itemId);
         const anchorId = selectionAnchorRef.current ?? itemId;
-        const anchorIndex = visibleItems.findIndex(
-          (entry) => entry.item.id === anchorId,
-        );
-        const usesRangeSelection =
-          Boolean(event?.shiftKey) &&
-          multiSelect &&
-          anchorIndex >= 0 &&
-          itemIndex >= 0;
-        const usesToggleSelection =
-          Boolean(event?.metaKey || event?.ctrlKey) && multiSelect;
+        const anchorIndex = visibleItems.findIndex((entry) => entry.item.id === anchorId);
+        const usesRangeSelection = Boolean(event?.shiftKey) && multiSelect && anchorIndex >= 0 && itemIndex >= 0;
+        const usesToggleSelection = Boolean(event?.metaKey || event?.ctrlKey) && multiSelect;
 
         let nextSelectedIds: string[];
 
         if (usesRangeSelection) {
-          const [startIndex, endIndex] =
-            anchorIndex < itemIndex
-              ? [anchorIndex, itemIndex]
-              : [itemIndex, anchorIndex];
+          const [startIndex, endIndex] = anchorIndex < itemIndex ? [anchorIndex, itemIndex] : [itemIndex, anchorIndex];
 
-          nextSelectedIds = visibleItems
-            .slice(startIndex, endIndex + 1)
-            .map((entry) => entry.item.id);
+          nextSelectedIds = visibleItems.slice(startIndex, endIndex + 1).map((entry) => entry.item.id);
         } else if (usesToggleSelection) {
           nextSelectedIds = selectedIdSet.has(itemId)
             ? currentSelectedIds.filter((selectedId) => selectedId !== itemId)
@@ -1116,14 +952,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 
         setCurrentSelectedIds(Array.from(new Set(nextSelectedIds)));
       },
-      [
-        currentSelectedIds,
-        multiSelect,
-        selectable,
-        selectedIdSet,
-        setCurrentSelectedIds,
-        visibleItems,
-      ],
+      [currentSelectedIds, multiSelect, selectable, selectedIdSet, setCurrentSelectedIds, visibleItems],
     );
 
     const startEditing = React.useCallback(
@@ -1172,15 +1001,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
       setEditingId(undefined);
       setEditingValue("");
       focusTreeItem(editingId);
-    }, [
-      announce,
-      currentItems,
-      editingId,
-      editingValue,
-      focusTreeItem,
-      onRenameItem,
-      setCurrentItems,
-    ]);
+    }, [announce, currentItems, editingId, editingValue, focusTreeItem, onRenameItem, setCurrentItems]);
 
     const cancelEditing = React.useCallback(() => {
       const previousEditingId = editingId;
@@ -1200,13 +1021,10 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
           level: level + 1,
           index: item.children?.length ?? 0,
         };
-        const nextItem =
-          createItem?.(itemContext) ?? createDefaultTreeItem(itemContext);
+        const nextItem = createItem?.(itemContext) ?? createDefaultTreeItem(itemContext);
 
         setCurrentItems(insertTreeItemAsChild(currentItems, item.id, nextItem));
-        setCurrentExpandedIds(
-          Array.from(new Set([...currentExpandedIds, item.id])),
-        );
+        setCurrentExpandedIds(Array.from(new Set([...currentExpandedIds, item.id])));
         setCurrentSelectedIds([nextItem.id]);
         setFocusedId(nextItem.id);
         selectionAnchorRef.current = nextItem.id;
@@ -1246,24 +1064,13 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
         }
 
         const itemIdsToRemove = new Set(collectItemIds(item));
-        const currentVisibleIndex = visibleItems.findIndex(
-          (entry) => entry.item.id === item.id,
-        );
+        const currentVisibleIndex = visibleItems.findIndex((entry) => entry.item.id === item.id);
         const nextFocusedId =
-          visibleItems[currentVisibleIndex + 1]?.item.id ??
-          visibleItems[currentVisibleIndex - 1]?.item.id;
+          visibleItems[currentVisibleIndex + 1]?.item.id ?? visibleItems[currentVisibleIndex - 1]?.item.id;
 
         setCurrentItems(removeTreeItemById(currentItems, item.id));
-        setCurrentExpandedIds(
-          currentExpandedIds.filter(
-            (expandedId) => !itemIdsToRemove.has(expandedId),
-          ),
-        );
-        setCurrentSelectedIds(
-          currentSelectedIds.filter(
-            (selectedId) => !itemIdsToRemove.has(selectedId),
-          ),
-        );
+        setCurrentExpandedIds(currentExpandedIds.filter((expandedId) => !itemIdsToRemove.has(expandedId)));
+        setCurrentSelectedIds(currentSelectedIds.filter((selectedId) => !itemIdsToRemove.has(selectedId)));
         setFocusedId(nextFocusedId);
         selectionAnchorRef.current = nextFocusedId;
         onDeleteItem?.(item);
@@ -1287,11 +1094,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
       (sourceId: string, targetItem: TreeViewItem, copy: boolean) => {
         const sourceItem = findTreeItem(currentItems, sourceId);
 
-        if (
-          !sourceItem ||
-          sourceItem.id === targetItem.id ||
-          !canAcceptChildren(targetItem)
-        ) {
+        if (!sourceItem || sourceItem.id === targetItem.id || !canAcceptChildren(targetItem)) {
           return undefined;
         }
 
@@ -1331,11 +1134,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 
         if (copy) {
           insertedItem = cloneTreeItemWithNewIds(dropContext.sourceItem);
-          nextItems = insertTreeItemAsChild(
-            currentItems,
-            targetItem.id,
-            insertedItem,
-          );
+          nextItems = insertTreeItemAsChild(currentItems, targetItem.id, insertedItem);
         } else {
           const extractedTreeItem = extractTreeItem(currentItems, sourceId);
 
@@ -1344,17 +1143,11 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
           }
 
           insertedItem = extractedTreeItem.extractedItem;
-          nextItems = insertTreeItemAsChild(
-            extractedTreeItem.remainingItems,
-            targetItem.id,
-            insertedItem,
-          );
+          nextItems = insertTreeItemAsChild(extractedTreeItem.remainingItems, targetItem.id, insertedItem);
         }
 
         setCurrentItems(nextItems);
-        setCurrentExpandedIds(
-          Array.from(new Set([...currentExpandedIds, targetItem.id])),
-        );
+        setCurrentExpandedIds(Array.from(new Set([...currentExpandedIds, targetItem.id])));
         setCurrentSelectedIds([insertedItem.id]);
         setFocusedId(insertedItem.id);
         selectionAnchorRef.current = insertedItem.id;
@@ -1403,15 +1196,10 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
           }, 700);
         };
 
-        const orderedItems = [
-          ...visibleItems.slice(currentIndex + 1),
-          ...visibleItems.slice(0, currentIndex + 1),
-        ];
+        const orderedItems = [...visibleItems.slice(currentIndex + 1), ...visibleItems.slice(0, currentIndex + 1)];
 
         const findMatch = (query: string) =>
-          orderedItems.find((candidate) =>
-            candidate.item.name.toLowerCase().startsWith(query),
-          );
+          orderedItems.find((candidate) => candidate.item.name.toLowerCase().startsWith(query));
 
         let nextMatch = findMatch(nextQuery);
         typeaheadStateRef.current.query = nextQuery;
@@ -1434,11 +1222,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
     );
 
     const handleItemKeyDown = React.useCallback(
-      (
-        event: React.KeyboardEvent<HTMLDivElement>,
-        entry: TreeViewVisibleItem,
-        visibleIndex: number,
-      ) => {
+      (event: React.KeyboardEvent<HTMLDivElement>, entry: TreeViewVisibleItem, visibleIndex: number) => {
         if (editingId && editingId === entry.item.id) {
           return;
         }
@@ -1457,23 +1241,15 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
         switch (event.key) {
           case "ArrowDown":
             event.preventDefault();
-            setFocusedId(
-              visibleItems[visibleIndex + 1]?.item.id ?? entry.item.id,
-            );
+            setFocusedId(visibleItems[visibleIndex + 1]?.item.id ?? entry.item.id);
             break;
           case "ArrowUp":
             event.preventDefault();
-            setFocusedId(
-              visibleItems[visibleIndex - 1]?.item.id ?? entry.item.id,
-            );
+            setFocusedId(visibleItems[visibleIndex - 1]?.item.id ?? entry.item.id);
             break;
           case "ArrowRight":
             event.preventDefault();
-            if (
-              !entry.item.disabled &&
-              isBranch(entry.item) &&
-              !effectiveExpandedIds.has(entry.item.id)
-            ) {
+            if (!entry.item.disabled && isBranch(entry.item) && !effectiveExpandedIds.has(entry.item.id)) {
               void toggleExpanded(entry.item, true);
             } else if (entry.item.children?.length) {
               setFocusedId(entry.item.children[0]?.id);
@@ -1481,11 +1257,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
             break;
           case "ArrowLeft":
             event.preventDefault();
-            if (
-              !entry.item.disabled &&
-              isBranch(entry.item) &&
-              effectiveExpandedIds.has(entry.item.id)
-            ) {
+            if (!entry.item.disabled && isBranch(entry.item) && effectiveExpandedIds.has(entry.item.id)) {
               void toggleExpanded(entry.item, false);
             } else if (entry.parentId) {
               setFocusedId(entry.parentId);
@@ -1516,9 +1288,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
               setCurrentSelectedIds(selectableVisibleIds);
               selectionAnchorRef.current = entry.item.id;
               announce(
-                `Selected ${selectableVisibleIds.length} visible item${
-                  selectableVisibleIds.length === 1 ? "" : "s"
-                }.`,
+                `Selected ${selectableVisibleIds.length} visible item${selectableVisibleIds.length === 1 ? "" : "s"}.`,
               );
             }
             break;
@@ -1529,12 +1299,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
             }
             break;
           case "Insert":
-            if (
-              !entry.item.disabled &&
-              addable &&
-              canAcceptChildren(entry.item) &&
-              entry.item.canAddChild !== false
-            ) {
+            if (!entry.item.disabled && addable && canAcceptChildren(entry.item) && entry.item.canAddChild !== false) {
               event.preventDefault();
               handleAddItem(entry.item, entry.level);
             }
@@ -1577,25 +1342,18 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 
     const renderDefaultNode = React.useCallback(
       (renderProps: TreeViewRenderProps) => {
-        const icon =
-          renderProps.item.icon ??
-          (renderProps.isLeaf ? resolveTreeIcon(leafIcon, renderProps) : null);
+        const icon = renderProps.item.icon ?? (renderProps.isLeaf ? resolveTreeIcon(leafIcon, renderProps) : null);
 
         return (
           <div className="flex min-w-0 flex-1 items-center gap-sm">
             {icon ? (
-              <span className="inline-flex shrink-0 items-center justify-center text-foreground-muted">
-                {icon}
-              </span>
+              <span className="inline-flex shrink-0 items-center justify-center text-foreground-muted">{icon}</span>
             ) : null}
             <div className="min-w-0 flex-1">
               <div
                 className={getClassName(
                   "label",
-                  cn(
-                    "truncate text-sm font-medium",
-                    renderProps.isSelected ? "text-primary" : "text-foreground",
-                  ),
+                  cn("truncate text-sm font-medium", renderProps.isSelected ? "text-primary" : "text-foreground"),
                 )}
               >
                 {renderProps.item.name}
@@ -1604,12 +1362,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                 <div
                   className={getClassName(
                     "description",
-                    cn(
-                      "truncate text-xs",
-                      renderProps.isSelected
-                        ? "text-primary/80"
-                        : "text-foreground-muted",
-                    ),
+                    cn("truncate text-xs", renderProps.isSelected ? "text-primary/80" : "text-foreground-muted"),
                   )}
                 >
                   {renderProps.item.description}
@@ -1617,12 +1370,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
               ) : null}
             </div>
             {renderProps.item.endContent ? (
-              <div
-                className={getClassName(
-                  "endContent",
-                  "ml-sm inline-flex shrink-0 items-center",
-                )}
-              >
+              <div className={getClassName("endContent", "ml-sm inline-flex shrink-0 items-center")}>
                 {renderProps.item.endContent}
               </div>
             ) : null}
@@ -1633,35 +1381,23 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
     );
 
     const renderTreeItems = React.useCallback(
-      (
-        entries: TreeViewItem[],
-        level = 1,
-        parentId?: string,
-      ): React.ReactNode =>
+      (entries: TreeViewItem[], level = 1, parentId?: string): React.ReactNode =>
         entries.map((item, entryIndex) => {
           const currentEntry: TreeViewVisibleItem = {
             item,
             level,
             parentId,
           };
-          const visibleIndex = visibleItems.findIndex(
-            (entry) => entry.item.id === item.id,
-          );
+          const visibleIndex = visibleItems.findIndex((entry) => entry.item.id === item.id);
           const actualItem = findTreeItem(currentItems, item.id) ?? item;
           const itemIsExpanded = effectiveExpandedIds.has(item.id);
           const itemIsSelected = selectedIdSet.has(item.id);
           const itemIsFocused = focusedId === item.id;
           const itemIsEditing = editingId === item.id;
           const itemIsLeaf = !isBranch(item);
-          const itemIsLoading =
-            loadingIdSet.has(item.id) || item.isLoading === true;
-          const itemHasAsyncError = Object.prototype.hasOwnProperty.call(
-            asyncLoadErrors,
-            item.id,
-          );
-          const itemLoadError = itemHasAsyncError
-            ? asyncLoadErrors[item.id]
-            : undefined;
+          const itemIsLoading = loadingIdSet.has(item.id) || item.isLoading === true;
+          const itemHasAsyncError = Object.prototype.hasOwnProperty.call(asyncLoadErrors, item.id);
+          const itemLoadError = itemHasAsyncError ? asyncLoadErrors[item.id] : undefined;
           const itemIsDropTarget = dropTargetId === item.id;
           const itemIsDragging = draggingId === item.id;
           const renderProps: TreeViewRenderProps = {
@@ -1687,11 +1423,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
             },
           };
           const resolvedErrorMessage = itemHasAsyncError
-            ? resolveLoadErrorMessage(
-                loadErrorMessage,
-                actualItem,
-                itemLoadError,
-              )
+            ? resolveLoadErrorMessage(loadErrorMessage, actualItem, itemLoadError)
             : null;
           const resolvedRetryLabel = resolveRetryLabel(retryLabel, actualItem);
           const itemGroupId = `${rootId}-${item.id}-group`;
@@ -1705,29 +1437,17 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
             .join(" ");
 
           const toggleAdornment = itemIsLoading
-            ? (resolveTreeIcon(loadingIcon, renderProps) ?? (
-                <IconLoader2 size={16} className="animate-spin" />
-              ))
+            ? (resolveTreeIcon(loadingIcon, renderProps) ?? <IconLoader2 size={16} className="animate-spin" />)
             : itemIsExpanded
-              ? (resolveTreeIcon(collapseIcon, renderProps) ?? (
-                  <IconChevronDown size={16} />
-                ))
-              : (resolveTreeIcon(expandIcon, renderProps) ?? (
-                  <IconChevronRight size={16} />
-                ));
+              ? (resolveTreeIcon(collapseIcon, renderProps) ?? <IconChevronDown size={16} />)
+              : (resolveTreeIcon(expandIcon, renderProps) ?? <IconChevronRight size={16} />);
           const itemAllowsChildren = canAcceptChildren(actualItem);
-          const showAddAction =
-            addable && itemAllowsChildren && actualItem.canAddChild !== false;
-          const showRenameAction =
-            editable && actualItem.canRename !== false && !actualItem.disabled;
-          const showDeleteAction =
-            deletable && actualItem.canDelete !== false && !actualItem.disabled;
+          const showAddAction = addable && itemAllowsChildren && actualItem.canAddChild !== false;
+          const showRenameAction = editable && actualItem.canRename !== false && !actualItem.disabled;
+          const showDeleteAction = deletable && actualItem.canDelete !== false && !actualItem.disabled;
 
           return (
-            <div
-              key={item.id}
-              className={getClassName("item", "space-y-[2px]")}
-            >
+            <div key={item.id} className={getClassName("item", "space-y-[2px]")}>
               <div
                 ref={setTreeItemRef(item.id)}
                 role="treeitem"
@@ -1744,9 +1464,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                 data-focused={itemIsFocused || undefined}
                 data-drop-target={itemIsDropTarget || undefined}
                 data-dragging={itemIsDragging || undefined}
-                draggable={
-                  draggable && !itemIsEditing && actualItem.canDrag !== false
-                }
+                draggable={draggable && !itemIsEditing && actualItem.canDrag !== false}
                 onFocus={() => setFocusedId(item.id)}
                 onClick={(event) => {
                   if (actualItem.disabled) {
@@ -1760,9 +1478,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                     void toggleExpanded(actualItem);
                   }
                 }}
-                onKeyDown={(event) =>
-                  handleItemKeyDown(event, currentEntry, visibleIndex)
-                }
+                onKeyDown={(event) => handleItemKeyDown(event, currentEntry, visibleIndex)}
                 onDragStart={(event) => {
                   if (!draggable || actualItem.canDrag === false) {
                     return;
@@ -1777,20 +1493,15 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                   setDropTargetId(undefined);
                 }}
                 onDragOver={(event) => {
-                  const sourceId =
-                    draggingId ?? event.dataTransfer.getData("text/plain");
-                  const dropContext = sourceId
-                    ? getDropContext(sourceId, actualItem, event.ctrlKey)
-                    : undefined;
+                  const sourceId = draggingId ?? event.dataTransfer.getData("text/plain");
+                  const dropContext = sourceId ? getDropContext(sourceId, actualItem, event.ctrlKey) : undefined;
 
                   if (!dropContext) {
                     return;
                   }
 
                   event.preventDefault();
-                  event.dataTransfer.dropEffect = event.ctrlKey
-                    ? "copy"
-                    : "move";
+                  event.dataTransfer.dropEffect = event.ctrlKey ? "copy" : "move";
                   setDropTargetId(actualItem.id);
                 }}
                 onDragLeave={() => {
@@ -1800,8 +1511,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                 }}
                 onDrop={(event) => {
                   event.preventDefault();
-                  const sourceId =
-                    draggingId ?? event.dataTransfer.getData("text/plain");
+                  const sourceId = draggingId ?? event.dataTransfer.getData("text/plain");
 
                   if (!sourceId) {
                     return;
@@ -1816,19 +1526,12 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                   cn(
                     "group flex items-center gap-xs rounded-xl pr-sm transition-colors outline-none",
                     !disableDefaultStyles && "min-h-10",
-                    !disableDefaultStyles &&
-                      !actualItem.disabled &&
-                      !itemIsSelected &&
-                      "hover:bg-surface-subtle",
+                    !disableDefaultStyles && !actualItem.disabled && !itemIsSelected && "hover:bg-surface-subtle",
                     !disableDefaultStyles &&
                       itemIsSelected &&
                       "bg-primary/10 shadow-[inset_0_0_0_1px_rgba(59,130,246,0.14)]",
-                    !disableDefaultStyles &&
-                      itemIsFocused &&
-                      "ring-2 ring-primary/20 ring-offset-0",
-                    !disableDefaultStyles &&
-                      itemIsDropTarget &&
-                      "bg-primary/5 ring-2 ring-primary/30",
+                    !disableDefaultStyles && itemIsFocused && "ring-2 ring-primary/20 ring-offset-0",
+                    !disableDefaultStyles && itemIsDropTarget && "bg-primary/5 ring-2 ring-primary/30",
                     itemIsDragging && "opacity-60",
                     actualItem.disabled && "cursor-not-allowed opacity-60",
                   ),
@@ -1853,19 +1556,12 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                         "toggle",
                         cn(
                           "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-foreground-subtle transition-colors",
-                          !disableDefaultStyles &&
-                            "hover:bg-surface-muted hover:text-foreground",
+                          !disableDefaultStyles && "hover:bg-surface-muted hover:text-foreground",
                         ),
                       )}
-                      aria-label={
-                        itemIsExpanded
-                          ? `Collapse ${actualItem.name}`
-                          : `Expand ${actualItem.name}`
-                      }
+                      aria-label={itemIsExpanded ? `Collapse ${actualItem.name}` : `Expand ${actualItem.name}`}
                       aria-expanded={itemIsExpanded}
-                      aria-controls={
-                        item.children?.length ? itemGroupId : undefined
-                      }
+                      aria-controls={item.children?.length ? itemGroupId : undefined}
                     >
                       {toggleAdornment}
                     </button>
@@ -1878,9 +1574,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                       <input
                         ref={renameInputRef}
                         value={editingValue}
-                        onChange={(event) =>
-                          setEditingValue(event.target.value)
-                        }
+                        onChange={(event) => setEditingValue(event.target.value)}
                         onBlur={commitEditing}
                         onClick={(event) => event.stopPropagation()}
                         onKeyDown={(event) => {
@@ -1909,8 +1603,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                   </div>
                 </div>
 
-                {(showAddAction || showRenameAction || showDeleteAction) &&
-                !itemIsEditing ? (
+                {(showAddAction || showRenameAction || showDeleteAction) && !itemIsEditing ? (
                   <div
                     className={getClassName(
                       "actions",
@@ -1932,8 +1625,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                         }}
                         className={cn(
                           "inline-flex h-7 w-7 items-center justify-center rounded-md text-foreground-subtle",
-                          !disableDefaultStyles &&
-                            "hover:bg-surface-muted hover:text-foreground",
+                          !disableDefaultStyles && "hover:bg-surface-muted hover:text-foreground",
                         )}
                         aria-label={`Add child to ${actualItem.name}`}
                       >
@@ -1950,8 +1642,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                         }}
                         className={cn(
                           "inline-flex h-7 w-7 items-center justify-center rounded-md text-foreground-subtle",
-                          !disableDefaultStyles &&
-                            "hover:bg-surface-muted hover:text-foreground",
+                          !disableDefaultStyles && "hover:bg-surface-muted hover:text-foreground",
                         )}
                         aria-label={`Rename ${actualItem.name}`}
                       >
@@ -1968,8 +1659,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                         }}
                         className={cn(
                           "inline-flex h-7 w-7 items-center justify-center rounded-md text-foreground-subtle",
-                          !disableDefaultStyles &&
-                            "hover:bg-error/10 hover:text-error",
+                          !disableDefaultStyles && "hover:bg-error/10 hover:text-error",
                         )}
                         aria-label={`Delete ${actualItem.name}`}
                       >
@@ -2010,8 +1700,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                     "errorRow",
                     cn(
                       "flex items-center justify-between gap-sm px-md py-sm text-xs",
-                      !disableDefaultStyles &&
-                        "ml-10 rounded-xl border border-error/20 bg-error/10 text-error",
+                      !disableDefaultStyles && "ml-10 rounded-xl border border-error/20 bg-error/10 text-error",
                     ),
                   )}
                   style={{
@@ -2020,9 +1709,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                 >
                   <div className="flex min-w-0 items-center gap-sm">
                     <IconAlertCircle size={14} className="shrink-0" />
-                    <span className="min-w-0 truncate">
-                      {resolvedErrorMessage}
-                    </span>
+                    <span className="min-w-0 truncate">{resolvedErrorMessage}</span>
                   </div>
                   <Button
                     type="button"
@@ -2039,11 +1726,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
               ) : null}
 
               {itemIsExpanded && item.children?.length ? (
-                <div
-                  id={itemGroupId}
-                  role="group"
-                  className={getClassName("group", "space-y-[2px]")}
-                >
+                <div id={itemGroupId} role="group" className={getClassName("group", "space-y-[2px]")}>
                   {renderTreeItems(item.children, level + 1, item.id)}
                 </div>
               ) : null}
@@ -2105,8 +1788,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
           "root",
           cn(
             "flex w-full flex-col overflow-hidden",
-            !disableDefaultStyles &&
-              "rounded-2xl border border-default bg-surface shadow-soft",
+            !disableDefaultStyles && "rounded-2xl border border-default bg-surface shadow-soft",
             className,
           ),
         )}
@@ -2115,12 +1797,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
         <p id={instructionsId} className="sr-only">
           {treeInstructions}
         </p>
-        <div
-          id={liveRegionId}
-          className="sr-only"
-          aria-live="polite"
-          aria-atomic="true"
-        >
+        <div id={liveRegionId} className="sr-only" aria-live="polite" aria-atomic="true">
           {liveMessage}
         </div>
 
@@ -2128,11 +1805,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
           <div
             className={getClassName(
               "searchWrapper",
-              cn(
-                "p-md",
-                !disableDefaultStyles &&
-                  "border-b border-default bg-surface-subtle/70",
-              ),
+              cn("p-md", !disableDefaultStyles && "border-b border-default bg-surface-subtle/70"),
             )}
           >
             <label htmlFor={`${rootId}-search`} className="sr-only">
@@ -2170,10 +1843,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
 
         <div
           id={viewportId}
-          className={getClassName(
-            "viewport",
-            cn("flex flex-col", !disableDefaultStyles && "gap-[2px] p-sm"),
-          )}
+          className={getClassName("viewport", cn("flex flex-col", !disableDefaultStyles && "gap-[2px] p-sm"))}
         >
           {visibleItems.length ? (
             renderTreeItems(processedItems)
@@ -2183,8 +1853,7 @@ export const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
                 "emptyState",
                 cn(
                   "px-lg py-xl text-sm text-foreground-muted",
-                  !disableDefaultStyles &&
-                    "rounded-xl border border-dashed border-default bg-surface-subtle/60",
+                  !disableDefaultStyles && "rounded-xl border border-dashed border-default bg-surface-subtle/60",
                 ),
               )}
             >

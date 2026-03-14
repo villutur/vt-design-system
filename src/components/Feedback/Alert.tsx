@@ -1,12 +1,6 @@
 import React from "react";
 import { cn } from "../../utils/cn";
-import {
-  IconCircleCheck,
-  IconAlertTriangle,
-  IconAlertCircle,
-  IconInfoCircle,
-  IconX,
-} from "@tabler/icons-react";
+import { IconCircleCheck, IconAlertTriangle, IconAlertCircle, IconInfoCircle, IconX } from "@tabler/icons-react";
 
 export type AlertType = "success" | "warning" | "error" | "info";
 
@@ -62,10 +56,8 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
     };
 
     const style = typeStyles[type];
-    const resolvedRole =
-      role ?? (type === "error" || type === "warning" ? "alert" : "status");
-    const resolvedAriaLive =
-      ariaLive ?? (resolvedRole === "alert" ? "assertive" : "polite");
+    const resolvedRole = role ?? (type === "error" || type === "warning" ? "alert" : "status");
+    const resolvedAriaLive = ariaLive ?? (resolvedRole === "alert" ? "assertive" : "polite");
 
     return (
       <div
@@ -74,23 +66,15 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         aria-live={resolvedAriaLive}
         className={cn(
           "flex items-start gap-md",
-          compact
-            ? `border-l-2 p-sm ${style.bg} border-current`
-            : `rounded-lg p-md ${style.bg}`,
+          compact ? `border-l-2 p-sm ${style.bg} border-current` : `rounded-lg p-md ${style.bg}`,
           className,
         )}
         {...props}
       >
-        <div className={`mt-xs flex items-center justify-center ${style.text}`}>
-          {style.icon}
-        </div>
+        <div className={`mt-xs flex items-center justify-center ${style.text}`}>{style.icon}</div>
         <div className="flex-1">
           <h4 className={`text-sm font-bold ${style.text}`}>{title}</h4>
-          {children ? (
-            <div className={`mt-xs text-sm ${style.text} opacity-80`}>
-              {children}
-            </div>
-          ) : null}
+          {children ? <div className={`mt-xs text-sm ${style.text} opacity-80`}>{children}</div> : null}
         </div>
         {onClose ? (
           <button

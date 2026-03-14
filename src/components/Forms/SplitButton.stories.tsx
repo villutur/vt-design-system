@@ -1,10 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  IconDownload,
-  IconRefresh,
-  IconSettings,
-  IconUserPlus,
-} from "@tabler/icons-react";
+import { IconDownload, IconRefresh, IconSettings, IconUserPlus } from "@tabler/icons-react";
 import { SplitButton } from "./SplitButton";
 
 const actions = [

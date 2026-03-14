@@ -21,15 +21,12 @@ const densityClassMap = {
       "rounded-md border border-default bg-surface-subtle px-xs py-[2px] font-mono text-[0.875em] text-foreground",
     preFallback:
       "mt-md overflow-x-auto rounded-xl border border-default bg-surface-subtle p-md text-sm leading-6 text-foreground first:mt-0",
-    tableWrapper:
-      "mt-lg overflow-x-auto rounded-xl border border-default first:mt-0",
-    table:
-      "min-w-full border-collapse bg-surface text-left text-sm text-foreground",
+    tableWrapper: "mt-lg overflow-x-auto rounded-xl border border-default first:mt-0",
+    table: "min-w-full border-collapse bg-surface text-left text-sm text-foreground",
     tableHead: "bg-surface-subtle",
     tableHeader:
       "border-b border-default px-md py-sm text-xs font-semibold tracking-wide text-foreground-muted uppercase",
-    tableCell:
-      "border-t border-default px-md py-sm align-top text-sm text-foreground-muted",
+    tableCell: "border-t border-default px-md py-sm align-top text-sm text-foreground-muted",
     image: "mt-lg overflow-hidden rounded-xl border border-default first:mt-0",
     horizontalRule: "my-xl border-default",
   },
@@ -48,15 +45,12 @@ const densityClassMap = {
       "rounded-md border border-default bg-surface-subtle px-[6px] py-px font-mono text-[0.875em] text-foreground",
     preFallback:
       "mt-sm overflow-x-auto rounded-xl border border-default bg-surface-subtle p-md text-sm leading-6 text-foreground first:mt-0",
-    tableWrapper:
-      "mt-md overflow-x-auto rounded-xl border border-default first:mt-0",
-    table:
-      "min-w-full border-collapse bg-surface text-left text-sm text-foreground",
+    tableWrapper: "mt-md overflow-x-auto rounded-xl border border-default first:mt-0",
+    table: "min-w-full border-collapse bg-surface text-left text-sm text-foreground",
     tableHead: "bg-surface-subtle",
     tableHeader:
       "border-b border-default px-sm py-xs text-xs font-semibold tracking-wide text-foreground-muted uppercase",
-    tableCell:
-      "border-t border-default px-sm py-xs align-top text-sm text-foreground-muted",
+    tableCell: "border-t border-default px-sm py-xs align-top text-sm text-foreground-muted",
     image: "mt-md overflow-hidden rounded-xl border border-default first:mt-0",
     horizontalRule: "my-lg border-default",
   },
@@ -87,11 +81,7 @@ function getCodeBlockProps(children: React.ReactNode) {
 
   const codeChild = childArray[0];
 
-  if (
-    !React.isValidElement<{ className?: string; children?: React.ReactNode }>(
-      codeChild,
-    )
-  ) {
+  if (!React.isValidElement<{ className?: string; children?: React.ReactNode }>(codeChild)) {
     return null;
   }
 
@@ -104,64 +94,40 @@ function getCodeBlockProps(children: React.ReactNode) {
   };
 }
 
-export interface MarkdownRendererProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "children"
-> {
+export interface MarkdownRendererProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> {
   content: string;
   density?: "default" | "compact";
   codeTheme?: CodeBlockTheme;
 }
 
-export const MarkdownRenderer = React.forwardRef<
-  HTMLDivElement,
-  MarkdownRendererProps
->(
-  (
-    { content, density = "default", codeTheme = "auto", className, ...props },
-    ref,
-  ) => {
+export const MarkdownRenderer = React.forwardRef<HTMLDivElement, MarkdownRendererProps>(
+  ({ content, density = "default", codeTheme = "auto", className, ...props }, ref) => {
     const styles = densityClassMap[density];
 
     const components = React.useMemo<Components>(
       () => ({
         h1: ({ className: headingClassName, children, ...headingProps }) => (
-          <h1
-            className={cn(styles.heading, styles.heading1, headingClassName)}
-            {...headingProps}
-          >
+          <h1 className={cn(styles.heading, styles.heading1, headingClassName)} {...headingProps}>
             {children}
           </h1>
         ),
         h2: ({ className: headingClassName, children, ...headingProps }) => (
-          <h2
-            className={cn(styles.heading, styles.heading2, headingClassName)}
-            {...headingProps}
-          >
+          <h2 className={cn(styles.heading, styles.heading2, headingClassName)} {...headingProps}>
             {children}
           </h2>
         ),
         h3: ({ className: headingClassName, children, ...headingProps }) => (
-          <h3
-            className={cn(styles.heading, styles.heading3, headingClassName)}
-            {...headingProps}
-          >
+          <h3 className={cn(styles.heading, styles.heading3, headingClassName)} {...headingProps}>
             {children}
           </h3>
         ),
         h4: ({ className: headingClassName, children, ...headingProps }) => (
-          <h4
-            className={cn(styles.heading, styles.heading4, headingClassName)}
-            {...headingProps}
-          >
+          <h4 className={cn(styles.heading, styles.heading4, headingClassName)} {...headingProps}>
             {children}
           </h4>
         ),
         p: ({ className: paragraphClassName, children, ...paragraphProps }) => (
-          <p
-            className={cn(styles.paragraph, paragraphClassName)}
-            {...paragraphProps}
-          >
+          <p className={cn(styles.paragraph, paragraphClassName)} {...paragraphProps}>
             {children}
           </p>
         ),
@@ -177,46 +143,22 @@ export const MarkdownRenderer = React.forwardRef<
           </a>
         ),
         ul: ({ className: listClassName, children, ...listProps }) => (
-          <ul
-            className={cn(
-              styles.list,
-              "list-disc marker:text-foreground-subtle",
-              listClassName,
-            )}
-            {...listProps}
-          >
+          <ul className={cn(styles.list, "list-disc marker:text-foreground-subtle", listClassName)} {...listProps}>
             {children}
           </ul>
         ),
         ol: ({ className: listClassName, children, ...listProps }) => (
-          <ol
-            className={cn(
-              styles.list,
-              "list-decimal marker:text-foreground-subtle",
-              listClassName,
-            )}
-            {...listProps}
-          >
+          <ol className={cn(styles.list, "list-decimal marker:text-foreground-subtle", listClassName)} {...listProps}>
             {children}
           </ol>
         ),
         li: ({ className: listItemClassName, children, ...listItemProps }) => (
-          <li
-            className={cn(styles.listItem, listItemClassName)}
-            {...listItemProps}
-          >
+          <li className={cn(styles.listItem, listItemClassName)} {...listItemProps}>
             {children}
           </li>
         ),
-        blockquote: ({
-          className: blockquoteClassName,
-          children,
-          ...blockquoteProps
-        }) => (
-          <blockquote
-            className={cn(styles.blockquote, blockquoteClassName)}
-            {...blockquoteProps}
-          >
+        blockquote: ({ className: blockquoteClassName, children, ...blockquoteProps }) => (
+          <blockquote className={cn(styles.blockquote, blockquoteClassName)} {...blockquoteProps}>
             {children}
           </blockquote>
         ),
@@ -240,11 +182,7 @@ export const MarkdownRenderer = React.forwardRef<
               srcSet={imageProps.srcSet}
               crossOrigin={imageProps.crossOrigin}
               referrerPolicy={imageProps.referrerPolicy}
-              className={cn(
-                styles.image,
-                "max-w-full bg-surface",
-                imageClassName,
-              )}
+              className={cn(styles.image, "max-w-full bg-surface", imageClassName)}
               imgClassName="w-full"
             />
           );
@@ -282,55 +220,28 @@ export const MarkdownRenderer = React.forwardRef<
             </table>
           </div>
         ),
-        thead: ({
-          className: tableHeadClassName,
-          children,
-          ...tableHeadProps
-        }) => (
-          <thead
-            className={cn(styles.tableHead, tableHeadClassName)}
-            {...tableHeadProps}
-          >
+        thead: ({ className: tableHeadClassName, children, ...tableHeadProps }) => (
+          <thead className={cn(styles.tableHead, tableHeadClassName)} {...tableHeadProps}>
             {children}
           </thead>
         ),
-        th: ({
-          className: tableHeaderClassName,
-          children,
-          ...tableHeaderProps
-        }) => (
-          <th
-            className={cn(styles.tableHeader, tableHeaderClassName)}
-            {...tableHeaderProps}
-          >
+        th: ({ className: tableHeaderClassName, children, ...tableHeaderProps }) => (
+          <th className={cn(styles.tableHeader, tableHeaderClassName)} {...tableHeaderProps}>
             {children}
           </th>
         ),
-        td: ({
-          className: tableCellClassName,
-          children,
-          ...tableCellProps
-        }) => (
-          <td
-            className={cn(styles.tableCell, tableCellClassName)}
-            {...tableCellProps}
-          >
+        td: ({ className: tableCellClassName, children, ...tableCellProps }) => (
+          <td className={cn(styles.tableCell, tableCellClassName)} {...tableCellProps}>
             {children}
           </td>
         ),
         strong: ({ className: strongClassName, children, ...strongProps }) => (
-          <strong
-            className={cn("font-semibold text-foreground", strongClassName)}
-            {...strongProps}
-          >
+          <strong className={cn("font-semibold text-foreground", strongClassName)} {...strongProps}>
             {children}
           </strong>
         ),
         em: ({ className: emphasisClassName, children, ...emphasisProps }) => (
-          <em
-            className={cn("text-foreground", emphasisClassName)}
-            {...emphasisProps}
-          >
+          <em className={cn("text-foreground", emphasisClassName)} {...emphasisProps}>
             {children}
           </em>
         ),
@@ -339,16 +250,8 @@ export const MarkdownRenderer = React.forwardRef<
     );
 
     return (
-      <div
-        ref={ref}
-        className={cn("min-w-0 break-words text-foreground", className)}
-        {...props}
-      >
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          skipHtml
-          components={components}
-        >
+      <div ref={ref} className={cn("min-w-0 break-words text-foreground", className)} {...props}>
+        <ReactMarkdown remarkPlugins={[remarkGfm]} skipHtml components={components}>
           {content}
         </ReactMarkdown>
       </div>

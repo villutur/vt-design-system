@@ -19,17 +19,7 @@ export interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Toolbar = React.forwardRef<HTMLDivElement, ToolbarProps>(
-  (
-    {
-      size = "md",
-      tone = "subtle",
-      wrap = true,
-      className,
-      children,
-      ...props
-    },
-    ref,
-  ) => (
+  ({ size = "md", tone = "subtle", wrap = true, className, children, ...props }, ref) => (
     <div
       ref={ref}
       role="toolbar"
@@ -59,11 +49,7 @@ export const ToolbarGroup = React.forwardRef<HTMLDivElement, ToolbarGroupProps>(
     <div
       ref={ref}
       role="group"
-      className={cn(
-        "flex min-w-0 items-center",
-        compact ? "gap-xs" : "gap-sm",
-        className,
-      )}
+      className={cn("flex min-w-0 items-center", compact ? "gap-xs" : "gap-sm", className)}
       {...props}
     />
   ),
@@ -73,10 +59,7 @@ ToolbarGroup.displayName = "ToolbarGroup";
 
 export interface ToolbarSpacerProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export const ToolbarSpacer = React.forwardRef<
-  HTMLDivElement,
-  ToolbarSpacerProps
->(({ className, ...props }, ref) => (
+export const ToolbarSpacer = React.forwardRef<HTMLDivElement, ToolbarSpacerProps>(({ className, ...props }, ref) => (
   <div ref={ref} className={cn("min-w-4 flex-1", className)} {...props} />
 ));
 

@@ -29,12 +29,9 @@ export const Default: Story = {
         <PopoverContent className="w-80 p-lg">
           <div className="space-y-md">
             <div>
-              <h3 className="text-sm font-semibold text-foreground">
-                Workspace inspector
-              </h3>
+              <h3 className="text-sm font-semibold text-foreground">Workspace inspector</h3>
               <p className="mt-xs text-sm text-foreground-muted">
-                Generic anchored overlays such as dropdowns and inspectors can
-                build on this primitive.
+                Generic anchored overlays such as dropdowns and inspectors can build on this primitive.
               </p>
             </div>
             <div className="rounded-xl border border-default bg-surface-subtle p-md text-sm text-foreground-muted">
@@ -78,12 +75,9 @@ export const WithAriaLabelOverride: Story = {
         </PopoverTrigger>
         <PopoverContent aria-label="Release shortcuts" className="w-72 p-lg">
           <div className="space-y-sm">
-            <h3 className="text-sm font-semibold text-foreground">
-              Keyboard shortcuts
-            </h3>
+            <h3 className="text-sm font-semibold text-foreground">Keyboard shortcuts</h3>
             <p className="text-sm text-foreground-muted">
-              Use an explicit accessible name when the trigger text is too vague
-              for the anchored panel itself.
+              Use an explicit accessible name when the trigger text is too vague for the anchored panel itself.
             </p>
           </div>
         </PopoverContent>

@@ -1,12 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
 import { useState } from "react";
-import {
-  IconChartBar,
-  IconFileCode,
-  IconSettings,
-  IconUsers,
-} from "@tabler/icons-react";
+import { IconChartBar, IconFileCode, IconSettings, IconUsers } from "@tabler/icons-react";
 import { Button } from "../Forms/Button";
 import { CommandPalette } from "./CommandPalette";
 
@@ -73,20 +68,13 @@ const sections = [
   },
 ];
 
-function PaletteExample(
-  args: Partial<React.ComponentProps<typeof CommandPalette>>,
-) {
+function PaletteExample(args: Partial<React.ComponentProps<typeof CommandPalette>>) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex items-center justify-center p-12">
       <Button onClick={() => setIsOpen(true)}>Open Command Palette</Button>
-      <CommandPalette
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}
-        sections={sections}
-        {...args}
-      />
+      <CommandPalette isOpen={isOpen} onOpenChange={setIsOpen} sections={sections} {...args} />
     </div>
   );
 }
@@ -99,14 +87,10 @@ export const SearchAndSelect: Story = {
   render: (args) => <PaletteExample {...args} />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await userEvent.click(
-      canvas.getByRole("button", { name: /open command palette/i }),
-    );
+    await userEvent.click(canvas.getByRole("button", { name: /open command palette/i }));
     const input = within(document.body).getByPlaceholderText(/search commands/i);
     await userEvent.type(input, "settings");
     await userEvent.keyboard("{ArrowDown}{Enter}");
-    await expect(
-      within(document.body).queryByPlaceholderText(/search commands/i),
-    ).not.toBeInTheDocument();
+    await expect(within(document.body).queryByPlaceholderText(/search commands/i)).not.toBeInTheDocument();
   },
 };

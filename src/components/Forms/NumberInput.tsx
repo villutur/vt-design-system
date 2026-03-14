@@ -87,9 +87,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         required={required}
         disabled={disabled}
         htmlFor={generatedId}
-        messageId={
-          helperText || errorText ? `${generatedId}-message` : undefined
-        }
+        messageId={helperText || errorText ? `${generatedId}-message` : undefined}
       >
         <div className="flex items-center gap-xs">
           <button
@@ -116,15 +114,8 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
             disabled={disabled}
             required={required}
             aria-invalid={!!error}
-            aria-describedby={
-              helperText || errorText ? `${generatedId}-message` : undefined
-            }
-            className={cn(
-              baseInput,
-              sizing.input,
-              error && errorInput,
-              className,
-            )}
+            aria-describedby={helperText || errorText ? `${generatedId}-message` : undefined}
+            className={cn(baseInput, sizing.input, error && errorInput, className)}
             {...props}
           />
           <button

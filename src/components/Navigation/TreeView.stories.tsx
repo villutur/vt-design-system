@@ -71,11 +71,7 @@ function AsyncTreeStory(props: React.ComponentProps<typeof TreeView>) {
 
   return (
     <div className="max-w-2xl">
-      <TreeView
-        {...props}
-        defaultItems={createAsyncExplorerItems()}
-        loadChildren={loadChildren}
-      />
+      <TreeView {...props} defaultItems={createAsyncExplorerItems()} loadChildren={loadChildren} />
     </div>
   );
 }
@@ -107,11 +103,7 @@ export const JsonStructure: Story = {
   },
   render: (args) => (
     <div className="max-w-2xl">
-      <TreeView
-        {...args}
-        items={createJsonTreeItems()}
-        sortComparator={branchFirstTreeComparator}
-      />
+      <TreeView {...args} items={createJsonTreeItems()} sortComparator={branchFirstTreeComparator} />
     </div>
   ),
 };
@@ -123,11 +115,7 @@ export const CustomNodes: Story = {
   },
   render: (args) => (
     <div className="max-w-2xl">
-      <TreeView
-        {...args}
-        items={createTeamDirectoryItems()}
-        renderNode={renderTeamTreeNode}
-      />
+      <TreeView {...args} items={createTeamDirectoryItems()} renderNode={renderTeamTreeNode} />
     </div>
   ),
 };
@@ -155,9 +143,7 @@ export const AsyncErrorAndRetry: Story = {
 
     await userEvent.click(canvas.getByText("settings"));
     await expect(
-      await canvas.findByText(
-        "Could not load environment presets on the first attempt.",
-      ),
+      await canvas.findByText("Could not load environment presets on the first attempt."),
     ).toBeInTheDocument();
     await expect(args.onLoadChildrenError).toHaveBeenCalledTimes(1);
 
@@ -170,9 +156,7 @@ export const AsyncCustomNodeFeedback: Story = {
   args: {
     searchable: true,
   },
-  render: (args) => (
-    <AsyncTreeStory {...args} renderNode={renderAsyncExplorerNode} />
-  ),
+  render: (args) => <AsyncTreeStory {...args} renderNode={renderAsyncExplorerNode} />,
 };
 
 export const KeyboardNavigation: Story = {
@@ -208,9 +192,7 @@ export const KeyboardNavigation: Story = {
 
     await userEvent.keyboard("r");
 
-    const readmeItem = canvas
-      .getByText("README.md")
-      .closest('[role="treeitem"]');
+    const readmeItem = canvas.getByText("README.md").closest('[role="treeitem"]');
 
     if (!(readmeItem instanceof HTMLElement)) {
       throw new Error("Expected README tree item.");
@@ -222,9 +204,7 @@ export const KeyboardNavigation: Story = {
     await expect(srcItem).toHaveFocus();
 
     await userEvent.keyboard("{Insert}");
-    await expect(
-      await canvas.findByRole("textbox", { name: /rename new item/i }),
-    ).toBeInTheDocument();
+    await expect(await canvas.findByRole("textbox", { name: /rename new item/i })).toBeInTheDocument();
   },
 };
 
@@ -234,11 +214,7 @@ export const SearchAndFilter: Story = {
   },
   render: (args) => (
     <div className="max-w-2xl">
-      <TreeView
-        {...args}
-        items={createJsonTreeItems()}
-        sortComparator={branchFirstTreeComparator}
-      />
+      <TreeView {...args} items={createJsonTreeItems()} sortComparator={branchFirstTreeComparator} />
     </div>
   ),
   play: async ({ canvasElement }) => {

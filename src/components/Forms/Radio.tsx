@@ -18,10 +18,7 @@ const radioSizeClassMap = {
   },
 } as const;
 
-export interface RadioProps extends Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "type" | "size"
-> {
+export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
   label?: React.ReactNode;
   description?: React.ReactNode;
   helperText?: React.ReactNode;
@@ -56,9 +53,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         errorText={errorText}
         error={error}
         disabled={disabled}
-        messageId={
-          helperText || errorText ? `${generatedId}-message` : undefined
-        }
+        messageId={helperText || errorText ? `${generatedId}-message` : undefined}
       >
         <label
           htmlFor={generatedId}
@@ -76,9 +71,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
               disabled={disabled}
               required={required}
               aria-invalid={error || undefined}
-              aria-describedby={
-                helperText || errorText ? `${generatedId}-message` : undefined
-              }
+              aria-describedby={helperText || errorText ? `${generatedId}-message` : undefined}
               className={cn(
                 "peer cursor-pointer appearance-none rounded-full border-2 border-strong transition-all checked:border-primary hover:border-primary/50 focus:ring-2 focus:ring-primary/20 focus:outline-none disabled:cursor-not-allowed disabled:opacity-70",
                 sizing.control,
@@ -109,14 +102,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
               </span>
             ) : null}
             {description ? (
-              <p
-                className={cn(
-                  "mt-xs text-foreground-muted",
-                  sizing.description,
-                )}
-              >
-                {description}
-              </p>
+              <p className={cn("mt-xs text-foreground-muted", sizing.description)}>{description}</p>
             ) : null}
           </div>
         </label>

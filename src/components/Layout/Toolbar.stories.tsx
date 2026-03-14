@@ -1,11 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  IconAdjustmentsHorizontal,
-  IconDownload,
-  IconFilter,
-  IconPlus,
-  IconRefresh,
-} from "@tabler/icons-react";
+import { IconAdjustmentsHorizontal, IconDownload, IconFilter, IconPlus, IconRefresh } from "@tabler/icons-react";
 import { Button } from "../Forms/Button";
 import { Input } from "../Forms/Input";
 import { Divider } from "./Divider";
@@ -45,11 +39,7 @@ export const Default: Story = {
   render: (args) => (
     <Toolbar {...args}>
       <ToolbarGroup>
-        <Button
-          size="sm"
-          variant="secondary"
-          leftIcon={<IconRefresh size={16} />}
-        >
+        <Button size="sm" variant="secondary" leftIcon={<IconRefresh size={16} />}>
           Refresh
         </Button>
         <Button size="sm" leftIcon={<IconDownload size={16} />}>
@@ -58,11 +48,7 @@ export const Default: Story = {
       </ToolbarGroup>
       <ToolbarSpacer />
       <ToolbarGroup compact>
-        <Button
-          size="sm"
-          variant="ghost"
-          leftIcon={<IconAdjustmentsHorizontal size={16} />}
-        >
+        <Button size="sm" variant="ghost" leftIcon={<IconAdjustmentsHorizontal size={16} />}>
           View
         </Button>
         <Button size="sm" variant="secondary" leftIcon={<IconPlus size={16} />}>
@@ -81,26 +67,14 @@ export const FilterWorkflow: Story = {
   render: () => (
     <Toolbar tone="surface">
       <ToolbarGroup className="min-w-[16rem] flex-1">
-        <Input
-          aria-label="Search deployments"
-          placeholder="Search deployments..."
-          className="w-full"
-        />
+        <Input aria-label="Search deployments" placeholder="Search deployments..." className="w-full" />
       </ToolbarGroup>
       <Divider orientation="vertical" className="hidden h-7 md:block" />
       <ToolbarGroup compact>
-        <Button
-          size="sm"
-          variant="secondary"
-          leftIcon={<IconFilter size={16} />}
-        >
+        <Button size="sm" variant="secondary" leftIcon={<IconFilter size={16} />}>
           Filters
         </Button>
-        <Button
-          size="sm"
-          variant="secondary"
-          leftIcon={<IconRefresh size={16} />}
-        >
+        <Button size="sm" variant="secondary" leftIcon={<IconRefresh size={16} />}>
           Sync
         </Button>
       </ToolbarGroup>
@@ -119,11 +93,7 @@ export const FilterWorkflow: Story = {
 
 export const Compact: Story = {
   render: () => (
-    <Toolbar
-      size="sm"
-      tone="plain"
-      className="border border-dashed border-default"
-    >
+    <Toolbar size="sm" tone="plain" className="border border-dashed border-default">
       <ToolbarGroup compact>
         <Button size="xs" variant="secondary">
           Today

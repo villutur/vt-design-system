@@ -56,10 +56,7 @@ export const TableRows: Story = {
       </div>
       <div className="space-y-xs px-md py-sm">
         {Array.from({ length: 5 }, (_, index) => (
-          <div
-            key={index}
-            className="grid grid-cols-[1.3fr_1fr_0.8fr] gap-sm py-sm"
-          >
+          <div key={index} className="grid grid-cols-[1.3fr_1fr_0.8fr] gap-sm py-sm">
             <Skeleton className="h-4 w-40" />
             <Skeleton className="h-4 w-24" />
             <Skeleton className="h-4 w-16 justify-self-end" />

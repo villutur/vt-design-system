@@ -37,8 +37,7 @@ const densityClassMap = {
     timestamp: "w-[110px] text-xs",
     details: "px-lg pb-lg pt-sm",
     detailSection: "space-y-md",
-    subheading:
-      "text-[11px] font-bold tracking-[0.14em] text-foreground-subtle uppercase",
+    subheading: "text-[11px] font-bold tracking-[0.14em] text-foreground-subtle uppercase",
     estimateSize: 58,
     minHeight: "min-h-[58px]",
   },
@@ -52,8 +51,7 @@ const densityClassMap = {
     timestamp: "w-[98px] text-[11px]",
     details: "px-md pb-md pt-sm",
     detailSection: "space-y-sm",
-    subheading:
-      "text-[10px] font-bold tracking-[0.14em] text-foreground-subtle uppercase",
+    subheading: "text-[10px] font-bold tracking-[0.14em] text-foreground-subtle uppercase",
     estimateSize: 50,
     minHeight: "min-h-[50px]",
   },
@@ -62,40 +60,35 @@ const densityClassMap = {
 const levelStyles = {
   trace: {
     buttonActive: "border-default bg-surface text-foreground",
-    buttonInactive:
-      "border-default bg-surface-subtle/60 text-foreground-subtle hover:text-foreground",
+    buttonInactive: "border-default bg-surface-subtle/60 text-foreground-subtle hover:text-foreground",
     badgeVariant: "outlineGray" as const,
     rowAccent: "border-l-transparent bg-transparent",
     rowHeader: "",
   },
   debug: {
     buttonActive: "border-default bg-surface text-foreground",
-    buttonInactive:
-      "border-default bg-surface-subtle/60 text-foreground-subtle hover:text-foreground",
+    buttonInactive: "border-default bg-surface-subtle/60 text-foreground-subtle hover:text-foreground",
     badgeVariant: "soft" as const,
     rowAccent: "border-l-transparent bg-transparent",
     rowHeader: "",
   },
   info: {
     buttonActive: "border-primary/30 bg-primary/10 text-primary",
-    buttonInactive:
-      "border-default bg-surface-subtle/60 text-foreground-subtle hover:text-foreground",
+    buttonInactive: "border-default bg-surface-subtle/60 text-foreground-subtle hover:text-foreground",
     badgeVariant: "softPrimary" as const,
     rowAccent: "border-l-transparent bg-transparent",
     rowHeader: "",
   },
   warn: {
     buttonActive: "border-warning/30 bg-warning/10 text-warning",
-    buttonInactive:
-      "border-default bg-surface-subtle/60 text-foreground-subtle hover:text-foreground",
+    buttonInactive: "border-default bg-surface-subtle/60 text-foreground-subtle hover:text-foreground",
     badgeVariant: "softWarning" as const,
     rowAccent: "border-l-warning/30 bg-warning/5",
     rowHeader: "hover:bg-warning/5",
   },
   error: {
     buttonActive: "border-error/30 bg-error/10 text-error",
-    buttonInactive:
-      "border-default bg-surface-subtle/60 text-foreground-subtle hover:text-foreground",
+    buttonInactive: "border-default bg-surface-subtle/60 text-foreground-subtle hover:text-foreground",
     badgeVariant: "softError" as const,
     rowAccent: "border-l-error/30 bg-error/5",
     rowHeader: "hover:bg-error/5",
@@ -122,12 +115,7 @@ const statusStyles = {
 } as const;
 
 export type LogViewerLevel = (typeof LOG_VIEWER_LEVELS)[number];
-export type LogViewerAttachmentKind =
-  | "text"
-  | "json"
-  | "code"
-  | "markdown"
-  | "meta";
+export type LogViewerAttachmentKind = "text" | "json" | "code" | "markdown" | "meta";
 
 export interface LogViewerAttachment {
   id: string;
@@ -152,10 +140,7 @@ export interface LogViewerItem {
   searchText?: string;
 }
 
-export interface LogViewerProps extends Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "children"
-> {
+export interface LogViewerProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> {
   items: LogViewerItem[];
   height?: number | string;
   density?: "default" | "compact";
@@ -202,11 +187,7 @@ interface NormalizedLogViewerItem extends LogViewerItem {
 }
 
 function toSearchText(value: unknown): string {
-  if (
-    typeof value === "string" ||
-    typeof value === "number" ||
-    typeof value === "boolean"
-  ) {
+  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
     return String(value);
   }
 
@@ -255,11 +236,7 @@ function safeSerialize(value: unknown, seen = new WeakSet<object>()): string {
     return value;
   }
 
-  if (
-    typeof value === "number" ||
-    typeof value === "boolean" ||
-    typeof value === "bigint"
-  ) {
+  if (typeof value === "number" || typeof value === "boolean" || typeof value === "bigint") {
     return String(value);
   }
 
@@ -308,19 +285,12 @@ function safeSerialize(value: unknown, seen = new WeakSet<object>()): string {
   return JSON.stringify(JSON.parse(safeSerializeToJson(value, seen)), null, 2);
 }
 
-function safeSerializeToJson(
-  value: unknown,
-  seen = new WeakSet<object>(),
-): string {
+function safeSerializeToJson(value: unknown, seen = new WeakSet<object>()): string {
   if (value === null || value === undefined) {
     return JSON.stringify(value);
   }
 
-  if (
-    typeof value === "string" ||
-    typeof value === "number" ||
-    typeof value === "boolean"
-  ) {
+  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
     return JSON.stringify(value);
   }
 
@@ -362,16 +332,9 @@ function safeSerializeToJson(
     return `[${value.map((item) => safeSerializeToJson(item, seen)).join(",")}]`;
   }
 
-  const entries = Object.entries(value).map(([key, entryValue]) => [
-    key,
-    safeSerializeToJson(entryValue, seen),
-  ]);
+  const entries = Object.entries(value).map(([key, entryValue]) => [key, safeSerializeToJson(entryValue, seen)]);
 
-  return `{${entries
-    .map(
-      ([key, serializedValue]) => `${JSON.stringify(key)}:${serializedValue}`,
-    )
-    .join(",")}}`;
+  return `{${entries.map(([key, serializedValue]) => `${JSON.stringify(key)}:${serializedValue}`).join(",")}}`;
 }
 
 function getAttachmentSearchKey(attachment: LogViewerAttachment) {
@@ -384,10 +347,7 @@ function getAttachmentSearchKey(attachment: LogViewerAttachment) {
   appendSearchText(parts, attachment.label);
   appendSearchText(parts, attachment.summary);
 
-  if (
-    (attachment.kind === "text" || attachment.kind === "markdown") &&
-    typeof attachment.value === "string"
-  ) {
+  if ((attachment.kind === "text" || attachment.kind === "markdown") && typeof attachment.value === "string") {
     parts.push(attachment.value);
   }
 
@@ -420,10 +380,8 @@ function buildNormalizedItems(items: LogViewerItem[]) {
 
     const attachments = (item.attachments ?? []).map((attachment) => ({
       ...attachment,
-      labelText:
-        typeof attachment.label === "string" ? attachment.label : undefined,
-      summaryText:
-        typeof attachment.summary === "string" ? attachment.summary : undefined,
+      labelText: typeof attachment.label === "string" ? attachment.label : undefined,
+      summaryText: typeof attachment.summary === "string" ? attachment.summary : undefined,
       searchKey: getAttachmentSearchKey(attachment),
     }));
 
@@ -458,11 +416,7 @@ function buildNormalizedItems(items: LogViewerItem[]) {
 }
 
 function collectDefaultExpandedIds(items: LogViewerItem[]) {
-  return items
-    .filter((item) =>
-      item.attachments?.some((attachment) => attachment.defaultOpen),
-    )
-    .map((item) => item.id);
+  return items.filter((item) => item.attachments?.some((attachment) => attachment.defaultOpen)).map((item) => item.id);
 }
 
 function toggleValue(values: string[], value: string) {
@@ -478,11 +432,7 @@ function renderMetaValue(value: unknown) {
     return String(value);
   }
 
-  if (
-    typeof value === "string" ||
-    typeof value === "number" ||
-    typeof value === "boolean"
-  ) {
+  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
     return String(value);
   }
 
@@ -512,42 +462,23 @@ function attachmentKindLabel(kind: LogViewerAttachmentKind) {
   }
 }
 
-function renderAttachmentContent(
-  attachment: NormalizedLogViewerAttachment,
-  density: LogViewerProps["density"],
-) {
+function renderAttachmentContent(attachment: NormalizedLogViewerAttachment, density: LogViewerProps["density"]) {
   if (attachment.kind === "markdown") {
-    const content =
-      typeof attachment.value === "string"
-        ? attachment.value
-        : safeSerialize(attachment.value);
+    const content = typeof attachment.value === "string" ? attachment.value : safeSerialize(attachment.value);
 
     return <MarkdownRenderer content={content} density={density} />;
   }
 
   if (attachment.kind === "json") {
-    const code =
-      typeof attachment.value === "string"
-        ? attachment.value
-        : safeSerialize(attachment.value);
+    const code = typeof attachment.value === "string" ? attachment.value : safeSerialize(attachment.value);
 
     return <CodeBlock language="json" code={code} copyable wrapLongLines />;
   }
 
   if (attachment.kind === "code") {
-    const code =
-      typeof attachment.value === "string"
-        ? attachment.value
-        : safeSerialize(attachment.value);
+    const code = typeof attachment.value === "string" ? attachment.value : safeSerialize(attachment.value);
 
-    return (
-      <CodeBlock
-        language={attachment.language ?? "text"}
-        code={code}
-        copyable
-        wrapLongLines
-      />
-    );
+    return <CodeBlock language={attachment.language ?? "text"} code={code} copyable wrapLongLines />;
   }
 
   if (attachment.kind === "meta" && isPlainRecord(attachment.value)) {
@@ -566,9 +497,7 @@ function renderAttachmentContent(
 
   return (
     <div className="rounded-xl border border-default bg-surface-subtle/60 p-md text-sm leading-6 break-words whitespace-pre-wrap text-foreground-muted">
-      {typeof attachment.value === "string"
-        ? attachment.value
-        : safeSerialize(attachment.value)}
+      {typeof attachment.value === "string" ? attachment.value : safeSerialize(attachment.value)}
     </div>
   );
 }
@@ -581,21 +510,11 @@ interface FilterPopoverProps {
   onClear: () => void;
 }
 
-function FilterPopover({
-  title,
-  options,
-  selectedValues,
-  onToggleValue,
-  onClear,
-}: FilterPopoverProps) {
+function FilterPopover({ title, options, selectedValues, onToggleValue, onClear }: FilterPopoverProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button
-          variant={selectedValues.length > 0 ? "secondary" : "ghost"}
-          size="xs"
-          type="button"
-        >
+        <Button variant={selectedValues.length > 0 ? "secondary" : "ghost"} size="xs" type="button">
           <IconFilter size={14} />
           {title}
           {selectedValues.length > 0 ? ` (${selectedValues.length})` : ""}
@@ -607,18 +526,10 @@ function FilterPopover({
           <div className="flex items-center justify-between gap-md">
             <div>
               <p className="text-sm font-semibold text-foreground">{title}</p>
-              <p className="text-xs text-foreground-muted">
-                {options.length} available
-              </p>
+              <p className="text-xs text-foreground-muted">{options.length} available</p>
             </div>
 
-            <Button
-              type="button"
-              size="xs"
-              variant="ghost"
-              disabled={selectedValues.length === 0}
-              onClick={onClear}
-            >
+            <Button type="button" size="xs" variant="ghost" disabled={selectedValues.length === 0} onClick={onClear}>
               Clear
             </Button>
           </div>
@@ -643,12 +554,8 @@ function FilterPopover({
                       onChange={() => onToggleValue(option.value)}
                       className="h-4 w-4 rounded border-2 border-strong accent-primary"
                     />
-                    <span className="min-w-0 flex-1 truncate text-sm text-foreground">
-                      {option.value}
-                    </span>
-                    <span className="text-xs text-foreground-subtle">
-                      {option.count}
-                    </span>
+                    <span className="min-w-0 flex-1 truncate text-sm text-foreground">{option.value}</span>
+                    <span className="text-xs text-foreground-subtle">{option.count}</span>
                   </label>
                 );
               })}
@@ -669,14 +576,7 @@ interface LogViewerRowProps {
   rowRef: (element: HTMLDivElement | null) => void;
 }
 
-function LogViewerRow({
-  item,
-  density = "default",
-  expanded,
-  onToggleExpanded,
-  style,
-  rowRef,
-}: LogViewerRowProps) {
+function LogViewerRow({ item, density = "default", expanded, onToggleExpanded, style, rowRef }: LogViewerRowProps) {
   const styles = densityClassMap[density];
   const statusMeta = item.status ? statusStyles[item.status] : null;
   const defaultAttachmentIds = item.attachments
@@ -695,10 +595,7 @@ function LogViewerRow({
     <div
       ref={rowRef}
       style={style}
-      className={cn(
-        "overflow-hidden border-b border-l-2 border-default bg-surface",
-        levelStyles[item.level].rowAccent,
-      )}
+      className={cn("overflow-hidden border-b border-l-2 border-default bg-surface", levelStyles[item.level].rowAccent)}
     >
       <button
         type="button"
@@ -718,23 +615,10 @@ function LogViewerRow({
         )}
       >
         <span className="flex w-5 shrink-0 items-center justify-center text-foreground-subtle">
-          {item.expandable ? (
-            expanded ? (
-              <IconChevronDown size={16} />
-            ) : (
-              <IconChevronRight size={16} />
-            )
-          ) : null}
+          {item.expandable ? expanded ? <IconChevronDown size={16} /> : <IconChevronRight size={16} /> : null}
         </span>
 
-        <span
-          className={cn(
-            "shrink-0 font-mono text-foreground-subtle",
-            styles.timestamp,
-          )}
-        >
-          {item.timestampText}
-        </span>
+        <span className={cn("shrink-0 font-mono text-foreground-subtle", styles.timestamp)}>{item.timestampText}</span>
 
         {expanded ? (
           <div className="min-w-0 flex-1 space-y-xs">
@@ -790,9 +674,7 @@ function LogViewerRow({
               </Badge>
             ) : null}
 
-            <span className={cn("flex-1", rowMessageClassName)}>
-              {item.message}
-            </span>
+            <span className={cn("flex-1", rowMessageClassName)}>{item.message}</span>
 
             <div className="ml-auto flex shrink-0 flex-wrap items-center justify-end gap-xs">
               {previewTags.map((tag) => (
@@ -828,19 +710,11 @@ function LogViewerRow({
       {expanded && item.expandable ? (
         <div
           id={detailsId}
-          className={cn(
-            "border-t border-default bg-surface-subtle/40",
-            styles.details,
-            styles.detailSection,
-          )}
+          className={cn("border-t border-default bg-surface-subtle/40", styles.details, styles.detailSection)}
         >
           <p className={styles.subheading}>Attachments</p>
 
-          <Accordion
-            type="multiple"
-            defaultValue={defaultAttachmentIds}
-            collapsible
-          >
+          <Accordion type="multiple" defaultValue={defaultAttachmentIds} collapsible>
             {item.attachments.map((attachment) => (
               <AccordionItem
                 key={attachment.id}
@@ -852,15 +726,12 @@ function LogViewerRow({
                         {attachmentKindLabel(attachment.kind)}
                       </Badge>
                       <span className="text-sm font-semibold text-foreground">
-                        {attachment.label ??
-                          attachmentKindLabel(attachment.kind)}
+                        {attachment.label ?? attachmentKindLabel(attachment.kind)}
                       </span>
                     </div>
 
                     {attachment.summary ? (
-                      <p className="mt-xs text-sm font-normal text-foreground-muted">
-                        {attachment.summary}
-                      </p>
+                      <p className="mt-xs text-sm font-normal text-foreground-muted">{attachment.summary}</p>
                     ) : null}
                   </div>
                 }
@@ -915,63 +786,38 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
       defaultValue: defaultQuery,
       onChange: onQueryChange,
     });
-    const [currentSelectedLevels, setCurrentSelectedLevels] =
-      useControllableState<LogViewerLevel[]>({
-        value: selectedLevels,
-        defaultValue: defaultSelectedLevels,
-        onChange: onSelectedLevelsChange,
-      });
-    const [currentSelectedSources, setCurrentSelectedSources] =
-      useControllableState<string[]>({
-        value: selectedSources,
-        defaultValue: defaultSelectedSources,
-        onChange: onSelectedSourcesChange,
-      });
-    const [currentSelectedTags, setCurrentSelectedTags] = useControllableState<
-      string[]
-    >({
+    const [currentSelectedLevels, setCurrentSelectedLevels] = useControllableState<LogViewerLevel[]>({
+      value: selectedLevels,
+      defaultValue: defaultSelectedLevels,
+      onChange: onSelectedLevelsChange,
+    });
+    const [currentSelectedSources, setCurrentSelectedSources] = useControllableState<string[]>({
+      value: selectedSources,
+      defaultValue: defaultSelectedSources,
+      onChange: onSelectedSourcesChange,
+    });
+    const [currentSelectedTags, setCurrentSelectedTags] = useControllableState<string[]>({
       value: selectedTags,
       defaultValue: defaultSelectedTags,
       onChange: onSelectedTagsChange,
     });
-    const [currentExpandedIds, setCurrentExpandedIds] = useControllableState<
-      string[]
-    >({
+    const [currentExpandedIds, setCurrentExpandedIds] = useControllableState<string[]>({
       value: expandedIds,
       defaultValue: defaultExpandedIds ?? collectDefaultExpandedIds(items),
       onChange: onExpandedIdsChange,
     });
-    const [currentFollowTail, setCurrentFollowTail] =
-      useControllableState<boolean>({
-        value: followTail,
-        defaultValue: defaultFollowTail,
-        onChange: onFollowTailChange,
-      });
+    const [currentFollowTail, setCurrentFollowTail] = useControllableState<boolean>({
+      value: followTail,
+      defaultValue: defaultFollowTail,
+      onChange: onFollowTailChange,
+    });
 
-    const { normalizedItems, sources, tags } = React.useMemo(
-      () => buildNormalizedItems(items),
-      [items],
-    );
-    const normalizedQuery = React.useMemo(
-      () => normalizeSearchText(currentQuery),
-      [currentQuery],
-    );
-    const selectedLevelSet = React.useMemo(
-      () => new Set(currentSelectedLevels),
-      [currentSelectedLevels],
-    );
-    const selectedSourceSet = React.useMemo(
-      () => new Set(currentSelectedSources),
-      [currentSelectedSources],
-    );
-    const selectedTagSet = React.useMemo(
-      () => new Set(currentSelectedTags),
-      [currentSelectedTags],
-    );
-    const expandedIdSet = React.useMemo(
-      () => new Set(currentExpandedIds),
-      [currentExpandedIds],
-    );
+    const { normalizedItems, sources, tags } = React.useMemo(() => buildNormalizedItems(items), [items]);
+    const normalizedQuery = React.useMemo(() => normalizeSearchText(currentQuery), [currentQuery]);
+    const selectedLevelSet = React.useMemo(() => new Set(currentSelectedLevels), [currentSelectedLevels]);
+    const selectedSourceSet = React.useMemo(() => new Set(currentSelectedSources), [currentSelectedSources]);
+    const selectedTagSet = React.useMemo(() => new Set(currentSelectedTags), [currentSelectedTags]);
+    const expandedIdSet = React.useMemo(() => new Set(currentExpandedIds), [currentExpandedIds]);
 
     const filteredItems = React.useMemo(
       () =>
@@ -980,17 +826,11 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
             return false;
           }
 
-          if (
-            selectedSourceSet.size > 0 &&
-            (!item.source || !selectedSourceSet.has(item.source))
-          ) {
+          if (selectedSourceSet.size > 0 && (!item.source || !selectedSourceSet.has(item.source))) {
             return false;
           }
 
-          if (
-            selectedTagSet.size > 0 &&
-            !item.tags.some((tag) => selectedTagSet.has(tag))
-          ) {
+          if (selectedTagSet.size > 0 && !item.tags.some((tag) => selectedTagSet.has(tag))) {
             return false;
           }
 
@@ -1000,23 +840,15 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
 
           return true;
         }),
-      [
-        normalizedItems,
-        normalizedQuery,
-        selectedLevelSet,
-        selectedSourceSet,
-        selectedTagSet,
-      ],
+      [normalizedItems, normalizedQuery, selectedLevelSet, selectedSourceSet, selectedTagSet],
     );
 
     const expandableVisibleIds = React.useMemo(
-      () =>
-        filteredItems.filter((item) => item.expandable).map((item) => item.id),
+      () => filteredItems.filter((item) => item.expandable).map((item) => item.id),
       [filteredItems],
     );
     const allVisibleExpanded =
-      expandableVisibleIds.length > 0 &&
-      expandableVisibleIds.every((id) => expandedIdSet.has(id));
+      expandableVisibleIds.length > 0 && expandableVisibleIds.every((id) => expandedIdSet.has(id));
     const hasActiveFilters =
       normalizedQuery.length > 0 ||
       currentSelectedSources.length > 0 ||
@@ -1039,12 +871,7 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
       setCurrentSelectedLevels([...LOG_VIEWER_LEVELS]);
       setCurrentSelectedSources([]);
       setCurrentSelectedTags([]);
-    }, [
-      setCurrentQuery,
-      setCurrentSelectedLevels,
-      setCurrentSelectedSources,
-      setCurrentSelectedTags,
-    ]);
+    }, [setCurrentQuery, setCurrentSelectedLevels, setCurrentSelectedSources, setCurrentSelectedTags]);
 
     const setFollowMode = React.useCallback(
       (nextValue: boolean) => {
@@ -1066,21 +893,12 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
       }
 
       if (allVisibleExpanded) {
-        setCurrentExpandedIds(
-          currentExpandedIds.filter((id) => !expandableVisibleIds.includes(id)),
-        );
+        setCurrentExpandedIds(currentExpandedIds.filter((id) => !expandableVisibleIds.includes(id)));
         return;
       }
 
-      setCurrentExpandedIds(
-        Array.from(new Set([...currentExpandedIds, ...expandableVisibleIds])),
-      );
-    }, [
-      allVisibleExpanded,
-      currentExpandedIds,
-      expandableVisibleIds,
-      setCurrentExpandedIds,
-    ]);
+      setCurrentExpandedIds(Array.from(new Set([...currentExpandedIds, ...expandableVisibleIds])));
+    }, [allVisibleExpanded, currentExpandedIds, expandableVisibleIds, setCurrentExpandedIds]);
 
     React.useEffect(() => {
       virtualizer.measure();
@@ -1103,12 +921,7 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
         description="Try clearing the search query or broadening the selected levels, sources, or tags."
         icon={<IconFilter size={18} />}
         action={
-          <Button
-            type="button"
-            size="xs"
-            variant="ghost"
-            onClick={clearFilters}
-          >
+          <Button type="button" size="xs" variant="ghost" onClick={clearFilters}>
             Clear filters
           </Button>
         }
@@ -1145,22 +958,15 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
                   type="button"
                   aria-pressed={selected}
                   onClick={() => {
-                    const nextValues = toggleValue(
-                      currentSelectedLevels,
-                      level,
-                    );
+                    const nextValues = toggleValue(currentSelectedLevels, level);
 
                     setCurrentSelectedLevels(
-                      nextValues.length > 0
-                        ? (nextValues as LogViewerLevel[])
-                        : [...LOG_VIEWER_LEVELS],
+                      nextValues.length > 0 ? (nextValues as LogViewerLevel[]) : [...LOG_VIEWER_LEVELS],
                     );
                   }}
                   className={cn(
                     "rounded-lg border px-sm py-xs text-[11px] font-semibold tracking-[0.14em] uppercase transition-colors",
-                    selected
-                      ? levelStyles[level].buttonActive
-                      : levelStyles[level].buttonInactive,
+                    selected ? levelStyles[level].buttonActive : levelStyles[level].buttonInactive,
                   )}
                 >
                   {level}
@@ -1194,13 +1000,7 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
                 {allVisibleExpanded ? "Collapse all" : "Expand all"}
               </Button>
 
-              <Button
-                type="button"
-                size="xs"
-                variant="ghost"
-                disabled={!hasActiveFilters}
-                onClick={clearFilters}
-              >
+              <Button type="button" size="xs" variant="ghost" disabled={!hasActiveFilters} onClick={clearFilters}>
                 <IconX size={14} />
                 Clear filters
               </Button>
@@ -1226,11 +1026,7 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
                 title="Sources"
                 options={sources}
                 selectedValues={currentSelectedSources}
-                onToggleValue={(value) =>
-                  setCurrentSelectedSources(
-                    toggleValue(currentSelectedSources, value),
-                  )
-                }
+                onToggleValue={(value) => setCurrentSelectedSources(toggleValue(currentSelectedSources, value))}
                 onClear={() => setCurrentSelectedSources([])}
               />
 
@@ -1238,11 +1034,7 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
                 title="Tags"
                 options={tags}
                 selectedValues={currentSelectedTags}
-                onToggleValue={(value) =>
-                  setCurrentSelectedTags(
-                    toggleValue(currentSelectedTags, value),
-                  )
-                }
+                onToggleValue={(value) => setCurrentSelectedTags(toggleValue(currentSelectedTags, value))}
                 onClear={() => setCurrentSelectedTags([])}
               />
             </div>
@@ -1251,13 +1043,9 @@ export const LogViewer = React.forwardRef<HTMLDivElement, LogViewerProps>(
 
         <div className="relative min-h-0 flex-1">
           {normalizedItems.length === 0 ? (
-            <div className="flex h-full items-center justify-center">
-              {resolvedEmptyState}
-            </div>
+            <div className="flex h-full items-center justify-center">{resolvedEmptyState}</div>
           ) : filteredItems.length === 0 ? (
-            <div className="flex h-full items-center justify-center">
-              {resolvedNoResultsState}
-            </div>
+            <div className="flex h-full items-center justify-center">{resolvedNoResultsState}</div>
           ) : (
             <>
               <ScrollArea

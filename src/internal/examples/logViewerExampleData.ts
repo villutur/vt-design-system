@@ -1,8 +1,4 @@
-import type {
-  LogViewerAttachment,
-  LogViewerItem,
-  LogViewerLevel,
-} from "../../components/DataDisplay/LogViewer";
+import type { LogViewerAttachment, LogViewerItem, LogViewerLevel } from "../../components/DataDisplay/LogViewer";
 
 const sources = ["app", "auth", "api", "db", "worker", "perf"] as const;
 const levels: LogViewerLevel[] = ["trace", "debug", "info", "warn", "error"];
@@ -77,8 +73,7 @@ LIMIT 42;`,
         id: createAttachmentId(index, "response"),
         kind: "text",
         label: "Response excerpt",
-        summary:
-          "Useful for verifying the exact payload text without opening devtools.",
+        summary: "Useful for verifying the exact payload text without opening devtools.",
         value:
           "The downstream service returned a partial response while the metrics fan-out was still catching up. The payload was accepted, but the UI should treat the operation as pending until the background consistency check finishes.",
       },
@@ -91,8 +86,7 @@ LIMIT 42;`,
         id: createAttachmentId(index, "snapshot"),
         kind: "json",
         label: "State snapshot",
-        summary:
-          "Small state dump taken when the warning threshold was crossed.",
+        summary: "Small state dump taken when the warning threshold was crossed.",
         value: {
           pendingJobs: 3 + (index % 4),
           lastSuccessAt: `2026-03-12T08:${String(10 + (index % 40)).padStart(2, "0")}:11.000Z`,
@@ -111,31 +105,17 @@ function createMessage(index: number) {
 
   switch (source) {
     case "app":
-      return index % 9 === 0
-        ? "Application started"
-        : "Workspace state synchronized";
+      return index % 9 === 0 ? "Application started" : "Workspace state synchronized";
     case "auth":
-      return index % 5 === 0
-        ? "User session refreshed"
-        : "Token validation completed";
+      return index % 5 === 0 ? "User session refreshed" : "Token validation completed";
     case "api":
-      return index % 7 === 0
-        ? "Request: GET /users"
-        : index % 7 === 3
-          ? "Response: 200 OK"
-          : "Rate limit approaching";
+      return index % 7 === 0 ? "Request: GET /users" : index % 7 === 3 ? "Response: 200 OK" : "Rate limit approaching";
     case "db":
-      return index % 4 === 0
-        ? "Query: SELECT * FROM users"
-        : "Returned rows from users query";
+      return index % 4 === 0 ? "Query: SELECT * FROM users" : "Returned rows from users query";
     case "worker":
-      return index % 6 === 0
-        ? "Background job scheduled"
-        : "Queue batch flushed";
+      return index % 6 === 0 ? "Background job scheduled" : "Queue batch flushed";
     default:
-      return index % 8 === 0
-        ? "Slow render path detected"
-        : "Render time sampled";
+      return index % 8 === 0 ? "Slow render path detected" : "Render time sampled";
   }
 }
 
@@ -174,9 +154,7 @@ function createLevel(index: number, source: string): LogViewerLevel {
     return index % 5 === 0 ? "debug" : "trace";
   }
 
-  return levels[(index + 2) % levels.length] === "trace"
-    ? "info"
-    : levels[(index + 2) % levels.length];
+  return levels[(index + 2) % levels.length] === "trace" ? "info" : levels[(index + 2) % levels.length];
 }
 
 export function createLogViewerItems(count = 48): LogViewerItem[] {
@@ -195,14 +173,7 @@ export function createLogViewerItems(count = 48): LogViewerItem[] {
       message: createMessage(index),
       source,
       tags: createTags(index, source),
-      status:
-        index % 18 === 0
-          ? "running"
-          : index % 23 === 0
-            ? "error"
-            : index % 12 === 0
-              ? "success"
-              : "idle",
+      status: index % 18 === 0 ? "running" : index % 23 === 0 ? "error" : index % 12 === 0 ? "success" : "idle",
       attachments,
       searchText:
         source === "api"
@@ -220,9 +191,7 @@ export function createLogViewerItems(count = 48): LogViewerItem[] {
 
 export const logViewerPreviewItems = createLogViewerItems(72);
 export const logViewerHeavyItems = createLogViewerItems(6200);
-export const logViewerLongPayloadItems: LogViewerItem[] = createLogViewerItems(
-  18,
-).map((item, index) => {
+export const logViewerLongPayloadItems: LogViewerItem[] = createLogViewerItems(18).map((item, index) => {
   if (index !== 4) {
     return item;
   }

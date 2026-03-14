@@ -1,11 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import {
-  Panel,
-  PanelGroup,
-  ResizablePanel,
-  ResizablePanelGroup,
-  PanelResizeHandle,
-} from "./Panel";
+import { Panel, PanelGroup, ResizablePanel, ResizablePanelGroup, PanelResizeHandle } from "./Panel";
 
 const meta: Meta = {
   title: "Components/Layout/Panel",
@@ -25,26 +19,16 @@ export const FixedHorizontal: Story = {
   render: () => (
     <div className="h-[300px] w-full overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
       <PanelGroup orientation="horizontal">
-        <Panel
-          size="200px"
-          className="items-center justify-center bg-slate-50 dark:bg-slate-800/50"
-        >
-          <span className="font-medium text-slate-500">
-            Sidebar (200px fixed)
-          </span>
+        <Panel size="200px" className="items-center justify-center bg-slate-50 dark:bg-slate-800/50">
+          <span className="font-medium text-slate-500">Sidebar (200px fixed)</span>
         </Panel>
         <div className="w-px shrink-0 bg-slate-200 dark:bg-slate-800" />
         <Panel className="items-center justify-center">
           <span className="font-medium text-slate-500">Main (grows)</span>
         </Panel>
         <div className="w-px shrink-0 bg-slate-200 dark:bg-slate-800" />
-        <Panel
-          size="180px"
-          className="items-center justify-center bg-slate-50 dark:bg-slate-800/50"
-        >
-          <span className="font-medium text-slate-500">
-            Details (180px fixed)
-          </span>
+        <Panel size="180px" className="items-center justify-center bg-slate-50 dark:bg-slate-800/50">
+          <span className="font-medium text-slate-500">Details (180px fixed)</span>
         </Panel>
       </PanelGroup>
     </div>
@@ -56,26 +40,16 @@ export const FixedVertical: Story = {
   render: () => (
     <div className="h-[400px] w-full overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
       <PanelGroup orientation="vertical">
-        <Panel
-          size="48px"
-          className="shrink-0 items-center bg-slate-100 px-4 dark:bg-slate-800"
-        >
-          <span className="font-medium text-slate-500">
-            Header (fixed 48px)
-          </span>
+        <Panel size="48px" className="shrink-0 items-center bg-slate-100 px-4 dark:bg-slate-800">
+          <span className="font-medium text-slate-500">Header (fixed 48px)</span>
         </Panel>
         <div className="h-px w-full bg-slate-200 dark:bg-slate-800" />
         <Panel className="items-center justify-center">
           <span className="font-medium text-slate-500">Content (grows)</span>
         </Panel>
         <div className="h-px w-full bg-slate-200 dark:bg-slate-800" />
-        <Panel
-          size="40px"
-          className="shrink-0 items-center bg-slate-50 px-4 dark:bg-slate-800/50"
-        >
-          <span className="font-medium text-slate-500">
-            Footer (fixed 40px)
-          </span>
+        <Panel size="40px" className="shrink-0 items-center bg-slate-50 px-4 dark:bg-slate-800/50">
+          <span className="font-medium text-slate-500">Footer (fixed 40px)</span>
         </Panel>
       </PanelGroup>
     </div>
@@ -99,9 +73,7 @@ export const ResizableHorizontal: Story = {
 
         <ResizablePanel defaultSize={50} minSize={30}>
           <div className="flex h-full items-center justify-center p-6">
-            <span className="font-medium text-slate-500">
-              Main Content (50%)
-            </span>
+            <span className="font-medium text-slate-500">Main Content (50%)</span>
           </div>
         </ResizablePanel>
 

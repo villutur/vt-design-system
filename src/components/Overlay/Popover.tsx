@@ -20,9 +20,7 @@ interface PopoverContextValue {
   floatingStyles: React.CSSProperties;
 }
 
-const PopoverContext = React.createContext<PopoverContextValue | undefined>(
-  undefined,
-);
+const PopoverContext = React.createContext<PopoverContextValue | undefined>(undefined);
 
 function usePopoverContext() {
   const context = React.useContext(PopoverContext);
@@ -34,9 +32,7 @@ function usePopoverContext() {
   return context;
 }
 
-function composeRefs<T>(
-  ...refs: Array<React.Ref<T> | ((node: T | null) => void) | undefined>
-): React.RefCallback<T> {
+function composeRefs<T>(...refs: Array<React.Ref<T> | ((node: T | null) => void) | undefined>): React.RefCallback<T> {
   return (node) => {
     refs.forEach((ref) => {
       if (!ref) {
@@ -125,27 +121,18 @@ export function Popover({
     [contentId, currentOpen, floatingStyles, refs, setCurrentOpen, triggerId],
   );
 
-  return (
-    <PopoverContext.Provider value={value}>{children}</PopoverContext.Provider>
-  );
+  return <PopoverContext.Provider value={value}>{children}</PopoverContext.Provider>;
 }
 
 export interface PopoverTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
 }
 
-export const PopoverTrigger = React.forwardRef<
-  HTMLButtonElement,
-  PopoverTriggerProps
->(
-  (
-    { asChild = false, children, onClick, onKeyDown, disabled, ...props },
-    ref,
-  ) => {
+export const PopoverTrigger = React.forwardRef<HTMLButtonElement, PopoverTriggerProps>(
+  ({ asChild = false, children, onClick, onKeyDown, disabled, ...props }, ref) => {
     const fallbackTriggerId = React.useId();
     const resolvedTriggerId = props.id ?? fallbackTriggerId;
-    const { open, setOpen, contentId, setTriggerId, triggerRef, setReference } =
-      usePopoverContext();
+    const { open, setOpen, contentId, setTriggerId, triggerRef, setReference } = usePopoverContext();
 
     React.useEffect(() => {
       setTriggerId(resolvedTriggerId);
@@ -190,40 +177,25 @@ export const PopoverTrigger = React.forwardRef<
     };
 
     if (asChild && React.isValidElement(children)) {
-      const child = React.Children.only(children) as React.ReactElement<
-        Record<string, unknown>
-      >;
+      const child = React.Children.only(children) as React.ReactElement<Record<string, unknown>>;
       const childProps = child.props as {
         onClick?: React.MouseEventHandler<HTMLElement>;
         onKeyDown?: React.KeyboardEventHandler<HTMLElement>;
       };
-      const childRef = (child as unknown as { ref?: React.Ref<HTMLElement> })
-        .ref;
+      const childRef = (child as unknown as { ref?: React.Ref<HTMLElement> }).ref;
 
       return React.cloneElement(child, {
         ...child.props,
         ...sharedProps,
-        ref: composeRefs(
-          ref as React.Ref<HTMLElement>,
-          childRef,
-          triggerRef,
-          setReference,
-        ),
+        ref: composeRefs(ref as React.Ref<HTMLElement>, childRef, triggerRef, setReference),
         onClick: composeEventHandlers(childProps.onClick, sharedProps.onClick),
-        onKeyDown: composeEventHandlers(
-          childProps.onKeyDown,
-          sharedProps.onKeyDown,
-        ),
+        onKeyDown: composeEventHandlers(childProps.onKeyDown, sharedProps.onKeyDown),
       });
     }
 
     return (
       <button
-        ref={composeRefs(
-          ref as React.Ref<HTMLElement>,
-          triggerRef,
-          setReference,
-        )}
+        ref={composeRefs(ref as React.Ref<HTMLElement>, triggerRef, setReference)}
         type="button"
         disabled={disabled}
         {...sharedProps}
@@ -240,29 +212,12 @@ export interface PopoverContentProps extends React.HTMLAttributes<HTMLDivElement
   portal?: boolean;
 }
 
-export const PopoverContent = React.forwardRef<
-  HTMLDivElement,
-  PopoverContentProps
->(
+export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
   (
-    {
-      className,
-      children,
-      portal = true,
-      "aria-label": ariaLabel,
-      "aria-labelledby": ariaLabelledBy,
-      ...props
-    },
+    { className, children, portal = true, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledBy, ...props },
     ref,
   ) => {
-    const {
-      open,
-      contentId,
-      triggerId,
-      contentRef,
-      setFloating,
-      floatingStyles,
-    } = usePopoverContext();
+    const { open, contentId, triggerId, contentRef, setFloating, floatingStyles } = usePopoverContext();
 
     React.useEffect(() => {
       if (!open) {
@@ -313,20 +268,10 @@ PopoverContent.displayName = "PopoverContent";
 
 export interface PopoverCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export const PopoverClose = React.forwardRef<
-  HTMLButtonElement,
-  PopoverCloseProps
->(({ onClick, ...props }, ref) => {
+export const PopoverClose = React.forwardRef<HTMLButtonElement, PopoverCloseProps>(({ onClick, ...props }, ref) => {
   const { setOpen } = usePopoverContext();
 
-  return (
-    <button
-      ref={ref}
-      type="button"
-      onClick={composeEventHandlers(onClick, () => setOpen(false))}
-      {...props}
-    />
-  );
+  return <button ref={ref} type="button" onClick={composeEventHandlers(onClick, () => setOpen(false))} {...props} />;
 });
 
 PopoverClose.displayName = "PopoverClose";

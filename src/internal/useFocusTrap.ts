@@ -16,11 +16,7 @@ function getFocusableElements(container: HTMLElement | null) {
         "[tabindex]:not([tabindex='-1'])",
       ].join(","),
     ),
-  ).filter(
-    (element) =>
-      !element.hasAttribute("disabled") &&
-      element.getAttribute("aria-hidden") !== "true",
-  );
+  ).filter((element) => !element.hasAttribute("disabled") && element.getAttribute("aria-hidden") !== "true");
 }
 
 export interface FocusTrapOptions {

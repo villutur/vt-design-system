@@ -2,11 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { IconRefresh, IconSettings } from "@tabler/icons-react";
 import { Button } from "./Button";
-import {
-  CommandInput,
-  type CommandInputHistoryItem,
-  type CommandInputSlashCommand,
-} from "./CommandInput";
+import { CommandInput, type CommandInputHistoryItem, type CommandInputSlashCommand } from "./CommandInput";
 
 const historyItems: CommandInputHistoryItem[] = [
   {
@@ -27,8 +23,7 @@ const historyItems: CommandInputHistoryItem[] = [
   },
   {
     id: "history-docs",
-    value:
-      "Draft a short Storybook migration note that explains when to choose DataTable instead of Table.",
+    value: "Draft a short Storybook migration note that explains when to choose DataTable instead of Table.",
     keywords: ["docs", "storybook", "migration"],
   },
 ];
@@ -75,7 +70,7 @@ const meta: Meta<typeof CommandInput> = {
     label: "Command",
     helperText: "Use Ctrl/Cmd + Enter to submit quickly.",
     placeholder: "Describe what should happen next...",
-    className: "max-w-4xl"
+    className: "max-w-4xl",
   },
 };
 
@@ -107,18 +102,10 @@ export const ControlledWithActions: Story = {
         onValueChange={setValue}
         actions={
           <>
-            <Button
-              size="sm"
-              variant="ghost"
-              leftIcon={<IconRefresh size={16} />}
-            >
+            <Button size="sm" variant="ghost" leftIcon={<IconRefresh size={16} />}>
               Retry
             </Button>
-            <Button
-              size="sm"
-              variant="secondary"
-              leftIcon={<IconSettings size={16} />}
-            >
+            <Button size="sm" variant="secondary" leftIcon={<IconSettings size={16} />}>
               Presets
             </Button>
           </>
@@ -148,9 +135,7 @@ export const HistoryRecall: Story = {
           history={historyItems}
           historyEmptyState="No saved prompts match the current text."
           onHistorySelect={(item, index) => {
-            setSelectionMessage(
-              `Selected history #${index + 1}: ${item.label ?? item.value.slice(0, 48)}`,
-            );
+            setSelectionMessage(`Selected history #${index + 1}: ${item.label ?? item.value.slice(0, 48)}`);
           }}
           onSubmit={() => undefined}
         />
@@ -179,9 +164,7 @@ export const SlashCommands: Story = {
           slashCommands={slashCommands}
           slashCommandsEmptyState="No slash command matches that token."
           onSlashCommandSelect={(command, index) => {
-            setSelectionMessage(
-              `Selected command #${index + 1}: /${command.value}`,
-            );
+            setSelectionMessage(`Selected command #${index + 1}: /${command.value}`);
           }}
           onSubmit={() => undefined}
         />
@@ -212,9 +195,7 @@ export const HistoryAndSlashCommands: Story = {
           historyEmptyState="No prompt history has been saved yet."
           slashCommandsEmptyState="No slash command matches that token."
           onHistorySelect={(item) => {
-            setSelectionMessage(
-              `History selected: ${item.label ?? item.value.slice(0, 48)}`,
-            );
+            setSelectionMessage(`History selected: ${item.label ?? item.value.slice(0, 48)}`);
           }}
           onSlashCommandSelect={(command) => {
             setSelectionMessage(`Slash command selected: /${command.value}`);
