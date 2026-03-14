@@ -17,11 +17,11 @@ import { manualVendorChunks } from "./build/viteManualChunks";
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   root: "dev",
-  plugins: [react(), tailwindcss(), singleFile()],
+  plugins: [react(), tailwindcss()/*, singleFile()*/],
   build: {
     target: 'esnext', // Modern JS output
     cssCodeSplit: false, // Prevent separate CSS files
-    assetsInlineLimit: 100000000, // Inline all assets (images, fonts, etc.)
+    // assetsInlineLimit: 100000000, // Inline all assets (images, fonts, etc.)
     // rollupOptions: {
     //   output: {
     //     manualChunks: manualVendorChunks,
