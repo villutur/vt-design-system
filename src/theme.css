@@ -1,0 +1,337 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: Inter, sans-serif;
+  --font-display: Inter, sans-serif;
+  --font-body: Inter, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
+  --color-primary: #137fec;
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  --color-success: #4ade80;
+  --color-success-dark: #4ade80;
+  --color-warning: #fbbf24;
+  --color-warning-dark: #fbbf24;
+  --color-error: #f87171;
+  --color-error-dark: #f87171;
+
+  --color-canvas: rgb(var(--vt-color-canvas) / 1);
+  --color-surface: rgb(var(--vt-color-surface) / 1);
+  --color-surface-subtle: rgb(var(--vt-color-surface-subtle) / 1);
+  --color-surface-muted: rgb(var(--vt-color-surface-muted) / 1);
+  --color-overlay: rgb(var(--vt-color-overlay) / 1);
+  --color-foreground: rgb(var(--vt-color-foreground) / 1);
+  --color-foreground-muted: rgb(var(--vt-color-foreground-muted) / 1);
+  --color-foreground-subtle: rgb(var(--vt-color-foreground-subtle) / 1);
+  --color-foreground-inverse: rgb(var(--vt-color-foreground-inverse) / 1);
+  --color-border-default: rgb(var(--vt-color-border-default) / 1);
+  --color-border-strong: rgb(var(--vt-color-border-strong) / 1);
+  --color-border-muted: #2d343f;
+
+  --color-background-light: #f6f7f8;
+  --color-background-dark: #0f1115;
+  --color-background-main: #0f1115;
+  --color-background-surface: #1a1d23;
+  --color-background-elevated: #262b34;
+
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #64748b;
+  --color-text-disabled: #334155;
+  --color-text-inverse: #0f1115;
+
+  --spacing-none: 0;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.375rem;
+  --spacing-md: 0.75rem;
+  --spacing-lg: 1rem;
+  --spacing-xl: 1.5rem;
+  --spacing-2xl: 2rem;
+  --spacing-3xl: 3rem;
+  --spacing-4xl: 4rem;
+  --container-3xs: 16rem;
+  --container-2xs: 18rem;
+  --container-xs: 20rem;
+  --container-sm: 24rem;
+  --container-md: 28rem;
+  --container-lg: 32rem;
+  --container-xl: 36rem;
+  --container-2xl: 42rem;
+  --container-3xl: 48rem;
+  --container-4xl: 56rem;
+  --container-5xl: 64rem;
+  --container-6xl: 72rem;
+  --container-7xl: 80rem;
+
+  --text-xs: 0.6875rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.4;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.5;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.4;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.2;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --radius-sm: 0.125rem;
+  --radius-md: 0.2rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.35rem;
+  --radius-2xl: 0.5rem;
+  --radius-full: 9999px;
+
+  --shadow-soft:
+    0 2px 15px -3px rgba(0, 0, 0, 0.2),
+    0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  --shadow-soft-dark:
+    0 4px 6px -1px rgba(0, 0, 0, 0.5),
+    0 2px 4px -1px rgba(0, 0, 0, 0.4);
+
+  --ease-default: ease-in-out;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --animate-progress-indeterminate: progress-indeterminate 2s infinite linear;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes progress-indeterminate {
+    0% {
+      transform: translateX(-100%);
+      width: 50%;
+    }
+
+    50% {
+      transform: translateX(100%);
+      width: 50%;
+    }
+
+    100% {
+      transform: translateX(100%);
+      width: 50%;
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height, auto);
+      opacity: 1;
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height, auto);
+      opacity: 1;
+    }
+
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+}
+
+:root {
+  --vt-color-canvas: 246 247 248;
+  --vt-color-surface: 255 255 255;
+  --vt-color-surface-subtle: 248 250 252;
+  --vt-color-surface-muted: 241 245 249;
+  --vt-color-overlay: 15 17 21;
+  --vt-color-foreground: 15 17 21;
+  --vt-color-foreground-muted: 100 116 139;
+  --vt-color-foreground-subtle: 148 163 184;
+  --vt-color-foreground-inverse: 255 255 255;
+  --vt-color-border-default: 226 232 240;
+  --vt-color-border-strong: 203 213 225;
+  --vt-root-font-size: 14px;
+  color-scheme: light;
+}
+
+.dark {
+  --vt-color-canvas: 15 17 21;
+  --vt-color-surface: 26 29 35;
+  --vt-color-surface-subtle: 38 43 52;
+  --vt-color-surface-muted: 51 65 85;
+  --vt-color-overlay: 0 0 0;
+  --vt-color-foreground: 226 232 240;
+  --vt-color-foreground-muted: 100 116 139;
+  --vt-color-foreground-subtle: 148 163 184;
+  --vt-color-foreground-inverse: 15 17 21;
+  --vt-color-border-default: 45 52 63;
+  --vt-color-border-strong: 71 85 105;
+  color-scheme: dark;
+}
+
+html[data-size-mode="compact"] {
+  --vt-root-font-size: 13px;
+}
+
+html[data-size-mode="default"] {
+  --vt-root-font-size: 14px;
+}
+
+html[data-size-mode="comfortable"] {
+  --vt-root-font-size: 15px;
+}
+
+@utility border-default {
+  border-color: rgb(var(--vt-color-border-default) / 1);
+}
+
+@utility border-strong {
+  border-color: rgb(var(--vt-color-border-strong) / 1);
+}
+
+@utility z-base {
+  z-index: 0;
+}
+
+@utility z-raised {
+  z-index: 10;
+}
+
+@utility z-dropdown {
+  z-index: 1000;
+}
+
+@utility z-sticky {
+  z-index: 1020;
+}
+
+@utility z-overlay {
+  z-index: 1030;
+}
+
+@utility z-modal {
+  z-index: 1050;
+}
+
+@utility z-toast {
+  z-index: 1100;
+}
+
+@utility z-tooltip {
+  z-index: 1200;
+}
+
+@utility duration-fast {
+  transition-duration: 100ms;
+}
+
+@utility duration-base {
+  transition-duration: 200ms;
+}
+
+@utility duration-slow {
+  transition-duration: 300ms;
+}
+
+@utility duration-slower {
+  transition-duration: 500ms;
+}
+
+@layer base {
+  html {
+    font-size: var(--vt-root-font-size, 13px);
+  }
+
+  body {
+    font-family: var(--font-body, var(--font-sans));
+    font-size: var(--text-base);
+    background-color: var(--color-canvas);
+    color: var(--color-foreground);
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-canvas);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-muted);
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-strong);
+  }
+}
+
+@layer utilities {
+  /* Custom --spacing-* aliases are intentional, but they also collide with
+     Tailwind v4's container-style max-width utilities. Restore the standard
+     max-w-* measures here so consumers can safely use max-w-sm ... max-w-7xl. */
+  .max-w-none {
+    max-width: none;
+  }
+
+  .max-w-xs {
+    max-width: var(--container-xs);
+  }
+
+  .max-w-sm {
+    max-width: var(--container-sm);
+  }
+
+  .max-w-md {
+    max-width: var(--container-md);
+  }
+
+  .max-w-lg {
+    max-width: var(--container-lg);
+  }
+
+  .max-w-xl {
+    max-width: var(--container-xl);
+  }
+
+  .max-w-2xl {
+    max-width: var(--container-2xl);
+  }
+
+  .max-w-3xl {
+    max-width: var(--container-3xl);
+  }
+
+  .max-w-4xl {
+    max-width: var(--container-4xl);
+  }
+
+  .max-w-5xl {
+    max-width: var(--container-5xl);
+  }
+
+  .max-w-6xl {
+    max-width: var(--container-6xl);
+  }
+
+  .max-w-7xl {
+    max-width: var(--container-7xl);
+  }
+}

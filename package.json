@@ -1,0 +1,93 @@
+{
+  "name": "vt-design-system",
+  "version": "0.5.0",
+  "description": "A Tailwind CSS design system with React components",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "style": "./dist/styles.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    },
+    "./dist/styles.css": "./dist/styles.css",
+    "./dist/theme.css": "./dist/theme.css",
+    "./styles.css": "./dist/styles.css",
+    "./theme.css": "./src/theme.css"
+  },
+  "files": [
+    "dist",
+    "src/theme.css"
+  ],
+  "scripts": {
+    "build": "tsdown && tailwindcss -i ./src/styles.css -o ./dist/styles.css && node ./scripts/copy-css-assets.mjs",
+    "dev:app": "vite",
+    "dev": "tsdown --watch & tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretty": "prettier --write \"src/**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build-storybook": "storybook build",
+    "build-storybook-docs": "storybook build --docs",
+    "storybook-test": "vitest --project=storybook",
+    "chromatic": "npx chromatic"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "design-system",
+    "tailwindcss"
+  ],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.31.0",
+  "dependencies": {
+    "@floating-ui/react": "^0.27.19",
+    "@tabler/icons-react": "^3.40.0",
+    "@tanstack/react-table": "^8.21.3",
+    "@tanstack/react-virtual": "^3.13.21",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "prism-react-renderer": "^2.4.1",
+    "react-day-picker": "^9.14.0",
+    "react-dropzone": "^15.0.0",
+    "react-markdown": "^10.1.0",
+    "react-resizable-panels": "^4.7.2",
+    "remark-gfm": "^4.0.1",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.2.17",
+    "@storybook/addon-docs": "^10.2.17",
+    "@storybook/addon-vitest": "^10.2.17",
+    "@storybook/react-vite": "^10.2.17",
+    "@tailwindcss/cli": "^4.2.1",
+    "@tailwindcss/vite": "^4.2.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.4",
+    "@vitest/browser-playwright": "^4.0.18",
+    "@vitest/coverage-v8": "^4.0.18",
+    "autoprefixer": "^10.4.27",
+    "chromatic": "^15.2.0",
+    "playwright": "^1.58.2",
+    "postcss": "^8.5.8",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "storybook": "^10.2.17",
+    "tailwindcss": "^4.2.1",
+    "tsdown": "^0.21.2",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
+  },
+  "peerDependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}

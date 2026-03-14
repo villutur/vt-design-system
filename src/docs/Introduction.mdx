@@ -1,0 +1,93 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Getting Started/Introduction" />
+
+# Welcome to VT Design System
+
+The VT Design System provides a comprehensive, reusable set of React components built with **TypeScript** and **Tailwind CSS v4**. It is designed to help you build user interfaces faster and with a consistent visual language.
+
+## Installation
+
+You can install the package using your favorite package manager:
+
+```bash
+npm install vt-design-system
+# or
+pnpm add vt-design-system
+# or
+yarn add vt-design-system
+```
+
+## Setup and Usage
+
+To use the design system in your project, import the shared theme in your app
+stylesheet and the component stylesheet in your application's entry point.
+
+### 1. Import Theme
+
+Add this to your Tailwind entry stylesheet:
+
+```css
+@import "tailwindcss";
+@import "vt-design-system/theme.css";
+```
+
+### 2. Import Component Styles
+
+Add this to your root component such as `_app.tsx`, `main.tsx`, or `App.tsx`:
+
+```tsx
+import "vt-design-system/styles.css";
+```
+
+### 3. Use Components
+
+Import and use the React components from the package entrypoint:
+
+```tsx
+import { Button, Card, MetricCard } from "vt-design-system";
+
+export default function App() {
+  return (
+    <div className="p-8">
+      <Card>
+        <h2 className="mb-4 text-xl font-bold">Welcome</h2>
+        <Button variant="primary" onClick={() => alert("Clicked!")}>
+          Click Me
+        </Button>
+      </Card>
+    </div>
+  );
+}
+```
+
+## Features
+
+- **Unified Design Tokens**: Centralized colors, typography, and shadows.
+- **Dark Mode Support**: Built-in support for Tailwind's `dark:` class variant.
+- **Modular**: Ready-to-use Layout, Data Display, Forms, Feedback, and Overlay components.
+- **Content-Friendly Primitives**: Shared markdown and assistant-response surfaces help content-heavy and AI-heavy workflows stay visually aligned.
+- **Conversation-Friendly Primitives**: Shared image, chat-row, and prompt surfaces make AI assistant and operator workflows easier to compose without monolithic abstractions.
+- **Operational Log Surfaces**: High-volume log viewing now has a shared viewer-first primitive with search, filters, expansion, and virtualization.
+- **Type-Safe**: Written in TypeScript with full type definitions exported.
+
+## Technical Documentation
+
+If you are adopting the package in another project, these handbook pages are a good next step:
+
+- [Technical Patterns](?path=/docs/foundations-technical-patterns--docs)
+- [Design Tokens, Typography, and Theming](?path=/story/foundations-design-tokens--docs)
+
+## Realistic Examples
+
+If you want to see multiple components working together in more product-like surfaces, start here:
+
+- [Page Layouts](?path=/docs/examples-page-layouts--docs)
+- [Workflow Workspaces](?path=/docs/examples-workflow-workspaces--docs)
+- [AI Assistant Workspace](?path=/story/examples-ai-assistant-workspace--default)
+- [AI Chat Workspace](?path=/story/examples-ai-chat-workspace--default)
+- [Log Viewer Workspace](?path=/story/examples-log-viewer-workspace--default)
+
+## Explore the Components
+
+Use the sidebar navigation to explore the different components available in the design system. Each component page includes interactive examples, meaningful variants, and an auto-generated props table when applicable.

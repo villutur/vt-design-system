@@ -1,0 +1,144 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Technical Patterns" />
+
+# Technical Patterns
+
+This page documents the stable technical patterns that consumers of `vt-design-system` can rely on when using the package in other projects.
+
+It focuses on public behavior and API conventions. Internal implementation helpers under `src/internal/` are private to the package and may change without being part of the public API contract.
+
+## Public API Conventions
+
+Most public components follow the same design rules:
+
+- Interactive components forward refs so they can integrate with forms, focus management, and higher-level composition.
+- Public components accept `className` and merge it predictably with built-in styling.
+- Components prefer native HTML attributes where that creates a familiar API.
+- Stateful primitives often support controlled and uncontrolled usage when that behavior is useful across consuming apps.
+
+You should rely on the public component props exported from the package entrypoint. You should not rely on internal helper hooks or implementation-specific DOM details unless they are explicitly documented.
+
+## Forms and `Field`
+
+`Field` is the shared form shell for label, description, helper text, error text, required state, and message spacing.
+
+Use the higher-level form controls such as `Input`, `Textarea`, `Select`, `NumberInput`, `ComboBox`, `DatePicker`, `FileUpload`, and `CommandInput` when they match your use case. Use `Field` directly when you need custom control markup but still want the same field-level labeling and message behavior. `CommandInput` can optionally layer in prompt history and leading slash-command discovery, but it should still behave like a reusable prompt surface rather than a chat-specific session container.
+
+Stable form conventions include:
+
+- `label`, `description`, `helperText`, and `errorText`
+- `error`, `required`, and `disabled`
+- size or density props when the control supports multiple densities
+- selection-specific state such as `value` or `values` when a control supports both single and multi-value flows
+- optional search state when a control supports async-friendly filtering or remote lookup patterns
+
+This makes it easier to swap one control for another without learning a completely different field API each time.
+
+`SplitButton` follows the same action-language pattern as `Button`, but adds a compact secondary action menu for workflows where one choice is primary and a few related alternatives should remain nearby.
+
+## Choosing the Right Overlay
+
+Use overlays according to behavior, not just appearance:
+
+- `Popover`: anchored, non-modal content attached to a trigger
+- `Dropdown`: anchored action menu attached to a trigger
+- `Tooltip`: short contextual help on hover or focus
+- `Modal`: blocking dialog that interrupts the current task
+- `Drawer`: dialog-like panel that keeps the current page context visible
+
+As a rule of thumb:
+
+- choose `Popover` when you need custom anchored content
+- choose `Dropdown` when you need a compact list of actions
+- choose `Tooltip` when the content is brief and assistive
+- choose `Modal` or `Drawer` when the interaction is dialog-like and focus should move into the overlay
+
+## `Table` vs `DataTable`
+
+The package exposes two different table surfaces on purpose:
+
+- `Table` is the lightweight semantic primitive for simple tabular layouts
+- `DataTable` is the advanced surface for filtering, sorting, pagination, selection, and richer toolbar workflows
+- `Toolbar` is the shared layout surface for dense table, inspector, and command-area actions
+
+Choose `Table` when you already control the surrounding data flow and just need a clean table primitive. Choose `DataTable` when you want behavior out of the box.
+
+Both surfaces expose realistic state handling for loading, empty, and error scenarios so those states can remain visually aligned across consuming apps. `DataTable` also supports opt-in grid ergonomics such as column resizing and pinning when the workflow needs them.
+
+## Media, Markdown, Assistant, and Log Surfaces
+
+Use `Image` when you need shared image presentation with consistent fit, framing, rounding, and fallback behavior without introducing gallery or upload logic.
+
+Use `MarkdownRenderer` when you want shared markdown presentation without re-styling headings, lists, tables, links, and fenced code blocks in each consuming app.
+
+Use `AIResponseView` when you need to render the current state of an assistant response, including markdown content, tool calls, reasoning summaries, and lightweight attachments. It is intentionally render-only and transport-agnostic, so session state, retries, and networking should stay in your application layer.
+
+Use `ChatBubble` when you need reusable conversation rows for user and assistant messages. It pairs well with `MarkdownRenderer` and `AIResponseView`, but it should remain a presentational shell rather than taking over chat orchestration.
+
+Use `LogViewer` when you need a high-volume operational log surface with search, filter controls, expansion, and virtualization. It is intentionally viewer-only in v1, so the logging pipeline, store, and worker architecture should remain in your application layer unless a future package contract explicitly adds that responsibility.
+
+Use `ScrollArea` as the shared overflow primitive when a surface needs consistent scroll styling or append-only follow behavior. Its `followTail` support is the intended foundation for chat and log compositions, while jump-to-tail buttons and shell-specific controls should stay in the surrounding layout.
+
+## Choosing the Right Feedback Surface
+
+Use feedback components according to the scope and lifespan of the message:
+
+- `Banner`: page- or section-level message that should stay visible until someone addresses or dismisses it
+- `Alert`: inline, surface-local message inside the current panel or workflow
+- `Toast`: transient confirmation, warning, or failure that should not permanently occupy layout space
+- `EmptyState`: first-run, no-data, or no-results surface for the main content area
+- `Skeleton`: loading placeholder that preserves layout while real content is on the way
+- `MetricCard`: summary, KPI, or status-signal surface, not a replacement for explicit message flows
+
+A useful rule of thumb:
+
+- start with `MetricCard` when you are summarizing system health, route status, or KPIs
+- move to `Banner` or `Alert` when the user needs a clear next step
+- use `Toast` to confirm the outcome of a workflow without interrupting the surrounding layout
+- use `EmptyState` when there is nothing meaningful to render yet
+- use `Skeleton` while content is loading, then replace it with real content or `EmptyState`
+
+## Tokens, Semantic Styling, and Dark Mode
+
+The design system is built around semantic tokens and theme-aware utilities.
+
+Prefer semantic classes such as:
+
+- `bg-canvas`
+- `bg-surface`
+- `bg-surface-subtle`
+- `text-foreground`
+- `text-foreground-muted`
+- `border-default`
+
+These utilities are intended to stay stable across light and dark mode without forcing consumers to hardcode raw neutral color palettes.
+
+## Public vs Internal Contracts
+
+You can safely rely on:
+
+- exported React components from `vt-design-system`
+- the shared theme import at `vt-design-system/theme.css`
+- the shared component stylesheet import at `vt-design-system/styles.css`
+- documented props and Storybook usage patterns
+- semantic token utilities exposed through the package styles
+
+You should avoid relying on:
+
+- files under `src/internal/`
+- undocumented DOM structure details
+- styling assumptions based on internal helper names
+- implementation details that are not reflected in Storybook or the public exports
+
+## Documentation Map
+
+Use the rest of Storybook for component-specific examples and prop reference. Start with:
+
+- [Getting Started](?path=/docs/getting-started-introduction--docs)
+- [Design Tokens, Typography, and Theming](?path=/story/foundations-design-tokens--docs)
+- [AI Assistant Workspace Example](?path=/story/examples-ai-assistant-workspace--default)
+- [AI Chat Workspace Example](?path=/story/examples-ai-chat-workspace--default)
+- [Log Viewer Workspace Example](?path=/story/examples-log-viewer-workspace--default)
+
+When a component page references a shared pattern, this handbook is the place to read the broader explanation.
