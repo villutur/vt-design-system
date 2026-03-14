@@ -127,7 +127,7 @@ export const MarkdownRenderer = React.forwardRef<HTMLDivElement, MarkdownRendere
           </h4>
         ),
         p: ({ className: paragraphClassName, children, ...paragraphProps }) => (
-          <p className={cn(styles.paragraph, paragraphClassName)} {...paragraphProps}>
+          <p className={cn(styles.paragraph, paragraphClassName)} style={{ whiteSpace: "pre-wrap" }} {...paragraphProps}>
             {children}
           </p>
         ),
