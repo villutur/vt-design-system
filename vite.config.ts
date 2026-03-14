@@ -2,6 +2,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import { viteSingleFile as singleFile } from 'vite-plugin-singlefile';
 // import path from "node:path";
 // import { fileURLToPath } from "node:url";
 // import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
@@ -16,13 +17,16 @@ import { manualVendorChunks } from "./build/viteManualChunks";
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   root: "dev",
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), singleFile()],
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: manualVendorChunks,
-      },
-    },
+    target: 'esnext', // Modern JS output
+    cssCodeSplit: false, // Prevent separate CSS files
+    assetsInlineLimit: 100000000, // Inline all assets (images, fonts, etc.)
+    // rollupOptions: {
+    //   output: {
+    //     manualChunks: manualVendorChunks,
+    //   },
+    // },
   },
   // test: {
   //   projects: [

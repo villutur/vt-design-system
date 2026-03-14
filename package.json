@@ -25,6 +25,7 @@
   "scripts": {
     "build": "tsdown && tailwindcss -i ./src/styles.css -o ./dist/styles.css && node ./scripts/copy-css-assets.mjs",
     "dev:app": "vite",
+    "build:app": "vite build",
     "dev": "tsdown --watch & tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettyfy": "prettier --write \"src/**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
@@ -84,6 +85,7 @@
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
+    "vite-plugin-singlefile": "^2.3.0",
     "vitest": "^4.0.18"
   },
   "peerDependencies": {
